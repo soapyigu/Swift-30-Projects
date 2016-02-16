@@ -12,5 +12,5 @@ This project was totally inspired by Allen朝辉](https://twitter.com/creativewa
 
 Linkedin: [Yi Gu](https://www.linkedin.com/in/yigucmu)
 Github: [soapyigu](https://github.com/soapyigu)
-Weibo: [@故胤道长](http://weibo.com/http://weibo.com/soapyigu)
+Weibo: [@故胤道长](http://weibo.com/soapyigu)
 
