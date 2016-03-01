@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "BBE7C73564CD8AF8FADC10DE06479BE60BECBF10",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2AB7C53C3F76D17E3DF76AA46BB072B997CB5206" : 0,
+    "BBE7C73564CD8AF8FADC10DE06479BE60BECBF10" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1CA1B3E0-39B9-4176-8465-B90DCDA61B39",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2AB7C53C3F76D17E3DF76AA46BB072B997CB5206" : "",
+    "BBE7C73564CD8AF8FADC10DE06479BE60BECBF10" : "Project%2001%20-%20GoodAsOldPhones\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "GoodAsOldPhones",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "GoodAsOldPhones.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/soapyigu\/30SwiftProjects.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2AB7C53C3F76D17E3DF76AA46BB072B997CB5206"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:soapyigu\/30SwiftProjects.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BBE7C73564CD8AF8FADC10DE06479BE60BECBF10"
+    }
+  ]
+}
