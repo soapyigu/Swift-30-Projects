@@ -14,6 +14,7 @@
 		19515F981C8558F800DC2284 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19515F961C8558F800DC2284 /* LaunchScreen.storyboard */; };
 		19515FA01C855C7300DC2284 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19515F9F1C855C7300DC2284 /* ToDoItem.swift */; };
 		19515FA21C855D9A00DC2284 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19515FA11C855D9A00DC2284 /* Utils.swift */; };
+		19A79A371C869E270087EEBA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A79A361C869E260087EEBA /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		19515F991C8558F800DC2284 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19515F9F1C855C7300DC2284 /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		19515FA11C855D9A00DC2284 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		19A79A361C869E260087EEBA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				19515FA11C855D9A00DC2284 /* Utils.swift */,
 				19515F9F1C855C7300DC2284 /* ToDoItem.swift */,
 				19515F8F1C8558F800DC2284 /* ViewController.swift */,
+				19A79A361C869E260087EEBA /* DetailViewController.swift */,
 				19515F911C8558F800DC2284 /* Main.storyboard */,
 				19515F941C8558F800DC2284 /* Assets.xcassets */,
 				19515F961C8558F800DC2284 /* LaunchScreen.storyboard */,
@@ -144,6 +147,7 @@
 			files = (
 				19515F901C8558F800DC2284 /* ViewController.swift in Sources */,
 				19515F8E1C8558F800DC2284 /* AppDelegate.swift in Sources */,
+				19A79A371C869E270087EEBA /* DetailViewController.swift in Sources */,
 				19515FA01C855C7300DC2284 /* ToDoItem.swift in Sources */,
 				19515FA21C855D9A00DC2284 /* Utils.swift in Sources */,
 			);
@@ -297,6 +301,7 @@
 				19515F9E1C8558F800DC2284 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -71,6 +71,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     titleLabel.text = todo.title
     dateLabel.text = stringFromDate(todo.date)
   }
+  
+  // MARK: Segue
+  @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
+    todoTableView.reloadData()
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "editTodo" {
+      let vc = segue.destinationViewController as! DetailViewController
+      let indexPath = todoTableView.indexPathForSelectedRow
+      if let indexPath = indexPath {
+        vc.todo = todos[indexPath.row]
+      }
+    }
+  }
+  
 
 }
 
