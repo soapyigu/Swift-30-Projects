@@ -23,10 +23,10 @@ class DetailViewController: UIViewController {
     super.viewDidLoad()
     
     if todo == nil {
-      navigationController?.title = "New Todo"
+      self.title = "New Todo"
       childButton.selected = true
     } else {
-      navigationController?.title = "Edit Todo"
+      self.title = "Edit Todo"
       if todo?.image == "child-selected"{
         childButton.selected = true
       }

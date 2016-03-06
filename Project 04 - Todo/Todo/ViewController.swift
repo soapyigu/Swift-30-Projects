@@ -10,12 +10,14 @@ import UIKit
 
 var todos: [ToDoItem] = []
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
-
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+  
   @IBOutlet weak var todoTableView: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    navigationItem.leftBarButtonItem = editButtonItem()
     
     todos = [ToDoItem(id: "1", image: "child-selected", title: "Go to Disney", date: dateFromString("2014-10-20")!),
       ToDoItem(id: "2", image: "shopping-cart-selected", title: "Cicso Shopping", date: dateFromString("2014-10-28")!),
@@ -26,7 +28,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     todoTableView.dataSource = self
   }
   
-  // MARK: tableViewDataSource required
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    todoTableView.reloadData()
+  }
+  
+  // MARK - UITableViewDataSource required
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if (todos.count != 0) {
       return todos.count
@@ -51,7 +58,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     return cell
   }
   
-  // MARK: helper func
+  // MARK - UITableViewDelegate
+  
+  // Edit mode
+  override func setEditing(editing: Bool, animated: Bool) {
+    super.setEditing(editing, animated: animated)
+    todoTableView.setEditing(editing, animated: true)
+  }
+  
+  // Delete the cell
+  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    if editingStyle == UITableViewCellEditingStyle.Delete {
+      todos.removeAtIndex(indexPath.row)
+      todoTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+    }
+  }
+  
+  // Move the cell
+  func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    return self.editing
+  }
+  
+  func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+    let todo = todos.removeAtIndex(sourceIndexPath.row)
+    todos.insert(todo, atIndex: destinationIndexPath.row)
+  }
+  
+  // MARK - helper func
   func setMessageLabel(messageLabel: UILabel, frame: CGRect, text: String, textColor: UIColor, numberOfLines: Int, textAlignment: NSTextAlignment, font: UIFont) {
     messageLabel.frame = frame
     messageLabel.text = text
@@ -72,8 +105,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     dateLabel.text = stringFromDate(todo.date)
   }
   
-  // MARK: Segue
-  @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
+  // MARK - Segue
+  @IBAction func close(segue: UIStoryboardSegue) {
     todoTableView.reloadData()
   }
   
