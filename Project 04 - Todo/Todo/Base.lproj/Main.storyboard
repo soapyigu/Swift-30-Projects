@@ -52,6 +52,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="7U6-3P-bIe"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="PxQ-97-PWW"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -153,7 +157,6 @@
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="tapDone:" destination="hHo-63-Jpa" eventType="touchUpInside" id="IDj-os-DEs"/>
-                                    <segue destination="rgj-Rl-0DZ" kind="unwind" unwindAction="close:" id="FJS-90-MtI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -197,7 +200,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qd-Te-ww4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="rgj-Rl-0DZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1708" y="1047"/>
         </scene>

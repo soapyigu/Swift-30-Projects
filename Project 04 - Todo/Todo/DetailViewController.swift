@@ -98,5 +98,7 @@ class DetailViewController: UIViewController {
       todo?.title = todoTitleLabel.text!
       todo?.date = todoDatePicker.date
     }
+    
+    self.navigationController?.popToRootViewControllerAnimated(true)
   }
 }

@@ -23,9 +23,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
       ToDoItem(id: "2", image: "shopping-cart-selected", title: "Cicso Shopping", date: dateFromString("2014-10-28")!),
       ToDoItem(id: "3", image: "phone-selected", title: "Phone to Jobs", date: dateFromString("2014-10-30")!),
       ToDoItem(id: "4", image: "travel-selected", title: "Plan to Europe", date: dateFromString("2014-10-31")!)]
-    
-    todoTableView.delegate = self
-    todoTableView.dataSource = self
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -105,10 +102,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     dateLabel.text = stringFromDate(todo.date)
   }
   
-  // MARK - Segue
-  @IBAction func close(segue: UIStoryboardSegue) {
-    todoTableView.reloadData()
-  }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "editTodo" {
