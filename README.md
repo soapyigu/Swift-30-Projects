@@ -1,16 +1,15 @@
 ## 30 Swift Projects ##
-This is a repo containing 30 Swift Projects from various levels, star it if you like projects
+This is a repo containing 30 Swift Projects with a huge number of components and from various levels, **STAR** it if you like these projects
 
 ## Hi Developers, ##
 
-As an iOS software engineer and currently learning Swift.
+I am an iOS software engineer and currently learning Swift.
 
-This project was totally inspired by Allen朝辉](https://twitter.com/creativewang)'s [30DaysSwift](https://github.com/allenwong/30DaysofSwift) project
+This project is inspired by [Sam Lu](https://twitter.com/samvlu)'s [100 Days of Swift](http://samvlu.com/index.html) and [Allen朝辉](https://twitter.com/creativewang)'s [30DaysSwift](https://github.com/allenwong/30DaysofSwift).
 
 
 ## Reach me ##
 
-Linkedin: [Yi Gu](https://www.linkedin.com/in/yigucmu)
 Github: [soapyigu](https://github.com/soapyigu)
 Weibo: [@故胤道长](http://weibo.com/soapyigu)
 
