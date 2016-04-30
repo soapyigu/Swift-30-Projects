@@ -13,6 +13,8 @@
 		192BA0FF1CD3293100117FF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 192BA0FD1CD3293100117FF6 /* LaunchScreen.storyboard */; };
 		192BA1071CD329A500117FF6 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192BA1061CD329A500117FF6 /* MasterViewController.swift */; };
 		192BA10C1CD329FC00117FF6 /* moments.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 192BA10B1CD329FC00117FF6 /* moments.mp4 */; };
+		192BA14B1CD52D7600117FF6 /* VideoCutter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192BA1491CD52D7600117FF6 /* VideoCutter.swift */; };
+		192BA14C1CD52D7600117FF6 /* VideoSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192BA14A1CD52D7600117FF6 /* VideoSplashViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		192BA1001CD3293100117FF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		192BA1061CD329A500117FF6 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		192BA10B1CD329FC00117FF6 /* moments.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = moments.mp4; sourceTree = "<group>"; };
+		192BA1491CD52D7600117FF6 /* VideoCutter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCutter.swift; sourceTree = "<group>"; };
+		192BA14A1CD52D7600117FF6 /* VideoSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoSplashViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +44,7 @@
 		192BA0E81CD3293100117FF6 = {
 			isa = PBXGroup;
 			children = (
+				192BA1481CD52D5E00117FF6 /* Library */,
 				192BA0F31CD3293100117FF6 /* SpotifySignIn */,
 				192BA0F21CD3293100117FF6 /* Products */,
 			);
@@ -81,6 +86,15 @@
 				192BA10B1CD329FC00117FF6 /* moments.mp4 */,
 			);
 			name = Files;
+			sourceTree = "<group>";
+		};
+		192BA1481CD52D5E00117FF6 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				192BA1491CD52D7600117FF6 /* VideoCutter.swift */,
+				192BA14A1CD52D7600117FF6 /* VideoSplashViewController.swift */,
+			);
+			name = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,8 +169,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				192BA14B1CD52D7600117FF6 /* VideoCutter.swift in Sources */,
 				192BA1071CD329A500117FF6 /* MasterViewController.swift in Sources */,
 				192BA0F51CD3293100117FF6 /* AppDelegate.swift in Sources */,
+				192BA14C1CD52D7600117FF6 /* VideoSplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +324,7 @@
 				192BA1051CD3293100117FF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
