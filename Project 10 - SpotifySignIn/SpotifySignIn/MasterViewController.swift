@@ -8,28 +8,30 @@
 
 import UIKit
 
-class MasterViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+class MasterViewController: VideoSplashViewController {
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    setupVideoBackground()
+  }
+  
+  func setupVideoBackground() {
+    let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("moments", ofType: "mp4")!)
+    
+    // setup layout
+    videoFrame = view.frame
+    fillMode = .ResizeAspectFill
+    alwaysRepeat = true
+    sound = true
+    startTime = 2.0
+    alpha = 0.8
+    
+    contentURL = url
+    view.userInteractionEnabled = false
+  }
+  
+  override func preferredStatusBarStyle() -> UIStatusBarStyle {
+    return .LightContent
+  }
 }
