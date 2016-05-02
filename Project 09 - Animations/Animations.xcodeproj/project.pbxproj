@@ -14,6 +14,8 @@
 		192BA1251CD332C500117FF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 192BA1231CD332C500117FF6 /* LaunchScreen.storyboard */; };
 		192BA1301CD332C500117FF6 /* AnimationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192BA12F1CD332C500117FF6 /* AnimationsTests.swift */; };
 		192BA13B1CD332C500117FF6 /* AnimationsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192BA13A1CD332C500117FF6 /* AnimationsUITests.swift */; };
+		1988E8981CD673E9003E143B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1988E8971CD673E9003E143B /* DetailViewController.swift */; };
+		1988E89A1CD6801E003E143B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1988E8991CD6801E003E143B /* Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		192BA1361CD332C500117FF6 /* AnimationsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimationsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		192BA13A1CD332C500117FF6 /* AnimationsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsUITests.swift; sourceTree = "<group>"; };
 		192BA13C1CD332C500117FF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1988E8971CD673E9003E143B /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1988E8991CD6801E003E143B /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 			children = (
 				192BA11A1CD332C500117FF6 /* AppDelegate.swift */,
 				192BA11C1CD332C500117FF6 /* ViewController.swift */,
+				1988E8971CD673E9003E143B /* DetailViewController.swift */,
+				1988E8991CD6801E003E143B /* Common.swift */,
 				192BA11E1CD332C500117FF6 /* Main.storyboard */,
 				192BA1211CD332C500117FF6 /* Assets.xcassets */,
 				192BA1231CD332C500117FF6 /* LaunchScreen.storyboard */,
@@ -256,6 +262,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1988E89A1CD6801E003E143B /* Common.swift in Sources */,
+				1988E8981CD673E9003E143B /* DetailViewController.swift in Sources */,
 				192BA11D1CD332C500117FF6 /* ViewController.swift in Sources */,
 				192BA11B1CD332C500117FF6 /* AppDelegate.swift in Sources */,
 			);
@@ -482,6 +490,7 @@
 				192BA1411CD332C500117FF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		192BA1421CD332C500117FF6 /* Build configuration list for PBXNativeTarget "AnimationsTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +499,7 @@
 				192BA1441CD332C500117FF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		192BA1451CD332C500117FF6 /* Build configuration list for PBXNativeTarget "AnimationsUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +508,7 @@
 				192BA1471CD332C500117FF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
