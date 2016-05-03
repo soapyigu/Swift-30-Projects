@@ -16,12 +16,10 @@ class ViewController: UIViewController {
   @IBOutlet weak var masterTableView: UITableView!
   
   // MARK: - Variables
-  private let sections = ["BASIC ANIMATIONS", "KEYFRAME ANIMATIONS", "MULTIPLE ANIMATIONS", "TRANSITIONS", "UIVIEW PROPERTY ANIMATIONS"]
+  private let sections = ["BASIC ANIMATIONS", "KEYFRAME ANIMATIONS", "MULTIPLE ANIMATIONS"]
   private let items = [["2-Color", "Simple 2D Rotation"],
                        ["Multicolor", "Multi Point Position", "BezierCurve Position"],
-                       ["Color and Frame Change"],
-                       ["Transitions"],
-                       ["Simple Frame Change", "Multi Frame Change"]]
+                       ["Color and Frame Change"]]
   
   
   // MARK: - Life Cycle

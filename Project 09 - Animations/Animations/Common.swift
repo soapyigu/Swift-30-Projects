@@ -9,13 +9,30 @@
 import Foundation
 import UIKit
 
+let screenRect = UIScreen.mainScreen().bounds
+
 func drawRectView() -> UIView {
-  let screenRect = UIScreen.mainScreen().bounds
   let rect = CGRectMake(0, 0, CGRectGetWidth(screenRect) / 2.0, CGRectGetHeight(screenRect) / 4.0)
   
   let view = UIView(frame: rect)
   view.center = CGPointMake(CGRectGetMidX(screenRect), CGRectGetMidY(screenRect) - 50)
   view.backgroundColor = UIColor.redColor()
+  
+  return view
+}
+
+func drawCircleView() -> UIView {
+  let circlePath = UIBezierPath(arcCenter: CGPoint(x: 100,y: CGRectGetMidY(screenRect) - 50), radius: CGFloat(20), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
+  
+  let shapeLayer = CAShapeLayer()
+  shapeLayer.path = circlePath.CGPath
+  
+  shapeLayer.fillColor = UIColor.redColor().CGColor
+  shapeLayer.strokeColor = UIColor.redColor().CGColor
+  shapeLayer.lineWidth = 3.0
+  
+  let view = UIView()
+  view.layer.addSublayer(shapeLayer)
   
   return view
 }

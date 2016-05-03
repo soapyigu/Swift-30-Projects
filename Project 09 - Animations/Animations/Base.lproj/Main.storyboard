@@ -77,43 +77,15 @@
                                     <action selector="didTapAnimate:" destination="Bp6-wf-0l7" eventType="touchUpInside" id="eSc-id-mWx"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="41n-nU-p3A">
-                                <rect key="frame" x="62" y="114" width="251" height="29"/>
-                                <segments>
-                                    <segment title="Fade"/>
-                                    <segment title="Move In"/>
-                                    <segment title="Push"/>
-                                    <segment title="Reveal"/>
-                                </segments>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="noR-ml-1hF">
-                                <rect key="frame" x="62" y="162" width="251" height="29"/>
-                                <segments>
-                                    <segment title="Right"/>
-                                    <segment title="Left"/>
-                                    <segment title="Top"/>
-                                    <segment title="Bottom"/>
-                                </segments>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="41n-nU-p3A" firstAttribute="top" secondItem="7CJ-hg-aF5" secondAttribute="bottom" constant="50" id="3jm-Da-x3X"/>
-                            <constraint firstItem="noR-ml-1hF" firstAttribute="top" secondItem="41n-nU-p3A" secondAttribute="bottom" constant="20" id="6H5-KM-hBE"/>
-                            <constraint firstAttribute="trailing" secondItem="noR-ml-1hF" secondAttribute="trailing" constant="62" id="6NV-Ka-4hc"/>
-                            <constraint firstItem="41n-nU-p3A" firstAttribute="leading" secondItem="guP-Ad-Liv" secondAttribute="leading" constant="62" id="A1A-66-Ap4"/>
                             <constraint firstItem="q6b-9x-XEb" firstAttribute="centerX" secondItem="guP-Ad-Liv" secondAttribute="centerX" id="IlJ-Ty-MUc"/>
-                            <constraint firstItem="noR-ml-1hF" firstAttribute="leading" secondItem="guP-Ad-Liv" secondAttribute="leading" constant="62" id="MaI-hH-3R8"/>
                             <constraint firstItem="GTa-EL-jWB" firstAttribute="top" secondItem="q6b-9x-XEb" secondAttribute="bottom" constant="82" id="oX1-Ph-CFA"/>
-                            <constraint firstAttribute="trailing" secondItem="41n-nU-p3A" secondAttribute="trailing" constant="62" id="ssK-6T-OTk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1eG-GO-bc3"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="transitionSubType" destination="noR-ml-1hF" id="GBG-AK-Zbb"/>
-                        <outlet property="transitionType" destination="41n-nU-p3A" id="3bE-Qp-qEa"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6BY-bf-O4C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -32,7 +32,11 @@ class DetailViewController: UIViewController {
   }
   
   private func setupRect() {
-    animateView = drawRectView()
+    if barTitle != "BezierCurve Position" {
+      animateView = drawRectView()
+    } else {
+      animateView = drawCircleView()
+    }
     view.addSubview(animateView)
   }
   
@@ -57,7 +61,14 @@ class DetailViewController: UIViewController {
       multiPosition(CGPoint(x: animateView.frame.origin.x, y: 100), CGPoint(x: animateView.frame.origin.x, y: 350))
       
     case "BezierCurve Position":
-      break
+      var controlPoint1 = self.animateView.center
+      controlPoint1.y -= 125.0
+      var controlPoint2 = controlPoint1
+      controlPoint2.x += 50.0
+      controlPoint2.y -= 125.0;
+      var endPoint = self.animateView.center;
+      endPoint.x += 100.0
+      curvePath(endPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
       
     case "Color and Frame Change":
       let currentFrame = self.animateView.frame
@@ -65,16 +76,6 @@ class DetailViewController: UIViewController {
       let secondFrame = CGRectInset(firstFrame, 10, 15)
       let thirdFrame = CGRectInset(secondFrame, -15, -20)
       colorFrameChange(firstFrame, secondFrame, thirdFrame, UIColor.orangeColor(), UIColor.yellowColor(), UIColor.greenColor())
-      break
-      
-    case "Transitions":
-      break
-      
-    case "Simple Frame Change":
-      break
-      
-    case "Multi Frame Change":
-      break
       
     default:
       let alert = makeAlert("Alert", message: "The animation not implemented yet", actionTitle: "OK")
@@ -133,5 +134,25 @@ class DetailViewController: UIViewController {
               }, completion: nil)
         })
     })
+  }
+  
+  private func curvePath(endPoint: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint) {
+    let path = UIBezierPath()
+    path.moveToPoint(self.animateView.center)
+    
+    path.addCurveToPoint(endPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
+
+    // create a new CAKeyframeAnimation that animates the objects position
+    let anim = CAKeyframeAnimation(keyPath: "position")
+    
+    // set the animations path to our bezier curve
+    anim.path = path.CGPath
+    
+    // set some more parameters for the animation
+    anim.duration = self.duration
+    
+    // add the animation to the squares 'layer' property
+    self.animateView.layer.addAnimation(anim, forKey: "animate position along path")
+    self.animateView.center = endPoint
   }
 }
