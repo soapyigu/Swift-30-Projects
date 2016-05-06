@@ -10,14 +10,13 @@ import Foundation
 import UIKit
 
 let screenRect = UIScreen.mainScreen().bounds
+let generalFrame = CGRectMake(0, 0, CGRectGetWidth(screenRect) / 2.0, CGRectGetHeight(screenRect) / 4.0)
+let generalCenter = CGPointMake(CGRectGetMidX(screenRect), CGRectGetMidY(screenRect) - 50)
 
-func drawRectView() -> UIView {
-  let rect = CGRectMake(0, 0, CGRectGetWidth(screenRect) / 2.0, CGRectGetHeight(screenRect) / 4.0)
-  
-  let view = UIView(frame: rect)
-  view.center = CGPointMake(CGRectGetMidX(screenRect), CGRectGetMidY(screenRect) - 50)
-  view.backgroundColor = UIColor.redColor()
-  
+func drawRectView(color: UIColor, frame: CGRect, center: CGPoint) -> UIView {
+  let view = UIView(frame: frame)
+  view.center = center
+  view.backgroundColor = color
   return view
 }
 

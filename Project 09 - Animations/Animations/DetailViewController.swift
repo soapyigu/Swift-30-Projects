@@ -9,10 +9,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-  // MARK: - IBOutlets
-  @IBOutlet weak var transitionType: UISegmentedControl!
-  @IBOutlet weak var transitionSubType: UISegmentedControl!
-  
+
   // MARK: - Variables
   var barTitle = ""
   var animateView: UIView!
@@ -24,7 +21,6 @@ class DetailViewController: UIViewController {
     super.viewDidLoad()
     setupRect()
     setupNavigationBar()
-    setupSegmentedControl(true)
   }
   
   private func setupNavigationBar() {
@@ -32,17 +28,17 @@ class DetailViewController: UIViewController {
   }
   
   private func setupRect() {
-    if barTitle != "BezierCurve Position" {
-      animateView = drawRectView()
-    } else {
+    if barTitle == "BezierCurve Position" {
       animateView = drawCircleView()
+      
+    } else if barTitle == "View Fade In" {
+      animateView = UIImageView(image: UIImage(named: "whatsapp"))
+      animateView.frame = generalFrame
+      animateView.center = generalCenter
+    } else {
+      animateView = drawRectView(UIColor.redColor(), frame: generalFrame, center: generalCenter)
     }
     view.addSubview(animateView)
-  }
-  
-  private func setupSegmentedControl(isHidden: Bool) {
-    transitionType.hidden = isHidden
-    transitionSubType.hidden = isHidden
   }
   
   // MARK: - IBAction
@@ -64,11 +60,12 @@ class DetailViewController: UIViewController {
       var controlPoint1 = self.animateView.center
       controlPoint1.y -= 125.0
       var controlPoint2 = controlPoint1
-      controlPoint2.x += 50.0
+      controlPoint2.x += 40.0
       controlPoint2.y -= 125.0;
       var endPoint = self.animateView.center;
-      endPoint.x += 100.0
+      endPoint.x += 75.0
       curvePath(endPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
+  
       
     case "Color and Frame Change":
       let currentFrame = self.animateView.frame
@@ -76,6 +73,9 @@ class DetailViewController: UIViewController {
       let secondFrame = CGRectInset(firstFrame, 10, 15)
       let thirdFrame = CGRectInset(secondFrame, -15, -20)
       colorFrameChange(firstFrame, secondFrame, thirdFrame, UIColor.orangeColor(), UIColor.yellowColor(), UIColor.greenColor())
+      
+    case "View Fade In":
+      viewFadeIn()
       
     default:
       let alert = makeAlert("Alert", message: "The animation not implemented yet", actionTitle: "OK")
@@ -154,5 +154,18 @@ class DetailViewController: UIViewController {
     // add the animation to the squares 'layer' property
     self.animateView.layer.addAnimation(anim, forKey: "animate position along path")
     self.animateView.center = endPoint
+  }
+  
+  private func viewFadeIn() {
+    let secondView = UIImageView(image: UIImage(named: "facebook"))
+    secondView.frame = self.animateView.frame
+    secondView.alpha = 0.0
+    
+    view.insertSubview(secondView, aboveSubview: self.animateView)
+    
+    UIView.animateWithDuration(duration, delay: delay, options: .CurveEaseOut, animations: {
+      secondView.alpha = 1.0
+      self.animateView.alpha = 0.0
+      }, completion: nil)
   }
 }
