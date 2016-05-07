@@ -3,4 +3,4 @@ SpotifySignIn
 SpotifySignIn is a swift project that highly mimics the sign in/ sign up view of Spotify. It includes the video background, carousel text, and the animation of login page.
 
 ## Screenshots
-![Spotify](https://github.com/soapyigu/30SwiftProjects/blob/master/Project%2010%20-%20SpotifySignIn/Spotify.gif)
+![Spotify](https://github.com/soapyigu/30SwiftProjects/blob/master/Project%2011%20-%20SpotifySignIn/Spotify.gif)
