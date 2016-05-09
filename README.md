@@ -1,4 +1,4 @@
-## 30 Swift Projects ##
+## Swift 30 Projects ##
 This is a repo containing 30 Swift Projects with a huge number of components and from various levels, **STAR** it if you like these projects
 
 ## Hi Developers, ##
