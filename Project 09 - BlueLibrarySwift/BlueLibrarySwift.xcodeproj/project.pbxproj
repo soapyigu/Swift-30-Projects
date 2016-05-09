@@ -19,6 +19,7 @@
 		101DD6D51A052EDE00161F0D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 101DD6D31A052EDE00161F0D /* LaunchScreen.xib */; };
 		101DD6E11A052EDE00161F0D /* BlueLibrarySwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DD6E01A052EDE00161F0D /* BlueLibrarySwiftTests.swift */; };
 		101DD6EC1A052F0E00161F0D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DD6EB1A052F0E00161F0D /* HTTPClient.swift */; };
+		19B5F9151CDFA8BC0067CC4D /* HorizontalScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B5F9141CDFA8BC0067CC4D /* HorizontalScroller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		101DD6DF1A052EDE00161F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		101DD6E01A052EDE00161F0D /* BlueLibrarySwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueLibrarySwiftTests.swift; sourceTree = "<group>"; };
 		101DD6EB1A052F0E00161F0D /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		19B5F9141CDFA8BC0067CC4D /* HorizontalScroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalScroller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				0B238FD21CDD1DE900000CB5 /* AlbumView.swift */,
+				19B5F9141CDFA8BC0067CC4D /* HorizontalScroller.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				0B238FE11CDD525E00000CB5 /* AlbumExtensions.swift in Sources */,
 				101DD6CB1A052EDE00161F0D /* AppDelegate.swift in Sources */,
 				0B238FDD1CDD43CB00000CB5 /* LibraryAPI.swift in Sources */,
+				19B5F9151CDFA8BC0067CC4D /* HorizontalScroller.swift in Sources */,
 				101DD6EC1A052F0E00161F0D /* HTTPClient.swift in Sources */,
 				0B238FD31CDD1DE900000CB5 /* AlbumView.swift in Sources */,
 				0B238FCF1CDD1AAB00000CB5 /* Album.swift in Sources */,

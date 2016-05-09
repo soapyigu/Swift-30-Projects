@@ -41,7 +41,7 @@
                                 </constraints>
                                 <items/>
                             </toolbar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCJ-c6-A01">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCJ-c6-A01" customClass="HorizontalScroller" customModule="BlueLibrarySwift" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
                                 <color key="backgroundColor" red="0.78837685899999999" green="0.78972791379999996" blue="0.81034482760000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -103,6 +103,7 @@
                     <navigationItem key="navigationItem" title="Pop Music" id="uLL-cE-ggB"/>
                     <connections>
                         <outlet property="dataTable" destination="bug-Yd-y9Q" id="yas-fl-POo"/>
+                        <outlet property="scroller" destination="mCJ-c6-A01" id="guD-OP-yJX"/>
                         <outlet property="toolbar" destination="Neo-nw-t9H" id="dxl-Oc-qum"/>
                     </connections>
                 </viewController>

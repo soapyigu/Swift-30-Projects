@@ -12,8 +12,8 @@ class AlbumView: UIView {
   private var coverImage: UIImageView!
   private var indicator: UIActivityIndicatorView!
   
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
+  required init(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)!
     commonInit()
   }
   
