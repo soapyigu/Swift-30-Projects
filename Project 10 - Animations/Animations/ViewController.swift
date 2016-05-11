@@ -18,7 +18,7 @@ class ViewController: UIViewController {
   
   // MARK: - Variables
   private let items = ["2-Color", "Simple 2D Rotation", "Multicolor", "Multi Point Position", "BezierCurve Position",
-                       "Color and Frame Change", "View Fade In"]
+                       "Color and Frame Change", "View Fade In", "Pop"]
   
   
   // MARK: - Life Cycle

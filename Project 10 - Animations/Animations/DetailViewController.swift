@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
   var animateView: UIView!
   private let duration = 2.0
   private let delay = 0.2
+  private let scale = 1.2
   
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -76,6 +77,9 @@ class DetailViewController: UIViewController {
       
     case "View Fade In":
       viewFadeIn()
+      
+    case "Pop":
+      Pop()
       
     default:
       let alert = makeAlert("Alert", message: "The animation not implemented yet", actionTitle: "OK")
@@ -167,5 +171,16 @@ class DetailViewController: UIViewController {
       secondView.alpha = 1.0
       self.animateView.alpha = 0.0
       }, completion: nil)
+  }
+  
+  private func Pop() {
+    UIView.animateWithDuration(duration / 4,
+      animations: {
+      self.animateView.transform = CGAffineTransformMakeScale(CGFloat(self.scale), CGFloat(self.scale))
+      }, completion: { finished in
+        UIView.animateWithDuration(self.duration / 4, animations: {
+          self.animateView.transform = CGAffineTransformIdentity
+        })
+    })
   }
 }
