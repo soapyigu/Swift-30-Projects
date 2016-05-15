@@ -20,6 +20,11 @@ class AlbumView: UIView {
   init(frame: CGRect, albumCover: String) {
     super.init(frame: frame)
     commonInit()
+    setupNotification(albumCover)
+  }
+  
+  deinit {
+    coverImage.removeObserver(self, forKeyPath: "image")
   }
   
   func commonInit() {
@@ -48,5 +53,16 @@ class AlbumView: UIView {
     indicator.activityIndicatorViewStyle = .WhiteLarge
     indicator.startAnimating()
     addSubview(indicator)
+    coverImage.addObserver(self, forKeyPath: "image", options: [], context: nil)
+  }
+  
+  private func setupNotification(albumCover: String) {
+    NSNotificationCenter.defaultCenter().postNotificationName(downloadImageNotification, object: self, userInfo: ["imageView":coverImage, "coverUrl" : albumCover])
+  }
+  
+  override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    if keyPath == "image" {
+      indicator.stopAnimating()
+    }
   }
 }

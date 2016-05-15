@@ -20,6 +20,7 @@
 		101DD6E11A052EDE00161F0D /* BlueLibrarySwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DD6E01A052EDE00161F0D /* BlueLibrarySwiftTests.swift */; };
 		101DD6EC1A052F0E00161F0D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DD6EB1A052F0E00161F0D /* HTTPClient.swift */; };
 		19B5F9151CDFA8BC0067CC4D /* HorizontalScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B5F9141CDFA8BC0067CC4D /* HorizontalScroller.swift */; };
+		19DA519C1CE7929600CE5E80 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DA519B1CE7929600CE5E80 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		101DD6E01A052EDE00161F0D /* BlueLibrarySwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueLibrarySwiftTests.swift; sourceTree = "<group>"; };
 		101DD6EB1A052F0E00161F0D /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		19B5F9141CDFA8BC0067CC4D /* HorizontalScroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalScroller.swift; sourceTree = "<group>"; };
+		19DA519B1CE7929600CE5E80 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				0B238FD41CDD1DF700000CB5 /* View */,
 				0B238FD11CDD1AC000000CB5 /* Controller */,
 				0B238FD01CDD1AB700000CB5 /* Model */,
+				19DA519D1CE792A700CE5E80 /* Helper */,
 				101DD6CE1A052EDE00161F0D /* Main.storyboard */,
 				101DD6D11A052EDE00161F0D /* Images.xcassets */,
 				101DD6D31A052EDE00161F0D /* LaunchScreen.xib */,
@@ -163,6 +166,14 @@
 				0B238FDE1CDD455A00000CB5 /* PersistencyManager.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		19DA519D1CE792A700CE5E80 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				19DA519B1CE7929600CE5E80 /* Constants.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +283,7 @@
 				101DD6CB1A052EDE00161F0D /* AppDelegate.swift in Sources */,
 				0B238FDD1CDD43CB00000CB5 /* LibraryAPI.swift in Sources */,
 				19B5F9151CDFA8BC0067CC4D /* HorizontalScroller.swift in Sources */,
+				19DA519C1CE7929600CE5E80 /* Constants.swift in Sources */,
 				101DD6EC1A052F0E00161F0D /* HTTPClient.swift in Sources */,
 				0B238FD31CDD1DE900000CB5 /* AlbumView.swift in Sources */,
 				0B238FCF1CDD1AAB00000CB5 /* Album.swift in Sources */,
