@@ -71,4 +71,8 @@ class LibraryAPI: NSObject {
       }
     }
   }
+  
+  func saveAlbums() {
+    persistencyManager.saveAlbums()
+  }
 }

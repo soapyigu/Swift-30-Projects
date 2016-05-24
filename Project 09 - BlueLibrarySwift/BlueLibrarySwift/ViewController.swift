@@ -33,6 +33,8 @@ class ViewController: UIViewController {
   private var allAlbums = [Album]()
   private var currentAlbumData : (titles:[String], values:[String])?
   private var currentAlbumIndex = 0
+  // use a stack to push and pop operation for the undo option
+  private var undoStack: [(Album, Int)] = []
 	
   // MARK: - Lifecycle
 	override func viewDidLoad() {
@@ -64,6 +66,13 @@ class ViewController: UIViewController {
     loadPreviousState()
     scroller.delegate = self
     reloadScroller()
+    
+    let undoButton = UIBarButtonItem(barButtonSystemItem: .Undo, target: self, action:#selector(ViewController.undoAction))
+    undoButton.enabled = false;
+    let space = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target:nil, action:nil)
+    let trashButton = UIBarButtonItem(barButtonSystemItem: .Trash, target:self, action:#selector(ViewController.deleteAlbum))
+    let toolbarButtonItems = [undoButton, space, trashButton]
+    toolbar.setItems(toolbarButtonItems, animated: true)
   }
   
   func showDataForAlbum(index: Int) {
@@ -79,12 +88,13 @@ class ViewController: UIViewController {
     }
   }
   
-  //MARK: - Memento Pattern
+  // MARK: - Memento Pattern
   func saveCurrentState() {
     // When the user leaves the app and then comes back again, he wants it to be in the exact same state
     // he left it. In order to do this we need to save the currently displayed album.
     // Since it's only one piece of information we can use NSUserDefaults.
     NSUserDefaults.standardUserDefaults().setInteger(currentAlbumIndex, forKey: "currentAlbumIndex")
+    LibraryAPI.sharedInstance.saveAlbums()
   }
   
   func loadPreviousState() {
@@ -92,6 +102,7 @@ class ViewController: UIViewController {
     showDataForAlbum(currentAlbumIndex)
   }
   
+  // MARK: - Scroller Related
   func reloadScroller() {
     allAlbums = LibraryAPI.sharedInstance.getAlbums()
     if currentAlbumIndex < 0 {
@@ -101,6 +112,49 @@ class ViewController: UIViewController {
     }
     scroller.reload()
     showDataForAlbum(currentAlbumIndex)
+  }
+  
+  func addAlbumAtIndex(album: Album,index: Int) {
+    LibraryAPI.sharedInstance.addAlbum(album, index: index)
+    currentAlbumIndex = index
+    reloadScroller()
+  }
+  
+  func deleteAlbum() {
+    // get album
+    let deletedAlbum : Album = allAlbums[currentAlbumIndex]
+    // add to stack
+    let undoAction = (deletedAlbum, currentAlbumIndex)
+    undoStack.insert(undoAction, atIndex: 0)
+    // use library API to delete the album
+    LibraryAPI.sharedInstance.deleteAlbum(currentAlbumIndex)
+    reloadScroller()
+    // enable the undo button
+    let barButtonItems = toolbar.items! as [UIBarButtonItem]
+    let undoButton : UIBarButtonItem = barButtonItems[0]
+    undoButton.enabled = true
+    // disable trashbutton when no albums left
+    if (allAlbums.count == 0) {
+      let trashButton : UIBarButtonItem = barButtonItems[2]
+      trashButton.enabled = false
+    }
+  }
+  
+  func undoAction() {
+    let barButtonItems = toolbar.items! as [UIBarButtonItem]
+    // pop to undo the last one
+    if undoStack.count > 0 {
+      let (deletedAlbum, index) = undoStack.removeAtIndex(0)
+      addAlbumAtIndex(deletedAlbum, index: index)
+    }
+    // disable undo button when no albums left
+    if undoStack.count == 0 {
+      let undoButton : UIBarButtonItem = barButtonItems[0]
+      undoButton.enabled = false
+    }
+    // enable the trashButton as there must be at least one album there
+    let trashButton : UIBarButtonItem = barButtonItems[2]
+    trashButton.enabled = true
   }
 }
 
