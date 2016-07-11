@@ -32,9 +32,10 @@ class MasterTableViewCell: UITableViewCell {
   private func setupUI(id: String, name: String) {
     idLabel.text = id
     nameLabel.text = name
+    pokeImageView.backgroundColor = UIColor.blackColor()
     
     indicator = UIActivityIndicatorView()
-    indicator.center = center
+    indicator.center = CGPointMake(CGRectGetMidX(pokeImageView.bounds), CGRectGetMidY(pokeImageView.bounds))
     indicator.activityIndicatorViewStyle = .WhiteLarge
     indicator.startAnimating()
     pokeImageView.addSubview(indicator)

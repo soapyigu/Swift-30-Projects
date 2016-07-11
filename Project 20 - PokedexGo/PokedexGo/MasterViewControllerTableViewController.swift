@@ -9,8 +9,17 @@
 import UIKit
 
 class MasterViewControllerTableViewController: UITableViewController {
+  private var pokemons = [Pokemon]()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    pokemons = LibraryAPI.sharedInstance.getPokemons()
+  }
+  
+  // MARK: - UITableViewDelegate
+  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    return 140
   }
   
   // MARK: - UITableViewDataSource
@@ -27,7 +36,9 @@ class MasterViewControllerTableViewController: UITableViewController {
     
     let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! MasterTableViewCell
     let pokemon = pokemons[indexPath.row]
-    cell.awakeFromNib("#\(indexPath.row)", name: pokemon.name, pokeImageUrl: pokemon.pokeImgUrl)
+    let idStr = indexPath.row + 1 < 10 ? "#00\(indexPath.row + 1)" : indexPath.row < 100 ? "#0\(indexPath.row + 1)" : "#\(indexPath.row + 1)"
+    
+    cell.awakeFromNib(idStr, name: pokemon.name, pokeImageUrl: pokemon.pokeImgUrl)
     
     return cell
   }

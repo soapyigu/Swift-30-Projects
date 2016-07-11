@@ -16,6 +16,7 @@
 		190ADE7D1D3310AE001D5867 /* MasterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE7C1D3310AE001D5867 /* MasterTableViewCell.swift */; };
 		190ADE801D3314FC001D5867 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE7F1D3314FC001D5867 /* Constants.swift */; };
 		190ADE821D331811001D5867 /* PokemonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE811D331811001D5867 /* PokemonConstants.swift */; };
+		190ADE851D336751001D5867 /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE841D336751001D5867 /* LibraryAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		190ADE7C1D3310AE001D5867 /* MasterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewCell.swift; sourceTree = "<group>"; };
 		190ADE7F1D3314FC001D5867 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		190ADE811D331811001D5867 /* PokemonConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonConstants.swift; sourceTree = "<group>"; };
+		190ADE841D336751001D5867 /* LibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +65,11 @@
 			isa = PBXGroup;
 			children = (
 				190ADE641D330B26001D5867 /* AppDelegate.swift */,
-				190ADE7F1D3314FC001D5867 /* Constants.swift */,
-				190ADE811D331811001D5867 /* PokemonConstants.swift */,
+				190ADE861D336758001D5867 /* API */,
 				190ADE781D330D66001D5867 /* Controller */,
 				190ADE7B1D330D94001D5867 /* Model */,
 				190ADE7E1D3310B7001D5867 /* View */,
+				190ADE831D336716001D5867 /* Helper */,
 				190ADE681D330B26001D5867 /* Main.storyboard */,
 				190ADE6B1D330B26001D5867 /* Assets.xcassets */,
 				190ADE6D1D330B26001D5867 /* LaunchScreen.storyboard */,
@@ -98,6 +100,23 @@
 				190ADE7C1D3310AE001D5867 /* MasterTableViewCell.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		190ADE831D336716001D5867 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				190ADE811D331811001D5867 /* PokemonConstants.swift */,
+				190ADE7F1D3314FC001D5867 /* Constants.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		190ADE861D336758001D5867 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				190ADE841D336751001D5867 /* LibraryAPI.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +196,7 @@
 				190ADE821D331811001D5867 /* PokemonConstants.swift in Sources */,
 				190ADE7A1D330D88001D5867 /* Pokemon.swift in Sources */,
 				190ADE7D1D3310AE001D5867 /* MasterTableViewCell.swift in Sources */,
+				190ADE851D336751001D5867 /* LibraryAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +348,7 @@
 				190ADE751D330B26001D5867 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
