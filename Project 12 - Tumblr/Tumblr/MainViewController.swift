@@ -9,6 +9,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
+  let transitionManager = TransitionManager()
   
   override func viewDidLoad() {
     super.viewDidLoad()
