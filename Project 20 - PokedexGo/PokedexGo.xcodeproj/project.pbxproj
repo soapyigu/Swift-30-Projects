@@ -18,6 +18,7 @@
 		190ADE821D331811001D5867 /* PokemonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE811D331811001D5867 /* PokemonConstants.swift */; };
 		190ADE851D336751001D5867 /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE841D336751001D5867 /* LibraryAPI.swift */; };
 		190ADE8E1D3755D2001D5867 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE8D1D3755D2001D5867 /* DetailViewController.swift */; };
+		190ADE901D38117D001D5867 /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE8F1D38117D001D5867 /* PersistencyManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		190ADE811D331811001D5867 /* PokemonConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonConstants.swift; sourceTree = "<group>"; };
 		190ADE841D336751001D5867 /* LibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
 		190ADE8D1D3755D2001D5867 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		190ADE8F1D38117D001D5867 /* PersistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				190ADE841D336751001D5867 /* LibraryAPI.swift */,
+				190ADE8F1D38117D001D5867 /* PersistencyManager.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				190ADE771D330C98001D5867 /* MasterViewController.swift in Sources */,
 				190ADE651D330B26001D5867 /* AppDelegate.swift in Sources */,
 				190ADE821D331811001D5867 /* PokemonConstants.swift in Sources */,
+				190ADE901D38117D001D5867 /* PersistencyManager.swift in Sources */,
 				190ADE7A1D330D88001D5867 /* Pokemon.swift in Sources */,
 				190ADE7D1D3310AE001D5867 /* MasterTableViewCell.swift in Sources */,
 				190ADE851D336751001D5867 /* LibraryAPI.swift in Sources */,

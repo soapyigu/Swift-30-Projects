@@ -10,6 +10,7 @@ import UIKit
 
 class LibraryAPI: NSObject {
   static let sharedInstance = LibraryAPI()
+  let persistencyManager = PersistencyManager()
   
   private override init() {
     super.init()
@@ -38,13 +39,20 @@ class LibraryAPI: NSObject {
     let pokeImageView = userInfo["pokeImageView"] as! UIImageView?
     let pokeImageUrl = userInfo["pokeImageUrl"] as! String
     
-    // get image
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-      let downloadedImage = self.downloadImg(pokeImageUrl)
-      dispatch_sync(dispatch_get_main_queue(), { () -> Void in
-        pokeImageView?.image = downloadedImage
-      })
-    })
+    if let imageViewUnWrapped = pokeImageView {
+      imageViewUnWrapped.image = persistencyManager.getImage(NSURL(string: pokeImageUrl)!.lastPathComponent!)
+      if imageViewUnWrapped.image == nil {
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+          let downloadedImage = self.downloadImg(pokeImageUrl as String)
+          dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+            imageViewUnWrapped.image = downloadedImage
+            self.persistencyManager.saveImage(downloadedImage, filename: NSURL(string: pokeImageUrl)!.lastPathComponent!)
+          })
+        })
+      }
+    }
+
   }
   
 

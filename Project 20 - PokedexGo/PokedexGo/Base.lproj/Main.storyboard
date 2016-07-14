@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name #ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hoz-aS-8YI">
-                                <rect key="frame" x="200" y="40" width="200" height="21"/>
+                                <rect key="frame" x="200" y="84" width="200" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="KKu-dj-Uq6"/>
                                 </constraints>
@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Info" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1y4-Ba-Pcf">
-                                <rect key="frame" x="261" y="101" width="293" height="21"/>
+                                <rect key="frame" x="261" y="145" width="293" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Qku-C5-VLw"/>
                                 </constraints>
@@ -44,7 +44,7 @@
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F7B-cv-S24">
-                                <rect key="frame" x="46" y="87" width="195" height="195"/>
+                                <rect key="frame" x="46" y="131" width="195" height="195"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="I3J-Lr-TEz"/>
                                     <constraint firstAttribute="width" secondItem="F7B-cv-S24" secondAttribute="height" multiplier="1:1" id="kmD-Gl-ykG"/>
@@ -78,6 +78,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="PMo-AM-wtc"/>
                     <connections>
                         <outlet property="nameIDLabel" destination="Hoz-aS-8YI" id="RON-Ux-UgF"/>
                         <outlet property="pokeImageView" destination="F7B-cv-S24" id="QBz-L6-Sy0"/>
@@ -86,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0B1-KA-2Rr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275" y="743"/>
+            <point key="canvasLocation" x="1115" y="743"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="1oc-Jj-b5N">
@@ -196,12 +197,30 @@
                 <splitViewController id="tr7-Ww-CTY" sceneMemberID="viewController">
                     <connections>
                         <segue destination="q4c-ha-VgO" kind="relationship" relationship="masterViewController" id="YtG-q1-bdQ"/>
-                        <segue destination="TNe-wH-k1c" kind="relationship" relationship="detailViewController" id="nJT-vN-hLq"/>
+                        <segue destination="SLy-nv-FBG" kind="relationship" relationship="detailViewController" id="nJT-vN-hLq"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dk8-Sy-yNo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-545" y="413"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ra7-Ng-cCw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SLy-nv-FBG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M0O-nM-xG9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TNe-wH-k1c" kind="relationship" relationship="rootViewController" id="8lB-vD-mVx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j2v-Q0-gN9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="275" y="743"/>
         </scene>
     </scenes>
 </document>

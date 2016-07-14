@@ -23,12 +23,20 @@ class DetailViewController: UIViewController {
   override func viewDidLoad() {
     refreshUI()
     super.viewDidLoad()
+    
   }
   
   func refreshUI() {
-    nameIDLabel?.text = pokemon.name + (pokemon.id < 10 ? "#00\(pokemon.id)" : pokemon.id < 100 ? "#0\(pokemon.id)" : "#\(pokemon.id)")
+    nameIDLabel?.text = pokemon.name + (pokemon.id < 10 ? " #00\(pokemon.id)" : pokemon.id < 100 ? " #0\(pokemon.id)" : " #\(pokemon.id)")
     pokeImageView?.image = LibraryAPI.sharedInstance.downloadImg(pokemon.pokeImgUrl)
     pokeInfoLabel?.text = pokemon.detailInfo
+    
+    self.title = pokemon.name
   }
-  
+}
+
+extension DetailViewController: PokemonSelectionDelegate {
+  func pokemonSelected(newPokemon: Pokemon) {
+    pokemon = newPokemon
+  }
 }
