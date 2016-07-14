@@ -45,6 +45,4 @@ class Pokemon: NSObject {
     self.weak = weak
     self.pokeImgUrl = pokeImgUrl
   }
-  
-  
 }

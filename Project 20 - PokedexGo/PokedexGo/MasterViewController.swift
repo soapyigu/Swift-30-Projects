@@ -48,7 +48,14 @@ class MasterViewController: UITableViewController {
   }
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    let pokemon = self.pokemons[indexPath.row]
+    let pokemon: Pokemon
+    
+    if searchController.active && searchController.searchBar.text != "" {
+      pokemon = filteredPokemons[indexPath.row]
+    } else {
+      pokemon = self.pokemons[indexPath.row]
+    }
+
     delegate?.pokemonSelected(pokemon)
     
     if let detailViewController = self.delegate as? DetailViewController {
