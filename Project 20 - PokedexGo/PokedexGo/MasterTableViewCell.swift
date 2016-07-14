@@ -15,7 +15,7 @@ class MasterTableViewCell: UITableViewCell {
   
   private var indicator: UIActivityIndicatorView!
   
-  func awakeFromNib(id: String, name: String, pokeImageUrl: String) {
+  func awakeFromNib(id: Int, name: String, pokeImageUrl: String) {
     super.awakeFromNib()
     setupUI(id, name: name)
     setupNotification(pokeImageUrl)
@@ -29,10 +29,10 @@ class MasterTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
   }
   
-  private func setupUI(id: String, name: String) {
-    idLabel.text = id
+  private func setupUI(id: Int, name: String) {
+    idLabel.text = id < 10 ? "#00\(id)" : id < 100 ? "#0\(id)" : "#\(id)"
     nameLabel.text = name
-    pokeImageView.backgroundColor = UIColor.blackColor()
+    pokeImageView.image = UIImage(named: "default_img")
     
     indicator = UIActivityIndicatorView()
     indicator.center = CGPointMake(CGRectGetMidX(pokeImageView.bounds), CGRectGetMidY(pokeImageView.bounds))

@@ -11,12 +11,13 @@
 		190ADE6A1D330B26001D5867 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190ADE681D330B26001D5867 /* Main.storyboard */; };
 		190ADE6C1D330B26001D5867 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190ADE6B1D330B26001D5867 /* Assets.xcassets */; };
 		190ADE6F1D330B26001D5867 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190ADE6D1D330B26001D5867 /* LaunchScreen.storyboard */; };
-		190ADE771D330C98001D5867 /* MasterViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE761D330C98001D5867 /* MasterViewControllerTableViewController.swift */; };
+		190ADE771D330C98001D5867 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE761D330C98001D5867 /* MasterViewController.swift */; };
 		190ADE7A1D330D88001D5867 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE791D330D88001D5867 /* Pokemon.swift */; };
 		190ADE7D1D3310AE001D5867 /* MasterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE7C1D3310AE001D5867 /* MasterTableViewCell.swift */; };
 		190ADE801D3314FC001D5867 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE7F1D3314FC001D5867 /* Constants.swift */; };
 		190ADE821D331811001D5867 /* PokemonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE811D331811001D5867 /* PokemonConstants.swift */; };
 		190ADE851D336751001D5867 /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE841D336751001D5867 /* LibraryAPI.swift */; };
+		190ADE8E1D3755D2001D5867 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE8D1D3755D2001D5867 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,12 +27,13 @@
 		190ADE6B1D330B26001D5867 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		190ADE6E1D330B26001D5867 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		190ADE701D330B26001D5867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		190ADE761D330C98001D5867 /* MasterViewControllerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewControllerTableViewController.swift; sourceTree = "<group>"; };
+		190ADE761D330C98001D5867 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		190ADE791D330D88001D5867 /* Pokemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		190ADE7C1D3310AE001D5867 /* MasterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewCell.swift; sourceTree = "<group>"; };
 		190ADE7F1D3314FC001D5867 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		190ADE811D331811001D5867 /* PokemonConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonConstants.swift; sourceTree = "<group>"; };
 		190ADE841D336751001D5867 /* LibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
+		190ADE8D1D3755D2001D5867 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +83,8 @@
 		190ADE781D330D66001D5867 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				190ADE761D330C98001D5867 /* MasterViewControllerTableViewController.swift */,
+				190ADE761D330C98001D5867 /* MasterViewController.swift */,
+				190ADE8D1D3755D2001D5867 /* DetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -191,12 +194,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				190ADE801D3314FC001D5867 /* Constants.swift in Sources */,
-				190ADE771D330C98001D5867 /* MasterViewControllerTableViewController.swift in Sources */,
+				190ADE771D330C98001D5867 /* MasterViewController.swift in Sources */,
 				190ADE651D330B26001D5867 /* AppDelegate.swift in Sources */,
 				190ADE821D331811001D5867 /* PokemonConstants.swift in Sources */,
 				190ADE7A1D330D88001D5867 /* Pokemon.swift in Sources */,
 				190ADE7D1D3310AE001D5867 /* MasterTableViewCell.swift in Sources */,
 				190ADE851D336751001D5867 /* LibraryAPI.swift in Sources */,
+				190ADE8E1D3755D2001D5867 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

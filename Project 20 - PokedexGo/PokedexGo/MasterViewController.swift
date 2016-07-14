@@ -8,13 +8,11 @@
 
 import UIKit
 
-class MasterViewControllerTableViewController: UITableViewController {
-  private var pokemons = [Pokemon]()
+class MasterViewController: UITableViewController {
+  var pokemons = LibraryAPI.sharedInstance.getPokemons()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    pokemons = LibraryAPI.sharedInstance.getPokemons()
   }
   
   // MARK: - UITableViewDelegate
@@ -36,9 +34,7 @@ class MasterViewControllerTableViewController: UITableViewController {
     
     let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! MasterTableViewCell
     let pokemon = pokemons[indexPath.row]
-    let idStr = indexPath.row + 1 < 10 ? "#00\(indexPath.row + 1)" : indexPath.row < 100 ? "#0\(indexPath.row + 1)" : "#\(indexPath.row + 1)"
-    
-    cell.awakeFromNib(idStr, name: pokemon.name, pokeImageUrl: pokemon.pokeImgUrl)
+    cell.awakeFromNib(pokemon.id, name: pokemon.name, pokeImageUrl: pokemon.pokeImgUrl)
     
     return cell
   }
