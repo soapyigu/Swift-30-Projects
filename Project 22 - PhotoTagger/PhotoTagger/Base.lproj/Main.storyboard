@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fVk-xd-rDT">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Photo Tagger-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PhotoTagger" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1eT-AI-PMh">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYv-Jh-Iqx">
+                                <rect key="frame" x="246" y="280.5" width="109" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Take Photo"/>
+                                <connections>
+                                    <action selector="takePicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qgx-DW-2wL"/>
+                                </connections>
+                            </button>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PUb-0z-pvg">
+                                <rect key="frame" x="20" y="498" width="560" height="2"/>
+                            </progressView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="NeE-gc-BWr">
+                                <rect key="frame" x="282" y="399" width="37" height="37"/>
+                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NeE-gc-BWr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0Np-W2-7G7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1eT-AI-PMh" secondAttribute="trailing" constant="-20" id="0gX-KZ-VI6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1eT-AI-PMh" secondAttribute="bottom" id="2P0-CF-Iut"/>
+                            <constraint firstItem="1eT-AI-PMh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="6mG-FU-PkN"/>
+                            <constraint firstItem="PUb-0z-pvg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Ap9-Fn-1fK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PUb-0z-pvg" secondAttribute="bottom" constant="100" id="Hlz-jA-J7c"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PUb-0z-pvg" secondAttribute="trailing" id="R7n-7M-w8i"/>
+                            <constraint firstItem="uYv-Jh-Iqx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gyl-b0-YoB"/>
+                            <constraint firstItem="PUb-0z-pvg" firstAttribute="top" secondItem="NeE-gc-BWr" secondAttribute="bottom" constant="62" id="qOu-0w-Vx3"/>
+                            <constraint firstItem="uYv-Jh-Iqx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sE2-sR-NOR"/>
+                            <constraint firstItem="1eT-AI-PMh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="sTZ-Dh-P3R"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Photo Tagger" id="LD1-n9-pNQ">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Uet-es-1kd"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="NeE-gc-BWr" id="2k1-dB-zOf"/>
+                        <outlet property="imageView" destination="1eT-AI-PMh" id="W0k-cf-TWi"/>
+                        <outlet property="progressView" destination="PUb-0z-pvg" id="mLf-qA-DcA"/>
+                        <outlet property="takePictureButton" destination="uYv-Jh-Iqx" id="dG3-4z-sPm"/>
+                        <segue destination="Qvt-SZ-saO" kind="show" identifier="ShowResults" id="Brt-x0-I7C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="320" y="428"/>
+        </scene>
+        <!--Results-->
+        <scene sceneID="Sav-Yt-kAd">
+            <objects>
+                <viewController id="Qvt-SZ-saO" customClass="TagsColorsViewController" customModule="PhotoTagger" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LHE-yS-HTN"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xg4-Mk-usj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IHI-B8-3NC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Bbq-OG-Jcd">
+                                <rect key="frame" x="20" y="72" width="560" height="29"/>
+                                <segments>
+                                    <segment title="Tags"/>
+                                    <segment title="Colors"/>
+                                </segments>
+                                <connections>
+                                    <action selector="tagsColorsSegmentedControlChanged:" destination="Qvt-SZ-saO" eventType="valueChanged" id="R93-qk-Mpf"/>
+                                </connections>
+                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VkU-2g-Wb1">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <connections>
+                                    <segue destination="ao7-DE-E3A" kind="embed" identifier="DataTable" id="j9D-UD-QSz"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Bbq-OG-Jcd" firstAttribute="leading" secondItem="IHI-B8-3NC" secondAttribute="leadingMargin" id="AZF-uZ-WOy"/>
+                            <constraint firstItem="VkU-2g-Wb1" firstAttribute="trailing" secondItem="IHI-B8-3NC" secondAttribute="trailingMargin" id="Bho-hK-qU0"/>
+                            <constraint firstItem="VkU-2g-Wb1" firstAttribute="leading" secondItem="IHI-B8-3NC" secondAttribute="leading" id="EvS-70-VID"/>
+                            <constraint firstAttribute="trailing" secondItem="VkU-2g-Wb1" secondAttribute="trailing" id="Jia-wj-llt"/>
+                            <constraint firstItem="Xg4-Mk-usj" firstAttribute="top" secondItem="VkU-2g-Wb1" secondAttribute="bottom" id="Mnz-zh-89f"/>
+                            <constraint firstItem="VkU-2g-Wb1" firstAttribute="leading" secondItem="IHI-B8-3NC" secondAttribute="leadingMargin" id="V8m-0Y-dQS"/>
+                            <constraint firstItem="Bbq-OG-Jcd" firstAttribute="trailing" secondItem="IHI-B8-3NC" secondAttribute="trailingMargin" id="YRH-vY-Hwz"/>
+                            <constraint firstItem="Bbq-OG-Jcd" firstAttribute="top" secondItem="LHE-yS-HTN" secondAttribute="bottom" constant="8" id="as9-nZ-UoB"/>
+                            <constraint firstItem="VkU-2g-Wb1" firstAttribute="top" secondItem="Bbq-OG-Jcd" secondAttribute="bottom" constant="8" id="saA-gj-cog"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Bho-hK-qU0"/>
+                                <exclude reference="V8m-0Y-dQS"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Results" id="TV9-c8-gNb"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="Bbq-OG-Jcd" id="ylB-iT-4Tb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aEE-BC-MZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="993" y="428"/>
+        </scene>
+        <!--Tags Colors Table View Controller-->
+        <scene sceneID="TYg-fg-ud8">
+            <objects>
+                <tableViewController id="ao7-DE-E3A" customClass="TagsColorsTableViewController" customModule="PhotoTagger" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dnn-2d-TR8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TagOrColorCell" textLabel="zzx-aU-INB" style="IBUITableViewCellStyleDefault" id="1ub-vX-UFL">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1ub-vX-UFL" id="ce5-EE-3sD">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Tag Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zzx-aU-INB">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ao7-DE-E3A" id="2Cd-3B-fFf"/>
+                            <outlet property="delegate" destination="ao7-DE-E3A" id="QCA-kH-JSe"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ajk-nC-dlh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1737" y="429"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JFv-QU-OQ9">
+            <objects>
+                <navigationController id="fVk-xd-rDT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Bh-Tm-8B3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2m5-Vx-Hz0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vJa-mD-MN5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-469" y="429"/>
+        </scene>
+    </scenes>
+</document>
