@@ -17,13 +17,35 @@ protocol PinterestLayoutDelegate {
                       heightForAnnotationAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat
 }
 
+
+class PinterestLayoutAttributes: UICollectionViewLayoutAttributes {
+  var photoHeight: CGFloat = 0.0
+  
+  // override the method to ensure photoHeight is set when copied
+  override func copyWithZone(zone: NSZone) -> AnyObject {
+    let copy = super.copyWithZone(zone) as! PinterestLayoutAttributes
+    copy.photoHeight = photoHeight
+    return copy
+  }
+  
+  // compare photoHeight of attributes
+  override func isEqual(object: AnyObject?) -> Bool {
+    if let attributes = object as? PinterestLayoutAttributes {
+      if( attributes.photoHeight == photoHeight  ) {
+        return super.isEqual(object)
+      }
+    }
+    return false
+  }
+}
+
 class PinterestLayout: UICollectionViewLayout {
   var delegate: PinterestLayoutDelegate!
   
   var numberOfColumns = 2
   var cellPadding: CGFloat = 6.0
   
-  private var cache = [UICollectionViewLayoutAttributes]()
+  private var cache = [PinterestLayoutAttributes]()
   
   private var contentHeight: CGFloat  = 0.0
   
@@ -59,7 +81,8 @@ class PinterestLayout: UICollectionViewLayout {
         let insetFrame = CGRectInset(frame, cellPadding, cellPadding)
       
         // cache attributes for each item
-        let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+        let attributes = PinterestLayoutAttributes(forCellWithIndexPath: indexPath)
+        attributes.photoHeight = photoHeight
         attributes.frame = insetFrame
         cache.append(attributes)
         
@@ -88,4 +111,7 @@ class PinterestLayout: UICollectionViewLayout {
     return layoutAttributes
   }
   
+  override class func layoutAttributesClass() -> AnyClass {
+    return PinterestLayoutAttributes.self
+  }
 }
