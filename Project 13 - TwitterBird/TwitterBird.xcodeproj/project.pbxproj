@@ -8,20 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1907F6DE1D5EE14F000F9826 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1907F6DD1D5EE14F000F9826 /* AppDelegate.swift */; };
-		1907F6E01D5EE14F000F9826 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1907F6DF1D5EE14F000F9826 /* ViewController.swift */; };
-		1907F6E31D5EE14F000F9826 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1907F6E11D5EE14F000F9826 /* Main.storyboard */; };
 		1907F6E51D5EE14F000F9826 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1907F6E41D5EE14F000F9826 /* Assets.xcassets */; };
-		1907F6E81D5EE14F000F9826 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1907F6E61D5EE14F000F9826 /* LaunchScreen.storyboard */; };
+		1907F6F01D5EE921000F9826 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1907F6EF1D5EE921000F9826 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1907F6DA1D5EE14F000F9826 /* TwitterBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1907F6DD1D5EE14F000F9826 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1907F6DF1D5EE14F000F9826 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1907F6E21D5EE14F000F9826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1907F6E41D5EE14F000F9826 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1907F6E71D5EE14F000F9826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1907F6E91D5EE14F000F9826 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1907F6EF1D5EE921000F9826 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +34,7 @@
 		1907F6D11D5EE14F000F9826 = {
 			isa = PBXGroup;
 			children = (
+				1907F6EF1D5EE921000F9826 /* Default-568h@2x.png */,
 				1907F6DC1D5EE14F000F9826 /* TwitterBird */,
 				1907F6DB1D5EE14F000F9826 /* Products */,
 			);
@@ -55,10 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				1907F6DD1D5EE14F000F9826 /* AppDelegate.swift */,
-				1907F6DF1D5EE14F000F9826 /* ViewController.swift */,
-				1907F6E11D5EE14F000F9826 /* Main.storyboard */,
 				1907F6E41D5EE14F000F9826 /* Assets.xcassets */,
-				1907F6E61D5EE14F000F9826 /* LaunchScreen.storyboard */,
 				1907F6E91D5EE14F000F9826 /* Info.plist */,
 			);
 			path = TwitterBird;
@@ -122,9 +116,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1907F6E81D5EE14F000F9826 /* LaunchScreen.storyboard in Resources */,
 				1907F6E51D5EE14F000F9826 /* Assets.xcassets in Resources */,
-				1907F6E31D5EE14F000F9826 /* Main.storyboard in Resources */,
+				1907F6F01D5EE921000F9826 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,31 +128,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1907F6E01D5EE14F000F9826 /* ViewController.swift in Sources */,
 				1907F6DE1D5EE14F000F9826 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		1907F6E11D5EE14F000F9826 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1907F6E21D5EE14F000F9826 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1907F6E61D5EE14F000F9826 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1907F6E71D5EE14F000F9826 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1907F6EA1D5EE14F000F9826 /* Debug */ = {
@@ -288,6 +261,7 @@
 				1907F6EE1D5EE14F000F9826 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
