@@ -35,7 +35,6 @@ class PhotoStreamViewController: UICollectionViewController {
 }
 
 extension PhotoStreamViewController {
-  
   override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return photos.count
   }
@@ -45,7 +44,6 @@ extension PhotoStreamViewController {
     cell.photo = photos[indexPath.item]
     return cell
   }
-  
 }
 
 extension PhotoStreamViewController : PinterestLayoutDelegate {
