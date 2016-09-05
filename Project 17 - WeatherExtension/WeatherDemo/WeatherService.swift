@@ -11,7 +11,7 @@ import Foundation
 class WeatherService {
     typealias WeatherDataCompletionBlock = (data: WeatherData?) -> ()
 
-    let openWeatherBaseAPI = "http://api.openweathermap.org/data/2.5/weather?appid=bd82977b86bf27fb59a04b61b657fb6f&units=metric&q="
+    let openWeatherBaseAPI = "http://api.openweathermap.org/data/2.5/weather?appid=97cce5b42320d87100a885f5dfa0dac9&units=metric&q="
     let urlSession:NSURLSession = NSURLSession.sharedSession()
 
     class func sharedWeatherService() -> WeatherService {

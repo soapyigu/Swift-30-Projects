@@ -15,8 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var temperatureLabel:UILabel!
 
 
-    var city = "Paris"
-    var country = "France"
+    var city = "San Francisco"
+    var country = "U.S."
     
     override func viewDidLoad() {
         super.viewDidLoad()

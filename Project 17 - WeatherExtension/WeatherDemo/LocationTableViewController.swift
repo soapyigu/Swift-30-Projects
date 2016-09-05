@@ -9,8 +9,8 @@
 import UIKit
 
 class LocationTableViewController: UITableViewController {
-    let locations = ["Paris, France", "Kyoto, Japan", "Sydney, Australia", "Seattle, U.S.", "New York, U.S.", "Hong Kong, Hong Kong", "Taipei, Taiwan", "London, U.K.", "Vancouver, Canada"]
-    var selectedLocation = "Paris, France"
+    let locations = ["Paris, France", "Kyoto, Japan", "Sydney, Australia", "Seattle, U.S.", "New York, U.S.", "Hong Kong, Hong Kong", "Taipei, Taiwan", "London, U.K.", "Vancouver, Canada", "San Francisco, U.S."]
+    var selectedLocation = "San Francisco, U.S."
     
     override func viewDidLoad() {
         super.viewDidLoad()
