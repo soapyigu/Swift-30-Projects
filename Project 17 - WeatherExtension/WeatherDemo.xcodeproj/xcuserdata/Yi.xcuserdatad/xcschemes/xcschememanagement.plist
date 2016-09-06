@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Weather Widget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>WeatherDemo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>19B36D071D7E540600BE0903</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>19B36D191D7E54A000BE0903</key>
 		<dict>
 			<key>primary</key>
 			<true/>
