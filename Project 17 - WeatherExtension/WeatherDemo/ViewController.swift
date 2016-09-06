@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WeatherKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var cityLabel:UILabel!

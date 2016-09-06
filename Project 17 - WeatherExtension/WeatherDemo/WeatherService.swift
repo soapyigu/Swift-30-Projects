@@ -8,17 +8,17 @@
 
 import Foundation
 
-class WeatherService {
-    typealias WeatherDataCompletionBlock = (data: WeatherData?) -> ()
+public class WeatherService {
+    public typealias WeatherDataCompletionBlock = (data: WeatherData?) -> ()
 
     let openWeatherBaseAPI = "http://api.openweathermap.org/data/2.5/weather?appid=97cce5b42320d87100a885f5dfa0dac9&units=metric&q="
     let urlSession:NSURLSession = NSURLSession.sharedSession()
 
-    class func sharedWeatherService() -> WeatherService {
+    public class func sharedWeatherService() -> WeatherService {
         return _sharedWeatherService
     }
     
-    func getCurrentWeather(location:String, completion: WeatherDataCompletionBlock) {
+    public func getCurrentWeather(location:String, completion: WeatherDataCompletionBlock) {
         let openWeatherAPI = openWeatherBaseAPI + location.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!
         print(openWeatherAPI)
         let request = NSURLRequest(URL: NSURL(string: openWeatherAPI)!)

@@ -8,9 +8,9 @@
 
 import Foundation
 
-class WeatherData: NSObject {
+public class WeatherData: NSObject {
     
-    var temperature:Int = 0
-    var weather:String = ""
+    public var temperature:Int = 0
+    public var weather:String = ""
     
 }

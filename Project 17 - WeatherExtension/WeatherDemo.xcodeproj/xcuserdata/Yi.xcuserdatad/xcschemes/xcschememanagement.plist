@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>WeatherKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>19B36D071D7E540600BE0903</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F4FCCF6E1A5F7DFF006183CC</key>
 		<dict>
 			<key>primary</key>
