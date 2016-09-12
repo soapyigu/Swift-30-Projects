@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19607CA41D86262500E98D6F /* PeopleListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19607CA31D86262500E98D6F /* PeopleListViewControllerTests.swift */; };
 		F20B6E921AC5C3D70094A1FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20B6E911AC5C3D70094A1FE /* AppDelegate.swift */; };
 		F20B6E951AC5C3D70094A1FE /* Birthdays.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F20B6E931AC5C3D70094A1FE /* Birthdays.xcdatamodeld */; };
 		F20B6E971AC5C3D70094A1FE /* PeopleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20B6E961AC5C3D70094A1FE /* PeopleListViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19607CA31D86262500E98D6F /* PeopleListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleListViewControllerTests.swift; sourceTree = "<group>"; };
 		F20B6E8C1AC5C3D70094A1FE /* Birthdays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birthdays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F20B6E901AC5C3D70094A1FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F20B6E911AC5C3D70094A1FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				F20B6EAA1AC5C3D70094A1FE /* Supporting Files */,
+				19607CA31D86262500E98D6F /* PeopleListViewControllerTests.swift */,
 			);
 			path = BirthdaysTests;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19607CA41D86262500E98D6F /* PeopleListViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +394,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Birthdays/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -401,7 +405,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Birthdays/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -412,6 +416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -423,6 +428,7 @@
 				INFOPLIST_FILE = BirthdaysTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Birthdays.app/Birthdays";
 			};
 			name = Debug;
@@ -431,6 +437,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
