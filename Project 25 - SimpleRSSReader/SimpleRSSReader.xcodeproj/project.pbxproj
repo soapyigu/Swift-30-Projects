@@ -1,0 +1,432 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F46F13CF1A8E0A6E00EEB477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46F13CE1A8E0A6E00EEB477 /* AppDelegate.swift */; };
+		F46F13D41A8E0A6E00EEB477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46F13D21A8E0A6E00EEB477 /* Main.storyboard */; };
+		F46F13D61A8E0A6E00EEB477 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46F13D51A8E0A6E00EEB477 /* Images.xcassets */; };
+		F46F13D91A8E0A6E00EEB477 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F46F13D71A8E0A6E00EEB477 /* LaunchScreen.xib */; };
+		F46F13E51A8E0A6F00EEB477 /* SimpleRSSReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46F13E41A8E0A6F00EEB477 /* SimpleRSSReaderTests.swift */; };
+		F46F13EF1A8E11A900EEB477 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46F13EE1A8E11A900EEB477 /* NewsTableViewController.swift */; };
+		F46F13F11A8E11BA00EEB477 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46F13F01A8E11BA00EEB477 /* NewsTableViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F46F13DF1A8E0A6F00EEB477 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F46F13C11A8E0A6E00EEB477 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F46F13C81A8E0A6E00EEB477;
+			remoteInfo = SimpleRSSReader;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F46F13C91A8E0A6E00EEB477 /* SimpleRSSReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleRSSReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F46F13CD1A8E0A6E00EEB477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F46F13CE1A8E0A6E00EEB477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F46F13D31A8E0A6E00EEB477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F46F13D51A8E0A6E00EEB477 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F46F13D81A8E0A6E00EEB477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F46F13DE1A8E0A6F00EEB477 /* SimpleRSSReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleRSSReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F46F13E31A8E0A6F00EEB477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F46F13E41A8E0A6F00EEB477 /* SimpleRSSReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRSSReaderTests.swift; sourceTree = "<group>"; };
+		F46F13EE1A8E11A900EEB477 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		F46F13F01A8E11BA00EEB477 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F46F13C61A8E0A6E00EEB477 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F46F13DB1A8E0A6F00EEB477 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F46F13C01A8E0A6E00EEB477 = {
+			isa = PBXGroup;
+			children = (
+				F46F13CB1A8E0A6E00EEB477 /* SimpleRSSReader */,
+				F46F13E11A8E0A6F00EEB477 /* SimpleRSSReaderTests */,
+				F46F13CA1A8E0A6E00EEB477 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F46F13CA1A8E0A6E00EEB477 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F46F13C91A8E0A6E00EEB477 /* SimpleRSSReader.app */,
+				F46F13DE1A8E0A6F00EEB477 /* SimpleRSSReaderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F46F13CB1A8E0A6E00EEB477 /* SimpleRSSReader */ = {
+			isa = PBXGroup;
+			children = (
+				F46F13CE1A8E0A6E00EEB477 /* AppDelegate.swift */,
+				F46F13D21A8E0A6E00EEB477 /* Main.storyboard */,
+				F46F13D51A8E0A6E00EEB477 /* Images.xcassets */,
+				F46F13D71A8E0A6E00EEB477 /* LaunchScreen.xib */,
+				F46F13CC1A8E0A6E00EEB477 /* Supporting Files */,
+				F46F13EE1A8E11A900EEB477 /* NewsTableViewController.swift */,
+				F46F13F01A8E11BA00EEB477 /* NewsTableViewCell.swift */,
+			);
+			path = SimpleRSSReader;
+			sourceTree = "<group>";
+		};
+		F46F13CC1A8E0A6E00EEB477 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F46F13CD1A8E0A6E00EEB477 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F46F13E11A8E0A6F00EEB477 /* SimpleRSSReaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				F46F13E41A8E0A6F00EEB477 /* SimpleRSSReaderTests.swift */,
+				F46F13E21A8E0A6F00EEB477 /* Supporting Files */,
+			);
+			path = SimpleRSSReaderTests;
+			sourceTree = "<group>";
+		};
+		F46F13E21A8E0A6F00EEB477 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F46F13E31A8E0A6F00EEB477 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F46F13C81A8E0A6E00EEB477 /* SimpleRSSReader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F46F13E81A8E0A6F00EEB477 /* Build configuration list for PBXNativeTarget "SimpleRSSReader" */;
+			buildPhases = (
+				F46F13C51A8E0A6E00EEB477 /* Sources */,
+				F46F13C61A8E0A6E00EEB477 /* Frameworks */,
+				F46F13C71A8E0A6E00EEB477 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleRSSReader;
+			productName = SimpleRSSReader;
+			productReference = F46F13C91A8E0A6E00EEB477 /* SimpleRSSReader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F46F13DD1A8E0A6F00EEB477 /* SimpleRSSReaderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F46F13EB1A8E0A6F00EEB477 /* Build configuration list for PBXNativeTarget "SimpleRSSReaderTests" */;
+			buildPhases = (
+				F46F13DA1A8E0A6F00EEB477 /* Sources */,
+				F46F13DB1A8E0A6F00EEB477 /* Frameworks */,
+				F46F13DC1A8E0A6F00EEB477 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F46F13E01A8E0A6F00EEB477 /* PBXTargetDependency */,
+			);
+			name = SimpleRSSReaderTests;
+			productName = SimpleRSSReaderTests;
+			productReference = F46F13DE1A8E0A6F00EEB477 /* SimpleRSSReaderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F46F13C11A8E0A6E00EEB477 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = AppCoda;
+				TargetAttributes = {
+					F46F13C81A8E0A6E00EEB477 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					F46F13DD1A8E0A6F00EEB477 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = F46F13C81A8E0A6E00EEB477;
+					};
+				};
+			};
+			buildConfigurationList = F46F13C41A8E0A6E00EEB477 /* Build configuration list for PBXProject "SimpleRSSReader" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F46F13C01A8E0A6E00EEB477;
+			productRefGroup = F46F13CA1A8E0A6E00EEB477 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F46F13C81A8E0A6E00EEB477 /* SimpleRSSReader */,
+				F46F13DD1A8E0A6F00EEB477 /* SimpleRSSReaderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F46F13C71A8E0A6E00EEB477 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F46F13D41A8E0A6E00EEB477 /* Main.storyboard in Resources */,
+				F46F13D91A8E0A6E00EEB477 /* LaunchScreen.xib in Resources */,
+				F46F13D61A8E0A6E00EEB477 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F46F13DC1A8E0A6F00EEB477 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F46F13C51A8E0A6E00EEB477 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F46F13EF1A8E11A900EEB477 /* NewsTableViewController.swift in Sources */,
+				F46F13CF1A8E0A6E00EEB477 /* AppDelegate.swift in Sources */,
+				F46F13F11A8E11BA00EEB477 /* NewsTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F46F13DA1A8E0A6F00EEB477 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F46F13E51A8E0A6F00EEB477 /* SimpleRSSReaderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F46F13E01A8E0A6F00EEB477 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F46F13C81A8E0A6E00EEB477 /* SimpleRSSReader */;
+			targetProxy = F46F13DF1A8E0A6F00EEB477 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F46F13D21A8E0A6E00EEB477 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F46F13D31A8E0A6E00EEB477 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F46F13D71A8E0A6E00EEB477 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F46F13D81A8E0A6E00EEB477 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F46F13E61A8E0A6F00EEB477 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F46F13E71A8E0A6F00EEB477 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F46F13E91A8E0A6F00EEB477 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SimpleRSSReader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F46F13EA1A8E0A6F00EEB477 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SimpleRSSReader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F46F13EC1A8E0A6F00EEB477 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SimpleRSSReaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleRSSReader.app/SimpleRSSReader";
+			};
+			name = Debug;
+		};
+		F46F13ED1A8E0A6F00EEB477 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SimpleRSSReaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleRSSReader.app/SimpleRSSReader";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F46F13C41A8E0A6E00EEB477 /* Build configuration list for PBXProject "SimpleRSSReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F46F13E61A8E0A6F00EEB477 /* Debug */,
+				F46F13E71A8E0A6F00EEB477 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F46F13E81A8E0A6F00EEB477 /* Build configuration list for PBXNativeTarget "SimpleRSSReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F46F13E91A8E0A6F00EEB477 /* Debug */,
+				F46F13EA1A8E0A6F00EEB477 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F46F13EB1A8E0A6F00EEB477 /* Build configuration list for PBXNativeTarget "SimpleRSSReaderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F46F13EC1A8E0A6F00EEB477 /* Debug */,
+				F46F13ED1A8E0A6F00EEB477 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F46F13C11A8E0A6E00EEB477 /* Project object */;
+}
