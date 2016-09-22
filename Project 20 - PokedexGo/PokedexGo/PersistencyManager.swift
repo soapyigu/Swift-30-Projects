@@ -9,17 +9,17 @@
 import UIKit
 
 class PersistencyManager: NSObject {
-  func saveImage(image: UIImage, filename: String) {
-    let path = NSHomeDirectory().stringByAppendingString("/Documents/\(filename)")
+  func saveImage(_ image: UIImage, filename: String) {
+    let path = NSHomeDirectory() + "/Documents/\(filename)"
     let data = UIImagePNGRepresentation(image)
-    data!.writeToFile(path, atomically: true)
+    try? data!.write(to: URL(fileURLWithPath: path), options: [.atomic])
   }
   
-  func getImage(filename: String) -> UIImage? {
-    let path = NSHomeDirectory().stringByAppendingString("/Documents/\(filename)")
+  func getImage(_ filename: String) -> UIImage? {
+    let path = NSHomeDirectory() + "/Documents/\(filename)"
     
     do {
-      let data = try NSData(contentsOfFile: path, options: .UncachedRead)
+      let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .uncachedRead)
       return UIImage(data: data)
     } catch {
       return nil

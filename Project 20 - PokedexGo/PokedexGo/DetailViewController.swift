@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: PokemonSelectionDelegate {
-  func pokemonSelected(newPokemon: Pokemon) {
+  func pokemonSelected(_ newPokemon: Pokemon) {
     pokemon = newPokemon
   }
 }

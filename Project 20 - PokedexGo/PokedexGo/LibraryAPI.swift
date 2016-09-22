@@ -12,42 +12,42 @@ class LibraryAPI: NSObject {
   static let sharedInstance = LibraryAPI()
   let persistencyManager = PersistencyManager()
   
-  private override init() {
+  fileprivate override init() {
     super.init()
     
-    NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(LibraryAPI.downloadImage(_:)), name: downloadImageNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector:#selector(LibraryAPI.downloadImage(_:)), name: NSNotification.Name(rawValue: downloadImageNotification), object: nil)
   }
   
   deinit {
-    NSNotificationCenter.defaultCenter().removeObserver(self)
+    NotificationCenter.default.removeObserver(self)
   }
   
   func getPokemons() -> [Pokemon] {
     return pokemons
   }
 
-  func downloadImg(url: String) -> (UIImage) {
-    let aUrl = NSURL(string: url)
-    let data = NSData(contentsOfURL: aUrl!)
+  func downloadImg(_ url: String) -> (UIImage) {
+    let aUrl = URL(string: url)
+    let data = try? Data(contentsOf: aUrl!)
     let image = UIImage(data: data!)
     return image!
   }
 
-  func downloadImage(notification: NSNotification) {
+  func downloadImage(_ notification: Notification) {
     // retrieve info from notification
-    let userInfo = notification.userInfo as! [String: AnyObject]
+    let userInfo = (notification as NSNotification).userInfo as! [String: AnyObject]
     let pokeImageView = userInfo["pokeImageView"] as! UIImageView?
     let pokeImageUrl = userInfo["pokeImageUrl"] as! String
     
     if let imageViewUnWrapped = pokeImageView {
-      imageViewUnWrapped.image = persistencyManager.getImage(NSURL(string: pokeImageUrl)!.lastPathComponent!)
+      imageViewUnWrapped.image = persistencyManager.getImage(URL(string: pokeImageUrl)!.lastPathComponent)
       if imageViewUnWrapped.image == nil {
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
           let downloadedImage = self.downloadImg(pokeImageUrl as String)
-          dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+          DispatchQueue.main.sync(execute: { () -> Void in
             imageViewUnWrapped.image = downloadedImage
-            self.persistencyManager.saveImage(downloadedImage, filename: NSURL(string: pokeImageUrl)!.lastPathComponent!)
+            self.persistencyManager.saveImage(downloadedImage, filename: URL(string: pokeImageUrl)!.lastPathComponent)
           })
         })
       }

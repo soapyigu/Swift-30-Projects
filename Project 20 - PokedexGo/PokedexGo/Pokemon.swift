@@ -9,24 +9,24 @@
 import UIKit
 
 enum PokeType {
-  case Normal
-  case Fire
-  case Water
-  case Electric
-  case Grass
-  case Ice
-  case Fighting
-  case Poison
-  case Ground
-  case Flying
-  case Psychic
-  case Bug
-  case Rock
-  case Ghost
-  case Dragon
-  case Dark
-  case Steel
-  case Fairy
+  case normal
+  case fire
+  case water
+  case electric
+  case grass
+  case ice
+  case fighting
+  case poison
+  case ground
+  case flying
+  case psychic
+  case bug
+  case rock
+  case ghost
+  case dragon
+  case dark
+  case steel
+  case fairy
 }
 
 class Pokemon: NSObject {

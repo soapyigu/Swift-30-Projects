@@ -13,9 +13,9 @@ class MasterTableViewCell: UITableViewCell {
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var pokeImageView: UIImageView!
   
-  private var indicator: UIActivityIndicatorView!
+  fileprivate var indicator: UIActivityIndicatorView!
   
-  func awakeFromNib(id: Int, name: String, pokeImageUrl: String) {
+  func awakeFromNib(_ id: Int, name: String, pokeImageUrl: String) {
     super.awakeFromNib()
     setupUI(id, name: name)
     setupNotification(pokeImageUrl)
@@ -25,29 +25,29 @@ class MasterTableViewCell: UITableViewCell {
     pokeImageView.removeObserver(self, forKeyPath: "image")
   }
   
-  override func setSelected(selected: Bool, animated: Bool) {
+  override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
   }
   
-  private func setupUI(id: Int, name: String) {
+  fileprivate func setupUI(_ id: Int, name: String) {
     idLabel.text = id < 10 ? "#00\(id)" : id < 100 ? "#0\(id)" : "#\(id)"
     nameLabel.text = name
     pokeImageView.image = UIImage(named: "default_img")
     
     indicator = UIActivityIndicatorView()
-    indicator.center = CGPointMake(CGRectGetMidX(pokeImageView.bounds), CGRectGetMidY(pokeImageView.bounds))
-    indicator.activityIndicatorViewStyle = .WhiteLarge
+    indicator.center = CGPoint(x: pokeImageView.bounds.midX, y: pokeImageView.bounds.midY)
+    indicator.activityIndicatorViewStyle = .whiteLarge
     indicator.startAnimating()
     pokeImageView.addSubview(indicator)
     
     pokeImageView.addObserver(self, forKeyPath: "image", options: [], context: nil)
   }
   
-  private func setupNotification(pokeImageUrl: String) {
-    NSNotificationCenter.defaultCenter().postNotificationName(downloadImageNotification, object: self, userInfo: ["pokeImageView":pokeImageView, "pokeImageUrl" : pokeImageUrl])
+  fileprivate func setupNotification(_ pokeImageUrl: String) {
+    NotificationCenter.default.post(name: Notification.Name(rawValue: downloadImageNotification), object: self, userInfo: ["pokeImageView":pokeImageView, "pokeImageUrl" : pokeImageUrl])
   }
 
-  override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
     if keyPath == "image" {
       indicator.stopAnimating()
     }
