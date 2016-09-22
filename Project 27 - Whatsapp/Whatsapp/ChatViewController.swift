@@ -13,6 +13,7 @@ class ChatViewController: UIViewController {
   let cellIdentifier = "Cell"
   var messages = [Message]()
   
+  var incoming: Bool = false
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -24,8 +25,6 @@ class ChatViewController: UIViewController {
   private func setupTableView() {
     setupTableViewUI()
     setupTableViewDelegate()
-    
-    
   }
   
   private func setupTableViewUI() {
@@ -40,14 +39,18 @@ class ChatViewController: UIViewController {
   }
   
   private func setupTableViewDelegate() {
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+    tableView.register(ChatCell.self, forCellReuseIdentifier: cellIdentifier)
     
     tableView.dataSource = self
   }
   
   private func setupMessages() {
     for i in 0 ... 10 {
-      messages.append(Message(text: String(i)))
+      let message = Message(text: String(i))
+      message.incoming = incoming
+      incoming = !incoming
+
+      messages.append(message)
     }
   }
 }
@@ -58,8 +61,11 @@ extension ChatViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-    cell.textLabel?.text = messages[indexPath.row].text
+    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ChatCell
+    
+    let message = messages[indexPath.row]
+    cell.messageLabel.text = message.text
+    cell.incoming(incoming: message.incoming)
     return cell
   }
 }

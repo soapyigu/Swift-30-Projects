@@ -9,6 +9,7 @@ import Foundation
 
 class Message {
   var text: String?
+  var incoming: Bool!
   
   public init(text: String?) {
     self.text = text
