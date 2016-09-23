@@ -41,12 +41,13 @@ class ChatViewController: UIViewController {
   private func setupTableViewDelegate() {
     tableView.register(ChatCell.self, forCellReuseIdentifier: cellIdentifier)
     
+    tableView.delegate = self
     tableView.dataSource = self
   }
   
   private func setupMessages() {
-    for i in 0 ... 10 {
-      let message = Message(text: String(i))
+    for _ in 0 ... 10 {
+      let message = Message(text: "Hello, this is the longer message")
       message.incoming = incoming
       incoming = !incoming
 
@@ -67,6 +68,12 @@ extension ChatViewController: UITableViewDataSource {
     cell.messageLabel.text = message.text
     cell.incoming(incoming: message.incoming)
     return cell
+  }
+}
+
+extension ChatViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+    return false
   }
 }
 
