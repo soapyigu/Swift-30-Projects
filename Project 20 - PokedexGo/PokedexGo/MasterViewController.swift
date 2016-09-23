@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol PokemonSelectionDelegate: class {
   func pokemonSelected(_ newPokemon: Pokemon)
@@ -16,8 +18,10 @@ class MasterViewController: UITableViewController {
   var pokemons = LibraryAPI.sharedInstance.getPokemons()
   var filteredPokemons = [Pokemon]()
   weak var delegate: PokemonSelectionDelegate?
+  private let disposeBag = DisposeBag()
   
-  let searchController = UISearchController(searchResultsController: nil)
+  @IBOutlet weak var searchBar: UISearchBar!
+
   
   override func viewDidLoad() {
     setupUI()
@@ -27,19 +31,18 @@ class MasterViewController: UITableViewController {
   
   func setupUI() {
     self.title = "精灵列表"
-    
-    searchController.searchResultsUpdater = self
-    searchController.dimsBackgroundDuringPresentation = false
+
     definesPresentationContext = true
-    tableView.tableHeaderView = searchController.searchBar
-  }
-  
-  func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-    filteredPokemons = pokemons.filter { pokemon in
-      return pokemon.name.lowercased().contains(searchText.lowercased()) || String(pokemon.id).lowercased().contains(searchText.lowercased())
-    }
     
-    tableView.reloadData()
+    searchBar
+      .rx.text
+      .distinctUntilChanged()
+      .throttle(0.5, scheduler: MainScheduler.instance)
+      .filter { $0.characters.count > 0 }
+      .subscribeNext { [unowned self] query in
+        self.filteredPokemons = self.pokemons.filter{ $0.name.hasPrefix(query) }
+        self.tableView.reloadData()
+    }.addDisposableTo(disposeBag)
   }
   
   // MARK: - UITableViewDelegate
@@ -48,13 +51,7 @@ class MasterViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let pokemon: Pokemon
-    
-    if searchController.isActive && searchController.searchBar.text != "" {
-      pokemon = filteredPokemons[(indexPath as NSIndexPath).row]
-    } else {
-      pokemon = self.pokemons[(indexPath as NSIndexPath).row]
-    }
+    let pokemon = self.pokemons[(indexPath as NSIndexPath).row]
 
     delegate?.pokemonSelected(pokemon)
     
@@ -69,32 +66,17 @@ class MasterViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if searchController.isActive && searchController.searchBar.text != "" {
-      return filteredPokemons.count
-    }
-    return pokemons.count
+    return filteredPokemons.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let identifier = "Cell"
     
     let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MasterTableViewCell
-    let pokemon: Pokemon
-    
-    if searchController.isActive && searchController.searchBar.text != "" {
-      pokemon = filteredPokemons[(indexPath as NSIndexPath).row]
-    } else {
-      pokemon = self.pokemons[(indexPath as NSIndexPath).row]
-    }
+    let pokemon = filteredPokemons[(indexPath as NSIndexPath).row]
     
     cell.awakeFromNib(pokemon.id, name: pokemon.name, pokeImageUrl: pokemon.pokeImgUrl)
     
     return cell
-  }
-}
-
-extension MasterViewController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-    filterContentForSearchText(searchController.searchBar.text!)
   }
 }
