@@ -23,26 +23,23 @@ class ChatViewController: UIViewController {
   }
   
   private func setupTableView() {
-    setupTableViewUI()
-    setupTableViewDelegate()
-  }
-  
-  private func setupTableViewUI() {
+    // set up delegate
+    tableView.delegate = self
+    tableView.dataSource = self
+    
+    // set up cell
+    tableView.register(ChatCell.self, forCellReuseIdentifier: cellIdentifier)
+    
+    // set up UI
     let tableViewContraints = [
       tableView.topAnchor.constraint(equalTo: view.topAnchor),
       tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
     ]
-    
     Helper.setupContraints(view: tableView, superView: view, constraints: tableViewContraints)
-  }
-  
-  private func setupTableViewDelegate() {
-    tableView.register(ChatCell.self, forCellReuseIdentifier: cellIdentifier)
     
-    tableView.delegate = self
-    tableView.dataSource = self
+    tableView.separatorStyle = .none
   }
   
   private func setupMessages() {
@@ -74,6 +71,10 @@ extension ChatViewController: UITableViewDataSource {
 extension ChatViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
     return false
+  }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 100.0
   }
 }
 

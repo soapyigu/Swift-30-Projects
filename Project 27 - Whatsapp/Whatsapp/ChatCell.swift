@@ -12,8 +12,8 @@ class ChatCell: UITableViewCell {
   let messageLabel = UILabel()
   private let bubbleImageView = UIImageView()
   
-  private var outgoingConstraint: NSLayoutConstraint!
-  private var incomingConstraint: NSLayoutConstraint!
+  private var outgoingConstraints: [NSLayoutConstraint]!
+  private var incomingConstraints: [NSLayoutConstraint]!
   
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -37,14 +37,15 @@ class ChatCell: UITableViewCell {
     Helper.setupContraints(view: messageLabel, superView: bubbleImageView, constraints: messageLabelConstraints)
     
     messageLabel.textAlignment = .center
-    messageLabel.numberOfLines = 1
+    messageLabel.numberOfLines = 0
   }
   
   private func setupBubbleImageView() {
     let bubbleImageViewContraints = [
-      bubbleImageView.widthAnchor.constraint(equalTo: messageLabel.widthAnchor, multiplier: 1.0, constant: 50.0),
+      bubbleImageView.widthAnchor.constraint(equalTo: messageLabel.widthAnchor, constant: 50.0),
       bubbleImageView.heightAnchor.constraint(equalTo: messageLabel.heightAnchor),
-      bubbleImageView.topAnchor.constraint(equalTo: contentView.topAnchor)
+      bubbleImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10.0),
+      bubbleImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10.0)
     ]
     
     Helper.setupContraints(view: bubbleImageView, superView: contentView, constraints: bubbleImageViewContraints)
@@ -53,18 +54,24 @@ class ChatCell: UITableViewCell {
 }
   
   private func setupLayouts() {
-    outgoingConstraint = bubbleImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-    incomingConstraint = bubbleImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
+    outgoingConstraints = [
+      bubbleImageView.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.centerXAnchor, constant: 5.0),
+      bubbleImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5.0)
+    ]
+    incomingConstraints = [
+      bubbleImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5.0),
+      bubbleImageView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.centerXAnchor, constant: -5.0)
+    ]
   }
   
   // MARK: - set properties based on incoming or not
   public func incoming(incoming: Bool) {
     if incoming {
-      incomingConstraint.isActive = true
-      outgoingConstraint.isActive = false
+      NSLayoutConstraint.activate(incomingConstraints)
+      NSLayoutConstraint.deactivate(outgoingConstraints)
     } else {
-      incomingConstraint.isActive = false
-      outgoingConstraint.isActive = true
+      NSLayoutConstraint.activate(outgoingConstraints)
+      NSLayoutConstraint.deactivate(incomingConstraints)
     }
     
     setupImageView(incoming: incoming)

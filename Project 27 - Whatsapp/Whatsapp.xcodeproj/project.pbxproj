@@ -84,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				194C7C471D8BBEF200B50295 /* AppDelegate.swift */,
+				19C981341D91D12300ABE1B7 /* Helper.swift */,
 				194C7C4B1D8BBEF200B50295 /* Main.storyboard */,
 				19C9812D1D91BFA300ABE1B7 /* Controller */,
 				19C981301D91C48A00ABE1B7 /* Model */,
@@ -91,7 +92,6 @@
 				194C7C4E1D8BBEF200B50295 /* Assets.xcassets */,
 				194C7C501D8BBEF200B50295 /* LaunchScreen.storyboard */,
 				194C7C531D8BBEF200B50295 /* Info.plist */,
-				19C981341D91D12300ABE1B7 /* Helper.swift */,
 			);
 			path = Whatsapp;
 			sourceTree = "<group>";
