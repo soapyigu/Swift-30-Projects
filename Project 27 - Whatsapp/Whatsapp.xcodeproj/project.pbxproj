@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		192AAAC41D98871B00CDF011 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192AAAC31D98871B00CDF011 /* NewMessageViewController.swift */; };
+		192AAAC81D988BC900CDF011 /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192AAAC71D988BC900CDF011 /* NewMessageView.swift */; };
 		194C7C481D8BBEF200B50295 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194C7C471D8BBEF200B50295 /* AppDelegate.swift */; };
 		194C7C4A1D8BBEF200B50295 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194C7C491D8BBEF200B50295 /* ChatViewController.swift */; };
 		194C7C4D1D8BBEF200B50295 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194C7C4B1D8BBEF200B50295 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		192AAAC31D98871B00CDF011 /* NewMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
+		192AAAC71D988BC900CDF011 /* NewMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
 		194C7C441D8BBEF200B50295 /* Whatsapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whatsapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		194C7C471D8BBEF200B50295 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		194C7C491D8BBEF200B50295 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				194C7C491D8BBEF200B50295 /* ChatViewController.swift */,
+				192AAAC31D98871B00CDF011 /* NewMessageViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				19C981311D91C85E00ABE1B7 /* ChatCell.swift */,
+				192AAAC71D988BC900CDF011 /* NewMessageView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -235,6 +241,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				19C9812F1D91C48300ABE1B7 /* Message.swift in Sources */,
+				192AAAC41D98871B00CDF011 /* NewMessageViewController.swift in Sources */,
+				192AAAC81D988BC900CDF011 /* NewMessageView.swift in Sources */,
 				19C981321D91C85E00ABE1B7 /* ChatCell.swift in Sources */,
 				19C981351D91D12300ABE1B7 /* Helper.swift in Sources */,
 				194C7C4A1D8BBEF200B50295 /* ChatViewController.swift in Sources */,

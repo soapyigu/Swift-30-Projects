@@ -10,6 +10,8 @@ import UIKit
 class ChatViewController: UIViewController {
   
   private let tableView = UITableView()
+  private let newMessageView = NewMessageView()
+  
   let cellIdentifier = "Cell"
   var messages = [Message]()
   
@@ -18,6 +20,7 @@ class ChatViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    setupNewMessageView()
     setupTableView()
     setupMessages()
   }
@@ -33,7 +36,7 @@ class ChatViewController: UIViewController {
     // set up UI
     let tableViewContraints = [
       tableView.topAnchor.constraint(equalTo: view.topAnchor),
-      tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      tableView.bottomAnchor.constraint(equalTo: newMessageView.topAnchor),
       tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
     ]
@@ -50,6 +53,10 @@ class ChatViewController: UIViewController {
 
       messages.append(message)
     }
+  }
+  
+  private func setupNewMessageView() {
+    view.addSubview(newMessageView)
   }
 }
 
