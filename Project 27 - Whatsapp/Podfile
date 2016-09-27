@@ -1,0 +1,15 @@
+platform :ios, '9.0'
+
+target 'Whatsapp' do
+  use_frameworks!
+
+  # Pods for Whatsapp
+  pod 'RxSwift',    '~> 3.0.0-beta.1'
+  pod 'RxCocoa',    '~> 3.0.0-beta.1'
+
+  target 'WhatsappTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
