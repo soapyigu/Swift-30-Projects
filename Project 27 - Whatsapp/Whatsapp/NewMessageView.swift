@@ -33,7 +33,6 @@ final public class NewMessageView: UIView {
       translatesAutoresizingMaskIntoConstraints = false
       
       let constraints = [
-        bottomAnchor.constraint(equalTo: superview.bottomAnchor),
         leadingAnchor.constraint(equalTo: superview.leadingAnchor),
         trailingAnchor.constraint(equalTo: superview.trailingAnchor),
         heightAnchor.constraint(equalToConstant: 50.0)

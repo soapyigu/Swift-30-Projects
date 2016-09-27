@@ -18,6 +18,9 @@ class ChatViewController: UIViewController {
   var messages = [Message]()
   
   var incoming: Bool = false
+  private let disposeBag = DisposeBag()
+  
+  private var newMessageViewBottomConstraint: NSLayoutConstraint!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,6 +28,7 @@ class ChatViewController: UIViewController {
     setupNewMessageView()
     setupTableView()
     setupMessages()
+    setupEvents()
   }
   
   private func setupTableView() {
@@ -59,6 +63,38 @@ class ChatViewController: UIViewController {
   
   private func setupNewMessageView() {
     view.addSubview(newMessageView)
+    
+    newMessageViewBottomConstraint = newMessageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+    newMessageViewBottomConstraint.isActive = true
+  }
+  
+  private func setupEvents() {
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ChatViewController.dismissKeyboard))
+    view.addGestureRecognizer(tapGesture)
+    
+    // keyboard show up animation
+    NotificationCenter.default
+      .rx.notification(NSNotification.Name.UIKeyboardWillShow)
+      .subscribe(
+        onNext: {[unowned self] notification in
+          guard let userInfo = notification.userInfo else {
+            return
+          }
+
+          let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+          let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! Double
+          
+          let frame = self.view.convert(keyboardFrame, from: (UIApplication.shared.delegate?.window)!)
+          self.newMessageViewBottomConstraint.constant = frame.origin.y - self.view.frame.height
+          UIView.animate(withDuration: animationDuration, animations: {
+            self.view.layoutIfNeeded()
+          })
+      })
+    .addDisposableTo(disposeBag)
+  }
+  
+  func dismissKeyboard() {
+    view.endEditing(true)
   }
 }
 
