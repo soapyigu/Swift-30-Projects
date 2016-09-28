@@ -24,9 +24,9 @@ class MasterViewController: UITableViewController {
 
   
   override func viewDidLoad() {
-    setupUI()
-    
     super.viewDidLoad()
+    setupUI()
+    filteredPokemons = pokemons
   }
   
   func setupUI() {
@@ -39,10 +39,11 @@ class MasterViewController: UITableViewController {
       .distinctUntilChanged()
       .throttle(0.5, scheduler: MainScheduler.instance)
       .filter { $0.characters.count > 0 }
-      .subscribeNext { [unowned self] query in
-        self.filteredPokemons = self.pokemons.filter{ $0.name.hasPrefix(query) }
-        self.tableView.reloadData()
-    }.addDisposableTo(disposeBag)
+      .subscribe(
+        onNext: { [unowned self] query in
+          self.filteredPokemons = self.pokemons.filter{ $0.name.hasPrefix(query) }
+          self.tableView.reloadData()
+        }).addDisposableTo(disposeBag)
   }
   
   // MARK: - UITableViewDelegate
