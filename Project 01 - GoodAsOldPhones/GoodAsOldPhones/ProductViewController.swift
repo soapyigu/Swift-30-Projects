@@ -24,7 +24,7 @@ class ProductViewController: UIViewController {
     }
   }
 
-  @IBAction func addToCartPressed(sender: AnyObject) {
+  @IBAction func addToCartPressed(_ sender: AnyObject) {
     print("Hello World")
   }
 
