@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    navigationItem.leftBarButtonItem = editButtonItem()
+    navigationItem.leftBarButtonItem = editButtonItem
     
     todos = [ToDoItem(id: "1", image: "child-selected", title: "Go to Disney", date: dateFromString("2014-10-20")!),
       ToDoItem(id: "2", image: "shopping-cart-selected", title: "Cicso Shopping", date: dateFromString("2014-10-28")!),
@@ -25,32 +25,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
       ToDoItem(id: "4", image: "travel-selected", title: "Plan to Europe", date: dateFromString("2014-10-31")!)]
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     todoTableView.reloadData()
   }
   
   // MARK - UITableViewDataSource required
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if (todos.count != 0) {
       return todos.count
     } else {
       let messageLabel: UILabel = UILabel()
       
-      setMessageLabel(messageLabel, frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height), text: "No data is currently available.", textColor: UIColor.blackColor(), numberOfLines: 0, textAlignment: NSTextAlignment.Center, font: UIFont(name:"Palatino-Italic", size: 20)!)
+      setMessageLabel(messageLabel, frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height), text: "No data is currently available.", textColor: UIColor.black, numberOfLines: 0, textAlignment: NSTextAlignment.center, font: UIFont(name:"Palatino-Italic", size: 20)!)
       
       self.todoTableView.backgroundView = messageLabel
-      self.todoTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+      self.todoTableView.separatorStyle = UITableViewCellSeparatorStyle.none
       
       return 0
     }
   }
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cellIdentifier: String = "todoCell"
-    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
     
-    setCellWithTodoItem(cell, todo: todos[indexPath.row])
+    setCellWithTodoItem(cell, todo: todos[(indexPath as NSIndexPath).row])
     
     return cell
   }
@@ -58,31 +58,31 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   // MARK - UITableViewDelegate
   
   // Edit mode
-  override func setEditing(editing: Bool, animated: Bool) {
+  override func setEditing(_ editing: Bool, animated: Bool) {
     super.setEditing(editing, animated: animated)
     todoTableView.setEditing(editing, animated: true)
   }
   
   // Delete the cell
-  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == UITableViewCellEditingStyle.Delete {
-      todos.removeAtIndex(indexPath.row)
-      todoTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == UITableViewCellEditingStyle.delete {
+      todos.remove(at: (indexPath as NSIndexPath).row)
+      todoTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
   }
   
   // Move the cell
-  func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return self.editing
+  func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+    return self.isEditing
   }
   
-  func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-    let todo = todos.removeAtIndex(sourceIndexPath.row)
-    todos.insert(todo, atIndex: destinationIndexPath.row)
+  func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    let todo = todos.remove(at: (sourceIndexPath as NSIndexPath).row)
+    todos.insert(todo, at: (destinationIndexPath as NSIndexPath).row)
   }
   
   // MARK - helper func
-  func setMessageLabel(messageLabel: UILabel, frame: CGRect, text: String, textColor: UIColor, numberOfLines: Int, textAlignment: NSTextAlignment, font: UIFont) {
+  func setMessageLabel(_ messageLabel: UILabel, frame: CGRect, text: String, textColor: UIColor, numberOfLines: Int, textAlignment: NSTextAlignment, font: UIFont) {
     messageLabel.frame = frame
     messageLabel.text = text
     messageLabel.textColor = textColor
@@ -92,7 +92,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     messageLabel.sizeToFit()
   }
   
-  func setCellWithTodoItem(cell: UITableViewCell, todo: ToDoItem) {
+  func setCellWithTodoItem(_ cell: UITableViewCell, todo: ToDoItem) {
     let imageView: UIImageView = cell.viewWithTag(11) as! UIImageView
     let titleLabel: UILabel = cell.viewWithTag(12) as! UILabel
     let dateLabel: UILabel = cell.viewWithTag(13) as! UILabel
@@ -103,12 +103,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   }
   
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "editTodo" {
-      let vc = segue.destinationViewController as! DetailViewController
+      let vc = segue.destination as! DetailViewController
       let indexPath = todoTableView.indexPathForSelectedRow
       if let indexPath = indexPath {
-        vc.todo = todos[indexPath.row]
+        vc.todo = todos[(indexPath as NSIndexPath).row]
       }
     }
   }

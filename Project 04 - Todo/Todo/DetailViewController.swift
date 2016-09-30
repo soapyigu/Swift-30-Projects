@@ -24,73 +24,73 @@ class DetailViewController: UIViewController {
     
     if todo == nil {
       self.title = "New Todo"
-      childButton.selected = true
+      childButton.isSelected = true
     } else {
       self.title = "Edit Todo"
       if todo?.image == "child-selected"{
-        childButton.selected = true
+        childButton.isSelected = true
       }
       else if todo?.image == "phone-selected"{
-        phoneButton.selected = true
+        phoneButton.isSelected = true
       }
       else if todo?.image == "shopping-cart-selected"{
-        shoppingCartButton.selected = true
+        shoppingCartButton.isSelected = true
       }
       else if todo?.image == "travel-selected"{
-        travelButton.selected = true
+        travelButton.isSelected = true
       }
       
       todoTitleLabel.text = todo?.title
-      todoDatePicker.setDate((todo?.date)!, animated: false)
+      todoDatePicker.setDate((todo?.date)! as Date, animated: false)
     }
   }
   
   // MARK: type select
-  @IBAction func selectChild(sender: AnyObject) {
+  @IBAction func selectChild(_ sender: AnyObject) {
     resetButtons()
-    childButton.selected = true
+    childButton.isSelected = true
   }
   
-  @IBAction func selectPhone(sender: AnyObject) {
+  @IBAction func selectPhone(_ sender: AnyObject) {
     resetButtons()
-    phoneButton.selected = true
+    phoneButton.isSelected = true
   }
   
-  @IBAction func selectShoppingCart(sender: AnyObject) {
+  @IBAction func selectShoppingCart(_ sender: AnyObject) {
     resetButtons()
-    shoppingCartButton.selected = true
+    shoppingCartButton.isSelected = true
   }
   
-  @IBAction func selectTravel(sender: AnyObject) {
+  @IBAction func selectTravel(_ sender: AnyObject) {
     resetButtons()
-    travelButton.selected = true
+    travelButton.isSelected = true
   }
   
   func resetButtons() {
-    childButton.selected = false
-    phoneButton.selected = false
-    shoppingCartButton.selected = false
-    travelButton.selected = false
+    childButton.isSelected = false
+    phoneButton.isSelected = false
+    shoppingCartButton.isSelected = false
+    travelButton.isSelected = false
   }
   
   // MARK: create or edit a new todo
-  @IBAction func tapDone(sender: AnyObject) {
+  @IBAction func tapDone(_ sender: AnyObject) {
     var image = ""
-    if childButton.selected {
+    if childButton.isSelected {
       image = "child-selected"
     }
-    else if phoneButton.selected {
+    else if phoneButton.isSelected {
       image = "phone-selected"
     }
-    else if shoppingCartButton.selected {
+    else if shoppingCartButton.isSelected {
       image = "shopping-cart-selected"
     }
-    else if travelButton.selected {
+    else if travelButton.isSelected {
       image = "travel-selected"
     }
     
     if todo == nil {
-      let uuid = NSUUID().UUIDString
+      let uuid = UUID().uuidString
       todo = ToDoItem(id: uuid, image: image, title: todoTitleLabel.text!, date: todoDatePicker.date)
       todos.append(todo!)
     } else {
@@ -99,6 +99,6 @@ class DetailViewController: UIViewController {
       todo?.date = todoDatePicker.date
     }
     
-    self.navigationController?.popToRootViewControllerAnimated(true)
+    self.navigationController?.popToRootViewController(animated: true)
   }
 }

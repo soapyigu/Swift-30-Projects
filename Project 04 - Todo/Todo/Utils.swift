@@ -8,15 +8,15 @@
 
 import Foundation
 
-func dateFromString(date: String) -> NSDate? {
-  let dateFormatter = NSDateFormatter()
+func dateFromString(_ date: String) -> Date? {
+  let dateFormatter = DateFormatter()
   dateFormatter.dateFormat = "yyyy-MM-dd"
-  return dateFormatter.dateFromString(date)
+  return dateFormatter.date(from: date)
 }
 
-func stringFromDate(date: NSDate) -> String {
-  let dateFormatter = NSDateFormatter()
+func stringFromDate(_ date: Date) -> String {
+  let dateFormatter = DateFormatter()
   dateFormatter.dateFormat = "yyyy-MM-dd"
-  return dateFormatter.stringFromDate(date)
+  return dateFormatter.string(from: date)
 }
 
