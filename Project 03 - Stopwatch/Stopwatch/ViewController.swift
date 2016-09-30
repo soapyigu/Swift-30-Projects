@@ -26,69 +26,69 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     initCircleButton(lapRestButton)
   
     
-    lapRestButton.enabled = false
+    lapRestButton.isEnabled = false
     
     lapsTableView.delegate = self;
     lapsTableView.dataSource = self;
   }
   
-  func initCircleButton(button: UIButton) {
+  func initCircleButton(_ button: UIButton) {
     button.layer.cornerRadius = 0.5 * button.bounds.size.width
-    button.backgroundColor = UIColor.whiteColor()
+    button.backgroundColor = UIColor.white
   }
   
   // MARK: disable landscape mode
-  override func shouldAutorotate() -> Bool {
+  override var shouldAutorotate : Bool {
     return false
   }
   
-  override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-    return UIInterfaceOrientationMask.Portrait
+  override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+    return UIInterfaceOrientationMask.portrait
   }
   
   // MARK: hide status bar
-  override func preferredStatusBarStyle() -> UIStatusBarStyle {
-    return UIStatusBarStyle.LightContent
+  override var preferredStatusBarStyle : UIStatusBarStyle {
+    return UIStatusBarStyle.lightContent
   }
   
   // MARK: play, pause, lap, and reset
-  @IBAction func playPauseTimer(sender: AnyObject) {
-    lapRestButton.enabled = true
-    changeButton(lapRestButton, title: "Lap", titleColor: UIColor.blackColor())
+  @IBAction func playPauseTimer(_ sender: AnyObject) {
+    lapRestButton.isEnabled = true
+    changeButton(lapRestButton, title: "Lap", titleColor: UIColor.black)
     if !isPlay {
-      mainStopwatch.timer = NSTimer.scheduledTimerWithTimeInterval(0.035, target: self, selector: Selector("updateMainTimer"), userInfo: nil, repeats: true)
-      lapStopwatch.timer = NSTimer.scheduledTimerWithTimeInterval(0.035, target: self, selector: Selector("updateLapTimer"), userInfo: nil, repeats: true)
+      mainStopwatch.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: Selector("updateMainTimer"), userInfo: nil, repeats: true)
+      lapStopwatch.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: Selector("updateLapTimer"), userInfo: nil, repeats: true)
       isPlay = true
-      changeButton(playPauseButton, title: "Stop", titleColor: UIColor.redColor())
+      changeButton(playPauseButton, title: "Stop", titleColor: UIColor.red)
     } else {
       mainStopwatch.timer.invalidate()
       lapStopwatch.timer.invalidate()
       isPlay = false
-      changeButton(playPauseButton, title: "Start", titleColor: UIColor.greenColor())
-      changeButton(lapRestButton, title: "Reset", titleColor: UIColor.blackColor())
+      changeButton(playPauseButton, title: "Start", titleColor: UIColor.green)
+      changeButton(lapRestButton, title: "Reset", titleColor: UIColor.black)
       
     }
   }
   
-  @IBAction func lapResetTimer(sender: AnyObject) {
+  @IBAction func lapResetTimer(_ sender: AnyObject) {
     if !isPlay {
       resetMainTimer()
       resetLapTimer()
-      changeButton(lapRestButton, title: "Lap", titleColor: UIColor.lightGrayColor())
-      lapRestButton.enabled = false
+      changeButton(lapRestButton, title: "Lap", titleColor: UIColor.lightGray)
+      lapRestButton.isEnabled = false
     } else {
       if let timerLabelText = timerLabel.text {
         laps.append(timerLabelText)
       }
       lapsTableView.reloadData()
       resetLapTimer()
-      lapStopwatch.timer = NSTimer.scheduledTimerWithTimeInterval(0.035, target: self, selector: Selector("updateLapTimer"), userInfo: nil, repeats: true)
+      lapStopwatch.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: Selector("updateLapTimer"), userInfo: nil, repeats: true)
     }
   }
   
-  func changeButton(button: UIButton, title: String, titleColor: UIColor) {
-    button.setTitle(title, forState: UIControlState.Normal)
-    button.setTitleColor(titleColor, forState: UIControlState.Normal)
+  func changeButton(_ button: UIButton, title: String, titleColor: UIColor) {
+    button.setTitle(title, for: UIControlState())
+    button.setTitleColor(titleColor, for: UIControlState())
   }
   
   // MARK: reset timer seperately
@@ -102,7 +102,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     resetTimer(lapStopwatch, label: lapTimerLabel)
   }
   
-  func resetTimer(stopwatch: Stopwatch, label: UILabel) {
+  func resetTimer(_ stopwatch: Stopwatch, label: UILabel) {
     stopwatch.timer.invalidate()
     stopwatch.counter = 0.0
     label.text = "00:00:00"
@@ -117,7 +117,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     updateTimer(lapStopwatch, label: lapTimerLabel)
   }
   
-  func updateTimer(stopwatch: Stopwatch, label: UILabel) {
+  func updateTimer(_ stopwatch: Stopwatch, label: UILabel) {
     stopwatch.counter = stopwatch.counter + 0.035
     
     var minutes: String = "\((Int)(stopwatch.counter / 60))"
@@ -125,8 +125,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
       minutes = "0\((Int)(stopwatch.counter / 60))"
     }
     
-    var seconds: String = String(format: "%.2f", (stopwatch.counter % 60))
-    if stopwatch.counter % 60 < 10 {
+    var seconds: String = String(format: "%.2f", (stopwatch.counter.truncatingRemainder(dividingBy: 60)))
+    if stopwatch.counter.truncatingRemainder(dividingBy: 60) < 10 {
       seconds = "0" + seconds
     }
     
@@ -135,19 +135,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   
   
   // MARK: tableView dataSource
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return laps.count
   }
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let identifier: String = "lapCell"
-    let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
+    let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
 
     if let labelNum = cell.viewWithTag(11) as? UILabel {
-      labelNum.text = "Lap \(laps.count - indexPath.row)"
+      labelNum.text = "Lap \(laps.count - (indexPath as NSIndexPath).row)"
     }
     if let labelTimer = cell.viewWithTag(12) as? UILabel {
-      labelTimer.text = laps[laps.count - indexPath.row - 1]
+      labelTimer.text = laps[laps.count - (indexPath as NSIndexPath).row - 1]
     }
     
     return cell

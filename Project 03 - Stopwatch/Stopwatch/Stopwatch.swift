@@ -10,10 +10,10 @@ import Foundation
 
 class Stopwatch: NSObject {
   var counter: Double
-  var timer: NSTimer
+  var timer: Timer
   
   override init() {
     self.counter = 0.0
-    self.timer = NSTimer()
+    self.timer = Timer()
   }
 }
