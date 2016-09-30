@@ -25,14 +25,14 @@ class ViewController: UIViewController {
     super.viewDidLoad()
   }
   
-  @IBAction func salaryHandler(sender: AnyObject) {
+  @IBAction func salaryHandler(_ sender: AnyObject) {
     let slider = sender as! UISlider
     let i = Int(slider.value)
     salaryLabel.text = "$\(i)k"
   }
   
 
-  @IBAction func tweetTapped(sender: AnyObject) {
+  @IBAction func tweetTapped(_ sender: AnyObject) {
     if (nameTextField.text == "" || workTextField.text == "" || salaryLabel.text == "") {
       showAlert("Info Miss", message: "Please fill out the form", buttonTitle: "Ok")
       return
@@ -44,16 +44,16 @@ class ViewController: UIViewController {
     let salary:String! = salaryLabel.text
     
     // get age
-    let gregorian = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-    let now = NSDate()
-    let components = gregorian?.components(NSCalendarUnit.Year, fromDate: birthdayPicker.date, toDate: now, options: [])
+    let gregorian = Calendar(identifier: Calendar.Identifier.gregorian)
+    let now = Date()
+    let components = (gregorian as NSCalendar?)?.components(NSCalendar.Unit.year, from: birthdayPicker.date, to: now, options: [])
     let age:Int! = components?.year
     
     var interestedIn:String! = "Women"
-    if (genderSeg.selectedSegmentIndex == 0 && !straightSwitch.on) {
+    if (genderSeg.selectedSegmentIndex == 0 && !straightSwitch.isOn) {
       interestedIn = "Men"
     }
-    if (genderSeg.selectedSegmentIndex == 1 && straightSwitch.on ) {
+    if (genderSeg.selectedSegmentIndex == 1 && straightSwitch.isOn ) {
       interestedIn = "Women"
     }
     
@@ -62,20 +62,20 @@ class ViewController: UIViewController {
     tweetSLCVC(tweet)
   }
   
-  func tweetSLCVC(tweet: String) {
-    if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+  func tweetSLCVC(_ tweet: String) {
+    if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter){
       let twitterController:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
       twitterController.setInitialText(tweet)
-      self.presentViewController(twitterController, animated: true, completion: nil)
+      self.present(twitterController, animated: true, completion: nil)
     } else {
       showAlert("Twitter Unavailable", message: "Please configure your twitter account on device", buttonTitle: "Ok")
     }
   }
   
-  func showAlert(title:String, message:String, buttonTitle:String) {
-    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-    alert.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.Default, handler: nil))
-    self.presentViewController(alert, animated: true, completion: nil)
+  func showAlert(_ title:String, message:String, buttonTitle:String) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    alert.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default, handler: nil))
+    self.present(alert, animated: true, completion: nil)
   }
 }
 
