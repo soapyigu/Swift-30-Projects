@@ -64,17 +64,17 @@ class MasterViewController: UITableViewController {
     searchController.searchBar.delegate = self
   }
   
-  func filterContentForSearchText(searchText: String, scope: String = "All") {
+  func filterContentForSearchText(_ searchText: String, scope: String = "All") {
     filteredCandies = candies.filter { candy in
       let categoryMatch = (scope == "All") || (candy.category == scope)
-      return  categoryMatch && candy.name.lowercaseString.containsString(searchText.lowercaseString)
+      return  categoryMatch && candy.name.lowercased().contains(searchText.lowercased())
     }
     
     tableView.reloadData()
   }
   
-  override func viewWillAppear(animated: Bool) {
-    clearsSelectionOnViewWillAppear = splitViewController!.collapsed
+  override func viewWillAppear(_ animated: Bool) {
+    clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
     super.viewWillAppear(animated)
   }
   
@@ -83,25 +83,25 @@ class MasterViewController: UITableViewController {
   }
   
   // MARK: - Table View
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
   
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if searchController.active && searchController.searchBar.text != "" {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if searchController.isActive && searchController.searchBar.text != "" {
       return filteredCandies.count
     }
     return candies.count
   }
   
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
     
     let candy: Candy
-    if searchController.active && searchController.searchBar.text != "" {
-      candy = filteredCandies[indexPath.row]
+    if searchController.isActive && searchController.searchBar.text != "" {
+      candy = filteredCandies[(indexPath as NSIndexPath).row]
     } else {
-      candy = candies[indexPath.row]
+      candy = candies[(indexPath as NSIndexPath).row]
     }
     cell.textLabel!.text = candy.name
     cell.detailTextLabel!.text = candy.category
@@ -109,18 +109,18 @@ class MasterViewController: UITableViewController {
   }
   
   // MARK: - Segues
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showDetail" {
       if let indexPath = tableView.indexPathForSelectedRow {
         let candy: Candy
-        if searchController.active && searchController.searchBar.text != "" {
-          candy = filteredCandies[indexPath.row]
+        if searchController.isActive && searchController.searchBar.text != "" {
+          candy = filteredCandies[(indexPath as NSIndexPath).row]
         } else {
-          candy = candies[indexPath.row]
+          candy = candies[(indexPath as NSIndexPath).row]
         }
-        let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+        let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
         controller.detailCandy = candy
-        controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+        controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         controller.navigationItem.leftItemsSupplementBackButton = true
       }
     }
@@ -129,7 +129,7 @@ class MasterViewController: UITableViewController {
 }
 
 extension MasterViewController: UISearchResultsUpdating {
-  func updateSearchResultsForSearchController(searchController: UISearchController) {
+  func updateSearchResults(for searchController: UISearchController) {
     let searchBar = searchController.searchBar
     let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
     filterContentForSearchText(searchController.searchBar.text!, scope: scope)
@@ -137,7 +137,7 @@ extension MasterViewController: UISearchResultsUpdating {
 }
 
 extension MasterViewController: UISearchBarDelegate {
-  func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+  func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
     filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
   }
 }
