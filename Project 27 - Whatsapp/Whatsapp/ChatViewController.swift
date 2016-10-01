@@ -32,6 +32,10 @@ class ChatViewController: UIViewController {
     setupEvents()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    tableView.scrollToBottom()
+  }
+  
   private func setupTableView() {
     // set up delegate
     tableView.delegate = self
