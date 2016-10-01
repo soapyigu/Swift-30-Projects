@@ -111,7 +111,6 @@ class ChatViewController: UIViewController {
           self.tableView.reloadData()
           self.scrollToBottom()
         }).addDisposableTo(disposeBag)
-
   }
   
   private func updateBottomConstraint(forNotication notification: NSNotification) {
@@ -140,6 +139,7 @@ class ChatViewController: UIViewController {
     })
   }
   
+  // MARK: - general helpful functions
   func dismissKeyboard() {
     view.endEditing(true)
   }
@@ -172,4 +172,3 @@ extension ChatViewController: UITableViewDelegate {
     return false
   }
 }
-
