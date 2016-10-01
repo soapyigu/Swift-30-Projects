@@ -16,7 +16,7 @@ class ChatViewController: UIViewController {
   var messages = [Message]()
   var incoming: Bool = false
   
-  private let tableView = UITableView()
+  private let tableView = ChatTableView()
   private let newMessageView = NewMessageView()
   private var newMessageViewBottomConstraint: NSLayoutConstraint!
   
@@ -33,8 +33,6 @@ class ChatViewController: UIViewController {
   }
   
   private func setupTableView() {
-    tableView.estimatedRowHeight = 56.0
-    
     // set up delegate
     tableView.delegate = self
     tableView.dataSource = self
@@ -50,8 +48,6 @@ class ChatViewController: UIViewController {
       tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
     ]
     Helper.setupContraints(view: tableView, superView: view, constraints: tableViewContraints)
-    
-    tableView.separatorStyle = .none
   }
   
   private func setupMessages() {
@@ -109,7 +105,7 @@ class ChatViewController: UIViewController {
           self.messages.append(message)
           
           self.tableView.reloadData()
-          self.scrollToBottom()
+          self.tableView.scrollToBottom()
         }).addDisposableTo(disposeBag)
   }
   
@@ -142,11 +138,6 @@ class ChatViewController: UIViewController {
   // MARK: - general helpful functions
   func dismissKeyboard() {
     view.endEditing(true)
-  }
-  
-  func scrollToBottom() {
-    let indexPath = IndexPath.init(row: tableView.numberOfRows(inSection: 0) - 1, section: 0)
-    tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
   }
 }
 
