@@ -20,7 +20,7 @@ class InterestCollectionViewCell: UICollectionViewCell {
     }
   }
   
-  private func updateUI() {
+  fileprivate func updateUI() {
     titleLabel.text = interest.title
     featuredImageView.image = interest.featuredImage
   }
