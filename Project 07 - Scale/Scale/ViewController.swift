@@ -23,14 +23,14 @@ class ViewController: UIViewController {
   }
   
   // MARK: - UITouch
-  override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+  override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
     // check only one object in touches
     guard let touch = touches.first else {
       return
     }
     
     // check if device is 3D Touch capable
-    if traitCollection.forceTouchCapability == UIForceTouchCapability.Available {
+    if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
       if touch.force >= touch.maximumPossibleForce {
         forceLabel.text = "385+ g"
       } else {
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
     }
   }
   
-  override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     forceLabel.text = "0 g"
   }
   
