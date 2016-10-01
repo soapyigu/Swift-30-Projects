@@ -76,21 +76,43 @@ class ChatViewController: UIViewController {
     NotificationCenter.default
       .rx.notification(NSNotification.Name.UIKeyboardWillShow)
       .subscribe(
-        onNext: {[unowned self] notification in
-          guard let userInfo = notification.userInfo else {
-            return
-          }
-
-          let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-          let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! Double
-          
-          let frame = self.view.convert(keyboardFrame, from: (UIApplication.shared.delegate?.window)!)
-          self.newMessageViewBottomConstraint.constant = frame.origin.y - self.view.frame.height
-          UIView.animate(withDuration: animationDuration, animations: {
-            self.view.layoutIfNeeded()
-          })
-      })
-    .addDisposableTo(disposeBag)
+        onNext: { [unowned self] notification in
+          self.updateBottomConstraint(forNotication: notification as NSNotification)
+        }).addDisposableTo(disposeBag)
+    
+    // keyboard dismiss animation
+    NotificationCenter.default
+      .rx.notification(NSNotification.Name.UIKeyboardWillHide)
+      .subscribe(
+        onNext: { [unowned self] notification in
+          self.updateBottomConstraint(forNotication: notification as NSNotification)
+        }).addDisposableTo(disposeBag)
+  }
+  
+  private func updateBottomConstraint(forNotication notification: NSNotification) {
+    guard let userInfo = notification.userInfo else {
+      return
+    }
+    
+    switch notification.name {
+    case NSNotification.Name.UIKeyboardWillShow:
+      let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+      let frame = self.view.convert(keyboardFrame, from: (UIApplication.shared.delegate?.window)!)
+      newMessageViewBottomConstraint.constant = frame.origin.y - view.frame.height
+      break
+      
+    case NSNotification.Name.UIKeyboardWillHide:
+      newMessageViewBottomConstraint.constant = 0.0
+      break
+      
+    default:
+      break
+    }
+    
+    let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! Double
+    UIView.animate(withDuration: animationDuration, animations: {
+      self.view.layoutIfNeeded()
+    })
   }
   
   func dismissKeyboard() {
