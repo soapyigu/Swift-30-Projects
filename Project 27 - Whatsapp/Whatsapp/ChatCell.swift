@@ -43,7 +43,7 @@ class ChatCell: UITableViewCell {
   private func setupBubbleImageView() {
     let bubbleImageViewContraints = [
       bubbleImageView.widthAnchor.constraint(equalTo: messageLabel.widthAnchor, constant: 50.0),
-      bubbleImageView.heightAnchor.constraint(equalTo: messageLabel.heightAnchor),
+      bubbleImageView.heightAnchor.constraint(equalTo: messageLabel.heightAnchor, constant: 20.0),
       bubbleImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10.0),
       bubbleImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10.0)
     ]
@@ -91,4 +91,3 @@ class ChatCell: UITableViewCell {
     }
   }
 }
-

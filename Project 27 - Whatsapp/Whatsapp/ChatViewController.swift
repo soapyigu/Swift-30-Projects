@@ -10,18 +10,19 @@ import RxSwift
 import RxCocoa
 
 class ChatViewController: UIViewController {
+  // MARK: - Variables
+  let cellIdentifier = "Cell"
+  
+  var messages = [Message]()
+  var incoming: Bool = false
   
   private let tableView = UITableView()
   private let newMessageView = NewMessageView()
+  private var newMessageViewBottomConstraint: NSLayoutConstraint!
   
-  let cellIdentifier = "Cell"
-  var messages = [Message]()
-  
-  var incoming: Bool = false
   private let disposeBag = DisposeBag()
   
-  private var newMessageViewBottomConstraint: NSLayoutConstraint!
-
+  // MARK: - Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -32,6 +33,8 @@ class ChatViewController: UIViewController {
   }
   
   private func setupTableView() {
+    tableView.estimatedRowHeight = 56.0
+    
     // set up delegate
     tableView.delegate = self
     tableView.dataSource = self
@@ -69,6 +72,7 @@ class ChatViewController: UIViewController {
   }
   
   private func setupEvents() {
+    // tap to dismiss keyboard
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ChatViewController.dismissKeyboard))
     view.addGestureRecognizer(tapGesture)
     
@@ -87,6 +91,27 @@ class ChatViewController: UIViewController {
         onNext: { [unowned self] notification in
           self.updateBottomConstraint(forNotication: notification as NSNotification)
         }).addDisposableTo(disposeBag)
+    
+    // tap to send a new message
+    let inputTextValidation = newMessageView.inputTextView
+      .rx.text.map { !$0.isEmpty }
+      .shareReplay(1)
+    
+    inputTextValidation
+      .bindTo(newMessageView.sendButton.rx.enabled)
+      .addDisposableTo(disposeBag)
+    
+    newMessageView.sendButton
+      .rx.tap.subscribe(
+        onNext: { [unowned self] _ in
+          let message = Message(text: self.newMessageView.inputTextView.text)
+          message.incoming = false
+          self.messages.append(message)
+          
+          self.tableView.reloadData()
+          self.scrollToBottom()
+        }).addDisposableTo(disposeBag)
+
   }
   
   private func updateBottomConstraint(forNotication notification: NSNotification) {
@@ -118,8 +143,14 @@ class ChatViewController: UIViewController {
   func dismissKeyboard() {
     view.endEditing(true)
   }
+  
+  func scrollToBottom() {
+    let indexPath = IndexPath.init(row: tableView.numberOfRows(inSection: 0) - 1, section: 0)
+    tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+  }
 }
 
+// MARK: - UITableViewDataSource
 extension ChatViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return messages.count
@@ -135,13 +166,10 @@ extension ChatViewController: UITableViewDataSource {
   }
 }
 
+// MARK: - UITableViewDelegate
 extension ChatViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
     return false
-  }
-  
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 100.0
   }
 }
 

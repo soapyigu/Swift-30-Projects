@@ -19,7 +19,8 @@ final public class NewMessageView: UIView {
   lazy var sendButton: UIButton = {
     let button = UIButton()
     button.setTitle("Send", for: .normal)
-    button.setContentHuggingPriority(250, for: .horizontal)
+    button.setContentHuggingPriority(251, for: .horizontal)
+    button.setContentCompressionResistancePriority(751, for: .horizontal)
     return button
   }()
   
