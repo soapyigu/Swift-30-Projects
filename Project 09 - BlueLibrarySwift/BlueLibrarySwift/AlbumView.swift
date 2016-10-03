@@ -9,8 +9,8 @@
 import UIKit
 
 class AlbumView: UIView {
-  private var coverImage: UIImageView!
-  private var indicator: UIActivityIndicatorView!
+  fileprivate var coverImage: UIImageView!
+  fileprivate var indicator: UIActivityIndicatorView!
   
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)!
@@ -32,35 +32,35 @@ class AlbumView: UIView {
     setupComponents()
   }
   
-  func highlightAlbum(didHightlightView: Bool) {
+  func highlightAlbum(_ didHightlightView: Bool) {
     if didHightlightView {
-      backgroundColor = UIColor.whiteColor()
+      backgroundColor = UIColor.white
     } else {
-      backgroundColor = UIColor.blackColor()
+      backgroundColor = UIColor.black
     }
   }
   
-  private func setupUI() {
-    backgroundColor = UIColor.blueColor()
+  fileprivate func setupUI() {
+    backgroundColor = UIColor.blue
   }
   
-  private func setupComponents() {
+  fileprivate func setupComponents() {
     coverImage = UIImageView(frame: CGRect(x: 5, y: 5, width: frame.size.width - 10, height: frame.size.height - 10))
     addSubview(coverImage)
     
     indicator = UIActivityIndicatorView()
     indicator.center = center
-    indicator.activityIndicatorViewStyle = .WhiteLarge
+    indicator.activityIndicatorViewStyle = .whiteLarge
     indicator.startAnimating()
     addSubview(indicator)
     coverImage.addObserver(self, forKeyPath: "image", options: [], context: nil)
   }
   
-  private func setupNotification(albumCover: String) {
-    NSNotificationCenter.defaultCenter().postNotificationName(downloadImageNotification, object: self, userInfo: ["imageView":coverImage, "coverUrl" : albumCover])
+  fileprivate func setupNotification(_ albumCover: String) {
+    NotificationCenter.default.post(name: Notification.Name(rawValue: downloadImageNotification), object: self, userInfo: ["imageView":coverImage, "coverUrl" : albumCover])
   }
   
-  override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
     if keyPath == "image" {
       indicator.stopAnimating()
     }

@@ -11,28 +11,28 @@ import UIKit
 // Use Delegate and Protocol to implement Adapter Pattern
 @objc protocol HorizontalScrollerDelegate {
   // num of views to present inside the horizontal scroller
-  func numberOfViewsForHorizontalScroller(scroller: HorizontalScroller) -> Int
+  func numberOfViewsForHorizontalScroller(_ scroller: HorizontalScroller) -> Int
   
   // return the view that should appear at <index>
-  func horizontalScrollerViewAtIndex(scroller: HorizontalScroller, index:Int) -> UIView
+  func horizontalScrollerViewAtIndex(_ scroller: HorizontalScroller, index:Int) -> UIView
   
   // inform the delegate what the view at <index> has been clicked
-  func horizontalScrollerClickedViewAtIndex(scroller: HorizontalScroller, index:Int)
+  func horizontalScrollerClickedViewAtIndex(_ scroller: HorizontalScroller, index:Int)
   
   // return the index of the initial view to display. this method is optional
   // and defaults to 0 if it's not implemented by the delegate
-  optional func initialViewIndex(scroller: HorizontalScroller) -> Int
+  @objc optional func initialViewIndex(_ scroller: HorizontalScroller) -> Int
 }
 
 class HorizontalScroller: UIView {
   weak var delegate: HorizontalScrollerDelegate?
   
   // MARK: - Variables
-  private let VIEW_PADDING = 10
-  private let VIEW_DIMENSIONS = 100
-  private let VIEWS_OFFSET = 100
+  fileprivate let VIEW_PADDING = 10
+  fileprivate let VIEW_DIMENSIONS = 100
+  fileprivate let VIEWS_OFFSET = 100
   
-  private var scroller : UIScrollView!
+  fileprivate var scroller : UIScrollView!
   
   var viewArray = [UIView]()
   
@@ -55,10 +55,10 @@ class HorizontalScroller: UIView {
     scroller.translatesAutoresizingMaskIntoConstraints = false
     
     // apply constraints
-    self.addConstraint(NSLayoutConstraint(item: scroller, attribute: .Leading, relatedBy: .Equal, toItem: self, attribute: .Leading, multiplier: 1.0, constant: 0.0))
-    self.addConstraint(NSLayoutConstraint(item: scroller, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1.0, constant: 0.0))
-    self.addConstraint(NSLayoutConstraint(item: scroller, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0))
-    self.addConstraint(NSLayoutConstraint(item: scroller, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0))
+    self.addConstraint(NSLayoutConstraint(item: scroller, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0.0))
+    self.addConstraint(NSLayoutConstraint(item: scroller, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0.0))
+    self.addConstraint(NSLayoutConstraint(item: scroller, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
+    self.addConstraint(NSLayoutConstraint(item: scroller, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0))
     
     // add tap recognizer
     let tapRecognizer = UITapGestureRecognizer(target: self, action:#selector(HorizontalScroller.scrollerTapped(_:)))
@@ -71,8 +71,8 @@ class HorizontalScroller: UIView {
   }
   
   // MARK: - Public Functions
-  func scrollerTapped(gesture: UITapGestureRecognizer) {
-    let location = gesture.locationInView(gesture.view)
+  func scrollerTapped(_ gesture: UITapGestureRecognizer) {
+    let location = gesture.location(in: gesture.view)
     
     guard let delegate = delegate else {
       return
@@ -81,7 +81,7 @@ class HorizontalScroller: UIView {
     for index in 0 ..< delegate.numberOfViewsForHorizontalScroller(self) {
       let view = scroller.subviews[index] 
       
-      if CGRectContainsPoint(view.frame, location) {
+      if view.frame.contains(location) {
         delegate.horizontalScrollerClickedViewAtIndex(self, index: index)
         
         // center the tapped view in the scroll view
@@ -92,7 +92,7 @@ class HorizontalScroller: UIView {
     }
   }
   
-  func viewAtIndex(index :Int) -> UIView {
+  func viewAtIndex(_ index :Int) -> UIView {
     return viewArray[index]
   }
   
@@ -103,9 +103,9 @@ class HorizontalScroller: UIView {
       viewArray = []
       
       // remove all subviews
-      let views: NSArray = scroller.subviews
+      let views: NSArray = scroller.subviews as NSArray
       for view in views {
-        view.removeFromSuperview()
+        (view as AnyObject).removeFromSuperview()
       }
       
       // xValue is the starting point of the views inside the scroller
@@ -114,7 +114,7 @@ class HorizontalScroller: UIView {
         // add a view at the right position
         xValue += VIEW_PADDING
         let view = delegate.horizontalScrollerViewAtIndex(self, index: index)
-        view.frame = CGRectMake(CGFloat(xValue), CGFloat(VIEW_PADDING), CGFloat(VIEW_DIMENSIONS), CGFloat(VIEW_DIMENSIONS))
+        view.frame = CGRect(x: CGFloat(xValue), y: CGFloat(VIEW_PADDING), width: CGFloat(VIEW_DIMENSIONS), height: CGFloat(VIEW_DIMENSIONS))
         scroller.addSubview(view)
         xValue += VIEW_DIMENSIONS + VIEW_PADDING
         
@@ -122,7 +122,7 @@ class HorizontalScroller: UIView {
         viewArray.append(view)
       }
       
-      scroller.contentSize = CGSizeMake(CGFloat(xValue + VIEWS_OFFSET), frame.size.height)
+      scroller.contentSize = CGSize(width: CGFloat(xValue + VIEWS_OFFSET), height: frame.size.height)
       
       // if an initial view is defined, center the scroller on it
       if let initialView = delegate.initialViewIndex?(self) {
@@ -143,13 +143,13 @@ class HorizontalScroller: UIView {
 }
 
 extension HorizontalScroller: UIScrollViewDelegate {
-  func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     if !decelerate {
       centerCurrentView()
     }
   }
   
-  func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
     centerCurrentView()
   }
 }

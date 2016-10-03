@@ -9,12 +9,12 @@
 import UIKit
 
 class PersistencyManager: NSObject {
-  private var albums = [Album]()
+  fileprivate var albums = [Album]()
   
   override init() {
     super.init()
-    if let data = NSData(contentsOfFile: NSHomeDirectory().stringByAppendingString("/Documents/albums.bin")) {
-      let unarchiveAlbums = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [Album]?
+    if let data = try? Data(contentsOf: URL(fileURLWithPath: NSHomeDirectory() + "/Documents/albums.bin")) {
+      let unarchiveAlbums = NSKeyedUnarchiver.unarchiveObject(with: data) as! [Album]?
       if let unwrappedAlbum = unarchiveAlbums {
         albums = unwrappedAlbum
       }
@@ -60,38 +60,38 @@ class PersistencyManager: NSObject {
   }
   
   func saveAlbums() {
-    let filename = NSHomeDirectory().stringByAppendingString("/Documents/albums.bin")
-    let data = NSKeyedArchiver.archivedDataWithRootObject(albums)
-    data.writeToFile(filename, atomically: true)
+    let filename = NSHomeDirectory() + "/Documents/albums.bin"
+    let data = NSKeyedArchiver.archivedData(withRootObject: albums)
+    try? data.write(to: URL(fileURLWithPath: filename), options: [.atomic])
   }
   
   func getAlbums() -> [Album] {
     return albums
   }
   
-  func addAlbum(album: Album, index: Int) {
+  func addAlbum(_ album: Album, index: Int) {
     if albums.count >= index {
-      albums.insert(album, atIndex: index)
+      albums.insert(album, at: index)
     } else {
       albums.append(album)
     }
   }
   
-  func deleteAlbumAtIndex(index: Int) {
-    albums.removeAtIndex(index)
+  func deleteAlbumAtIndex(_ index: Int) {
+    albums.remove(at: index)
   }
   
-  func saveImage(image: UIImage, filename: String) {
-    let path = NSHomeDirectory().stringByAppendingString("/Documents/\(filename)")
+  func saveImage(_ image: UIImage, filename: String) {
+    let path = NSHomeDirectory() + "/Documents/\(filename)"
     let data = UIImagePNGRepresentation(image)
-    data!.writeToFile(path, atomically: true)
+    try? data!.write(to: URL(fileURLWithPath: path), options: [.atomic])
   }
   
-  func getImage(filename: String) -> UIImage? {
-    let path = NSHomeDirectory().stringByAppendingString("/Documents/\(filename)")
+  func getImage(_ filename: String) -> UIImage? {
+    let path = NSHomeDirectory() + "/Documents/\(filename)"
     
     do {
-      let data = try NSData(contentsOfFile: path, options: .UncachedRead)
+      let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .uncachedRead)
       return UIImage(data: data)
     } catch {
       return nil
