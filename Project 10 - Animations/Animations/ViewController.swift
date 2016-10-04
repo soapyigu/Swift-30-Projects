@@ -17,7 +17,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var masterTableView: UITableView!
   
   // MARK: - Variables
-  private let items = ["2-Color", "Simple 2D Rotation", "Multicolor", "Multi Point Position", "BezierCurve Position",
+  fileprivate let items = ["2-Color", "Simple 2D Rotation", "Multicolor", "Multi Point Position", "BezierCurve Position",
                        "Color and Frame Change", "View Fade In", "Pop"]
   
   
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     animateTable()
   }
   
@@ -38,27 +38,27 @@ class ViewController: UIViewController {
     
     // move all cells to the bottom of the screen
     for cell in cells {
-      cell.transform = CGAffineTransformMakeTranslation(0, tableHeight)
+      cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
     }
     
     // move all cells from bottom to the right place
     var index = 0
     for cell in cells {
-      UIView.animateWithDuration(duration, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
-        cell.transform = CGAffineTransformMakeTranslation(0, 0)
+      UIView.animate(withDuration: duration, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+        cell.transform = CGAffineTransform(translationX: 0, y: 0)
         }, completion: nil)
       index += 1
     }
   }
   
   // MARK: - Segue
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == segueDetailIdentifier {
-      let detailView = segue.destinationViewController as! DetailViewController
+      let detailView = segue.destination as! DetailViewController
       let indexPath = masterTableView.indexPathForSelectedRow
       
       if let indexPath = indexPath {
-        detailView.barTitle = self.items[indexPath.row]
+        detailView.barTitle = self.items[(indexPath as NSIndexPath).row]
       }
     }
   }
@@ -66,30 +66,30 @@ class ViewController: UIViewController {
 
 // MARK: - UITableViewDelegate
 extension ViewController: UITableViewDelegate {
-  func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return CGFloat(headerHeight)
   }
   
-  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return "Basic Animations"
   }
 }
 
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
-  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
   
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return items.count
   }
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cellIdentifier = "cell"
-    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
     
-    cell.textLabel?.text = self.items[indexPath.row]
+    cell.textLabel?.text = self.items[(indexPath as NSIndexPath).row]
     
     return cell
   }

@@ -13,9 +13,9 @@ class DetailViewController: UIViewController {
   // MARK: - Variables
   var barTitle = ""
   var animateView: UIView!
-  private let duration = 2.0
-  private let delay = 0.2
-  private let scale = 1.2
+  fileprivate let duration = 2.0
+  fileprivate let delay = 0.2
+  fileprivate let scale = 1.2
   
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -24,11 +24,11 @@ class DetailViewController: UIViewController {
     setupNavigationBar()
   }
   
-  private func setupNavigationBar() {
+  fileprivate func setupNavigationBar() {
     navigationController?.navigationBar.topItem?.title = barTitle
   }
   
-  private func setupRect() {
+  fileprivate func setupRect() {
     if barTitle == "BezierCurve Position" {
       animateView = drawCircleView()
       
@@ -37,22 +37,22 @@ class DetailViewController: UIViewController {
       animateView.frame = generalFrame
       animateView.center = generalCenter
     } else {
-      animateView = drawRectView(UIColor.redColor(), frame: generalFrame, center: generalCenter)
+      animateView = drawRectView(UIColor.red, frame: generalFrame, center: generalCenter)
     }
     view.addSubview(animateView)
   }
   
   // MARK: - IBAction
-  @IBAction func didTapAnimate(sender: AnyObject) {
+  @IBAction func didTapAnimate(_ sender: AnyObject) {
     switch barTitle {
     case "2-Color":
-      changeColor(UIColor.greenColor())
+      changeColor(UIColor.green)
       
     case "Simple 2D Rotation":
       rotateView(M_PI)
       
     case "Multicolor":
-      multiColor(UIColor.greenColor(), UIColor.blueColor())
+      multiColor(UIColor.green, UIColor.blue)
       
     case "Multi Point Position":
       multiPosition(CGPoint(x: animateView.frame.origin.x, y: 100), CGPoint(x: animateView.frame.origin.x, y: 350))
@@ -70,10 +70,10 @@ class DetailViewController: UIViewController {
       
     case "Color and Frame Change":
       let currentFrame = self.animateView.frame
-      let firstFrame = CGRectInset(currentFrame, -30, -50)
-      let secondFrame = CGRectInset(firstFrame, 10, 15)
-      let thirdFrame = CGRectInset(secondFrame, -15, -20)
-      colorFrameChange(firstFrame, secondFrame, thirdFrame, UIColor.orangeColor(), UIColor.yellowColor(), UIColor.greenColor())
+      let firstFrame = currentFrame.insetBy(dx: -30, dy: -50)
+      let secondFrame = firstFrame.insetBy(dx: 10, dy: 15)
+      let thirdFrame = secondFrame.insetBy(dx: -15, dy: -20)
+      colorFrameChange(firstFrame, secondFrame, thirdFrame, UIColor.orange, UIColor.yellow, UIColor.green)
       
     case "View Fade In":
       viewFadeIn()
@@ -83,56 +83,56 @@ class DetailViewController: UIViewController {
       
     default:
       let alert = makeAlert("Alert", message: "The animation not implemented yet", actionTitle: "OK")
-      self.presentViewController(alert, animated: true, completion: nil)
+      self.present(alert, animated: true, completion: nil)
     }
   }
   
   // MARK: - Private Methods for Animations
-  private func changeColor(color: UIColor) {
-    UIView.animateWithDuration(self.duration, animations: {
+  fileprivate func changeColor(_ color: UIColor) {
+    UIView.animate(withDuration: self.duration, animations: {
       self.animateView.backgroundColor = color
       }, completion: nil)
   }
   
-  private func multiColor(firstColor: UIColor, _ secondColor: UIColor) {
-    UIView.animateWithDuration(duration, animations: {
+  fileprivate func multiColor(_ firstColor: UIColor, _ secondColor: UIColor) {
+    UIView.animate(withDuration: duration, animations: {
       self.animateView.backgroundColor = firstColor
       }, completion: { finished in
         self.changeColor(secondColor)
     })
   }
   
-  private func simplePosition(pos: CGPoint) {
-    UIView.animateWithDuration(self.duration, animations: {
+  fileprivate func simplePosition(_ pos: CGPoint) {
+    UIView.animate(withDuration: self.duration, animations: {
       self.animateView.frame.origin = pos
       }, completion: nil)
   }
   
-  private func multiPosition(firstPos: CGPoint, _ secondPos: CGPoint) {
-    UIView.animateWithDuration(self.duration, animations: {
+  fileprivate func multiPosition(_ firstPos: CGPoint, _ secondPos: CGPoint) {
+    UIView.animate(withDuration: self.duration, animations: {
       self.animateView.frame.origin = firstPos
       }, completion: { finished in
         self.simplePosition(secondPos)
     })
   }
   
-  private func rotateView(angel: Double) {
-    UIView.animateWithDuration(duration, delay: delay, options: [.Repeat], animations: {
-      self.animateView.transform = CGAffineTransformMakeRotation(CGFloat(angel))
+  fileprivate func rotateView(_ angel: Double) {
+    UIView.animate(withDuration: duration, delay: delay, options: [.repeat], animations: {
+      self.animateView.transform = CGAffineTransform(rotationAngle: CGFloat(angel))
       }, completion: nil)
   }
   
-  private func colorFrameChange(firstFrame: CGRect, _ secondFrame: CGRect, _ thirdFrame: CGRect,
+  fileprivate func colorFrameChange(_ firstFrame: CGRect, _ secondFrame: CGRect, _ thirdFrame: CGRect,
                                 _ firstColor: UIColor, _ secondColor: UIColor, _ thirdColor: UIColor) {
-    UIView.animateWithDuration(self.duration, animations: {
+    UIView.animate(withDuration: self.duration, animations: {
       self.animateView.backgroundColor = firstColor
       self.animateView.frame = firstFrame
       }, completion: { finished in
-        UIView.animateWithDuration(self.duration, animations: {
+        UIView.animate(withDuration: self.duration, animations: {
           self.animateView.backgroundColor = secondColor
           self.animateView.frame = secondFrame
           }, completion: { finished in
-            UIView.animateWithDuration(self.duration, animations: {
+            UIView.animate(withDuration: self.duration, animations: {
               self.animateView.backgroundColor = thirdColor
               self.animateView.frame = thirdFrame
               }, completion: nil)
@@ -140,46 +140,46 @@ class DetailViewController: UIViewController {
     })
   }
   
-  private func curvePath(endPoint: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint) {
+  fileprivate func curvePath(_ endPoint: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint) {
     let path = UIBezierPath()
-    path.moveToPoint(self.animateView.center)
+    path.move(to: self.animateView.center)
     
-    path.addCurveToPoint(endPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
+    path.addCurve(to: endPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
 
     // create a new CAKeyframeAnimation that animates the objects position
     let anim = CAKeyframeAnimation(keyPath: "position")
     
     // set the animations path to our bezier curve
-    anim.path = path.CGPath
+    anim.path = path.cgPath
     
     // set some more parameters for the animation
     anim.duration = self.duration
     
     // add the animation to the squares 'layer' property
-    self.animateView.layer.addAnimation(anim, forKey: "animate position along path")
+    self.animateView.layer.add(anim, forKey: "animate position along path")
     self.animateView.center = endPoint
   }
   
-  private func viewFadeIn() {
+  fileprivate func viewFadeIn() {
     let secondView = UIImageView(image: UIImage(named: "facebook"))
     secondView.frame = self.animateView.frame
     secondView.alpha = 0.0
     
     view.insertSubview(secondView, aboveSubview: self.animateView)
     
-    UIView.animateWithDuration(duration, delay: delay, options: .CurveEaseOut, animations: {
+    UIView.animate(withDuration: duration, delay: delay, options: .curveEaseOut, animations: {
       secondView.alpha = 1.0
       self.animateView.alpha = 0.0
       }, completion: nil)
   }
   
-  private func Pop() {
-    UIView.animateWithDuration(duration / 4,
+  fileprivate func Pop() {
+    UIView.animate(withDuration: duration / 4,
       animations: {
-      self.animateView.transform = CGAffineTransformMakeScale(CGFloat(self.scale), CGFloat(self.scale))
+      self.animateView.transform = CGAffineTransform(scaleX: CGFloat(self.scale), y: CGFloat(self.scale))
       }, completion: { finished in
-        UIView.animateWithDuration(self.duration / 4, animations: {
-          self.animateView.transform = CGAffineTransformIdentity
+        UIView.animate(withDuration: self.duration / 4, animations: {
+          self.animateView.transform = CGAffineTransform.identity
         })
     })
   }
