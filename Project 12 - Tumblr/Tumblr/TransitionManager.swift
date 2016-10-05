@@ -9,15 +9,15 @@
 import UIKit
 
 class TransitionManager: NSObject {
-  private var presenting = false
+  fileprivate var presenting = false
 }
 
 extension TransitionManager: UIViewControllerAnimatedTransitioning {
-  func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-    let container = transitionContext.containerView()
+  func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    let container = transitionContext.containerView
     
     // create a tuple of our screens
-    let screens : (from:UIViewController, to:UIViewController) = (transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!, transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!)
+    let screens : (from:UIViewController, to:UIViewController) = (transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!, transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!)
     
     // assign references to our menu view controller and the 'bottom' view controller from the tuple
     // remember that our menuViewController will alternate between the from and to view controller depending if we're presenting or dismissing
@@ -34,12 +34,12 @@ extension TransitionManager: UIViewControllerAnimatedTransitioning {
     }
     
     // add the both views to our view controller
-    container!.addSubview(bottomView)
-    container!.addSubview(menuView)
+    container.addSubview(bottomView!)
+    container.addSubview(menuView!)
     
-    let duration = self.transitionDuration(transitionContext)
+    let duration = self.transitionDuration(using: transitionContext)
     
-    UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8, options: [], animations: {
+    UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8, options: [], animations: {
       
       if (self.presenting){
         self.onStageMenuController(menuViewController) // onstage items: slide in
@@ -50,20 +50,20 @@ extension TransitionManager: UIViewControllerAnimatedTransitioning {
       
       }, completion: { finished in
         transitionContext.completeTransition(true)
-        UIApplication.sharedApplication().keyWindow?.addSubview(screens.to.view)
+        UIApplication.shared.keyWindow?.addSubview(screens.to.view)
         
     })
   }
   
-  func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+  func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
     return 0.5
   }
   
-  func offStage(amount: CGFloat) -> CGAffineTransform {
-    return CGAffineTransformMakeTranslation(amount, 0)
+  func offStage(_ amount: CGFloat) -> CGAffineTransform {
+    return CGAffineTransform(translationX: amount, y: 0)
   }
   
-  func offStageMenuController(menuViewController: MenuViewController){
+  func offStageMenuController(_ menuViewController: MenuViewController){
     
     menuViewController.view.alpha = 0
     
@@ -94,40 +94,40 @@ extension TransitionManager: UIViewControllerAnimatedTransitioning {
     
   }
   
-  func onStageMenuController(menuViewController: MenuViewController){
+  func onStageMenuController(_ menuViewController: MenuViewController){
     
     // prepare menu to fade in
     menuViewController.view.alpha = 1
     
-    menuViewController.textPostIcon.transform = CGAffineTransformIdentity
-    menuViewController.textPostLabel.transform = CGAffineTransformIdentity
+    menuViewController.textPostIcon.transform = CGAffineTransform.identity
+    menuViewController.textPostLabel.transform = CGAffineTransform.identity
     
-    menuViewController.quotePostIcon.transform = CGAffineTransformIdentity
-    menuViewController.quotePostLabel.transform = CGAffineTransformIdentity
+    menuViewController.quotePostIcon.transform = CGAffineTransform.identity
+    menuViewController.quotePostLabel.transform = CGAffineTransform.identity
     
-    menuViewController.chatPostIcon.transform = CGAffineTransformIdentity
-    menuViewController.chatPostLabel.transform = CGAffineTransformIdentity
+    menuViewController.chatPostIcon.transform = CGAffineTransform.identity
+    menuViewController.chatPostLabel.transform = CGAffineTransform.identity
     
-    menuViewController.photoPostIcon.transform = CGAffineTransformIdentity
-    menuViewController.photoPostLabel.transform = CGAffineTransformIdentity
+    menuViewController.photoPostIcon.transform = CGAffineTransform.identity
+    menuViewController.photoPostLabel.transform = CGAffineTransform.identity
     
-    menuViewController.linkPostIcon.transform = CGAffineTransformIdentity
-    menuViewController.linkPostLabel.transform = CGAffineTransformIdentity
+    menuViewController.linkPostIcon.transform = CGAffineTransform.identity
+    menuViewController.linkPostLabel.transform = CGAffineTransform.identity
     
-    menuViewController.audioPostIcon.transform = CGAffineTransformIdentity
-    menuViewController.audioPostLabel.transform = CGAffineTransformIdentity
+    menuViewController.audioPostIcon.transform = CGAffineTransform.identity
+    menuViewController.audioPostLabel.transform = CGAffineTransform.identity
     
   }
 
 }
 
 extension TransitionManager: UIViewControllerTransitioningDelegate {
-  func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     self.presenting = true
     return self
   }
   
-  func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     self.presenting = false
     return self
   }

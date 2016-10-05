@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     navigationController?.toolbar.clipsToBounds = true
   }
   
-  @IBAction func unwindToMainViewController (sender: UIStoryboardSegue){
-    dismissViewControllerAnimated(true, completion: nil)
+  @IBAction func unwindToMainViewController (_ sender: UIStoryboardSegue){
+    dismiss(animated: true, completion: nil)
   }
 }
