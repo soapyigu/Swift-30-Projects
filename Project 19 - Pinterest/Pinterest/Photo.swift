@@ -12,8 +12,8 @@ class Photo {
   
   class func allPhotos() -> [Photo] {
     var photos = [Photo]()
-    if let URL = NSBundle.mainBundle().URLForResource("Photos", withExtension: "plist") {
-      if let photosFromPlist = NSArray(contentsOfURL: URL) {
+    if let URL = Bundle.main.url(forResource: "Photos", withExtension: "plist") {
+      if let photosFromPlist = NSArray(contentsOf: URL) {
         for dictionary in photosFromPlist {
           let photo = Photo(dictionary: dictionary as! NSDictionary)
           photos.append(photo)
@@ -41,8 +41,8 @@ class Photo {
     self.init(caption: caption!, comment: comment!, image: image!)
   }
   
-  func heightForComment(font: UIFont, width: CGFloat) -> CGFloat {
-    let rect = NSString(string: comment).boundingRectWithSize(CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+  func heightForComment(_ font: UIFont, width: CGFloat) -> CGFloat {
+    let rect = NSString(string: comment).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
     return ceil(rect.height)
   }
   

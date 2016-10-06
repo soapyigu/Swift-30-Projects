@@ -10,10 +10,10 @@ import UIKit
 
 class AnnotatedPhotoCell: UICollectionViewCell {
   
-  @IBOutlet private weak var imageView: UIImageView!
-  @IBOutlet private weak var imageViewHeightLayoutConstraint: NSLayoutConstraint!
-  @IBOutlet private weak var captionLabel: UILabel!
-  @IBOutlet private weak var commentLabel: UILabel!
+  @IBOutlet fileprivate weak var imageView: UIImageView!
+  @IBOutlet fileprivate weak var imageViewHeightLayoutConstraint: NSLayoutConstraint!
+  @IBOutlet fileprivate weak var captionLabel: UILabel!
+  @IBOutlet fileprivate weak var commentLabel: UILabel!
   
   var photo: Photo? {
     didSet {
@@ -25,8 +25,8 @@ class AnnotatedPhotoCell: UICollectionViewCell {
     }
   }
   
-  override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
-    super.applyLayoutAttributes(layoutAttributes)
+  override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+    super.apply(layoutAttributes)
     if let attributes = layoutAttributes as? PinterestLayoutAttributes {
       imageViewHeightLayoutConstraint.constant = attributes.photoHeight
     }
