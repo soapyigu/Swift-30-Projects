@@ -108,9 +108,13 @@ class ChatViewController: UIViewController {
           message.incoming = false
           self.messages.append(message)
           
+          self.newMessageView.inputTextView.text = ""
+          self.dismissKeyboard()
+          
           self.tableView.reloadData()
           self.tableView.scrollToBottom()
-        }).addDisposableTo(disposeBag)
+        })
+      .addDisposableTo(disposeBag)
   }
   
   private func updateBottomConstraint(forNotication notification: NSNotification) {
