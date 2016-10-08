@@ -82,6 +82,7 @@ class ChatViewController: UIViewController {
       .subscribe(
         onNext: { [unowned self] notification in
           self.updateBottomConstraint(forNotication: notification as NSNotification)
+          self.tableView.scrollToBottom()
         }).addDisposableTo(disposeBag)
     
     // keyboard dismiss animation
