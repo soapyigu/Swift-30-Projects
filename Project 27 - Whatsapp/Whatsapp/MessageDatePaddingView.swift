@@ -31,25 +31,23 @@ final class MessageDatePaddingView: UIView {
   
     layer.cornerRadius = 10.0
     layer.masksToBounds = true
-    backgroundColor = UIColor(red: 153/255, green: 204/255, blue: 255/255, alpha: 1.0)
+    backgroundColor = UIColor(red: 153/255, green: 204/255, blue: 255/255, alpha: 1)
     
     // set up layout
     translatesAutoresizingMaskIntoConstraints = false
     let constraints = [
-      leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-      trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-      topAnchor.constraint(equalTo: superview.topAnchor),
-      bottomAnchor.constraint(equalTo: superview.bottomAnchor)
+      centerXAnchor.constraint(equalTo: superview.centerXAnchor),
+      centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: -8)
     ]
     Helper.setupContraints(view: self, superView: superview, constraints: constraints)
     
     dateLabel.translatesAutoresizingMaskIntoConstraints = false
     let labelConstraints = [
       dateLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-      dateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+      dateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+      dateLabel.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -5),
+      dateLabel.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -10)
     ]
     Helper.setupContraints(view: dateLabel, superView: self, constraints: labelConstraints)
-    
-    backgroundColor = UIColor.clear
   }
 }
