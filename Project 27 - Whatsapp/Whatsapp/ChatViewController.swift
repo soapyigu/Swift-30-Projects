@@ -13,12 +13,16 @@ class ChatViewController: UIViewController {
   // MARK: - Variables
   let cellIdentifier = "Cell"
   
-  var messages = [Message]()
   var incoming: Bool = false
+  
+  var messageSections = [Date: [Message]]()
+  var dates = [Date]()
   
   private let tableView = ChatTableView()
   private let newMessageView = NewMessageView()
   private var newMessageViewBottomConstraint: NSLayoutConstraint!
+  
+  let date = Date.init(timeIntervalSince1970: 1100000000)
   
   private let disposeBag = DisposeBag()
   
@@ -55,12 +59,16 @@ class ChatViewController: UIViewController {
   }
   
   private func setupMessages() {
-    for _ in 0 ... 10 {
-      let message = Message(text: "Hello, this is the longer message")
+    for i in 0 ... 10 {
+      let message = Message(text: "Hello, this is the longer message", date: date)
       message.incoming = incoming
       incoming = !incoming
+      
+      if i % 2 == 0 {
+        message.date = Date.init(timeInterval: 60 * 60 * 24, since: date)
+      }
 
-      messages.append(message)
+      addMessage(message: message)
     }
   }
   
@@ -102,12 +110,14 @@ class ChatViewController: UIViewController {
       .bindTo(newMessageView.sendButton.rx.enabled)
       .addDisposableTo(disposeBag)
     
+    
+    
     newMessageView.sendButton
       .rx.tap.subscribe(
         onNext: { [unowned self] _ in
-          let message = Message(text: self.newMessageView.inputTextView.text)
+          let message = Message(text: self.newMessageView.inputTextView.text, date: self.date)
           message.incoming = false
-          self.messages.append(message)
+          self.addMessage(message: message)
           
           self.newMessageView.inputTextView.text = ""
           self.dismissKeyboard()
@@ -144,6 +154,21 @@ class ChatViewController: UIViewController {
     })
   }
   
+  private func addMessage(message: Message) {
+    guard let messageDate = message.date else {
+      return
+    }
+    
+    let startDay = NSCalendar.current.startOfDay(for: messageDate)
+    
+    if let _ = messageSections[startDay] {
+      messageSections[startDay]!.append(message)
+    } else {
+      dates.append(startDay)
+      messageSections[startDay] = [message]
+    }
+  }
+  
   // MARK: - general helpful functions
   func dismissKeyboard() {
     view.endEditing(true)
@@ -152,13 +177,28 @@ class ChatViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 extension ChatViewController: UITableViewDataSource {
+  func getMessages(section: Int) -> [Message] {
+    let date = dates[section]
+    
+    guard let messages = messageSections[date] else {
+      return [Message]()
+    }
+    
+    return messages
+  }
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return dates.count
+  }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return messages.count
+    return getMessages(section: section).count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ChatCell
     
+    let messages = getMessages(section: indexPath.section)
     let message = messages[indexPath.row]
     cell.messageLabel.text = message.text
     cell.incoming(incoming: message.incoming)
