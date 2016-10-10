@@ -9,38 +9,37 @@ import UIKit
 
 final public class NewMessageView: UIView {
   // MARK: - UI Components
-  lazy var inputTextView: UITextView = {
-    let textField = UITextView()
-    textField.isScrollEnabled = false
-    textField.layer.cornerRadius = 5.0
-    return textField
-  }()
+  lazy var inputTextView = UITextView().then {
+    $0.isScrollEnabled = false
+    $0.layer.cornerRadius = 5.0
+  }
   
-  lazy var sendButton: UIButton = {
-    let button = UIButton()
-    button.setTitle("Send", for: .normal)
-    button.setContentHuggingPriority(251, for: .horizontal)
-    button.setContentCompressionResistancePriority(751, for: .horizontal)
-    return button
-  }()
+  lazy var sendButton = UIButton().then {
+    $0.setTitle("Send", for: .normal)
+    $0.setContentHuggingPriority(251, for: .horizontal)
+    $0.setContentCompressionResistancePriority(751, for: .horizontal)
+  }
   
   override public func didMoveToSuperview() {
     setupUI(superview: superview)
   }
   
   private func setupUI(superview: UIView?) {
-    // set up layouts
-    if let superview = superview {
-      translatesAutoresizingMaskIntoConstraints = false
-      
-      let constraints = [
-        leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-        trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-        heightAnchor.constraint(equalToConstant: 50.0)
-      ]
-      
-      NSLayoutConstraint.activate(constraints)
+    guard let superview = superview else {
+      return
     }
+    
+    // set up layout
+    translatesAutoresizingMaskIntoConstraints = false
+    
+    let constraints = [
+      leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+      trailingAnchor.constraint(equalTo: superview.trailingAnchor),
+      heightAnchor.constraint(equalToConstant: 50.0)
+    ]
+    
+    NSLayoutConstraint.activate(constraints)
+    
     
     // set up properties
     backgroundColor = UIColor.lightGray
@@ -57,7 +56,7 @@ final public class NewMessageView: UIView {
       sendButton.leadingAnchor.constraint(equalTo: inputTextView.trailingAnchor, constant: 10.0),
       sendButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10.0),
       sendButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-    ]
+      ]
     Helper.setupContraints(view: sendButton, superView: self, constraints: sendButtonConstraints)
   }
 }

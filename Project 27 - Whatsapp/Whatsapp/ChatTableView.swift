@@ -8,9 +8,9 @@
 import UIKit
 
 final class ChatTableView: UITableView, Scroll {
+  
   override public func didMoveToSuperview() {
     self.estimatedRowHeight = 56.0    
     self.separatorStyle = .none
-
   }
 }

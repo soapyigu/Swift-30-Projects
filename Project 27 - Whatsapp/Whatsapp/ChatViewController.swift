@@ -18,11 +18,11 @@ class ChatViewController: UIViewController {
   var messageSections = [Date: [Message]]()
   var dates = [Date]()
   
-  private let tableView = ChatTableView()
+  private let tableView = ChatTableView(frame: CGRect.zero, style: .grouped)
   private let newMessageView = NewMessageView()
   private var newMessageViewBottomConstraint: NSLayoutConstraint!
   
-  let date = Date.init(timeIntervalSince1970: 1100000000)
+  var date = Date.init(timeIntervalSince1970: 1100000000)
   
   private let disposeBag = DisposeBag()
   
@@ -56,6 +56,8 @@ class ChatViewController: UIViewController {
       tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
     ]
     Helper.setupContraints(view: tableView, superView: view, constraints: tableViewContraints)
+    
+    
   }
   
   private func setupMessages() {
@@ -65,7 +67,7 @@ class ChatViewController: UIViewController {
       incoming = !incoming
       
       if i % 2 == 0 {
-        message.date = Date.init(timeInterval: 60 * 60 * 24, since: date)
+        date = Date.init(timeInterval: 60 * 60 * 24, since: date)
       }
 
       addMessage(message: message)
@@ -203,6 +205,17 @@ extension ChatViewController: UITableViewDataSource {
     cell.messageLabel.text = message.text
     cell.incoming(incoming: message.incoming)
     return cell
+  }
+  
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let headerView = UIView()
+    headerView.backgroundColor = UIColor.clear
+    
+    let messageDateView = MessageDatePaddingView()
+    messageDateView.setupDate(date: dates[section])
+    
+    headerView.addSubview(messageDateView)
+    return headerView
   }
 }
 
