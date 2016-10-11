@@ -217,6 +217,14 @@ extension ChatViewController: UITableViewDataSource {
     headerView.addSubview(messageDateView)
     return headerView
   }
+  
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    return UIView()
+  }
+  
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 0.01
+  }
 }
 
 // MARK: - UITableViewDelegate

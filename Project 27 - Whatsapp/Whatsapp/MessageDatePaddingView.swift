@@ -37,7 +37,7 @@ final class MessageDatePaddingView: UIView {
     translatesAutoresizingMaskIntoConstraints = false
     let constraints = [
       centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-      centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: -8)
+      centerYAnchor.constraint(equalTo: superview.centerYAnchor)
     ]
     Helper.setupContraints(view: self, superView: superview, constraints: constraints)
     
