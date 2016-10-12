@@ -14,11 +14,17 @@ protocol Scroll {
 
 extension Scroll where Self: UITableView {
   func scrollToBottom() {
-    guard self.numberOfRows(inSection: 0) > 0 else {
+    let lastSection = numberOfSections - 1
+    guard lastSection >= 0 else {
       return
     }
     
-    let indexPath = IndexPath.init(row: self.numberOfRows(inSection: 0) - 1, section: 0)
+    let lastRow = numberOfRows(inSection: lastSection) - 1
+    guard lastRow >= 0 else {
+      return
+    }
+    
+    let indexPath = IndexPath.init(row: lastRow, section: lastSection)
     self.scrollToRow(at: indexPath, at: .bottom, animated: true)
   }
 }
