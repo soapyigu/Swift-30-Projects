@@ -89,7 +89,7 @@
 				192AAAC91DA070E500CDF011 /* Scroll.swift */,
 				19D369B71DAB5D4A0015F0DC /* Then.swift */,
 			);
-			name = Helper;
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		194C7C3B1D8BBEF200B50295 = {
@@ -142,7 +142,7 @@
 			children = (
 				194C7C491D8BBEF200B50295 /* ChatViewController.swift */,
 			);
-			name = Controller;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		19C981301D91C48A00ABE1B7 /* Model */ = {
@@ -150,7 +150,7 @@
 			children = (
 				19C9812E1D91C48300ABE1B7 /* Message.swift */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		19C981331D91C86500ABE1B7 /* View */ = {
@@ -161,7 +161,7 @@
 				192AAAC71D988BC900CDF011 /* NewMessageView.swift */,
 				19D369B51DAB5D100015F0DC /* MessageDatePaddingView.swift */,
 			);
-			name = View;
+			path = View;
 			sourceTree = "<group>";
 		};
 		5CA76EB6ACC2B56939B08751 /* Pods */ = {
@@ -538,6 +538,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 44JDRP3T56;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Whatsapp",
+				);
 				INFOPLIST_FILE = Whatsapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -553,6 +557,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 44JDRP3T56;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Whatsapp",
+				);
 				INFOPLIST_FILE = Whatsapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
