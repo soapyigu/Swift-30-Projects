@@ -7,10 +7,26 @@
 
 import UIKit
 
-final class ChatTableView: UITableView, Scroll {
+final public class ChatTableView: UITableView, Scroll {
   
   override public func didMoveToSuperview() {
-    self.estimatedRowHeight = 56.0    
-    self.separatorStyle = .none
+    estimatedRowHeight = 56.0
+    separatorStyle = .none
+    
+    setupUI(superview: superview)
+  }
+  
+  private func setupUI(superview: UIView?) {
+    guard let superview = superview else {
+      return
+    }
+    
+    let constraints = [
+      topAnchor.constraint(equalTo: superview.topAnchor),
+      leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+      trailingAnchor.constraint(equalTo: superview.trailingAnchor)
+    ]
+    
+    Helper.setupContraints(view: self, superView: superview, constraints: constraints)
   }
 }

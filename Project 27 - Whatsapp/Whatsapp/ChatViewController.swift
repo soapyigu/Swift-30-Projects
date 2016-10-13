@@ -50,14 +50,9 @@ class ChatViewController: UIViewController {
     
     // set up UI
     let tableViewContraints = [
-      tableView.topAnchor.constraint(equalTo: view.topAnchor),
-      tableView.bottomAnchor.constraint(equalTo: newMessageView.topAnchor),
-      tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+      tableView.bottomAnchor.constraint(equalTo: newMessageView.topAnchor)
     ]
     Helper.setupContraints(view: tableView, superView: view, constraints: tableViewContraints)
-    
-    
   }
   
   private func setupMessages() {
@@ -69,16 +64,15 @@ class ChatViewController: UIViewController {
       if i % 2 == 0 {
         date = Date.init(timeInterval: 60 * 60 * 24, since: date)
       }
-
+      
       addMessage(message: message)
     }
   }
   
   private func setupNewMessageView() {
-    view.addSubview(newMessageView)
-    
     newMessageViewBottomConstraint = newMessageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-    newMessageViewBottomConstraint.isActive = true
+    
+    Helper.setupContraints(view: newMessageView, superView: view, constraints: [newMessageViewBottomConstraint])
   }
   
   private func setupEvents() {
@@ -111,8 +105,6 @@ class ChatViewController: UIViewController {
     inputTextValidation
       .bindTo(newMessageView.sendButton.rx.enabled)
       .addDisposableTo(disposeBag)
-    
-    
     
     newMessageView.sendButton
       .rx.tap.subscribe(

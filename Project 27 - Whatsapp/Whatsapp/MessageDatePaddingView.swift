@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MessageDatePaddingView: UIView {
+final public class MessageDatePaddingView: UIView {
   
   // MARK: UI Components
   private var dateLabel = UILabel().then {

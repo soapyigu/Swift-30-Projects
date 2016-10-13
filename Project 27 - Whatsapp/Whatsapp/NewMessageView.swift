@@ -40,7 +40,6 @@ final public class NewMessageView: UIView {
     
     NSLayoutConstraint.activate(constraints)
     
-    
     // set up properties
     backgroundColor = UIColor.lightGray
     

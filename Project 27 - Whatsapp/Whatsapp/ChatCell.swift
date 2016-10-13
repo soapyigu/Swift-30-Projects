@@ -9,8 +9,16 @@ import UIKit
 
 class ChatCell: UITableViewCell {
 
-  let messageLabel = UILabel()
-  private let bubbleImageView = UIImageView()
+  lazy var messageLabel = UILabel().then {
+    $0.textAlignment = .center
+    $0.numberOfLines = 0
+  }
+  
+  private lazy var bubbleImageView = UIImageView().then {
+    if let image = UIImage(named: "MessageBubble") {
+      $0.image = image
+    }
+  }
   
   private var outgoingConstraints: [NSLayoutConstraint]!
   private var incomingConstraints: [NSLayoutConstraint]!
@@ -37,9 +45,6 @@ class ChatCell: UITableViewCell {
     ]
     
     Helper.setupContraints(view: messageLabel, superView: bubbleImageView, constraints: messageLabelConstraints)
-    
-    messageLabel.textAlignment = .center
-    messageLabel.numberOfLines = 0
   }
   
   private func setupBubbleImageView() {
@@ -51,8 +56,6 @@ class ChatCell: UITableViewCell {
     ]
     
     Helper.setupContraints(view: bubbleImageView, superView: contentView, constraints: bubbleImageViewContraints)
-    
-    bubbleImageView.image = UIImage(named: "MessageBubble")!
 }
   
   private func setupLayouts() {
