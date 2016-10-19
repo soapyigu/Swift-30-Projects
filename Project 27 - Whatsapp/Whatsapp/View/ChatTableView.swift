@@ -12,6 +12,7 @@ final public class ChatTableView: UITableView, Scroll {
   override public func didMoveToSuperview() {
     estimatedRowHeight = 56.0
     separatorStyle = .none
+    backgroundView = UIImageView.init(image: UIImage.init(named: "wp_132"))
     
     setupUI(superview: superview)
   }
