@@ -32,7 +32,6 @@ class ChatViewController: UIViewController {
     
     setupNewMessageView()
     setupTableView()
-    setupMessages()
     setupEvents()
   }
   
@@ -53,20 +52,6 @@ class ChatViewController: UIViewController {
       tableView.bottomAnchor.constraint(equalTo: newMessageView.topAnchor)
     ]
     Helper.setupContraints(view: tableView, superView: view, constraints: tableViewContraints)
-  }
-  
-  private func setupMessages() {
-    for i in 0 ... 10 {
-      let message = Message(text: "Hello, this is the longer message", date: date)
-      message.incoming = incoming
-      incoming = !incoming
-      
-      if i % 2 == 0 {
-        date = Date.init(timeInterval: 60 * 60 * 24, since: date)
-      }
-      
-      addMessage(message: message)
-    }
   }
   
   private func setupNewMessageView() {
