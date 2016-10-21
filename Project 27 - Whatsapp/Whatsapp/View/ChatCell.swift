@@ -83,16 +83,20 @@ class ChatCell: UITableViewCell {
   }
   
   private func setupImageView(incoming: Bool) {
-    let image = UIImage(named: "MessageBubble")!.withRenderingMode(.alwaysTemplate)
+    guard let incomingImage = UIImage.init(named: "BubbleIncoming") else {
+      fatalError("Incoming bubble image missing")
+    }
+    guard let outgoingImage = UIImage.init(named: "BubbleOutgoing") else {
+      fatalError("outgoing bubble image missing")
+    }
+
     let incomingInsets = UIEdgeInsets(top: 17, left: 26.5, bottom: 17.5, right: 21)
     let outgoingInsets = UIEdgeInsets(top: 17, left: 21, bottom: 17.5, right: 26.5)
     
     if incoming {
-      bubbleImageView.tintColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
-      bubbleImageView.image = UIImage(cgImage: image.cgImage!, scale: image.scale, orientation: UIImageOrientation.upMirrored).withRenderingMode(.alwaysTemplate).resizableImage(withCapInsets: incomingInsets)
+      bubbleImageView.image = incomingImage.resizableImage(withCapInsets: incomingInsets)
     } else {
-      bubbleImageView.tintColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-      bubbleImageView.image = image.resizableImage(withCapInsets: outgoingInsets)
+      bubbleImageView.image = outgoingImage.resizableImage(withCapInsets: outgoingInsets)
     }
   }
 }
