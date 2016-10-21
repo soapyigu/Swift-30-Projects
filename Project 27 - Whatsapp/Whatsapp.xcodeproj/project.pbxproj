@@ -537,7 +537,6 @@
 			baseConfigurationReference = 003CD30157CB71D6BE627E34 /* Pods-Whatsapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 44JDRP3T56;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -557,7 +556,6 @@
 			baseConfigurationReference = AE0F9CCF8E1E4E761D95B33D /* Pods-Whatsapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 44JDRP3T56;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
