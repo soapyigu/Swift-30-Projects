@@ -10,7 +10,7 @@ import UIKit
 class ChatCell: UITableViewCell {
 
   lazy var messageLabel = UILabel().then {
-    $0.textAlignment = .center
+    $0.textAlignment = .left
     $0.numberOfLines = 0
   }
   

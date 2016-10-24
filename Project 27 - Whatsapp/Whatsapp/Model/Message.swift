@@ -6,14 +6,10 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Message {
-  var text: String?
-  var incoming: Bool!
-  var date: Date?
-  
-  public init(text: String, date: Date) {
-    self.text = text
-    self.date = date
-  }
+class Message: Object {
+  dynamic var text: String?
+  dynamic var date: Date?
+  dynamic var incoming: Bool = false
 }

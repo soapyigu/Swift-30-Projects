@@ -8,10 +8,12 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RealmSwift
 
 class ChatViewController: UIViewController {
   // MARK: - Variables
   let cellIdentifier = "Cell"
+  let realm = try! Realm()
   
   var incoming: Bool = false
   
@@ -22,7 +24,7 @@ class ChatViewController: UIViewController {
   private let newMessageView = NewMessageView()
   private var newMessageViewBottomConstraint: NSLayoutConstraint!
   
-  var date = Date.init(timeIntervalSince1970: 1100000000)
+  var date = Date(timeIntervalSince1970: 1100000000)
   
   private let disposeBag = DisposeBag()
   
@@ -33,6 +35,7 @@ class ChatViewController: UIViewController {
     setupNewMessageView()
     setupTableView()
     setupEvents()
+    setupMessages()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -94,10 +97,17 @@ class ChatViewController: UIViewController {
     newMessageView.sendButton
       .rx.tap.subscribe(
         onNext: { [unowned self] _ in
-          let message = Message(text: self.newMessageView.inputTextView.text, date: self.date)
+          let message = Message()
+          message.text = self.newMessageView.inputTextView.text
+          message.date = self.date
           message.incoming = false
           self.addMessage(message: message)
           
+          // store message
+          try! self.realm.write {
+            self.realm.add(message)
+          }
+
           self.newMessageView.inputTextView.text = ""
           self.dismissKeyboard()
           
@@ -105,6 +115,15 @@ class ChatViewController: UIViewController {
           self.tableView.scrollToBottom()
         })
       .addDisposableTo(disposeBag)
+  }
+  
+  private func setupMessages() {
+    // query all messages from realm
+    let messages = realm.objects(Message.self)
+    
+    for message in messages {
+      addMessage(message: message)
+    }
   }
   
   private func updateBottomConstraint(forNotication notification: NSNotification) {

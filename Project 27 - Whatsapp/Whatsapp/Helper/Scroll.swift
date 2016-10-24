@@ -25,6 +25,6 @@ extension Scroll where Self: UITableView {
     }
     
     let indexPath = IndexPath.init(row: lastRow, section: lastSection)
-    self.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    scrollToRow(at: indexPath, at: .bottom, animated: true)
   }
 }
