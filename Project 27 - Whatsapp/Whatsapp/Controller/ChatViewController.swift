@@ -24,8 +24,6 @@ class ChatViewController: UIViewController {
   private let newMessageView = NewMessageView()
   private var newMessageViewBottomConstraint: NSLayoutConstraint!
   
-  var date = Date(timeIntervalSince1970: 1100000000)
-  
   private let disposeBag = DisposeBag()
   
   // MARK: - Life Cycle
@@ -99,7 +97,7 @@ class ChatViewController: UIViewController {
         onNext: { [unowned self] _ in
           let message = Message()
           message.text = self.newMessageView.inputTextView.text
-          message.date = self.date
+          message.date = Date()
           message.incoming = false
           self.addMessage(message: message)
           
@@ -119,7 +117,7 @@ class ChatViewController: UIViewController {
   
   private func setupMessages() {
     // query all messages from realm
-    let messages = realm.objects(Message.self)
+    let messages = realm.objects(Message.self).sorted(byProperty: "date", ascending: true)
     
     for message in messages {
       addMessage(message: message)
