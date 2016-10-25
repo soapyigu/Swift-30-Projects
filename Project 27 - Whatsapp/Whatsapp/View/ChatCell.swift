@@ -60,12 +60,12 @@ class ChatCell: UITableViewCell {
   
   private func setupLayouts() {
     outgoingConstraints = [
-      bubbleImageView.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.centerXAnchor, constant: 5.0),
+      bubbleImageView.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.centerXAnchor, constant: -20.0),
       bubbleImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5.0)
     ]
     incomingConstraints = [
       bubbleImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5.0),
-      bubbleImageView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.centerXAnchor, constant: -5.0)
+      bubbleImageView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.centerXAnchor, constant: 20.0)
     ]
   }
   
@@ -90,8 +90,8 @@ class ChatCell: UITableViewCell {
       fatalError("outgoing bubble image missing")
     }
 
-    let incomingInsets = UIEdgeInsets(top: 17, left: 26.5, bottom: 17.5, right: 21)
-    let outgoingInsets = UIEdgeInsets(top: 17, left: 21, bottom: 17.5, right: 26.5)
+    let incomingInsets = UIEdgeInsets(top: 26, left: 26.5, bottom: 17.5, right: 23)
+    let outgoingInsets = UIEdgeInsets(top: 10, left: 15, bottom: 22, right: 18)
     
     if incoming {
       bubbleImageView.image = incomingImage.resizableImage(withCapInsets: incomingInsets)
