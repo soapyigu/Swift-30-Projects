@@ -16,14 +16,12 @@ class ChatViewController: UIViewController {
   let realm = try! Realm()
   
   var incoming: Bool = false
-  
   var messageSections = [Date: [Message]]()
   var dates = [Date]()
   
   private let tableView = ChatTableView(frame: CGRect.zero, style: .grouped)
   private let newMessageView = NewMessageView()
   private var newMessageViewBottomConstraint: NSLayoutConstraint!
-  
   private let disposeBag = DisposeBag()
   
   // MARK: - Life Cycle
@@ -95,22 +93,7 @@ class ChatViewController: UIViewController {
     newMessageView.sendButton
       .rx.tap.subscribe(
         onNext: { [unowned self] _ in
-          let message = Message()
-          message.text = self.newMessageView.inputTextView.text
-          message.date = Date()
-          message.incoming = false
-          self.addMessage(message: message)
-          
-          // store message
-          try! self.realm.write {
-            self.realm.add(message)
-          }
-
-          self.newMessageView.inputTextView.text = ""
-          self.dismissKeyboard()
-          
-          self.tableView.reloadData()
-          self.tableView.scrollToBottom()
+          self.didSendButtonTap()
         })
       .addDisposableTo(disposeBag)
   }
@@ -122,6 +105,26 @@ class ChatViewController: UIViewController {
     for message in messages {
       addMessage(message: message)
     }
+  }
+  
+  private func didSendButtonTap() {
+    let message = Message()
+    message.text = newMessageView.inputTextView.text
+    message.date = Date()
+    message.incoming = false
+    
+    addMessage(message: message)
+    
+    // store message
+    try! self.realm.write {
+      self.realm.add(message)
+    }
+    
+    newMessageView.inputTextView.text = ""
+    dismissKeyboard()
+    
+    tableView.reloadData()
+    tableView.scrollToBottom()
   }
   
   private func updateBottomConstraint(forNotication notification: NSNotification) {
