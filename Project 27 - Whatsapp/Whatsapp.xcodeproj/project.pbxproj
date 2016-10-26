@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07CD4D2E3055CD327346A732 /* Pods_Whatsapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42AD7D99F96F3C9C13E0025C /* Pods_Whatsapp.framework */; };
+		192669411DC0612500F2E1C6 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192669401DC0612500F2E1C6 /* Chat.swift */; };
 		192AAAC81D988BC900CDF011 /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192AAAC71D988BC900CDF011 /* NewMessageView.swift */; };
 		192AAACA1DA070E500CDF011 /* Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192AAAC91DA070E500CDF011 /* Scroll.swift */; };
 		192AAACD1DA0732300CDF011 /* ChatTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192AAACC1DA0732300CDF011 /* ChatTableView.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		003CD30157CB71D6BE627E34 /* Pods-Whatsapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whatsapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Whatsapp/Pods-Whatsapp.debug.xcconfig"; sourceTree = "<group>"; };
+		192669401DC0612500F2E1C6 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		192AAAC71D988BC900CDF011 /* NewMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
 		192AAAC91DA070E500CDF011 /* Scroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scroll.swift; sourceTree = "<group>"; };
 		192AAACC1DA0732300CDF011 /* ChatTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableView.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				19C9812E1D91C48300ABE1B7 /* Message.swift */,
+				192669401DC0612500F2E1C6 /* Chat.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				19C981351D91D12300ABE1B7 /* Helper.swift in Sources */,
 				194C7C4A1D8BBEF200B50295 /* ChatViewController.swift in Sources */,
 				192AAACD1DA0732300CDF011 /* ChatTableView.swift in Sources */,
+				192669411DC0612500F2E1C6 /* Chat.swift in Sources */,
 				192AAACA1DA070E500CDF011 /* Scroll.swift in Sources */,
 				19D369B61DAB5D100015F0DC /* MessageDatePaddingView.swift in Sources */,
 				19D369B81DAB5D4A0015F0DC /* Then.swift in Sources */,
