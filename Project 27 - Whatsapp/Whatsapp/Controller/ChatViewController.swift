@@ -44,7 +44,7 @@ class ChatViewController: UIViewController {
     tableView.dataSource = self
     
     // set up cell
-    tableView.register(ChatCell.self, forCellReuseIdentifier: cellIdentifier)
+    tableView.register(MessageCell.self, forCellReuseIdentifier: cellIdentifier)
     
     // set up UI
     let tableViewContraints = [
@@ -195,7 +195,7 @@ extension ChatViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ChatCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MessageCell
     
     let messages = getMessages(section: indexPath.section)
     let message = messages[indexPath.row]
