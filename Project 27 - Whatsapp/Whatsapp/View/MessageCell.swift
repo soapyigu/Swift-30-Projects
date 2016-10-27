@@ -28,8 +28,6 @@ class MessageCell: UITableViewCell {
     
     backgroundColor = UIColor.clear
     
-    setupMessageLabel()
-    setupBubbleImageView()
     setupLayouts()
   }
   
@@ -38,27 +36,21 @@ class MessageCell: UITableViewCell {
   }
   
   // MARK: - set up message label layouts and bubble imageView layouts
-  private func setupMessageLabel() {
+  
+  private func setupLayouts() {
     let messageLabelConstraints = [
       messageLabel.centerXAnchor.constraint(equalTo: bubbleImageView.centerXAnchor),
-      messageLabel.centerYAnchor.constraint(equalTo: bubbleImageView.centerYAnchor),
+      messageLabel.centerYAnchor.constraint(equalTo: bubbleImageView.centerYAnchor)
     ]
-    
-    Helper.setupContraints(view: messageLabel, superView: bubbleImageView, constraints: messageLabelConstraints)
-  }
-  
-  private func setupBubbleImageView() {
     let bubbleImageViewContraints = [
       bubbleImageView.widthAnchor.constraint(equalTo: messageLabel.widthAnchor, constant: 50.0),
       bubbleImageView.heightAnchor.constraint(equalTo: messageLabel.heightAnchor, constant: 20.0),
       bubbleImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10.0),
       bubbleImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10.0)
     ]
-    
+    Helper.setupContraints(view: messageLabel, superView: bubbleImageView, constraints: messageLabelConstraints)
     Helper.setupContraints(view: bubbleImageView, superView: contentView, constraints: bubbleImageViewContraints)
-}
-  
-  private func setupLayouts() {
+
     outgoingConstraints = [
       bubbleImageView.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.centerXAnchor, constant: -20.0),
       bubbleImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5.0)
