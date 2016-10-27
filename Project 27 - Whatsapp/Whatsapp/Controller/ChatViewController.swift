@@ -12,18 +12,18 @@ import RealmSwift
 
 class ChatViewController: UIViewController {
   // MARK: - Variables
-  let cellIdentifier = "Cell"
-  let realm = try! Realm()
-  
   var incoming: Bool = false
   var messageSections = [Date: [Message]]()
   var dates = [Date]()
+  let cellIdentifier = "ChatCell"
   
+  private let realm = try! Realm()
+  private let disposeBag = DisposeBag()
+
   private let tableView = ChatTableView(frame: CGRect.zero, style: .grouped)
   private let newMessageView = NewMessageView()
   private var newMessageViewBottomConstraint: NSLayoutConstraint!
-  private let disposeBag = DisposeBag()
-  
+    
   // MARK: - Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
