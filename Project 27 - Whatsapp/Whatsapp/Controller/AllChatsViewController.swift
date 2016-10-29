@@ -23,5 +23,6 @@ class AllChatsViewController: UIViewController {
   private func setupUI() {
     title = "Chats"
     
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "PenOS7"), style: .plain, target: self, action: "newChat")
   }
 }
