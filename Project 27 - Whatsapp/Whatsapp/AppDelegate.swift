@@ -46,6 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func setupTapbarController(){
     let tabBarController = UITabBarController()
     
+    let callsViewController = CallsViewController()
+    let callsViewBarItem = UITabBarItem(title: "Calls", image: UIImage(named: "RecentCallTabBarItem7"), selectedImage: UIImage(named: "RecentCallTabBarItemSelected7"))
+    callsViewController.tabBarItem = callsViewBarItem
+
     let chatViewController = ChatViewController()
     let chatViewBarItem = UITabBarItem(title: "Chats", image: UIImage(named: "TabBarIconChatsOff"), selectedImage: UIImage(named: "TabBarIconChatsOn"))
     chatViewController.tabBarItem = chatViewBarItem
@@ -54,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let settingsViewBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "TabBarIconSettingsOff"), selectedImage: UIImage(named: "TabBarIconSettingsOn"))
     settingsViewController.tabBarItem = settingsViewBarItem
     
-    tabBarController.viewControllers = [chatViewController, settingsViewController]
+    tabBarController.viewControllers = [callsViewController, chatViewController, settingsViewController]
     
     window?.rootViewController = tabBarController
   }
