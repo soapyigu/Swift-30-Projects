@@ -20,6 +20,7 @@
 		194C7C4F1D8BBEF200B50295 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 194C7C4E1D8BBEF200B50295 /* Assets.xcassets */; };
 		194C7C521D8BBEF200B50295 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194C7C501D8BBEF200B50295 /* LaunchScreen.storyboard */; };
 		194C7C5D1D8BBEF200B50295 /* WhatsappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194C7C5C1D8BBEF200B50295 /* WhatsappTests.swift */; };
+		19747B771DC665990069F75D /* AllChatsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19747B761DC665990069F75D /* AllChatsTableView.swift */; };
 		19C9812F1D91C48300ABE1B7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C9812E1D91C48300ABE1B7 /* Message.swift */; };
 		19C981321D91C85E00ABE1B7 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C981311D91C85E00ABE1B7 /* MessageCell.swift */; };
 		19C981351D91D12300ABE1B7 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C981341D91D12300ABE1B7 /* Helper.swift */; };
@@ -56,6 +57,7 @@
 		194C7C581D8BBEF200B50295 /* WhatsappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatsappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		194C7C5C1D8BBEF200B50295 /* WhatsappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsappTests.swift; sourceTree = "<group>"; };
 		194C7C5E1D8BBEF200B50295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19747B761DC665990069F75D /* AllChatsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatsTableView.swift; sourceTree = "<group>"; };
 		19C9812E1D91C48300ABE1B7 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		19C981311D91C85E00ABE1B7 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		19C981341D91D12300ABE1B7 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		19C981331D91C86500ABE1B7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				19747B761DC665990069F75D /* AllChatsTableView.swift */,
 				192AAACC1DA0732300CDF011 /* ChatTableView.swift */,
 				192669421DC0676C00F2E1C6 /* ChatCell.swift */,
 				19C981311D91C85E00ABE1B7 /* MessageCell.swift */,
@@ -408,6 +411,7 @@
 				192669411DC0612500F2E1C6 /* Chat.swift in Sources */,
 				192AAACA1DA070E500CDF011 /* Scroll.swift in Sources */,
 				19D369B61DAB5D100015F0DC /* MessageDatePaddingView.swift in Sources */,
+				19747B771DC665990069F75D /* AllChatsTableView.swift in Sources */,
 				19D369B81DAB5D4A0015F0DC /* Then.swift in Sources */,
 				194C7C481D8BBEF200B50295 /* AppDelegate.swift in Sources */,
 			);

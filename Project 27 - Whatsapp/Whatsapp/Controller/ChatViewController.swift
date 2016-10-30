@@ -116,8 +116,12 @@ class ChatViewController: UIViewController {
     addMessage(message: message)
     
     // store message
-    try! self.realm.write {
-      self.realm.add(message)
+    do {
+      try self.realm.write {
+        self.realm.add(message)
+      }
+    } catch {
+      print("realm write message failed")
     }
     
     newMessageView.inputTextView.text = ""

@@ -1,5 +1,5 @@
 //
-//  ChatTableView.swift
+//  AllChatsTableView.swift
 //  Whatsapp
 //
 //  Copyright © 2016 Yi Gu. All rights reserved.
@@ -7,13 +7,8 @@
 
 import UIKit
 
-final public class ChatTableView: UITableView, Scroll {
-  
-  override public func didMoveToSuperview() {
-    estimatedRowHeight = 56.0
-    separatorStyle = .none
-    backgroundView = UIImageView.init(image: UIImage.init(named: "wp_132"))
-    
+final public class AllChatsTableView: UITableView {
+  public override func didMoveToWindow() {
     setupLayout(superview: superview)
   }
   
@@ -23,9 +18,8 @@ final public class ChatTableView: UITableView, Scroll {
     }
     
     let constraints = [
-      topAnchor.constraint(equalTo: superview.topAnchor),
       leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-      trailingAnchor.constraint(equalTo: superview.trailingAnchor)
+      trailingAnchor.constraint(equalTo: superview.trailingAnchor),
     ]
     
     Helper.setupContraints(view: self, superView: superview, constraints: constraints)
