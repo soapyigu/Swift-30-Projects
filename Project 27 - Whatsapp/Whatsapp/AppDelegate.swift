@@ -51,10 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     chatViewController.tabBarItem = chatViewBarItem
     
     let settingsViewController = SettingsViewController()
+    let settingsViewBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "TabBarIconSettingsOff"), selectedImage: UIImage(named: "TabBarIconSettingsOn"))
+    settingsViewController.tabBarItem = settingsViewBarItem
     
-    
-    tabBarController.viewControllers = [chatViewController]
-    
+    tabBarController.viewControllers = [chatViewController, settingsViewController]
     
     window?.rootViewController = tabBarController
   }
