@@ -50,6 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let favoritesViewBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "RecentCallTabBarItem7"), selectedImage: UIImage(named: "RecentCallTabBarItemSelected7"))
     favoritesViewController.tabBarItem = favoritesViewBarItem
     
+    let contactsViewController = ContactsViewController()
+    let contactsViewBarItem = UITabBarItem(title: "Contacts", image: UIImage(named: "RecentCallTabBarItem7"), selectedImage: UIImage(named: "RecentCallTabBarItemSelected7"))
+    contactsViewController.tabBarItem = contactsViewBarItem
+    
     let callsViewController = CallsViewController()
     let callsViewBarItem = UITabBarItem(title: "Calls", image: UIImage(named: "RecentCallTabBarItem7"), selectedImage: UIImage(named: "RecentCallTabBarItemSelected7"))
     callsViewController.tabBarItem = callsViewBarItem
@@ -62,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let settingsViewBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "TabBarIconSettingsOff"), selectedImage: UIImage(named: "TabBarIconSettingsOn"))
     settingsViewController.tabBarItem = settingsViewBarItem
     
-    tabBarController.viewControllers = [favoritesViewController, callsViewController, chatViewController, settingsViewController]
+    tabBarController.viewControllers = [favoritesViewController, callsViewController, contactsViewController, chatViewController, settingsViewController]
     
     window?.rootViewController = tabBarController
   }

@@ -24,6 +24,7 @@
 		19747B791DC673BD0069F75D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19747B781DC673BD0069F75D /* SettingsViewController.swift */; };
 		19747B7B1DC676AE0069F75D /* CallsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19747B7A1DC676AE0069F75D /* CallsViewController.swift */; };
 		19747B7D1DCC68220069F75D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19747B7C1DCC68220069F75D /* FavoritesViewController.swift */; };
+		19747B7F1DCC69010069F75D /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19747B7E1DCC69010069F75D /* ContactsViewController.swift */; };
 		19C9812F1D91C48300ABE1B7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C9812E1D91C48300ABE1B7 /* Message.swift */; };
 		19C981321D91C85E00ABE1B7 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C981311D91C85E00ABE1B7 /* MessageCell.swift */; };
 		19C981351D91D12300ABE1B7 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C981341D91D12300ABE1B7 /* Helper.swift */; };
@@ -64,6 +65,7 @@
 		19747B781DC673BD0069F75D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		19747B7A1DC676AE0069F75D /* CallsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallsViewController.swift; sourceTree = "<group>"; };
 		19747B7C1DCC68220069F75D /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		19747B7E1DCC69010069F75D /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		19C9812E1D91C48300ABE1B7 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		19C981311D91C85E00ABE1B7 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		19C981341D91D12300ABE1B7 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				19747B7C1DCC68220069F75D /* FavoritesViewController.swift */,
 				19747B7A1DC676AE0069F75D /* CallsViewController.swift */,
+				19747B7E1DCC69010069F75D /* ContactsViewController.swift */,
 				194C7C491D8BBEF200B50295 /* ChatViewController.swift */,
 				192669441DC1BE0100F2E1C6 /* AllChatsViewController.swift */,
 				19747B781DC673BD0069F75D /* SettingsViewController.swift */,
@@ -414,6 +417,7 @@
 				19747B7B1DC676AE0069F75D /* CallsViewController.swift in Sources */,
 				19C981321D91C85E00ABE1B7 /* MessageCell.swift in Sources */,
 				19C981351D91D12300ABE1B7 /* Helper.swift in Sources */,
+				19747B7F1DCC69010069F75D /* ContactsViewController.swift in Sources */,
 				192669451DC1BE0100F2E1C6 /* AllChatsViewController.swift in Sources */,
 				194C7C4A1D8BBEF200B50295 /* ChatViewController.swift in Sources */,
 				192669431DC0676C00F2E1C6 /* ChatCell.swift in Sources */,
