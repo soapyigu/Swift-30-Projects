@@ -16,4 +16,13 @@ public class Helper {
     
     NSLayoutConstraint.activate(constraints)
   }
+  
+  public static func dateToStr(date: Date?) -> String {
+    guard let date = date else {
+      return ""
+    }
+    let dateFormat = DateFormatter()
+    dateFormat.dateFormat = "MMM dd, YYYY"
+    return dateFormat.string(from: date)
+  }
 }

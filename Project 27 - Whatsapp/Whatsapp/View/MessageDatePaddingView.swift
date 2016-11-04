@@ -15,9 +15,7 @@ final public class MessageDatePaddingView: UIView {
   }
   
   public func setupDate(date: Date) {
-    let dateFormat = DateFormatter()
-    dateFormat.dateFormat = "MMM dd, YYYY"
-    dateLabel.text = dateFormat.string(from: date)
+    dateLabel.text = Helper.dateToStr(date: date)
   }
   
   override public func didMoveToSuperview() {

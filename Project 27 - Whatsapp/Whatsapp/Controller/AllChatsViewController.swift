@@ -63,6 +63,10 @@ extension AllChatsViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ChatCell
     
+    let chat = chats[indexPath.row]
+    cell.messageLabel.text = chat.lastMessage?.text
+    cell.dateLabel.text = Helper.dateToStr(date: chat.lastMessage?.date)
+    
     return cell
   }
 }
