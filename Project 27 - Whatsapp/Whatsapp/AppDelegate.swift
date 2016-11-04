@@ -46,6 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func setupTapbarController(){
     let tabBarController = UITabBarController()
     
+    let favoritesViewController = FavoritesViewController()
+    let favoritesViewBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "RecentCallTabBarItem7"), selectedImage: UIImage(named: "RecentCallTabBarItemSelected7"))
+    favoritesViewController.tabBarItem = favoritesViewBarItem
+    
     let callsViewController = CallsViewController()
     let callsViewBarItem = UITabBarItem(title: "Calls", image: UIImage(named: "RecentCallTabBarItem7"), selectedImage: UIImage(named: "RecentCallTabBarItemSelected7"))
     callsViewController.tabBarItem = callsViewBarItem
