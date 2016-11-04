@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let settingsViewBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "TabBarIconSettingsOff"), selectedImage: UIImage(named: "TabBarIconSettingsOn"))
     settingsViewController.tabBarItem = settingsViewBarItem
     
-    tabBarController.viewControllers = [callsViewController, chatViewController, settingsViewController]
+    tabBarController.viewControllers = [favoritesViewController, callsViewController, chatViewController, settingsViewController]
     
     window?.rootViewController = tabBarController
   }
