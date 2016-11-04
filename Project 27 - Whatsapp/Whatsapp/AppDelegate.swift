@@ -47,15 +47,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let tabBarController = UITabBarController()
     
     let favoritesViewController = FavoritesViewController()
-    let favoritesViewBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "RecentCallTabBarItem7"), selectedImage: UIImage(named: "RecentCallTabBarItemSelected7"))
+    let favoritesViewBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "TabBarIconStarOff"), selectedImage: UIImage(named: "TabBarIconStarOn"))
     favoritesViewController.tabBarItem = favoritesViewBarItem
     
     let contactsViewController = ContactsViewController()
-    let contactsViewBarItem = UITabBarItem(title: "Contacts", image: UIImage(named: "RecentCallTabBarItem7"), selectedImage: UIImage(named: "RecentCallTabBarItemSelected7"))
+    let contactsViewBarItem = UITabBarItem(title: "Contacts", image: UIImage(named: "TabBarIconContactsOff"), selectedImage: UIImage(named: "TabBarIconContactsOn"))
     contactsViewController.tabBarItem = contactsViewBarItem
     
     let callsViewController = CallsViewController()
-    let callsViewBarItem = UITabBarItem(title: "Calls", image: UIImage(named: "RecentCallTabBarItem7"), selectedImage: UIImage(named: "RecentCallTabBarItemSelected7"))
+    let callsViewBarItem = UITabBarItem(title: "Calls", image: UIImage(named: "TabBarIconCallsOff"), selectedImage: UIImage(named: "TabBarIconCallsOn"))
     callsViewController.tabBarItem = callsViewBarItem
 
     let chatViewController = ChatViewController()
