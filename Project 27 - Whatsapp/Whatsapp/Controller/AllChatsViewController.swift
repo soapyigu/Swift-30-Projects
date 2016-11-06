@@ -10,11 +10,10 @@ import RealmSwift
 
 class AllChatsViewController: UIViewController {
   
+  var chats: [Chat]?
   let cellIdentifier = "MessageCell"
   private let tableView = AllChatsTableView(frame: CGRect.zero, style: .plain)
   private let realm = try! Realm()
-  
-  var chats = [Chat]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,7 +25,9 @@ class AllChatsViewController: UIViewController {
   
   private func setupUI() {
     title = "Chats"
+    navigationController?.navigationBar.barTintColor = UIColor.white
     
+    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: "edit")
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "PenOS7"), style: .plain, target: self, action: "newChat")
   }
   
@@ -47,7 +48,7 @@ class AllChatsViewController: UIViewController {
   }
   
   private func setupData() {
-    chats = loadChats()
+//    chats = loadChats()
   }
   
   private func loadChats() -> Array<Chat> {
@@ -56,17 +57,42 @@ class AllChatsViewController: UIViewController {
 }
 
 extension AllChatsViewController: UITableViewDataSource {
+  func numberOfSections(in tableView: UITableView) -> Int {
+    guard let _ = chats else {
+      let label = UILabel.init(frame: CGRect(x: 10, y: 0, width: view.bounds.size.width - 20, height: view.bounds.size.height))
+      
+      // draw the result in a label
+      label.attributedText = Helper.insertImageToWords(startWords: "To begin a new chat, simple tap on the ",
+                                                       endWords: " icon in the top right corner.",
+                                                       imageName: "PenOS7.png")
+      
+      label.sizeToFit()
+      label.numberOfLines = 0
+      label.font = UIFont(name: label.font.fontName, size: 20)
+      label.textAlignment = .center
+      tableView.backgroundView = label
+      tableView.separatorStyle = .none
+      
+      return 0
+    }
+    return 1
+  }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    guard let chats = chats else {
+      return 0
+    }
     return chats.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ChatCell
     
-    let chat = chats[indexPath.row]
-    cell.messageLabel.text = chat.lastMessage?.text
-    cell.dateLabel.text = Helper.dateToStr(date: chat.lastMessage?.date)
-    
+    if let chats = chats {
+      let chat = chats[indexPath.row]
+      cell.messageLabel.text = chat.lastMessage?.text
+      cell.dateLabel.text = Helper.dateToStr(date: chat.lastMessage?.date)
+    }
     return cell
   }
 }
@@ -81,7 +107,7 @@ extension AllChatsViewController: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    guard chats.count > 0 else {
+    guard let chats = chats else {
       return
     }
   }

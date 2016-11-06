@@ -58,17 +58,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let callsViewBarItem = UITabBarItem(title: "Calls", image: UIImage(named: "TabBarIconCallsOff"), selectedImage: UIImage(named: "TabBarIconCallsOn"))
     callsViewController.tabBarItem = callsViewBarItem
 
-    let chatViewController = ChatViewController()
-    let chatViewBarItem = UITabBarItem(title: "Chats", image: UIImage(named: "TabBarIconChatsOff"), selectedImage: UIImage(named: "TabBarIconChatsOn"))
-    chatViewController.tabBarItem = chatViewBarItem
+    let chatsViewController = AllChatsViewController()
+    let chatsNavigationController = UINavigationController(rootViewController: chatsViewController)
+    let chatsViewBarItem = UITabBarItem(title: "Chats", image: UIImage(named: "TabBarIconChatsOff"), selectedImage: UIImage(named: "TabBarIconChatsOn"))
+    chatsNavigationController.tabBarItem = chatsViewBarItem
     
     let settingsViewController = SettingsViewController()
     let settingsViewBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "TabBarIconSettingsOff"), selectedImage: UIImage(named: "TabBarIconSettingsOn"))
     settingsViewController.tabBarItem = settingsViewBarItem
     
-    tabBarController.viewControllers = [favoritesViewController, callsViewController, contactsViewController, chatViewController, settingsViewController]
+    tabBarController.viewControllers = [favoritesViewController, callsViewController, contactsViewController, chatsNavigationController, settingsViewController]
+    setupTabBarUI(tabBar: tabBarController.tabBar)
     
     window?.rootViewController = tabBarController
+  }
+  
+  private func setupTabBarUI(tabBar: UITabBar) {
+    tabBar.barTintColor = UIColor.white
   }
 }
 
