@@ -9,10 +9,10 @@
 import UIKit
 
 protocol TrackCellDelegate {
-  func pauseTapped(cell: TrackCell)
-  func resumeTapped(cell: TrackCell)
-  func cancelTapped(cell: TrackCell)
-  func downloadTapped(cell: TrackCell)
+  func pauseTapped(_ cell: TrackCell)
+  func resumeTapped(_ cell: TrackCell)
+  func cancelTapped(_ cell: TrackCell)
+  func downloadTapped(_ cell: TrackCell)
 }
 
 class TrackCell: UITableViewCell {
@@ -27,7 +27,7 @@ class TrackCell: UITableViewCell {
   @IBOutlet weak var cancelButton: UIButton!
   @IBOutlet weak var downloadButton: UIButton!
   
-  @IBAction func pauseOrResumeTapped(sender: AnyObject) {
+  @IBAction func pauseOrResumeTapped(_ sender: AnyObject) {
     if(pauseButton.titleLabel!.text == "Pause") {
       delegate?.pauseTapped(self)
     } else {
@@ -35,11 +35,11 @@ class TrackCell: UITableViewCell {
     }
   }
   
-  @IBAction func cancelTapped(sender: AnyObject) {
+  @IBAction func cancelTapped(_ sender: AnyObject) {
     delegate?.cancelTapped(self)
   }
   
-  @IBAction func downloadTapped(sender: AnyObject) {
+  @IBAction func downloadTapped(_ sender: AnyObject) {
     delegate?.downloadTapped(self)
   }
 }
