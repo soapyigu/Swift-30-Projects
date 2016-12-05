@@ -77,7 +77,24 @@ class MainViewController: UIViewController {
     collectionView.dataSource = self
     collectionView.delegate = self
     
-    // Do any additional setup after loading the view.
+    let longPressGesture = UILongPressGestureRecognizer(target: self, action: Selector.longTapHandler)
+    collectionView.addGestureRecognizer(longPressGesture)
+  }
+  
+  func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+    switch(gesture.state) {
+    case UIGestureRecognizerState.began:
+      guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
+        break
+      }
+      collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+    case UIGestureRecognizerState.changed:
+      collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+    case UIGestureRecognizerState.ended:
+      collectionView.endInteractiveMovement()
+    default:
+      collectionView.cancelInteractiveMovement()
+    }
   }
   
   @IBAction func shareButtonDidTap(_ sender: Any) {
@@ -113,7 +130,7 @@ class MainViewController: UIViewController {
       popoverPresentationController?.permittedArrowDirections = .any
       present(shareScreen, animated: true, completion: nil)
     }
-  }  
+  }
 }
 
 extension MainViewController: UICollectionViewDataSource {
@@ -176,6 +193,14 @@ extension MainViewController: UICollectionViewDataSource {
     default:
       assert(false, "Unexpected element kind")
     }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    var sourceResults = searches[sourceIndexPath.section].searchResults
+    let flickrPhoto = sourceResults.remove(at: sourceIndexPath.row)
+    
+    var destinationResults = searches[sourceIndexPath.section].searchResults
+    destinationResults.insert(flickrPhoto, at: destinationIndexPath.row)
   }
 }
 
@@ -285,4 +310,8 @@ private extension MainViewController {
     shareTextLabel.text = "\(selectedPhotos.count) photos selected"
     shareTextLabel.sizeToFit()
   }
+}
+
+private extension Selector {
+  static let longTapHandler = #selector(MainViewController.handleLongGesture(gesture:))
 }
