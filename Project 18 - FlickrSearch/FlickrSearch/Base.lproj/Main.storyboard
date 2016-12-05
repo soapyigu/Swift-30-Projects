@@ -31,7 +31,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickrCell" id="OX9-DP-0BO" customClass="FlickrPhotoCell" customModule="FlickrSearch" customModuleProvider="target">
-                                        <rect key="frame" x="87.5" y="50" width="200" height="200"/>
+                                        <rect key="frame" x="88" y="50" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -40,15 +40,21 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IDp-TY-Dqe">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                                 </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="j2N-XW-b1j">
+                                                    <rect key="frame" x="82" y="82" width="37" height="37"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="IDp-TY-Dqe" firstAttribute="leading" secondItem="OX9-DP-0BO" secondAttribute="leading" id="J2i-ud-KF4"/>
+                                            <constraint firstItem="j2N-XW-b1j" firstAttribute="centerY" secondItem="OX9-DP-0BO" secondAttribute="centerY" id="UHz-Ev-9OU"/>
                                             <constraint firstItem="IDp-TY-Dqe" firstAttribute="top" secondItem="OX9-DP-0BO" secondAttribute="top" id="VSo-Iw-WOK"/>
+                                            <constraint firstItem="j2N-XW-b1j" firstAttribute="centerX" secondItem="OX9-DP-0BO" secondAttribute="centerX" id="cgB-cF-Glh"/>
                                             <constraint firstAttribute="bottom" secondItem="IDp-TY-Dqe" secondAttribute="bottom" id="hfu-x8-lQx"/>
                                             <constraint firstAttribute="trailing" secondItem="IDp-TY-Dqe" secondAttribute="trailing" id="jBi-sn-Liz"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="j2N-XW-b1j" id="6V9-eg-YSB"/>
                                             <outlet property="imageView" destination="IDp-TY-Dqe" id="ing-Ub-AKZ"/>
                                         </connections>
                                     </collectionViewCell>

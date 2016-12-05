@@ -17,6 +17,58 @@ class MainViewController: UIViewController {
   
   fileprivate var searches = [FlickrSearchResults]()
   fileprivate let flickr = Flickr()
+  
+  // support multiple photos selections
+  fileprivate var selectedPhotos = [FlickrPhoto]()
+  fileprivate let shareTextLabel = UILabel()
+  
+  fileprivate var largePhotoIndexPath: IndexPath? {
+    didSet {
+      var indexPaths = [IndexPath]()
+      if let largePhotoIndexPath = largePhotoIndexPath {
+        indexPaths.append(largePhotoIndexPath)
+      }
+      if let oldValue = oldValue {
+        indexPaths.append(oldValue)
+      }
+      
+      collectionView.performBatchUpdates({
+        self.collectionView.reloadItems(at: indexPaths)
+      }) { completed in
+        if let largePhotoIndexPath = self.largePhotoIndexPath {
+          self.collectionView?.scrollToItem(
+            at: largePhotoIndexPath,
+            at: .centeredVertically,
+            animated: true)
+        }
+      }
+    }
+  }
+  
+  var sharing: Bool = false {
+    didSet {
+      collectionView?.allowsMultipleSelection = sharing
+      collectionView?.selectItem(at: nil, animated: true, scrollPosition: UICollectionViewScrollPosition())
+      selectedPhotos.removeAll(keepingCapacity: false)
+      
+      guard let shareButton = self.navigationItem.rightBarButtonItems?.first else {
+        return
+      }
+      
+      guard sharing else {
+        navigationItem.setRightBarButtonItems([shareButton], animated: true)
+        return
+      }
+      
+      if let _ = largePhotoIndexPath  {
+        largePhotoIndexPath = nil
+      }
+      
+      updateSharedPhotoCount()
+      let sharingDetailItem = UIBarButtonItem(customView: shareTextLabel)
+      navigationItem.setRightBarButtonItems([shareButton,sharingDetailItem], animated: true)
+    }
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -41,8 +93,36 @@ extension MainViewController: UICollectionViewDataSource {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FlickrPhotoCell
     
     let flickrPhoto = photoForIndexPath(indexPath: indexPath)
-    cell.backgroundColor = UIColor.white
+    
+    cell.activityIndicator.stopAnimating()
+    
+    guard indexPath == largePhotoIndexPath else {
+      cell.imageView.image = flickrPhoto.thumbnail
+      return cell
+    }
+    
+    // if already loaded large image
+    guard flickrPhoto.largeImage == nil else {
+      cell.imageView.image = flickrPhoto.largeImage
+      return cell
+    }
+    
+    // start loading large image
     cell.imageView.image = flickrPhoto.thumbnail
+    cell.activityIndicator.startAnimating()
+    
+    flickrPhoto.loadLargeImage { loadedFlickrPhoto, error in
+      cell.activityIndicator.stopAnimating()
+      
+      guard loadedFlickrPhoto.largeImage != nil && error == nil else {
+        return
+      }
+      
+      if let cell = collectionView.cellForItem(at: indexPath) as? FlickrPhotoCell,
+        indexPath == self.largePhotoIndexPath  {
+        cell.imageView.image = loadedFlickrPhoto.largeImage
+      }
+    }
     
     return cell
   }
@@ -69,6 +149,15 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     let availableWidth = view.frame.width - paddingSpace
     let widthPerItem = availableWidth / itemsPerRow
     
+    if indexPath == largePhotoIndexPath {
+      let flickrPhoto = photoForIndexPath(indexPath: indexPath)
+      var size = collectionView.bounds.size
+      size.height -= topLayoutGuide.length
+      size.height -= (sectionInsets.top + sectionInsets.right)
+      size.width -= (sectionInsets.left + sectionInsets.right)
+      return flickrPhoto.sizeToFillWidthOfSize(size)
+    }
+    
     return CGSize(width: widthPerItem, height: widthPerItem)
   }
   
@@ -82,6 +171,13 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
                       layout collectionViewLayout: UICollectionViewLayout,
                       minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return sectionInsets.left
+  }
+}
+
+extension MainViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+    largePhotoIndexPath = largePhotoIndexPath == indexPath ? nil : indexPath
+    return false
   }
 }
 
@@ -118,6 +214,12 @@ extension MainViewController: UITextFieldDelegate {
 // MARK: - Private
 private extension MainViewController {
   func photoForIndexPath(indexPath: IndexPath) -> FlickrPhoto {
-    return searches[(indexPath as NSIndexPath).section].searchResults[(indexPath as NSIndexPath).row]
+    return searches[indexPath.section].searchResults[indexPath.row]
+  }
+  
+  func updateSharedPhotoCount() {
+    shareTextLabel.textColor = themeColor
+    shareTextLabel.text = "\(selectedPhotos.count) photos selected"
+    shareTextLabel.sizeToFit()
   }
 }
