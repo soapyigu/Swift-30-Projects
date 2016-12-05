@@ -47,6 +47,7 @@ class MainViewController: UIViewController {
   
   var sharing: Bool = false {
     didSet {
+      // reset collectionView and selectedPhotos
       collectionView?.allowsMultipleSelection = sharing
       collectionView?.selectItem(at: nil, animated: true, scrollPosition: UICollectionViewScrollPosition())
       selectedPhotos.removeAll(keepingCapacity: false)
@@ -78,6 +79,41 @@ class MainViewController: UIViewController {
     
     // Do any additional setup after loading the view.
   }
+  
+  @IBAction func shareButtonDidTap(_ sender: Any) {
+    guard !searches.isEmpty else {
+      return
+    }
+    
+    guard !selectedPhotos.isEmpty else {
+      sharing = !sharing
+      return
+    }
+    
+    guard sharing else  {
+      return
+    }
+    
+    // won't be executed when first tapped
+    var imageArray = [UIImage]()
+    for selectedPhoto in selectedPhotos {
+      if let thumbnail = selectedPhoto.thumbnail {
+        imageArray.append(thumbnail)
+      }
+    }
+    
+    // present activityViewController when imageArray has some selected
+    if !imageArray.isEmpty {
+      let shareScreen = UIActivityViewController(activityItems: imageArray, applicationActivities: nil)
+      shareScreen.completionWithItemsHandler = { _ in
+        self.sharing = false
+      }
+      let popoverPresentationController = shareScreen.popoverPresentationController
+      popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
+      popoverPresentationController?.permittedArrowDirections = .any
+      present(shareScreen, animated: true, completion: nil)
+    }
+  }  
 }
 
 extension MainViewController: UICollectionViewDataSource {
@@ -176,8 +212,35 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 
 extension MainViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+    guard !sharing else {
+      return true
+    }
+    
     largePhotoIndexPath = largePhotoIndexPath == indexPath ? nil : indexPath
     return false
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard sharing else {
+      return
+    }
+    
+    let photo = photoForIndexPath(indexPath: indexPath)
+    selectedPhotos.append(photo)
+    updateSharedPhotoCount()
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    guard sharing else {
+      return
+    }
+    
+    let photo = photoForIndexPath(indexPath: indexPath)
+    
+    if let index = selectedPhotos.index(of: photo) {
+      selectedPhotos.remove(at: index)
+      updateSharedPhotoCount()
+    }
   }
 }
 

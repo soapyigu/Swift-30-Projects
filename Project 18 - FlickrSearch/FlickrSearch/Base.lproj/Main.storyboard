@@ -100,6 +100,11 @@
                                 <outlet property="delegate" destination="Wv1-Sn-bbD" id="TVe-ai-MEl"/>
                             </connections>
                         </textField>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="uT1-h8-gSZ">
+                            <connections>
+                                <action selector="shareButtonDidTap:" destination="Wv1-Sn-bbD" id="KTF-EH-Fjk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="bSy-fp-xPT" id="1rQ-Zj-afG"/>
