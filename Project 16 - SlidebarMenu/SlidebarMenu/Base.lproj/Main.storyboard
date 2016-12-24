@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Reveal View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,10 +23,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="qVr-E3-Up8" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="whk-fT-DqZ"/>
+                        <segue destination="NHv-9d-u2x" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="MXx-XK-Joq"/>
+                        <segue destination="hNy-Na-6Ir" kind="custom" identifier="sw_right" customClass="SWRevealViewControllerSegueSetController" id="XPv-De-I2T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="37"/>
+            <point key="canvasLocation" x="-322" y="37"/>
         </scene>
         <!--Menu Controller-->
         <scene sceneID="UhJ-K9-TLE">
@@ -91,6 +96,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="NHv-9d-u2x" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="oBv-30-oWj"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="e1o-wv-QJo">
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
@@ -121,6 +129,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="qtf-eg-eV0" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Tnv-fz-cUm"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="AvX-Az-w2v">
                                         <rect key="frame" x="0.0" y="132" width="375" height="44"/>
@@ -143,6 +154,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="v2S-ee-URu" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="UJa-Lg-8oB"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -292,7 +306,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="apJ-KC-JcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="857"/>
+            <point key="canvasLocation" x="942" y="813"/>
         </scene>
         <!--News-->
         <scene sceneID="9ZH-I7-PAt">
@@ -307,7 +321,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="242"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VfG-Ev-6fW" id="tV7-kk-tCn">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="241"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="241.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0wz-8T-D3c">
@@ -384,8 +398,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="News" id="rud-Zb-xSt">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="wT9-F2-uLP"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="Z1v-56-cfg"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="extraButton" destination="Z1v-56-cfg" id="ycl-LN-FnX"/>
                         <outlet property="menuButton" destination="wT9-F2-uLP" id="soH-pV-nI5"/>
                     </connections>
                 </tableViewController>
@@ -419,8 +435,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="WeJ-c1-NGO">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="Mpt-9j-pYq"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="nBF-YC-L8d"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="extraButton" destination="nBF-YC-L8d" id="UV4-yq-use"/>
                         <outlet property="menuButton" destination="Mpt-9j-pYq" id="bUd-bJ-j0W"/>
                     </connections>
                 </viewController>
@@ -454,8 +472,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Photo" id="ayY-Yw-2QY">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="GCn-PJ-6CH"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="J29-Vu-7mk"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="extraButton" destination="J29-Vu-7mk" id="DPh-pS-eD3"/>
                         <outlet property="menuButton" destination="GCn-PJ-6CH" id="MOf-U7-sSe"/>
                     </connections>
                 </viewController>
@@ -528,4 +548,7 @@
         <image name="photo" width="1024" height="1024"/>
         <image name="tag" width="1024" height="1024"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="MXx-XK-Joq"/>
+    </inferredMetricsTieBreakers>
 </document>
