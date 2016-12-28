@@ -9,11 +9,11 @@
 import UIKit
 import CoreImage
 
-let dataSourceURL = NSURL(string:"http://www.raywenderlich.com/downloads/ClassicPhotosDictionary.plist")
+let dataSourceURL = URL(string:"http://www.raywenderlich.com/downloads/ClassicPhotosDictionary.plist")
 
 class ListViewController: UITableViewController {
   
-  lazy var photos = NSDictionary(contentsOfURL:dataSourceURL!)!
+  lazy var photos = NSDictionary(contentsOf:dataSourceURL!)!
   
   
   override func viewDidLoad() {
@@ -28,17 +28,17 @@ class ListViewController: UITableViewController {
   
   // #pragma mark - Table view data source
   
-  override func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
     return photos.count
   }
   
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("CellIdentifier", forIndexPath: indexPath) as! UITableViewCell
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath) 
     let rowKey = photos.allKeys[indexPath.row] as! String
     
     var image : UIImage?
-    if let imageURL = NSURL(string:photos[rowKey] as! String),
-    imageData = NSData(contentsOfURL:imageURL){
+    if let imageURL = URL(string:photos[rowKey] as! String),
+    let imageData = try? Data(contentsOf: imageURL){
       //1
       let unfilteredImage = UIImage(data:imageData)
       //2
@@ -55,15 +55,15 @@ class ListViewController: UITableViewController {
   }
   
   
-  func applySepiaFilter(image:UIImage) -> UIImage? {
-    let inputImage = CIImage(data:UIImagePNGRepresentation(image))
+  func applySepiaFilter(_ image:UIImage) -> UIImage? {
+    let inputImage = CIImage(data:UIImagePNGRepresentation(image)!)
     let context = CIContext(options:nil)
     let filter = CIFilter(name:"CISepiaTone")
-    filter.setValue(inputImage, forKey: kCIInputImageKey)
-    filter.setValue(0.8, forKey: "inputIntensity")
-    if let outputImage = filter.outputImage {
-      let outImage = context.createCGImage(outputImage, fromRect: outputImage.extent())
-      return UIImage(CGImage: outImage)
+    filter?.setValue(inputImage, forKey: kCIInputImageKey)
+    filter?.setValue(0.8, forKey: "inputIntensity")
+    if let outputImage = filter?.outputImage {
+      let outImage = context.createCGImage(outputImage, from: outputImage.extent)
+      return UIImage(cgImage: outImage!)
     }
     return nil
     
