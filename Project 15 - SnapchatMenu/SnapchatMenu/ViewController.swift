@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     add(childViewController: storiesVC, toParentViewController: self)
     add(childViewController: discoverVC, toParentViewController: self)
     
-    /// Set up current view.
+    /// Set up current snap view.
     let snapView = UIImageView(image: UIImage(named: "Snap"))
     changeX(ofView: snapView, xPosition: view.frame.width)
     scrollView.addSubview(snapView)
