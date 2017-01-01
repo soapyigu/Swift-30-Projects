@@ -1,5 +1,5 @@
 //
-//  ChatViewController.swift
+//  DiscoverViewController.swift
 //  SnapchatMenu
 //
 //  Copyright © 2016 Yi Gu. All rights reserved.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChatViewController: UIViewController {
+class DiscoverViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -16,5 +16,4 @@ class ChatViewController: UIViewController {
   override var prefersStatusBarHidden: Bool {
     return true
   }
-
 }

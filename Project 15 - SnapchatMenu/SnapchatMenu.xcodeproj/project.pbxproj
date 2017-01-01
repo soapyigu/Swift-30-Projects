@@ -16,6 +16,8 @@
 		198BAEBC1E18E22C00D3616F /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 198BAEBA1E18E22C00D3616F /* ChatViewController.xib */; };
 		198BAEC01E18E44500D3616F /* StoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198BAEBE1E18E44500D3616F /* StoriesViewController.swift */; };
 		198BAEC11E18E44500D3616F /* StoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 198BAEBF1E18E44500D3616F /* StoriesViewController.xib */; };
+		198BAEC71E18E89200D3616F /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198BAEC51E18E89200D3616F /* DiscoverViewController.swift */; };
+		198BAEC81E18E89200D3616F /* DiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 198BAEC61E18E89200D3616F /* DiscoverViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		198BAEBA1E18E22C00D3616F /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 		198BAEBE1E18E44500D3616F /* StoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoriesViewController.swift; sourceTree = "<group>"; };
 		198BAEBF1E18E44500D3616F /* StoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoriesViewController.xib; sourceTree = "<group>"; };
+		198BAEC51E18E89200D3616F /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		198BAEC61E18E89200D3616F /* DiscoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +69,9 @@
 				198BAEA51E18DBE700D3616F /* AppDelegate.swift */,
 				198BAEA71E18DBE700D3616F /* ViewController.swift */,
 				198BAEA91E18DBE700D3616F /* Main.storyboard */,
-				198BAEC21E18E44A00D3616F /* Stories */,
 				198BAEBD1E18E28500D3616F /* Chat */,
+				198BAEC21E18E44A00D3616F /* Stories */,
+				198BAEC91E18E89600D3616F /* Discover */,
 				198BAEAC1E18DBE700D3616F /* Assets.xcassets */,
 				198BAEAE1E18DBE700D3616F /* LaunchScreen.storyboard */,
 				198BAEB11E18DBE700D3616F /* Info.plist */,
@@ -90,6 +95,15 @@
 				198BAEBF1E18E44500D3616F /* StoriesViewController.xib */,
 			);
 			name = Stories;
+			sourceTree = "<group>";
+		};
+		198BAEC91E18E89600D3616F /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				198BAEC51E18E89200D3616F /* DiscoverViewController.swift */,
+				198BAEC61E18E89200D3616F /* DiscoverViewController.xib */,
+			);
+			name = Discover;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				198BAEB01E18DBE700D3616F /* LaunchScreen.storyboard in Resources */,
+				198BAEC81E18E89200D3616F /* DiscoverViewController.xib in Resources */,
 				198BAEAD1E18DBE700D3616F /* Assets.xcassets in Resources */,
 				198BAEBC1E18E22C00D3616F /* ChatViewController.xib in Resources */,
 				198BAEAB1E18DBE700D3616F /* Main.storyboard in Resources */,
@@ -171,6 +186,7 @@
 				198BAEBB1E18E22C00D3616F /* ChatViewController.swift in Sources */,
 				198BAEC01E18E44500D3616F /* StoriesViewController.swift in Sources */,
 				198BAEA61E18DBE700D3616F /* AppDelegate.swift in Sources */,
+				198BAEC71E18E89200D3616F /* DiscoverViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

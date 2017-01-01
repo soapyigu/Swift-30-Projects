@@ -32,6 +32,8 @@
                             <constraint firstItem="vaO-cb-usl" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="kth-11-Rol"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="scrollView" destination="vaO-cb-usl" id="WY3-Uf-elB"/>
                     </connections>
