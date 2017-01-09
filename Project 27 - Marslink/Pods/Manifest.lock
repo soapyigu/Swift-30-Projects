@@ -1,0 +1,22 @@
+PODS:
+  - IGListKit (1.0.0)
+
+DEPENDENCIES:
+  - IGListKit (from `https://github.com/Instagram/IGListKit.git`, branch `master`)
+
+EXTERNAL SOURCES:
+  IGListKit:
+    :branch: master
+    :git: https://github.com/Instagram/IGListKit.git
+
+CHECKOUT OPTIONS:
+  IGListKit:
+    :commit: e1d6f5255243cbf4c2f7d8e77e2ea1dd1f583dcf
+    :git: https://github.com/Instagram/IGListKit.git
+
+SPEC CHECKSUMS:
+  IGListKit: a534a917b574ec56697390ef182f125ccff2145b
+
+PODFILE CHECKSUM: 821e6140b55085368f6ab60db1c7d34ebfdca84d
+
+COCOAPODS: 1.1.1
