@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		195775E11E29513600167C2A /* PhotoCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195775E01E29513600167C2A /* PhotoCommentViewController.swift */; };
 		481872EB1C00CD06001C3658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481872EA1C00CD06001C3658 /* AppDelegate.swift */; };
 		481872ED1C00CD06001C3658 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481872EC1C00CD06001C3658 /* CollectionViewController.swift */; };
 		481872F01C00CD06001C3658 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481872EE1C00CD06001C3658 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		195775E01E29513600167C2A /* PhotoCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCommentViewController.swift; sourceTree = "<group>"; };
 		481872E71C00CD06001C3658 /* PhotoScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		481872EA1C00CD06001C3658 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		481872EC1C00CD06001C3658 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		195775E21E29513F00167C2A /* comment */ = {
+			isa = PBXGroup;
+			children = (
+				195775E01E29513600167C2A /* PhotoCommentViewController.swift */,
+			);
+			name = comment;
+			sourceTree = "<group>";
+		};
 		481872DE1C00CD06001C3658 = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +75,7 @@
 				481872EA1C00CD06001C3658 /* AppDelegate.swift */,
 				481872EE1C00CD06001C3658 /* Main.storyboard */,
 				489D25A41C077897006283B2 /* collection */,
+				195775E21E29513F00167C2A /* comment */,
 				489D259E1C05B452006283B2 /* zooming */,
 				489D25A11C060B53006283B2 /* paging */,
 				481872F11C00CD06001C3658 /* Assets.xcassets */,
@@ -171,6 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				195775E11E29513600167C2A /* PhotoCommentViewController.swift in Sources */,
 				481872ED1C00CD06001C3658 /* CollectionViewController.swift in Sources */,
 				48C5E5C71C0269BE007D1345 /* ZoomedPhotoViewController.swift in Sources */,
 				481872FD1C00E747001C3658 /* PhotoCell.swift in Sources */,

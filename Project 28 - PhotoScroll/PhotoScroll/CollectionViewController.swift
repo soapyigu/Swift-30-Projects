@@ -29,8 +29,16 @@ class CollectionViewController: UICollectionViewController {
   fileprivate let photos = ["photo1", "photo2", "photo3", "photo4", "photo5"]
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let cell = sender as? UICollectionViewCell, let indexPath = collectionView?.indexPath(for: cell), let zoomedPhotoViewController = segue.destination as? ZoomedPhotoViewController {
+    if let cell = sender as? UICollectionViewCell,
+      let indexPath = collectionView?.indexPath(for: cell),
+      let zoomedPhotoViewController = segue.destination as? ZoomedPhotoViewController {
       zoomedPhotoViewController.photoName = "photo\(indexPath.row + 1)"
+    }
+    
+    if let cell = sender as? UICollectionViewCell,
+      let indexPath = collectionView?.indexPath(for: cell),
+      let photoCommentViewController = segue.destination as? PhotoCommentViewController {
+      photoCommentViewController.photoName = "photo\(indexPath.row + 1)"
     }
   }
 }
