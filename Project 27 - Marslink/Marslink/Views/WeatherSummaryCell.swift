@@ -59,6 +59,7 @@ class WeatherSummaryCell: UICollectionViewCell {
     return label
   }()
   
+
   func setExpanded(_ expanded: Bool) {
     self.expandLabel.transform = expanded ? CGAffineTransform(rotationAngle: CGFloat.pi / 2) : CGAffineTransform.identity
   }

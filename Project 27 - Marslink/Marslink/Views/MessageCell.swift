@@ -26,7 +26,7 @@ class MessageCell: UICollectionViewCell {
   
   static let titleHeight: CGFloat = 30
   static let font = AppFont()
-  
+
   static func cellSize(width: CGFloat, text: String) -> CGSize {
     let labelBounds = TextSize.size(text, font: MessageCell.font, width: width, insets: CommonInsets)
     return CGSize(width: width, height: labelBounds.height + MessageCell.titleHeight)
