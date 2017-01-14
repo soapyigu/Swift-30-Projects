@@ -35,10 +35,6 @@ class ZoomedPhotoViewController: UIViewController {
   
   override func viewDidLoad() {
     imageView.image = UIImage(named: photoName)
-    
-    let tap = UITapGestureRecognizer(target: self, action: Selector.imageViewdoubleTapped)
-    tap.numberOfTapsRequired = 2
-    imageView.addGestureRecognizer(tap)
   }
   
   override func viewDidLayoutSubviews() {
@@ -59,7 +55,6 @@ class ZoomedPhotoViewController: UIViewController {
     view.layoutIfNeeded()
   }
 
-  
   fileprivate func updateMinZoomScale(forSize size: CGSize) {
     let widthScale = size.width / imageView.bounds.width
     let heightScale = size.height / imageView.bounds.height
@@ -70,20 +65,6 @@ class ZoomedPhotoViewController: UIViewController {
     /// set up the init zoom scale
     scrollView.zoomScale = minScale
   }
-  
-  func doubleTapped() {
-    performSegue(withIdentifier: "backToComment", sender: nil)
-  }
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let id = segue.identifier,
-      let photoCommentViewController = segue.destination as? PhotoCommentViewController {
-      if id == "backToComment" {
-        photoCommentViewController.photoName = photoName
-      }
-    }
-  }
-
 }
 
 extension ZoomedPhotoViewController: UIScrollViewDelegate {
@@ -100,10 +81,6 @@ extension ZoomedPhotoViewController: UIScrollViewDelegate {
   func scrollViewDidZoom(_ scrollView: UIScrollView) {
     updateConstraints(forSize: view.bounds.size)
   }
-}
-
-fileprivate extension Selector {
-  static let imageViewdoubleTapped = #selector(ZoomedPhotoViewController.doubleTapped)
 }
 
 
