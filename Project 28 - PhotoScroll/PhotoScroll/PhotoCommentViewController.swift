@@ -23,8 +23,10 @@ class PhotoCommentViewController: UIViewController {
       imageView.image = UIImage(named: photoName)
     }
     
-    let tapGesture = UITapGestureRecognizer(target: self, action: Selector.generalTap)
-    view.addGestureRecognizer(tapGesture)
+    let generalTapGesture = UITapGestureRecognizer(target: self, action: Selector.generalTap)
+    view.addGestureRecognizer(generalTapGesture)
+    let zoomTapGesture = UITapGestureRecognizer(target: self, action: Selector.zoomTap)
+    imageView.addGestureRecognizer(zoomTapGesture)
     
     NotificationCenter.default.addObserver(
       self,
@@ -65,10 +67,24 @@ class PhotoCommentViewController: UIViewController {
   func keyboardWillHide(notification: Notification) {
     adjustInsetForKeyboard(isShow: false, notification: notification)
   }
+  
+  func openZoomingController(sender: AnyObject) {
+    performSegue(withIdentifier: "zooming", sender: nil)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let id = segue.identifier,
+      let zoomedPhotoViewController = segue.destination as? ZoomedPhotoViewController {
+      if id == "zooming" {
+        zoomedPhotoViewController.photoName = photoName
+      }
+    }
+  }
 }
 
 fileprivate extension Selector {
   static let keyboardWillShowHandler = #selector(PhotoCommentViewController.keyboardWillShow(notification:))
   static let keyboardWillHideHandler = #selector(PhotoCommentViewController.keyboardWillHide(notification:))
   static let generalTap = #selector(PhotoCommentViewController.dismissKeyboard)
+  static let zoomTap = #selector(PhotoCommentViewController.openZoomingController(sender:))
 }

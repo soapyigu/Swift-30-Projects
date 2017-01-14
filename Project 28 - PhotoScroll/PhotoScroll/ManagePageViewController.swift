@@ -56,14 +56,20 @@ extension ManagePageViewController: UIPageViewControllerDataSource {
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
     
     if let viewController = viewController as? PhotoCommentViewController {
-      guard let index = viewController.photoIndex else {
-        return nil
-      }
-      guard index + 1 != photos.count else {
+      guard let index = viewController.photoIndex, index != photos.count - 1 else {
         return nil
       }
       return viewPhotoCommentController(index: index + 1)
     }
     return nil
+  }
+  
+  /// MARK: UIPageControl
+  func presentationCount(for pageViewController: UIPageViewController) -> Int {
+    return photos.count
+  }
+  
+  func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+    return currentIndex ?? 0
   }
 }

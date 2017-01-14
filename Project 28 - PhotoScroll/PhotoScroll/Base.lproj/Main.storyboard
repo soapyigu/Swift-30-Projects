@@ -74,7 +74,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pea-oV-crJ">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo1" translatesAutoresizingMaskIntoConstraints="NO" id="Ve5-7J-0me">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo1" translatesAutoresizingMaskIntoConstraints="NO" id="Ve5-7J-0me">
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                     </imageView>
                                 </subviews>
@@ -98,6 +98,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="En5-qM-zdb"/>
                     <connections>
                         <outlet property="imageView" destination="Ve5-7J-0me" id="iCm-X3-KJI"/>
                         <outlet property="imageViewBottomConstraint" destination="GbN-Vm-ISe" id="2xW-Xr-EqU"/>
@@ -105,11 +106,12 @@
                         <outlet property="imageViewTopConstraint" destination="F3F-KG-I35" id="NFV-mc-d4t"/>
                         <outlet property="imageViewTrailingConstraint" destination="JIq-X7-sgw" id="Ztx-OA-cd2"/>
                         <outlet property="scrollView" destination="pea-oV-crJ" id="EmD-Ap-Xbl"/>
+                        <segue destination="MrD-Fj-anB" kind="presentation" identifier="backToComment" id="q2Z-es-t43"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RSI-tT-12r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1742" y="1173"/>
+            <point key="canvasLocation" x="3751" y="526"/>
         </scene>
         <!--Photo Comment View Controller-->
         <scene sceneID="PzE-db-BB3">
@@ -129,7 +131,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ljf-kI-vct" userLabel="Container View">
                                         <rect key="frame" x="0.0" y="0.0" width="340" height="500"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo1" translatesAutoresizingMaskIntoConstraints="NO" id="3SE-8d-tKi" userLabel="Photo View">
+                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo1" translatesAutoresizingMaskIntoConstraints="NO" id="3SE-8d-tKi" userLabel="Photo View">
                                                 <rect key="frame" x="0.0" y="0.0" width="340" height="300"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="sPg-7X-Jwa"/>
@@ -185,11 +187,12 @@
                         <outlet property="imageView" destination="3SE-8d-tKi" id="imB-3N-iLp"/>
                         <outlet property="nameTextField" destination="amo-p4-fo2" id="ueh-Po-XmJ"/>
                         <outlet property="scrollView" destination="V8r-cm-Gt2" id="ZLW-ZG-X5w"/>
+                        <segue destination="Tou-yP-mjQ" kind="showDetail" identifier="zooming" id="dWA-zq-TWd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Isy-Ca-mHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2918" y="519"/>
+            <point key="canvasLocation" x="2907" y="526"/>
         </scene>
         <!--Manage Page View Controller-->
         <scene sceneID="6RH-6o-9Uw">
