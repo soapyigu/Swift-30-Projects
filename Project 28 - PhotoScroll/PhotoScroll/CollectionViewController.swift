@@ -40,6 +40,13 @@ class CollectionViewController: UICollectionViewController {
       let photoCommentViewController = segue.destination as? PhotoCommentViewController {
       photoCommentViewController.photoName = "photo\(indexPath.row + 1)"
     }
+    
+    if let cell = sender as? UICollectionViewCell,
+      let indexPath = collectionView?.indexPath(for: cell),
+      let managePageViewController = segue.destination as? ManagePageViewController {
+      managePageViewController.photos = photos
+      managePageViewController.currentIndex = indexPath.row
+    }
   }
 }
 

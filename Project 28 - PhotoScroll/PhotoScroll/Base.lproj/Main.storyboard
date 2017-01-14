@@ -24,7 +24,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="buF-rK-ntA" customClass="PhotoCell" customModule="PhotoScroll" customModuleProvider="target">
-                                <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="88" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -44,7 +44,7 @@
                                 <size key="customSize" width="200" height="200"/>
                                 <connections>
                                     <outlet property="imageView" destination="1Xv-RL-hti" id="2ul-H5-n5T"/>
-                                    <segue destination="MrD-Fj-anB" kind="show" id="fhG-MU-P2G"/>
+                                    <segue destination="pce-RE-N07" kind="show" id="hTZ-eC-JKd"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -114,7 +114,7 @@
         <!--Photo Comment View Controller-->
         <scene sceneID="PzE-db-BB3">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="MrD-Fj-anB" customClass="PhotoCommentViewController" customModule="PhotoScroll" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoCommentViewController" automaticallyAdjustsScrollViewInsets="NO" id="MrD-Fj-anB" customClass="PhotoCommentViewController" customModule="PhotoScroll" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Min-Bw-bax"/>
                         <viewControllerLayoutGuide type="bottom" id="5yc-9x-vIF"/>
@@ -124,7 +124,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8r-cm-Gt2">
-                                <rect key="frame" x="0.0" y="64" width="340" height="736"/>
+                                <rect key="frame" x="0.0" y="20" width="340" height="780"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ljf-kI-vct" userLabel="Container View">
                                         <rect key="frame" x="0.0" y="0.0" width="340" height="500"/>
@@ -189,7 +189,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Isy-Ca-mHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2259" y="484"/>
+            <point key="canvasLocation" x="2918" y="519"/>
+        </scene>
+        <!--Manage Page View Controller-->
+        <scene sceneID="6RH-6o-9Uw">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="8" navigationOrientation="horizontal" spineLocation="none" id="pce-RE-N07" customClass="ManagePageViewController" customModule="PhotoScroll" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nFG-uq-gQb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2169" y="484"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uzF-pX-Zex">
