@@ -12,5 +12,5 @@ Simple app to demo UIScrollView usages, they are:
 For details, please reference [UIScrollView Tutorial: Getting Started](https://www.raywenderlich.com/122139/uiscrollview-tutorial)
 
 ## Screenshots
-![PhotoScroll](https://github.com/soapyigu/30SwiftProjects/blob/master/Project%2028%20-% PhotoScroll/PhotoScroll.gif)
+![PhotoScroll](https://github.com/soapyigu/30SwiftProjects/blob/master/Project%2028%20-%20PhotoScroll/PhotoScroll.gif)
 
