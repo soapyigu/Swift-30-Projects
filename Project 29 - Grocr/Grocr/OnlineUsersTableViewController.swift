@@ -21,8 +21,12 @@
  */
 
 import UIKit
+import Firebase
 
 class OnlineUsersTableViewController: UITableViewController {
+  
+  // MARK: Firebase Related
+  let usersRef = FIRDatabase.database().reference(withPath: "online")
   
   // MARK: Constants
   let userCell = "UserCell"
@@ -33,7 +37,32 @@ class OnlineUsersTableViewController: UITableViewController {
   // MARK: UIViewController Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    currentUsers.append("hungry@person.food")
+    
+    usersRef.observe(.
+      childAdded, with: { [unowned self] snapshot in
+      guard let email = snapshot.value as? String else {
+        return
+      }
+      
+      self.currentUsers.append(email)
+      
+      let row = self.currentUsers.count - 1
+      let indexPath = IndexPath(row: row, section: 0)
+      self.tableView.insertRows(at: [indexPath], with: .top)
+    })
+    
+    usersRef.observe(.childRemoved, with: { [unowned self] snapshot in
+      guard let emailToFind = snapshot.value as? String else {
+        return
+      }
+      for (index, email) in self.currentUsers.enumerated() {
+        if email == emailToFind {
+          let indexPath = IndexPath(row: index, section: 0)
+          self.currentUsers.remove(at: index)
+          self.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+      }
+    })
   }
   
   // MARK: UITableView Delegate methods

@@ -21,6 +21,7 @@
  */
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
   
@@ -31,9 +32,19 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var textFieldLoginEmail: UITextField!
   @IBOutlet weak var textFieldLoginPassword: UITextField!
   
+  override func viewDidLoad() {
+    /// Perform the segue when user has been authenticated
+    FIRAuth.auth()!.addStateDidChangeListener() { [unowned self] auth, user in
+      if let _ = user {
+        self.performSegue(withIdentifier: self.loginToList, sender: nil)
+      }
+    }
+  }
+  
   // MARK: Actions
   @IBAction func loginDidTouch(_ sender: AnyObject) {
-    performSegue(withIdentifier: loginToList, sender: nil)
+    FIRAuth.auth()!.signIn(withEmail: textFieldLoginEmail.text!,
+                           password: textFieldLoginPassword.text!)
   }
   
   @IBAction func signUpDidTouch(_ sender: AnyObject) {
@@ -41,9 +52,20 @@ class LoginViewController: UIViewController {
                                   message: "Register",
                                   preferredStyle: .alert)
     
-    let saveAction = UIAlertAction(title: "Save",
-                                   style: .default) { action in
-                                    
+    let saveAction = UIAlertAction(title: "Save", style: .default) { action in
+      guard let email = alert.textFields?[0].text,
+        let password = alert.textFields?[1].text else {
+          return
+      }
+      
+      FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
+        if let error = error {
+          print("Firebase sign up error: " + error.localizedDescription)
+          fatalError()
+        }
+        
+        FIRAuth.auth()?.signIn(withEmail: email, password: password)
+      }
     }
     
     let cancelAction = UIAlertAction(title: "Cancel",

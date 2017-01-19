@@ -22,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		19C5D3F91E3038990082E992 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		19C5D3FB1E307FC90082E992 /* Grocr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Grocr.entitlements; sourceTree = "<group>"; };
 		9BA2A2DB5BA4733818152B9B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A898E3AE11425E4495FAC93A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB23855C1B3DD5AB0079CD01 /* Grocr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grocr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +84,7 @@
 		BB23855E1B3DD5AB0079CD01 /* Grocr */ = {
 			isa = PBXGroup;
 			children = (
+				19C5D3FB1E307FC90082E992 /* Grocr.entitlements */,
 				BB2385881B3DD9550079CD01 /* Models */,
 				BB2385811B3DD8310079CD01 /* Controllers */,
 				BB2385821B3DD8490079CD01 /* Layouts */,
@@ -181,6 +183,7 @@
 				TargetAttributes = {
 					BB23855B1B3DD5AB0079CD01 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 9VUC3R8D65;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -188,7 +191,7 @@
 								enabled = 0;
 							};
 							com.apple.Keychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -402,8 +405,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Grocr/Grocr.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9VUC3R8D65;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Grocr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -425,8 +430,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Grocr/Grocr.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9VUC3R8D65;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Grocr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

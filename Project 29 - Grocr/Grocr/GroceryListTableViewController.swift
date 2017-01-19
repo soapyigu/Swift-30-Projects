@@ -28,6 +28,7 @@ class GroceryListTableViewController: UITableViewController {
   // MARK: Constants
   let listToUsers = "ListToUsers"
   let ref = FIRDatabase.database().reference(withPath: "grocery-items")
+  let usersRef = FIRDatabase.database().reference(withPath: "online")
   
   // MARK: Properties
   var items: [GroceryItem] = []
@@ -60,6 +61,27 @@ class GroceryListTableViewController: UITableViewController {
       
       self?.items = newItems
       self?.tableView.reloadData()
+    })
+    
+    /// Monitor User status
+    FIRAuth.auth()!.addStateDidChangeListener { [weak self] auth, user in
+      guard let user = user else {
+        return
+      }
+      self?.user = User(authData: user)
+      
+      let currentUserRef = self?.usersRef.child(user.uid)
+      currentUserRef?.setValue(self?.user.email)
+      /// Removes the value after the connection to Firebase closes
+      currentUserRef?.onDisconnectRemoveValue()
+    }
+    
+    usersRef.observe(.value, with: { [weak self] snapshot in
+      if snapshot.exists() {
+        self?.userCountBarButtonItem?.title = snapshot.childrenCount.description
+      } else {
+        self?.userCountBarButtonItem?.title = "0"
+      }
     })
   }
   
