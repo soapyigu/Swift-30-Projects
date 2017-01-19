@@ -21,6 +21,7 @@
  */
 
 import Foundation
+import Firebase
 
 struct GroceryItem {
   
