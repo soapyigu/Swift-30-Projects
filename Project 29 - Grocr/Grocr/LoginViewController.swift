@@ -33,8 +33,10 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var textFieldLoginPassword: UITextField!
   
   override func viewDidLoad() {
+    super.viewDidLoad()
+    
     /// Perform the segue when user has been authenticated
-    FIRAuth.auth()!.addStateDidChangeListener() { [unowned self] auth, user in
+    FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
       if let _ = user {
         self.performSegue(withIdentifier: self.loginToList, sender: nil)
       }

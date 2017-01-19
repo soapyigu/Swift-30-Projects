@@ -39,7 +39,7 @@ class OnlineUsersTableViewController: UITableViewController {
     super.viewDidLoad()
     
     usersRef.observe(.
-      childAdded, with: { [unowned self] snapshot in
+      childAdded, with: { snapshot in
       guard let email = snapshot.value as? String else {
         return
       }
@@ -51,7 +51,7 @@ class OnlineUsersTableViewController: UITableViewController {
       self.tableView.insertRows(at: [indexPath], with: .top)
     })
     
-    usersRef.observe(.childRemoved, with: { [unowned self] snapshot in
+    usersRef.observe(.childRemoved, with: { snapshot in
       guard let emailToFind = snapshot.value as? String else {
         return
       }

@@ -146,7 +146,7 @@ class GroceryListTableViewController: UITableViewController {
                                   message: "Add an Item",
                                   preferredStyle: .alert)
     
-    let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+    let saveAction = UIAlertAction(title: "Save", style: .default) { action in
       guard let textField = alert.textFields?.first,
         let text = textField.text else {
           return
