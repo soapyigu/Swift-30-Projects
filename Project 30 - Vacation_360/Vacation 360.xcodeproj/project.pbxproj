@@ -1,0 +1,327 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04030D901D14D4C50018DB34 /* grand_canyon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04030D8D1D14D4C50018DB34 /* grand_canyon.jpg */; };
+		04030D911D14D4C50018DB34 /* sindhu_beach.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04030D8E1D14D4C50018DB34 /* sindhu_beach.jpg */; };
+		04030D921D14D4C50018DB34 /* underwater.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04030D8F1D14D4C50018DB34 /* underwater.jpg */; };
+		0422C6B51D159760007E1B81 /* VacationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04030D991D1593090018DB34 /* VacationViewController.swift */; };
+		043BB7881CCD4CA5000521FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BB7871CCD4CA5000521FC /* AppDelegate.swift */; };
+		043BB78F1CCD4CA5000521FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 043BB78E1CCD4CA5000521FC /* Assets.xcassets */; };
+		043BB7921CCD4CA5000521FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 043BB7901CCD4CA5000521FC /* LaunchScreen.storyboard */; };
+		0477669C1CCD53A500F3F8FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0477669B1CCD53A500F3F8FC /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		04030D8D1D14D4C50018DB34 /* grand_canyon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grand_canyon.jpg; sourceTree = "<group>"; };
+		04030D8E1D14D4C50018DB34 /* sindhu_beach.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sindhu_beach.jpg; sourceTree = "<group>"; };
+		04030D8F1D14D4C50018DB34 /* underwater.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = underwater.jpg; sourceTree = "<group>"; };
+		04030D991D1593090018DB34 /* VacationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VacationViewController.swift; sourceTree = "<group>"; };
+		043BB7871CCD4CA5000521FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		043BB78E1CCD4CA5000521FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		043BB7911CCD4CA5000521FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		043BB7931CCD4CA5000521FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0444FB111CF2493F005DA4DF /* Vacation 360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vacation 360.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0477669B1CCD53A500F3F8FC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		043BB7811CCD4CA5000521FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		043BB77B1CCD4CA5000521FC = {
+			isa = PBXGroup;
+			children = (
+				043BB7861CCD4CA5000521FC /* Vacation 360 */,
+				28EBE2A64A6872BC295592D0 /* Frameworks */,
+				0444FB111CF2493F005DA4DF /* Vacation 360.app */,
+			);
+			sourceTree = "<group>";
+		};
+		043BB7861CCD4CA5000521FC /* Vacation 360 */ = {
+			isa = PBXGroup;
+			children = (
+				0473CA6B1CF13E2300926B6C /* 360 Images */,
+				043BB7871CCD4CA5000521FC /* AppDelegate.swift */,
+				04030D991D1593090018DB34 /* VacationViewController.swift */,
+				0477669B1CCD53A500F3F8FC /* Main.storyboard */,
+				043BB7901CCD4CA5000521FC /* LaunchScreen.storyboard */,
+				043BB78E1CCD4CA5000521FC /* Assets.xcassets */,
+				043BB7931CCD4CA5000521FC /* Info.plist */,
+			);
+			path = "Vacation 360";
+			sourceTree = "<group>";
+		};
+		0473CA6B1CF13E2300926B6C /* 360 Images */ = {
+			isa = PBXGroup;
+			children = (
+				04030D8D1D14D4C50018DB34 /* grand_canyon.jpg */,
+				04030D8E1D14D4C50018DB34 /* sindhu_beach.jpg */,
+				04030D8F1D14D4C50018DB34 /* underwater.jpg */,
+			);
+			name = "360 Images";
+			sourceTree = "<group>";
+		};
+		28EBE2A64A6872BC295592D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		043BB7831CCD4CA5000521FC /* Vacation 360 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 043BB7961CCD4CA5000521FC /* Build configuration list for PBXNativeTarget "Vacation 360" */;
+			buildPhases = (
+				043BB7801CCD4CA5000521FC /* Sources */,
+				043BB7811CCD4CA5000521FC /* Frameworks */,
+				043BB7821CCD4CA5000521FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Vacation 360";
+			productName = "Vacation 360";
+			productReference = 0444FB111CF2493F005DA4DF /* Vacation 360.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		043BB77C1CCD4CA5000521FC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = RayWenderlich;
+				TargetAttributes = {
+					043BB7831CCD4CA5000521FC = {
+						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
+					};
+				};
+			};
+			buildConfigurationList = 043BB77F1CCD4CA5000521FC /* Build configuration list for PBXProject "Vacation 360" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 043BB77B1CCD4CA5000521FC;
+			productRefGroup = 043BB77B1CCD4CA5000521FC;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				043BB7831CCD4CA5000521FC /* Vacation 360 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		043BB7821CCD4CA5000521FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				043BB7921CCD4CA5000521FC /* LaunchScreen.storyboard in Resources */,
+				043BB78F1CCD4CA5000521FC /* Assets.xcassets in Resources */,
+				04030D921D14D4C50018DB34 /* underwater.jpg in Resources */,
+				04030D901D14D4C50018DB34 /* grand_canyon.jpg in Resources */,
+				04030D911D14D4C50018DB34 /* sindhu_beach.jpg in Resources */,
+				0477669C1CCD53A500F3F8FC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		043BB7801CCD4CA5000521FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0422C6B51D159760007E1B81 /* VacationViewController.swift in Sources */,
+				043BB7881CCD4CA5000521FC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		043BB7901CCD4CA5000521FC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				043BB7911CCD4CA5000521FC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		043BB7941CCD4CA5000521FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		043BB7951CCD4CA5000521FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		043BB7971CCD4CA5000521FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				INFOPLIST_FILE = "Vacation 360/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "RayWenderlich.Vacation-360";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		043BB7981CCD4CA5000521FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				INFOPLIST_FILE = "Vacation 360/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "RayWenderlich.Vacation-360";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		043BB77F1CCD4CA5000521FC /* Build configuration list for PBXProject "Vacation 360" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				043BB7941CCD4CA5000521FC /* Debug */,
+				043BB7951CCD4CA5000521FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		043BB7961CCD4CA5000521FC /* Build configuration list for PBXNativeTarget "Vacation 360" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				043BB7971CCD4CA5000521FC /* Debug */,
+				043BB7981CCD4CA5000521FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 043BB77C1CCD4CA5000521FC /* Project object */;
+}
