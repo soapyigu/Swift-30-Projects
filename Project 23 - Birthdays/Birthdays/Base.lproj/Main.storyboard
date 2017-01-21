@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fAp-uF-NmY">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Birthdays" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lOJ-G8-uZY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lOJ-G8-uZY" secondAttribute="bottom" id="GCF-KG-lqe"/>
+                            <constraint firstAttribute="trailing" secondItem="lOJ-G8-uZY" secondAttribute="trailing" id="Pnz-zr-nKG"/>
+                            <constraint firstItem="lOJ-G8-uZY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gsF-ai-HTw"/>
+                            <constraint firstItem="lOJ-G8-uZY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wcf-GT-mKX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fzE-zM-oZ5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="compose" id="eHB-IT-Pw1">
+                            <color key="tintColor" red="0.94509803920000002" green="0.41960784309999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="XRb-Lf-rqz" kind="show" identifier="idSegueCreateContact" id="Ot6-Fi-XJ3"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="xfB-sV-cDU">
+                            <color key="tintColor" red="0.94509803920000002" green="0.41960784309999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="addContact:" destination="BYZ-38-t0r" id="70h-iS-Eql"/>
+                                <segue destination="liC-xG-jrS" kind="show" identifier="idSegueAddContact" id="vRa-ID-G6M"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tblContacts" destination="lOJ-G8-uZY" id="pte-AT-kkM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="952" y="426"/>
+        </scene>
+        <!--Create Contact View Controller-->
+        <scene sceneID="iBV-Xg-lEw">
+            <objects>
+                <viewController id="XRb-Lf-rqz" customClass="CreateContactViewController" customModule="Birthdays" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AdG-QO-ErL"/>
+                        <viewControllerLayoutGuide type="bottom" id="UG6-D7-vQx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h0a-VD-s3W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dqz-4D-dwp">
+                                <rect key="frame" x="16" y="72" width="343" height="30"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sz9-lB-x4C">
+                                <rect key="frame" x="16" y="110" width="343" height="30"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Home Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MSP-gC-MiZ">
+                                <rect key="frame" x="16" y="148" width="343" height="30"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="sPQ-aY-LVp">
+                                <rect key="frame" x="0.0" y="225.5" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="464943102.89942098">
+                                    <!--2015-09-26 06:51:42 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sz9-lB-x4C" firstAttribute="trailing" secondItem="MSP-gC-MiZ" secondAttribute="trailing" id="1cv-HI-yv0"/>
+                            <constraint firstAttribute="trailing" secondItem="sPQ-aY-LVp" secondAttribute="trailing" id="6HN-dC-43Z"/>
+                            <constraint firstItem="MSP-gC-MiZ" firstAttribute="leading" secondItem="h0a-VD-s3W" secondAttribute="leadingMargin" id="8bT-i6-gjs"/>
+                            <constraint firstItem="sPQ-aY-LVp" firstAttribute="leading" secondItem="h0a-VD-s3W" secondAttribute="leading" id="8d4-uI-MhL"/>
+                            <constraint firstItem="sPQ-aY-LVp" firstAttribute="centerY" secondItem="h0a-VD-s3W" secondAttribute="centerY" id="XAL-Rf-2OE"/>
+                            <constraint firstItem="sz9-lB-x4C" firstAttribute="trailing" secondItem="dqz-4D-dwp" secondAttribute="trailing" id="jV9-b4-40X"/>
+                            <constraint firstItem="sz9-lB-x4C" firstAttribute="leading" secondItem="dqz-4D-dwp" secondAttribute="leading" id="jZp-av-1vD"/>
+                            <constraint firstItem="sz9-lB-x4C" firstAttribute="top" secondItem="dqz-4D-dwp" secondAttribute="bottom" constant="8" symbolic="YES" id="nbn-LU-B3R"/>
+                            <constraint firstItem="dqz-4D-dwp" firstAttribute="top" secondItem="AdG-QO-ErL" secondAttribute="bottom" constant="8" symbolic="YES" id="nmu-hh-LNI"/>
+                            <constraint firstItem="MSP-gC-MiZ" firstAttribute="top" secondItem="sz9-lB-x4C" secondAttribute="bottom" constant="8" symbolic="YES" id="oDz-dO-Cmn"/>
+                            <constraint firstItem="MSP-gC-MiZ" firstAttribute="centerX" secondItem="sPQ-aY-LVp" secondAttribute="centerX" id="rDv-b4-eD0"/>
+                            <constraint firstItem="sz9-lB-x4C" firstAttribute="leading" secondItem="MSP-gC-MiZ" secondAttribute="leading" id="wOg-yE-3dZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="sPQ-aY-LVp" id="WH2-JU-3nC"/>
+                        <outlet property="txtFirstname" destination="dqz-4D-dwp" id="uLh-Wq-wTs"/>
+                        <outlet property="txtHomeEmail" destination="MSP-gC-MiZ" id="mYp-Wd-ILS"/>
+                        <outlet property="txtLastname" destination="sz9-lB-x4C" id="iaD-h1-H9c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RzG-gr-RfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="952" y="1189"/>
+        </scene>
+        <!--Add Contact View Controller-->
+        <scene sceneID="u2U-3f-ArL">
+            <objects>
+                <viewController id="liC-xG-jrS" customClass="AddContactViewController" customModule="Birthdays" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nMu-M3-Ihx"/>
+                        <viewControllerLayoutGuide type="bottom" id="ghp-e6-tfb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kuZ-Tf-xXD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month of Birth:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FA8-Uc-LWP">
+                                <rect key="frame" x="16" y="136" width="119" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Chi-rQ-wBC"/>
+                                    <constraint firstAttribute="width" constant="119" id="g6m-NF-Di4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <color key="textColor" red="0.94509803920000002" green="0.41960784309999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoe-up-onQ">
+                                <rect key="frame" x="16" y="79" width="88" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="9Nf-By-mQr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <color key="textColor" red="0.94509803920000002" green="0.41960784309999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wb-wm-pRx">
+                                <rect key="frame" x="16" y="165" width="343" height="230"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="230" id="xPG-uJ-Tee"/>
+                                </constraints>
+                            </pickerView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IGI-a2-562">
+                                <rect key="frame" x="112" y="75" width="247" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="TYc-Zl-NmR"/>
+                                </constraints>
+                                <color key="textColor" red="0.94509803920000002" green="0.41960784309999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZkU-8x-InU">
+                                <rect key="frame" x="16" y="469" width="343" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="RJq-uc-YdT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                <state key="normal" title="Open contacts to select">
+                                    <color key="titleColor" red="0.94509803920000002" green="0.41960784309999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="showContacts:" destination="liC-xG-jrS" eventType="touchUpInside" id="ULv-0a-PK2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZkU-8x-InU" firstAttribute="trailing" secondItem="kuZ-Tf-xXD" secondAttribute="trailingMargin" id="3q2-o6-Nyl"/>
+                            <constraint firstItem="2wb-wm-pRx" firstAttribute="trailing" secondItem="kuZ-Tf-xXD" secondAttribute="trailingMargin" id="92s-8b-3HI"/>
+                            <constraint firstItem="FA8-Uc-LWP" firstAttribute="leading" secondItem="kuZ-Tf-xXD" secondAttribute="leadingMargin" id="Amu-Xs-odT"/>
+                            <constraint firstItem="ZkU-8x-InU" firstAttribute="top" secondItem="2wb-wm-pRx" secondAttribute="bottom" constant="74" id="Cjd-s4-4fn"/>
+                            <constraint firstItem="IGI-a2-562" firstAttribute="leading" secondItem="zoe-up-onQ" secondAttribute="trailing" constant="8" id="E7A-9H-FcU"/>
+                            <constraint firstItem="2wb-wm-pRx" firstAttribute="trailing" secondItem="ZkU-8x-InU" secondAttribute="trailing" id="Kcv-3P-Bbm"/>
+                            <constraint firstItem="IGI-a2-562" firstAttribute="trailing" secondItem="kuZ-Tf-xXD" secondAttribute="trailingMargin" id="Kko-Ng-3Vj"/>
+                            <constraint firstItem="zoe-up-onQ" firstAttribute="leading" secondItem="kuZ-Tf-xXD" secondAttribute="leadingMargin" id="Pqg-lk-K1Z"/>
+                            <constraint firstItem="zoe-up-onQ" firstAttribute="top" secondItem="nMu-M3-Ihx" secondAttribute="bottom" constant="15" id="Rax-rB-GBo"/>
+                            <constraint firstItem="2wb-wm-pRx" firstAttribute="top" secondItem="FA8-Uc-LWP" secondAttribute="bottom" constant="8" id="b5P-sW-ve5"/>
+                            <constraint firstItem="2wb-wm-pRx" firstAttribute="leading" secondItem="ZkU-8x-InU" secondAttribute="leading" id="cUg-30-JFS"/>
+                            <constraint firstItem="ZkU-8x-InU" firstAttribute="leading" secondItem="kuZ-Tf-xXD" secondAttribute="leadingMargin" id="ceX-a1-6lt"/>
+                            <constraint firstItem="zoe-up-onQ" firstAttribute="baseline" secondItem="IGI-a2-562" secondAttribute="baseline" id="gFN-hl-IF5"/>
+                            <constraint firstItem="FA8-Uc-LWP" firstAttribute="top" secondItem="IGI-a2-562" secondAttribute="bottom" constant="31" id="nTm-aF-X2k"/>
+                            <constraint firstItem="2wb-wm-pRx" firstAttribute="leading" secondItem="kuZ-Tf-xXD" secondAttribute="leadingMargin" id="pJx-7q-VZp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pickerMonth" destination="2wb-wm-pRx" id="kvO-6d-9nO"/>
+                        <outlet property="txtLastName" destination="IGI-a2-562" id="8bL-pn-4Mq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9By-L1-PBr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1730" y="426"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lYY-MT-8lN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fAp-uF-NmY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fdM-kU-ftk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="EsF-po-Q0X"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H74-FI-HFt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="157" y="426"/>
+        </scene>
+    </scenes>
+</document>
