@@ -8,7 +8,7 @@
 import UIKit
 import Contacts
 
-class CreateContactViewController: UIViewController, UITextFieldDelegate {
+class CreateContactViewController: UIViewController {
   
   @IBOutlet weak var txtFirstname: UITextField!
   @IBOutlet weak var txtLastname: UITextField!

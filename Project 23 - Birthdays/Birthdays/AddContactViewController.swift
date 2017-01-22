@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Contacts
 
 class AddContactViewController: UIViewController {
   
@@ -53,6 +54,15 @@ extension AddContactViewController: UIPickerViewDelegate {
 // MARK: UITextFieldDelegate functions
 extension AddContactViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    AppDelegate.appDelegate.requestForAccess { (accessGranted) -> Void in
+      if accessGranted {
+        let predicate = CNContact.predicateForContacts(matchingName: self.txtLastName.text!)
+        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey, CNContactBirthdayKey]
+        var contacts = [CNContact]()
+        var message: String!
+      }
+    }
+    
     return true
   }
   
