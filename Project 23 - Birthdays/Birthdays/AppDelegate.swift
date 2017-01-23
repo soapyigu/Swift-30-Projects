@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           if authorizationStatus == CNAuthorizationStatus.denied {
             DispatchQueue.main.async {
               let message = "\(accessError!.localizedDescription)\n\nPlease allow the app to access your contacts through the Settings."
-              Helper.showMessage(message: message)
+              self.showMessage(message)
             }
           }
         }
@@ -46,4 +46,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       completionHandler(false)
     }
   }
+  
+  func showMessage(_ message: String) {
+    let alertController = UIAlertController(title: "Birthdays", message: message, preferredStyle: .alert)
+    let dismissAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+    
+    alertController.addAction(dismissAction)
+    
+    let pushedViewControllers = (window?.rootViewController as! UINavigationController).viewControllers
+    let presentedViewController = pushedViewControllers.last
+    
+    presentedViewController?.present(alertController, animated: true, completion: nil)
+  }
+
 }

@@ -8,10 +8,16 @@
 import UIKit
 import Contacts
 
+protocol AddContactViewControllerDelegate {
+  func didFetchContacts(_ contacts: [CNContact])
+}
+
 class AddContactViewController: UIViewController {
   
   @IBOutlet weak var txtLastName: UITextField!
   @IBOutlet weak var pickerMonth: UIPickerView!
+  
+  var delegate: AddContactViewControllerDelegate!
   
   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   
@@ -59,7 +65,32 @@ extension AddContactViewController: UITextFieldDelegate {
         let predicate = CNContact.predicateForContacts(matchingName: self.txtLastName.text!)
         let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey, CNContactBirthdayKey]
         var contacts = [CNContact]()
-        var message: String!
+        var warningMessage: String!
+        
+        let contactsStore = AppDelegate.appDelegate.contactStore
+        do {
+          contacts = try contactsStore.unifiedContacts(matching: predicate, keysToFetch: keys as [CNKeyDescriptor])
+          
+          if contacts.count == 0 {
+            warningMessage = "No contacts were found matching the given name."
+          }
+        }
+        catch {
+          warningMessage = "Unable to fetch contacts."
+        }
+        
+        
+        if warningMessage != nil {
+          DispatchQueue.main.async {
+            AppDelegate.appDelegate.showMessage(warningMessage)
+          }
+        }
+        else {
+          DispatchQueue.main.async {
+            self.delegate.didFetchContacts(contacts)
+            self.navigationController?.popViewController(animated: true)
+          }
+        }
       }
     }
     
