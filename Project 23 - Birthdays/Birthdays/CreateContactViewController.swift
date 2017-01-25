@@ -36,7 +36,28 @@ class CreateContactViewController: UIViewController {
   // MARK: Custom functions
   
   func createContact() {
+    let newContact = CNMutableContact()
     
+    newContact.givenName = txtFirstname.text!
+    newContact.familyName = txtLastname.text!
+    
+    if let homeEmail = txtHomeEmail.text {
+      let homeEmail = CNLabeledValue(label: CNLabelHome, value: homeEmail as NSString)
+      newContact.emailAddresses = [homeEmail]
+    }
+    
+    let birthdayComponents = Calendar.current.dateComponents([Calendar.Component.year, Calendar.Component.month, Calendar.Component.day], from: datePicker.date)
+    newContact.birthday = birthdayComponents
+    
+    do {
+      let saveRequest = CNSaveRequest()
+      saveRequest.add(newContact, toContainerWithIdentifier: nil)
+      try AppDelegate.appDelegate.contactStore.execute(saveRequest)
+      
+      navigationController?.popViewController(animated: true)
+    } catch {
+      Helper.show(message: "Unable to save the new contact.")
+    }
   }
 }
 

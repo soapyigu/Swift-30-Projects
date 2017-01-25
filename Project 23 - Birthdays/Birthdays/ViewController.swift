@@ -7,6 +7,7 @@
 
 import UIKit
 import Contacts
+import ContactsUI
 
 class ViewController: UIViewController {
   
@@ -124,6 +125,49 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 100.0
+  }
+  
+  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      contacts.remove(at: indexPath.row)
+      tblContacts.reloadData()
+    }
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let selectedContact = contacts[indexPath.row]
+    
+    let keys = [CNContactFormatter.descriptorForRequiredKeys(for: CNContactFormatterStyle.fullName), CNContactEmailAddressesKey, CNContactBirthdayKey, CNContactImageDataKey] as [Any]
+    
+    if selectedContact.areKeysAvailable([CNContactViewController.descriptorForRequiredKeys()]) {
+      let contactViewController = CNContactViewController(for: selectedContact)
+      contactViewController.contactStore = AppDelegate.appDelegate.contactStore
+      contactViewController.displayedPropertyKeys = keys
+      navigationController?.pushViewController(contactViewController, animated: true)
+    }
+    else {
+      AppDelegate.appDelegate.requestForAccess(completionHandler: { (accessGranted) -> Void in
+        if accessGranted {
+          do {
+            let contactRefetched = try AppDelegate.appDelegate.contactStore.unifiedContact(withIdentifier: selectedContact.identifier, keysToFetch: [CNContactViewController.descriptorForRequiredKeys()])
+            
+            DispatchQueue.main.async {
+              let contactViewController = CNContactViewController(for: contactRefetched)
+              contactViewController.contactStore = AppDelegate.appDelegate.contactStore
+              contactViewController.displayedPropertyKeys = keys
+              self.navigationController?.pushViewController(contactViewController, animated: true)
+            }
+          }
+          catch {
+            print("Unable to refetch the selected contact.", separator: "", terminator: "\n")
+          }
+        }
+      })
+    }
   }
 }
 
