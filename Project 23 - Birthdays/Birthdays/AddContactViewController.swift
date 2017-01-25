@@ -7,6 +7,7 @@
 
 import UIKit
 import Contacts
+import ContactsUI
 
 protocol AddContactViewControllerDelegate {
   func didFetchContacts(_ contacts: [CNContact])
@@ -17,11 +18,10 @@ class AddContactViewController: UIViewController {
   @IBOutlet weak var txtLastName: UITextField!
   @IBOutlet weak var pickerMonth: UIPickerView!
   
-  var delegate: AddContactViewControllerDelegate!
-  
   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   
   var currentlySelectedMonthIndex = 1
+  var delegate: AddContactViewControllerDelegate!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -32,11 +32,25 @@ class AddContactViewController: UIViewController {
     let doneBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(AddContactViewController.performDoneItemTap))
     navigationItem.rightBarButtonItem = doneBarButtonItem
   }
-  
+}
   // MARK: IBAction functions
-  
+
+extension AddContactViewController: CNContactPickerDelegate {
   @IBAction func showContacts(_ sender: AnyObject) {
+    let contactPickerViewController = CNContactPickerViewController()
     
+    contactPickerViewController.predicateForEnablingContact = NSPredicate(format: "birthday != nil")
+    
+    contactPickerViewController.delegate = self
+    
+    contactPickerViewController.displayedPropertyKeys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey, CNContactBirthdayKey, CNContactImageDataKey]
+    
+    present(contactPickerViewController, animated: true, completion: nil)
+  }
+  
+  func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact) {
+    delegate.didFetchContacts([contact])
+    navigationController?.popViewController(animated: true)
   }
 }
   
@@ -63,29 +77,27 @@ extension AddContactViewController: UITextFieldDelegate {
     AppDelegate.appDelegate.requestForAccess { (accessGranted) -> Void in
       if accessGranted {
         let predicate = CNContact.predicateForContacts(matchingName: self.txtLastName.text!)
-        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey, CNContactBirthdayKey]
+        let keys = [CNContactFormatter.descriptorForRequiredKeys(for: CNContactFormatterStyle.fullName), CNContactEmailAddressesKey, CNContactBirthdayKey] as [Any]
         var contacts = [CNContact]()
         var warningMessage: String!
         
         let contactsStore = AppDelegate.appDelegate.contactStore
         do {
-          contacts = try contactsStore.unifiedContacts(matching: predicate, keysToFetch: keys as [CNKeyDescriptor])
+          contacts = try contactsStore.unifiedContacts(matching: predicate, keysToFetch: keys as! [CNKeyDescriptor])
           
           if contacts.count == 0 {
             warningMessage = "No contacts were found matching the given name."
           }
-        }
-        catch {
+        } catch {
           warningMessage = "Unable to fetch contacts."
         }
         
         
-        if warningMessage != nil {
+        if let warningMessage = warningMessage {
           DispatchQueue.main.async {
-            AppDelegate.appDelegate.showMessage(warningMessage)
+            Helper.show(message: warningMessage)
           }
-        }
-        else {
+        } else {
           DispatchQueue.main.async {
             self.delegate.didFetchContacts(contacts)
             self.navigationController?.popViewController(animated: true)
@@ -100,6 +112,30 @@ extension AddContactViewController: UITextFieldDelegate {
   // MARK: Custom functions
   
   func performDoneItemTap() {
-    
+    AppDelegate.appDelegate.requestForAccess { (accessGranted) -> Void in
+      if accessGranted {
+        var contacts = [CNContact]()
+        
+        let keys = [CNContactFormatter.descriptorForRequiredKeys(for: CNContactFormatterStyle.fullName), CNContactEmailAddressesKey, CNContactBirthdayKey, CNContactImageDataKey] as [Any]
+        
+        do {
+          let contactStore = AppDelegate.appDelegate.contactStore
+          try contactStore.enumerateContacts(with: CNContactFetchRequest(keysToFetch: keys as! [CNKeyDescriptor])) { [weak self] (contact, pointer) -> Void in
+            
+            if contact.birthday != nil && contact.birthday!.month == self?.currentlySelectedMonthIndex {
+              contacts.append(contact)
+            }
+          }
+          
+          DispatchQueue.main.async {
+            self.delegate.didFetchContacts(contacts)
+            self.navigationController?.popViewController(animated: true)
+          }
+        }
+        catch let error as NSError {
+          print(error.description, separator: "", terminator: "\n")
+        }
+      }
+    }
   }
 }

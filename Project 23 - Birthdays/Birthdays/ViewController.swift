@@ -36,7 +36,7 @@ class ViewController: UIViewController {
   
   
   /// Set ViewController class as the delegate of the AddContactViewControllerDelegate protocol
-  func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let identifier = segue.identifier {
       if identifier == "idSegueAddContact" {
         let addContactViewController = segue.destination as! AddContactViewController
@@ -63,37 +63,61 @@ extension ViewController: UITableViewDataSource {
     
     let currentContact = contacts[indexPath.row]
     
-    cell.lblFullname.text = "\(currentContact.givenName) \(currentContact.familyName)"
+    cell.lblFullname.text = CNContactFormatter.string(from: currentContact, style: .fullName)
     
-    // Set the birthday info.
-    if let birthday = currentContact.birthday {
-      cell.lblBirthday.text = "\(birthday.year)-\(birthday.month)-\(birthday.day)"
-    }
-    else {
-      cell.lblBirthday.text = "Not available birthday data"
-    }
-    
-    // Set the contact image.
-    if let imageData = currentContact.imageData {
-      cell.imgContactImage.image = UIImage(data: imageData)
-    }
-    
-    // Set the contact's home email address.
-    var homeEmailAddress: String!
-    for emailAddress in currentContact.emailAddresses {
-      if emailAddress.label == CNLabelHome {
-        homeEmailAddress = emailAddress.value as String
-        break
-      }
-    }
-    if let homeEmailAddress = homeEmailAddress {
-      cell.lblEmail.text = homeEmailAddress
+    if !currentContact.isKeyAvailable(CNContactBirthdayKey) || !currentContact.isKeyAvailable(CNContactImageDataKey) ||  !currentContact.isKeyAvailable(CNContactEmailAddressesKey) {
+      refetch(contact: currentContact, atIndexPath: indexPath)
     } else {
-      cell.lblEmail.text = "Not available home email"
+      // Set the birthday info.
+      if let birthday = currentContact.birthday {
+        cell.lblBirthday.text = birthday.asString
+      }
+      else {
+        cell.lblBirthday.text = "Not available birthday data"
+      }
+      
+      // Set the contact image.
+      if let imageData = currentContact.imageData {
+        cell.imgContactImage.image = UIImage(data: imageData)
+      }
+      
+      // Set the contact's home email address.
+      var homeEmailAddress: String!
+      for emailAddress in currentContact.emailAddresses {
+        if emailAddress.label == CNLabelHome {
+          homeEmailAddress = emailAddress.value as String
+          break
+        }
+      }
+      if let homeEmailAddress = homeEmailAddress {
+        cell.lblEmail.text = homeEmailAddress
+      } else {
+        cell.lblEmail.text = "Not available home email"
+      }
     }
     
     return cell
     
+  }
+  
+  fileprivate func refetch(contact: CNContact, atIndexPath indexPath: IndexPath) {
+    AppDelegate.appDelegate.requestForAccess { (accessGranted) -> Void in
+      if accessGranted {
+        let keys = [CNContactFormatter.descriptorForRequiredKeys(for: CNContactFormatterStyle.fullName), CNContactEmailAddressesKey, CNContactBirthdayKey, CNContactImageDataKey] as [Any]
+        
+        do {
+          let contactRefetched = try AppDelegate.appDelegate.contactStore.unifiedContact(withIdentifier: contact.identifier, keysToFetch: keys as! [CNKeyDescriptor])
+          self.contacts[indexPath.row] = contactRefetched
+          
+          DispatchQueue.main.async {
+            self.tblContacts.reloadRows(at: [indexPath], with: .automatic)
+          }
+        }
+        catch {
+          print("Unable to refetch the contact: \(contact)", separator: "", terminator: "\n")
+        }
+      }
+    }
   }
 }
 
