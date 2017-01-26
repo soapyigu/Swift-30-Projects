@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		192D16491E3A824E00139D51 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192D16481E3A824E00139D51 /* FeedViewController.swift */; };
+		192D164B1E3A8C0F00139D51 /* JournalSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192D164A1E3A8C0F00139D51 /* JournalSectionController.swift */; };
 		2997D4951DF5EA51005A5DD2 /* NSObject+IGListDiffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2997D4941DF5EA51005A5DD2 /* NSObject+IGListDiffable.swift */; };
 		29E2CDD81DC7B4CF00A9E0F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2CDB51DC7B4CF00A9E0F4 /* AppDelegate.swift */; };
 		29E2CDDA1DC7B4CF00A9E0F4 /* DateSortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2CDBA1DC7B4CF00A9E0F4 /* DateSortable.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		192D16481E3A824E00139D51 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		192D164A1E3A8C0F00139D51 /* JournalSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalSectionController.swift; sourceTree = "<group>"; };
 		2949EE881D8AB4F4005BC671 /* Marslink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marslink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2997D4941DF5EA51005A5DD2 /* NSObject+IGListDiffable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+IGListDiffable.swift"; sourceTree = "<group>"; };
 		29E2CDB51DC7B4CF00A9E0F4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Marslink/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -141,6 +143,7 @@
 		29E2CDC41DC7B4CF00A9E0F4 /* SectionControllers */ = {
 			isa = PBXGroup;
 			children = (
+				192D164A1E3A8C0F00139D51 /* JournalSectionController.swift */,
 			);
 			name = SectionControllers;
 			path = Marslink/SectionControllers;
@@ -337,6 +340,7 @@
 				29E2CDF21DC7B4CF00A9E0F4 /* WeatherSummaryCell.swift in Sources */,
 				29E2CDD81DC7B4CF00A9E0F4 /* AppDelegate.swift in Sources */,
 				29E2CDDD1DC7B4CF00A9E0F4 /* SolFormatter.swift in Sources */,
+				192D164B1E3A8C0F00139D51 /* JournalSectionController.swift in Sources */,
 				192D16491E3A824E00139D51 /* FeedViewController.swift in Sources */,
 				29E2CDED1DC7B4CF00A9E0F4 /* CustomNavigationBar.swift in Sources */,
 				29E2CDDA1DC7B4CF00A9E0F4 /* DateSortable.swift in Sources */,
@@ -459,7 +463,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Marslink/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.Marslink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -479,7 +483,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Marslink/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.Marslink;
 				PRODUCT_NAME = "$(TARGET_NAME)";

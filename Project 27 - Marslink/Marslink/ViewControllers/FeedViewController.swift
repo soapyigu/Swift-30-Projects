@@ -13,8 +13,8 @@ class FeedViewController: UIViewController {
   let loader = JournalEntryLoader()
   
   let collectionView: IGListCollectionView = {
-    let view = IGListCollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
-    view.backgroundColor = UIColor.blue
+    let view = IGListCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    view.backgroundColor = UIColor.black
     return view
   }()
   
@@ -62,7 +62,7 @@ extension FeedViewController: IGListAdapterDataSource {
   ///   - object: The data object.
   /// - Returns: The secion controller for data object.
   func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
-    return IGListSectionController()
+    return JournalSectionController()
   }
   
   /// Requests a view when list is empty.
