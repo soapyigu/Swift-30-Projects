@@ -9,4 +9,4 @@ BlueLibrarySwift is a project written by Swift to demo all design patterns inclu
 For details please reference [Introducing iOS Design Patterns in Swift](https://www.raywenderlich.com/86477/introducing-ios-design-patterns-in-swift-part-1)
 
 ## Screenshots
-![BlueLibrarySwift](https://github.com/soapyigu/30SwiftProjects/blob/master/Project%2009%20-%20BlueLibrarySwift/BlueLibrarySwift.gif)
+![BlueLibrarySwift](./BlueLibrarySwift.gif)
