@@ -1,0 +1,1380 @@
+{
+  "meta" : {
+    "view" : {
+      "id" : "yef5-h88r",
+      "name" : "Public Art",
+      "averageRating" : 0,
+      "createdAt" : 1339713152,
+      "description" : "Location and descriptions of public works of art",
+      "displayType" : "table",
+      "downloadCount" : 780,
+      "indexUpdatedAt" : 1414777382,
+      "newBackend" : false,
+      "numberOfComments" : 0,
+      "oid" : 837646,
+      "publicationAppendEnabled" : false,
+      "publicationDate" : 1341784505,
+      "publicationGroup" : 360565,
+      "publicationStage" : "published",
+      "rowsUpdatedAt" : 1341784473,
+      "rowsUpdatedBy" : "gcjf-354x",
+      "tableId" : 376534,
+      "totalTimesRated" : 0,
+      "viewCount" : 1040,
+      "viewLastModified" : 1341784505,
+      "viewType" : "tabular",
+      "columns" : [ {
+        "id" : -1,
+        "name" : "sid",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":sid",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "id",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":id",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "position",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":position",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "created_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "created_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "updated_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "updated_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : 12638421,
+        "name" : "creator",
+        "dataTypeName" : "text",
+        "fieldName" : "creator",
+        "position" : 1,
+        "renderTypeName" : "text",
+        "tableColumnId" : 3165089,
+        "width" : 184,
+        "cachedContents" : {
+          "non_null" : 144,
+          "smallest" : "after Goreemon Ono",
+          "null" : 55,
+          "largest" : "Yoshinari Kochi",
+          "top" : [ {
+            "count" : 20,
+            "item" : "Sean Browne"
+          }, {
+            "count" : 19,
+            "item" : "Marguerite Louis Blasingame"
+          }, {
+            "count" : 18,
+            "item" : "Charles Watson"
+          }, {
+            "count" : 17,
+            "item" : "Paul Saviskas"
+          }, {
+            "count" : 16,
+            "item" : "Edward M. Brownlee"
+          }, {
+            "count" : 15,
+            "item" : "Jan Gordon Fisher"
+          }, {
+            "count" : 14,
+            "item" : "Jay D. Wilson"
+          }, {
+            "count" : 13,
+            "item" : "Sandy Vitarelli"
+          }, {
+            "count" : 12,
+            "item" : "Stephen Meder"
+          }, {
+            "count" : 11,
+            "item" : "Bumpei Akaji"
+          }, {
+            "count" : 10,
+            "item" : "Charles Palumbo"
+          }, {
+            "count" : 9,
+            "item" : "Wood, Weed & Associates"
+          }, {
+            "count" : 8,
+            "item" : "Harry Sims Bent"
+          }, {
+            "count" : 7,
+            "item" : "Kate Kelly"
+          }, {
+            "count" : 6,
+            "item" : "Carl Heinmiller"
+          }, {
+            "count" : 5,
+            "item" : "Bill Chang"
+          }, {
+            "count" : 4,
+            "item" : "H.L. Kerr"
+          }, {
+            "count" : 3,
+            "item" : "George Newton"
+          }, {
+            "count" : 2,
+            "item" : "Mark Brown"
+          }, {
+            "count" : 1,
+            "item" : "Mari Sakamoto"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 12638422,
+        "name" : "credit",
+        "dataTypeName" : "text",
+        "fieldName" : "credit",
+        "position" : 2,
+        "renderTypeName" : "text",
+        "tableColumnId" : 3246335,
+        "width" : 100,
+        "cachedContents" : {
+          "non_null" : 150,
+          "smallest" : "City and County of Honolulu Purcahse",
+          "null" : 49,
+          "largest" : "Transfer from the State of Hawaii",
+          "top" : [ {
+            "count" : 20,
+            "item" : "Funded by the Works Progress Administration"
+          }, {
+            "count" : 19,
+            "item" : "City and County of Honolulu Purchase"
+          }, {
+            "count" : 18,
+            "item" : "Funded by the Comprehensive Employment Training Act"
+          }, {
+            "count" : 17,
+            "item" : "City and County of Honolulu Purcahse"
+          }, {
+            "count" : 16,
+            "item" : "Gift of the Republic of Portugal"
+          }, {
+            "count" : 15,
+            "item" : "Gift of the City of Yokohama, Japan"
+          }, {
+            "count" : 14,
+            "item" : "Gift of the City of Hiroshima, Japan"
+          }, {
+            "count" : 13,
+            "item" : "Gift of the World Cultural Communication Association"
+          }, {
+            "count" : 12,
+            "item" : "Gift of Mabel T. Aimoto"
+          }, {
+            "count" : 11,
+            "item" : "Gift of Jan-Michelle Sawyer"
+          }, {
+            "count" : 10,
+            "item" : "Gift of the Walter and Louise Dillingham Foundation"
+          }, {
+            "count" : 9,
+            "item" : "Transfer from the State of Hawaii"
+          }, {
+            "count" : 8,
+            "item" : "Gift of George N. Newton"
+          }, {
+            "count" : 7,
+            "item" : "Gift of the Community"
+          }, {
+            "count" : 6,
+            "item" : "Gift of Mrs. Walter F. Dillingham"
+          }, {
+            "count" : 5,
+            "item" : "Gift of the Honolulu Zoological Society"
+          }, {
+            "count" : 4,
+            "item" : "Gift of Janice Judd and the family, classmates, colleagues and friends of Frank Case Judd"
+          }, {
+            "count" : 3,
+            "item" : "On loan from TV Land"
+          }, {
+            "count" : 2,
+            "item" : "Gift of the Sun Yat-sen Foundation for Peace & Education"
+          }, {
+            "count" : 1,
+            "item" : "Gift of the Dr. Sun Yat-sen Hawaii Foundation"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 12638423,
+        "name" : "date",
+        "dataTypeName" : "number",
+        "fieldName" : "date",
+        "position" : 3,
+        "renderTypeName" : "number",
+        "tableColumnId" : 3165090,
+        "width" : 148,
+        "cachedContents" : {
+          "non_null" : 184,
+          "smallest" : "1500",
+          "sum" : "382052",
+          "null" : 15,
+          "average" : "2076.369565217391",
+          "largest" : "19919",
+          "top" : [ {
+            "count" : 20,
+            "item" : "1935"
+          }, {
+            "count" : 19,
+            "item" : "2001"
+          }, {
+            "count" : 18,
+            "item" : "1967"
+          }, {
+            "count" : 17,
+            "item" : "2000"
+          }, {
+            "count" : 16,
+            "item" : "1987"
+          }, {
+            "count" : 15,
+            "item" : "1989"
+          }, {
+            "count" : 14,
+            "item" : "1994"
+          }, {
+            "count" : 13,
+            "item" : "1977"
+          }, {
+            "count" : 12,
+            "item" : "1996"
+          }, {
+            "count" : 11,
+            "item" : "1990"
+          }, {
+            "count" : 10,
+            "item" : "1978"
+          }, {
+            "count" : 9,
+            "item" : "1998"
+          }, {
+            "count" : 8,
+            "item" : "1976"
+          }, {
+            "count" : 7,
+            "item" : "1999"
+          }, {
+            "count" : 6,
+            "item" : "2003"
+          }, {
+            "count" : 5,
+            "item" : "1992"
+          }, {
+            "count" : 4,
+            "item" : "1964"
+          }, {
+            "count" : 3,
+            "item" : "1959"
+          }, {
+            "count" : 2,
+            "item" : "1968"
+          }, {
+            "count" : 1,
+            "item" : "1937"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 12638424,
+        "name" : "description",
+        "dataTypeName" : "text",
+        "fieldName" : "description",
+        "position" : 4,
+        "renderTypeName" : "text",
+        "tableColumnId" : 3165091,
+        "width" : 232,
+        "cachedContents" : {
+          "non_null" : 199,
+          "smallest" : "\"In commemoration of the 100th anniversary of Kapiolani Park a time capsule was deposited on this day, June 11, 1977, to be opened on June 11, 2077. Frank F. Fasi, Mayor, City & County of Honolulu. Young Suk Ko, Director of Parks and Recreation.\" The time capsule is located in the ruins of an old lily pond. Located in Kapiolani Park near the Kapiolani Park Bandstand.",
+          "null" : 0,
+          "largest" : "Wool and linen tapestry.",
+          "top" : [ {
+            "count" : 20,
+            "item" : "Stainless steel figure of a feeding female whooping crane. Located in the Honolulu Zoo Flamingo Exhibit."
+          }, {
+            "count" : 19,
+            "item" : "Plaque bearing the following description: \"This park is dedicated in memory of Frank Case Judd, 1915-1976, State Legislator 1959-1972, a man of love, character and integrity whose life enriched Hawaii and the lives of all who knew him. This plaque is given by his wife Janice, his family, classmates, colleagues and friends. October 25, 1977.\" Plaque has a relief portrait and is mounted on a boulder. Located at Frank C. Judd Park."
+          }, {
+            "count" : 18,
+            "item" : "Plaque with releif portrait medallion in honor of the dedication of the Mother Waldron Playground in 1937. Located at the Mother Waldron Neighborhood Park stage."
+          }, {
+            "count" : 17,
+            "item" : "Bronze memorial plaque with the inscription: \"Kihachi and Shika Kashiwabara, the first Japanese immigrants to settle in Moiliili (1893), dedicated on April 1994.\" Located at the triangle park at King and Beretania Streets."
+          }, {
+            "count" : 16,
+            "item" : "In-filled black granite plaque with a single line border design commemorating the naming of the Waianae District Park Gymnasium after Sinyei Nakamine. Located at the Waianae District Park Gymnasium."
+          }, {
+            "count" : 15,
+            "item" : "The time capsule commemorating the City and County of Honolulu Centennial. The time capsule is installed within the Frank F. Fasi Civic Center Directory marker. Installed on April 13, 2007, to be opened in 2056. Located on the grounds of the Honolulu Civic Center."
+          }, {
+            "count" : 14,
+            "item" : "A lifesize bronze statue of Elvis Presley from the 1973 \"Aloha from Hawaii\" concert with guitar and microphone on a stand. The figure stands atop a bronze pedestal. \"Elvis, Aloha from Hawaii, The World's First Satellite TV Concert, January 14, 1973. With supreme talent and sincere humility, Elvis Presley made his gift the world's. 'Thank you. Thank you very much.' From the People of TV Land.\" Located at Neal Blaisdell Center."
+          }, {
+            "count" : 13,
+            "item" : "Plaque for \"Neal S. Blaisdell Center, dedicated 1964, Exhibition Hall expansion, galleria and meeting facilities, dedicated September 1995, Mayor Jeremy Harris, City Council, John DeSoto, Chair, Duke Bainum, John Henry Felix, Mufi Hannemann, Steve Holmes, Donna Mercado Kim, Rene Mansho, Andy Mirikitani, Jon Yoshimura.\" Located on the Neal Blaisdell Center lawn."
+          }, {
+            "count" : 12,
+            "item" : "Waikiki Historic Trail marker shaped like a surfboard with a porcelain enamel metal sign attached. Located at Kuhio Beach near Monsarrat Avenue."
+          }, {
+            "count" : 11,
+            "item" : "An outdoor sculpture pedestal and surrounding tile mosaic for the sculpture entitled \"Sun Yat-sen\" by I-Fan Chen. It is a three-tiered octagonal pedestal of polished solid black granite. Located along Sun Yat-Sen Mall."
+          }, {
+            "count" : 10,
+            "item" : "Statue of Sun Yat-sen as a boy aged 13 years old dressed in traditional Chinese garments: hat, jacket, tunic, and shoes; carrying two books in his right hand. The accompanying plaque reads, \"'This is my Hawaii... here I was brought up and educated; and it was here that I came to know what modern, civilized governments are like and what they mean.' Dr. Sun Yat-sen. In 1879, at the age of thirteen, Sun Yat-sen came to Hawaii from Zhongshan, China. It was here in Honolulu, that he spent many of his teenage years growing up and being educated. China's first revolutionary society the Xing Zhong Hui (Revive China Society) was organized in Hawaii in 1894. Sun Yat-sen went to overthrow the Qing Dynasty and establish a democratic China in 1911. The dedication of this statue recognizes t he sacrifice and support of the people of Hawaii in nurturing the roots of 'Modern China' and it's Founding Father. The Dr. Sun Yat-sen Hawaii Foundation, November 12, 2007.\" Located in Dr. Sun Yat-sen Memorial Park."
+          }, {
+            "count" : 9,
+            "item" : "Wall clock set into the stone above the second floor landing of the grand staircase of the Honolulu Hale courtyard."
+          }, {
+            "count" : 8,
+            "item" : "A sculpture from Incheon Metropolitan City, Republic of Korea gifted to the City and County of Honolulu entitled, \"Become a Star\" by artist Mr. Moon-Young Lee and and manufactured in July 2008 of metal and stone. The shapes of  the sculpture symbolize a ship floating on the sea surrounded by floating seaweed with the embodiment of the moon and signifiers of the stars in the skies of the Republic of Korea and the United States of America, representing the mutual exchanges of the countries' peoples and the nostalgia of immigrants. The sculpture was created to promote active exchanges and cooperation between Incheon Metropolitan City and the City and County of Honolulu."
+          }, {
+            "count" : 7,
+            "item" : "Monument marker for the site of the Japanese Central Institute of Hawaii. Concrete marker with inset stone plaque."
+          }, {
+            "count" : 6,
+            "item" : "Bronze plaque set into a stone wall that reads, \"Waimanalo Beach Park Pavilion, in memory of, Gabby \"Pop\" Pahinui, April 22, 1921, October 13, 1980.\" Located at the Waimanalo Beach Park Pavilion."
+          }, {
+            "count" : 5,
+            "item" : "Art Deco pillar concrete monument to memorialize soldiers from the Waialua and Kahuku area of Oahu, Hawaii that lost their lives during World War II, and the Korean War. The monument is capped with a glass and metal enclosure. There are large bronze plaques on three sides of the monument's base. The monument is contained within a low circular concrete wall. Leading to the monument is a concrete path flanked with 17 large shell casings mounted upright in concrete blocks with chain strung between them."
+          }, {
+            "count" : 4,
+            "item" : "Japanese bell within a temple housing erected for the Festival for World Peace in Hawaii, December 10, 1991. Located at Neal S. Blaisdell Park."
+          }, {
+            "count" : 3,
+            "item" : "A sculpture depicting part of a large upright sharpened wooden pencil made of plywood and laminated white pine."
+          }, {
+            "count" : 2,
+            "item" : "A bronze sculpture depicting a seated girl with outstretched arms holding butterflies."
+          }, {
+            "count" : 1,
+            "item" : "Located on 12th Avenue near Waialae Avenue lies a small boulder with a bronze plaque. The plaque has a textured back-ground; raised text - san serif fonts, all capitals. The text describes the history of Kaikuki and the origins of the name. Plaque has raised frame of approximately 1/2\" around edges. Mounted on volcanic boulder with heavily sanded mortar."
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 12638425,
+        "name" : "locationname",
+        "dataTypeName" : "text",
+        "fieldName" : "location",
+        "position" : 5,
+        "renderTypeName" : "text",
+        "tableColumnId" : 3165092,
+        "width" : 196,
+        "cachedContents" : {
+          "non_null" : 199,
+          "smallest" : "12th Avenue near Waialae Avenue",
+          "null" : 0,
+          "largest" : "Waimanalo District Park Multi-Sport Building Exterior",
+          "top" : [ {
+            "count" : 20,
+            "item" : "Alapai Police Station 2nd Floor Makai Parapet"
+          }, {
+            "count" : 19,
+            "item" : "Alapai Police Station 2nd Floor Ewa Parapet"
+          }, {
+            "count" : 18,
+            "item" : "Alapai Police Station 2nd Floor Diamond Head Parapet"
+          }, {
+            "count" : 17,
+            "item" : "Lester McCoy Pavillion"
+          }, {
+            "count" : 16,
+            "item" : "Veteran's Memorial Aquatic Center"
+          }, {
+            "count" : 15,
+            "item" : "Triangle Park at King and Beretania Streets"
+          }, {
+            "count" : 14,
+            "item" : "Honolulu Hale Courtyard"
+          }, {
+            "count" : 13,
+            "item" : "Pawaa Inha Neighborhood Park"
+          }, {
+            "count" : 12,
+            "item" : "Foster Botanical Garden"
+          }, {
+            "count" : 11,
+            "item" : "Waimanalo Beach Park Pavilion"
+          }, {
+            "count" : 10,
+            "item" : "Haleiwa Beach Park"
+          }, {
+            "count" : 9,
+            "item" : "Neal S. Blaisdell Park"
+          }, {
+            "count" : 8,
+            "item" : "Kapolei Hale Entry"
+          }, {
+            "count" : 7,
+            "item" : "Foster Botanical Garden Butterfly Garden"
+          }, {
+            "count" : 6,
+            "item" : "12th Avenue near Waialae Avenue"
+          }, {
+            "count" : 5,
+            "item" : "Honolulu Zoo Entrance"
+          }, {
+            "count" : 4,
+            "item" : "Bamboo Ridge near Halona Blowhole"
+          }, {
+            "count" : 3,
+            "item" : "Herbert K. Pililaau Community Park Gym"
+          }, {
+            "count" : 2,
+            "item" : "Herbert K. Pililaau Community Park"
+          }, {
+            "count" : 1,
+            "item" : "Wahiawa Police Station"
+          } ]
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 12638426,
+        "name" : "imagefile",
+        "dataTypeName" : "text",
+        "fieldName" : "imagefile",
+        "position" : 6,
+        "renderTypeName" : "text",
+        "tableColumnId" : 3165093,
+        "width" : 208,
+        "cachedContents" : {
+          "non_null" : 199,
+          "smallest" : "http://hiculturearts.pastperfect-online.com/34250images/001/002_196901-3.JPG",
+          "null" : 0,
+          "largest" : "http://hiculturearts.pastperfect-online.com/34250images/004/L200701-2.JPG",
+          "top" : [ {
+            "count" : 20,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/004/19980502.JPG"
+          }, {
+            "count" : 19,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/001/197722.JPG"
+          }, {
+            "count" : 18,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/002/199028-4.JPG"
+          }, {
+            "count" : 17,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/003/199449.JPG"
+          }, {
+            "count" : 16,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/003/200704.JPG"
+          }, {
+            "count" : 15,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/003/200705-4.JPG"
+          }, {
+            "count" : 14,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/004/L200701-2.JPG"
+          }, {
+            "count" : 13,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/003/199529.JPG"
+          }, {
+            "count" : 12,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/003/19990808.JPG"
+          }, {
+            "count" : 11,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/003/200707-2.JPG"
+          }, {
+            "count" : 10,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/003/200710-5.JPG"
+          }, {
+            "count" : 9,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/001/19290105.JPG"
+          }, {
+            "count" : 8,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/004/200802.JPG"
+          }, {
+            "count" : 7,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/001/198201.JPG"
+          }, {
+            "count" : 6,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/001/198202-4.JPG"
+          }, {
+            "count" : 5,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/001/194702.JPG"
+          }, {
+            "count" : 4,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/002/199104.JPG"
+          }, {
+            "count" : 3,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/004/200901-2.JPG"
+          }, {
+            "count" : 2,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/004/200902-2.JPG"
+          }, {
+            "count" : 1,
+            "item" : "http://hiculturearts.pastperfect-online.com/34250images/001/197201.JPG"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 12638427,
+        "name" : "objectid",
+        "dataTypeName" : "text",
+        "fieldName" : "objectid",
+        "position" : 7,
+        "renderTypeName" : "text",
+        "tableColumnId" : 3165094,
+        "width" : 196,
+        "cachedContents" : {
+          "non_null" : 199,
+          "smallest" : "1927.01",
+          "null" : 0,
+          "largest" : "L2007.01",
+          "top" : [ {
+            "count" : 20,
+            "item" : "1998.05.02"
+          }, {
+            "count" : 19,
+            "item" : "1977.22"
+          }, {
+            "count" : 18,
+            "item" : "1990.28"
+          }, {
+            "count" : 17,
+            "item" : "1994.49"
+          }, {
+            "count" : 16,
+            "item" : "2007.04"
+          }, {
+            "count" : 15,
+            "item" : "2007.05"
+          }, {
+            "count" : 14,
+            "item" : "L2007.01"
+          }, {
+            "count" : 13,
+            "item" : "1995.29"
+          }, {
+            "count" : 12,
+            "item" : "1999.08.08"
+          }, {
+            "count" : 11,
+            "item" : "2007.07"
+          }, {
+            "count" : 10,
+            "item" : "2007.10"
+          }, {
+            "count" : 9,
+            "item" : "1929.01.05"
+          }, {
+            "count" : 8,
+            "item" : "2008.02"
+          }, {
+            "count" : 7,
+            "item" : "1982.01"
+          }, {
+            "count" : 6,
+            "item" : "1982.02"
+          }, {
+            "count" : 5,
+            "item" : "1947.02"
+          }, {
+            "count" : 4,
+            "item" : "1991.04"
+          }, {
+            "count" : 3,
+            "item" : "2009.01"
+          }, {
+            "count" : 2,
+            "item" : "2009.02"
+          }, {
+            "count" : 1,
+            "item" : "1972.01"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 12638428,
+        "name" : "discipline",
+        "dataTypeName" : "text",
+        "fieldName" : "discipline",
+        "position" : 8,
+        "renderTypeName" : "text",
+        "tableColumnId" : 3165095,
+        "width" : 220,
+        "cachedContents" : {
+          "non_null" : 199,
+          "smallest" : "Bell",
+          "null" : 0,
+          "largest" : "Window",
+          "top" : [ {
+            "count" : 20,
+            "item" : "Mural"
+          }, {
+            "count" : 19,
+            "item" : "Sculpture"
+          }, {
+            "count" : 18,
+            "item" : "Door"
+          }, {
+            "count" : 17,
+            "item" : "Plaque"
+          }, {
+            "count" : 16,
+            "item" : "Bust"
+          }, {
+            "count" : 15,
+            "item" : "Bell"
+          }, {
+            "count" : 14,
+            "item" : "Lantern"
+          }, {
+            "count" : 13,
+            "item" : "Mosaic"
+          }, {
+            "count" : 12,
+            "item" : "Monument"
+          }, {
+            "count" : 11,
+            "item" : "Gate"
+          }, {
+            "count" : 10,
+            "item" : "Tapestry"
+          }, {
+            "count" : 9,
+            "item" : "Urn, Garden"
+          }, {
+            "count" : 8,
+            "item" : "Fountain, Water"
+          }, {
+            "count" : 7,
+            "item" : "Bell, Ship's"
+          }, {
+            "count" : 6,
+            "item" : "Vase"
+          }, {
+            "count" : 5,
+            "item" : "Case, Display"
+          }, {
+            "count" : 4,
+            "item" : "Window"
+          }, {
+            "count" : 3,
+            "item" : "Sign"
+          }, {
+            "count" : 2,
+            "item" : "Pool, Swimming"
+          }, {
+            "count" : 1,
+            "item" : "Bridge"
+          } ]
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 12638429,
+        "name" : "title",
+        "dataTypeName" : "text",
+        "fieldName" : "title",
+        "position" : 9,
+        "renderTypeName" : "text",
+        "tableColumnId" : 3165096,
+        "width" : 160,
+        "cachedContents" : {
+          "non_null" : 187,
+          "smallest" : "100th Anniversay of Kapiolani Park",
+          "null" : 12,
+          "largest" : "Whooping Cranes",
+          "top" : [ {
+            "count" : 20,
+            "item" : "Become a Star"
+          }, {
+            "count" : 19,
+            "item" : "Site of Japanese Central Institute of Hawaii"
+          }, {
+            "count" : 18,
+            "item" : "Waimanalo Beach Park Pavilion"
+          }, {
+            "count" : 17,
+            "item" : "Waialua - Kahuku War Memorial"
+          }, {
+            "count" : 16,
+            "item" : "Festival for World Peace Bell"
+          }, {
+            "count" : 15,
+            "item" : "Enpitsu"
+          }, {
+            "count" : 14,
+            "item" : "Beautiful Butterflies"
+          }, {
+            "count" : 13,
+            "item" : "Kaimuki"
+          }, {
+            "count" : 12,
+            "item" : "The Evolution of an Island"
+          }, {
+            "count" : 11,
+            "item" : "Jizo"
+          }, {
+            "count" : 10,
+            "item" : "Private First Class Herbert K. Pililaau Field"
+          }, {
+            "count" : 9,
+            "item" : "Herbert K. Pililaau Community Park Dedication"
+          }, {
+            "count" : 8,
+            "item" : "The Last Harvest"
+          }, {
+            "count" : 7,
+            "item" : "Na Mo'olelo o Kapolei (Stories of Kapolei)"
+          }, {
+            "count" : 6,
+            "item" : "As the Water Flows"
+          }, {
+            "count" : 5,
+            "item" : "Waimanalo District Park Multi-Sport Building"
+          }, {
+            "count" : 4,
+            "item" : "Lestor McCoy Pavilion"
+          }, {
+            "count" : 3,
+            "item" : "Indira Gandhi"
+          }, {
+            "count" : 2,
+            "item" : "Rajiv Gandhi"
+          }, {
+            "count" : 1,
+            "item" : "David Watumull"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 12638430,
+        "name" : "access",
+        "dataTypeName" : "text",
+        "fieldName" : "access",
+        "position" : 10,
+        "renderTypeName" : "text",
+        "tableColumnId" : 3165097,
+        "width" : 172,
+        "cachedContents" : {
+          "non_null" : 199,
+          "smallest" : "Full",
+          "null" : 0,
+          "largest" : "Limited",
+          "top" : [ {
+            "count" : 20,
+            "item" : "Limited"
+          }, {
+            "count" : 19,
+            "item" : "Full"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 12638431,
+        "name" : "latitude",
+        "dataTypeName" : "number",
+        "fieldName" : "latitude",
+        "position" : 11,
+        "renderTypeName" : "number",
+        "tableColumnId" : 3165098,
+        "width" : 196,
+        "cachedContents" : {
+          "non_null" : 199,
+          "smallest" : "21.256139",
+          "sum" : "4240.715676",
+          "null" : 0,
+          "average" : "21.31012902512563",
+          "largest" : "21.598031",
+          "top" : [ {
+            "count" : 20,
+            "item" : "21.303839"
+          }, {
+            "count" : 19,
+            "item" : "21.304179"
+          }, {
+            "count" : 18,
+            "item" : "21.304049"
+          }, {
+            "count" : 17,
+            "item" : "21.299458"
+          }, {
+            "count" : 16,
+            "item" : "21.300024"
+          }, {
+            "count" : 15,
+            "item" : "21.270476"
+          }, {
+            "count" : 14,
+            "item" : "21.314293"
+          }, {
+            "count" : 13,
+            "item" : "21.311009"
+          }, {
+            "count" : 12,
+            "item" : "21.305302"
+          }, {
+            "count" : 11,
+            "item" : "21.298081"
+          }, {
+            "count" : 10,
+            "item" : "21.315463"
+          }, {
+            "count" : 9,
+            "item" : "21.332134"
+          }, {
+            "count" : 8,
+            "item" : "21.598031"
+          }, {
+            "count" : 7,
+            "item" : "21.384917"
+          }, {
+            "count" : 6,
+            "item" : "21.329933"
+          }, {
+            "count" : 5,
+            "item" : "21.31637"
+          }, {
+            "count" : 4,
+            "item" : "21.28226"
+          }, {
+            "count" : 3,
+            "item" : "21.270859"
+          }, {
+            "count" : 2,
+            "item" : "21.281052"
+          }, {
+            "count" : 1,
+            "item" : "21.447314"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 12638432,
+        "name" : "longitude",
+        "dataTypeName" : "number",
+        "fieldName" : "longitude",
+        "position" : 12,
+        "renderTypeName" : "number",
+        "tableColumnId" : 3165099,
+        "width" : 208,
+        "cachedContents" : {
+          "non_null" : 199,
+          "smallest" : "-158.193043",
+          "sum" : "-31415.288473",
+          "null" : 0,
+          "average" : "-157.8657712211055",
+          "largest" : "-157.677796",
+          "top" : [ {
+            "count" : 20,
+            "item" : "-157.85152"
+          }, {
+            "count" : 19,
+            "item" : "-157.85167"
+          }, {
+            "count" : 18,
+            "item" : "-157.851166"
+          }, {
+            "count" : 17,
+            "item" : "-157.85169"
+          }, {
+            "count" : 16,
+            "item" : "-157.851439"
+          }, {
+            "count" : 15,
+            "item" : "-157.822525"
+          }, {
+            "count" : 14,
+            "item" : "-157.861829"
+          }, {
+            "count" : 13,
+            "item" : "-157.86154"
+          }, {
+            "count" : 12,
+            "item" : "-157.856944"
+          }, {
+            "count" : 11,
+            "item" : "-157.83813"
+          }, {
+            "count" : 10,
+            "item" : "-157.857681"
+          }, {
+            "count" : 9,
+            "item" : "-157.694224"
+          }, {
+            "count" : 8,
+            "item" : "-158.103272"
+          }, {
+            "count" : 7,
+            "item" : "-157.953626"
+          }, {
+            "count" : 6,
+            "item" : "-158.08172"
+          }, {
+            "count" : 5,
+            "item" : "-157.858174"
+          }, {
+            "count" : 4,
+            "item" : "-157.799122"
+          }, {
+            "count" : 3,
+            "item" : "-157.821424"
+          }, {
+            "count" : 2,
+            "item" : "-157.677796"
+          }, {
+            "count" : 1,
+            "item" : "-158.186031"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 12638433,
+        "name" : "location",
+        "dataTypeName" : "location",
+        "fieldName" : "artloc",
+        "position" : 13,
+        "renderTypeName" : "location",
+        "tableColumnId" : 3165175,
+        "width" : 100,
+        "cachedContents" : {
+          "non_null" : 199,
+          "smallest" : {
+            "longitude" : "-157.85131",
+            "latitude" : "21.290824"
+          },
+          "null" : 0,
+          "largest" : {
+            "longitude" : "-157.848872",
+            "latitude" : "21.30346"
+          },
+          "top" : [ {
+            "count" : 20,
+            "item" : {
+              "longitude" : "-157.821243",
+              "latitude" : "21.270481"
+            }
+          }, {
+            "count" : 19,
+            "item" : {
+              "longitude" : "-157.832116",
+              "latitude" : "21.289644"
+            }
+          }, {
+            "count" : 18,
+            "item" : {
+              "longitude" : "-157.858302",
+              "latitude" : "21.299358"
+            }
+          }, {
+            "count" : 17,
+            "item" : {
+              "longitude" : "-157.823185",
+              "latitude" : "21.292588"
+            }
+          }, {
+            "count" : 16,
+            "item" : {
+              "longitude" : "-158.193043",
+              "latitude" : "21.449946"
+            }
+          }, {
+            "count" : 15,
+            "item" : {
+              "longitude" : "-157.854293",
+              "latitude" : "21.304519"
+            }
+          }, {
+            "count" : 14,
+            "item" : {
+              "longitude" : "-157.85169",
+              "latitude" : "21.299458"
+            }
+          }, {
+            "count" : 13,
+            "item" : {
+              "longitude" : "-157.851439",
+              "latitude" : "21.300024"
+            }
+          }, {
+            "count" : 12,
+            "item" : {
+              "longitude" : "-157.822525",
+              "latitude" : "21.270476"
+            }
+          }, {
+            "count" : 11,
+            "item" : {
+              "longitude" : "-157.861829",
+              "latitude" : "21.314293"
+            }
+          }, {
+            "count" : 10,
+            "item" : {
+              "longitude" : "-157.86154",
+              "latitude" : "21.311009"
+            }
+          }, {
+            "count" : 9,
+            "item" : {
+              "longitude" : "-157.856944",
+              "latitude" : "21.305302"
+            }
+          }, {
+            "count" : 8,
+            "item" : {
+              "longitude" : "-157.83813",
+              "latitude" : "21.298081"
+            }
+          }, {
+            "count" : 7,
+            "item" : {
+              "longitude" : "-157.857681",
+              "latitude" : "21.315463"
+            }
+          }, {
+            "count" : 6,
+            "item" : {
+              "longitude" : "-157.694224",
+              "latitude" : "21.332134"
+            }
+          }, {
+            "count" : 5,
+            "item" : {
+              "longitude" : "-158.103272",
+              "latitude" : "21.598031"
+            }
+          }, {
+            "count" : 4,
+            "item" : {
+              "longitude" : "-157.953626",
+              "latitude" : "21.384917"
+            }
+          }, {
+            "count" : 3,
+            "item" : {
+              "longitude" : "-158.08172",
+              "latitude" : "21.329933"
+            }
+          }, {
+            "count" : 2,
+            "item" : {
+              "longitude" : "-157.858174",
+              "latitude" : "21.31637"
+            }
+          }, {
+            "count" : 1,
+            "item" : {
+              "longitude" : "-157.799122",
+              "latitude" : "21.28226"
+            }
+          } ]
+        },
+        "format" : {
+          "view" : "address_coords",
+          "align" : "left"
+        },
+        "subColumnTypes" : [ "human_address", "latitude", "longitude", "machine_address", "needs_recoding" ]
+      }, {
+        "id" : 12638434,
+        "name" : "thumb",
+        "dataTypeName" : "text",
+        "fieldName" : "thumb",
+        "position" : 14,
+        "renderTypeName" : "text",
+        "tableColumnId" : 3166707,
+        "width" : 100,
+        "cachedContents" : {
+          "non_null" : 0,
+          "null" : 199
+        },
+        "format" : {
+        }
+      } ],
+      "grants" : [ {
+        "inherited" : false,
+        "type" : "viewer",
+        "flags" : [ "public" ]
+      } ],
+      "metadata" : {
+        "renderTypeConfig" : {
+          "visible" : {
+            "table" : true
+          }
+        },
+        "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+      },
+      "owner" : {
+        "id" : "gcjf-354x",
+        "displayName" : "Mick Thompson",
+        "screenName" : "Mick Thompson"
+      },
+      "query" : {
+      },
+      "rights" : [ "read" ],
+      "tableAuthor" : {
+        "id" : "gcjf-354x",
+        "displayName" : "Mick Thompson",
+        "screenName" : "Mick Thompson"
+      },
+      "flags" : [ "default" ]
+    }
+  },
+  "data" : [ [ 2, "33B50ADF-C9DE-4B48-A4BD-B1C1D789FD08", 2, 1340413921, "436621", 1340413921, "436621", "{\n}", "Robert Lee Eskridge", "Funded by the Works Progress Administration", "1935", "One of a pair of murals at the Lester McCoy Pavilion at Ala Mona Regional Park. A Works Progress Administration art project, done in the Art Deco style. It depicts various aspects of makahiki (harvest festival), imagined as taking place in the vicinity of what is now know as Ala Mona Park, makahiki pa'ani ho'oikaika (annual sports tournaments) are emphasized. This mural shows ali'i (chiefs) guided by the spirit of Lono (one of the four major Hawaiian gods, associated with peace and fertility) being presented with ho'okupu (tribute). In the distance kahuna (priests) guard the kapa (bark cloth) double banner of Lono. In the background are the silhouette of Lae'ahi (Diamond Head) and the village of Waikiki (spouting water). Sports represented are he'e holua (sled racing), mokomoko (hand-to-hand fighting), and 'ulu maika (bowling), dance and music are represented with 'uli'uli (gourd rattle), pahu (drum), and mahiole (helmet).", "Lester McCoy Pavilion", "http://hiculturearts.pastperfect-online.com/34250images/001/19300101.JPG", "1930.01.01", "Mural", "The Makahiki Festival - The Makai Mural", "Limited", "21.290824", "-157.85131", [ null, "21.290824", "-157.85131", null, false ], null ]
+, [ 3, "ABB57E11-6D8A-42DB-9251-EC374F1FD302", 3, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sean Browne", "City and County of Honolulu Purchase", "2001", "Bronze figure of Prince Jonah Kuhio Kalanianaole. Located at Kuhio Beach.", "Kuhio Beach", "http://hiculturearts.pastperfect-online.com/34250images/003/002_200105.JPG", "2001.05", "Sculpture", "Prince Jonah Kuhio Kalanianaole", "Full", "21.273389", "-157.823802", [ null, "21.273389", "-157.823802", null, false ], null ]
+, [ 4, "4DB83484-E43D-4BAF-9CC7-F3E8E014FAF3", 4, 1340413921, "436621", 1340413921, "436621", "{\n}", "Robert Lee Eskridge", "Funded by the Works Progress Administration", "1935", "One of a pair of murals at the Lester McCoy Pavilion at Ala Mona Regional Park. A Works Progress Administration art project, done in the Art Deco style. It depicts various aspects of makahiki (harvest festival), imagined as taking place in the vicinity of what is now know as Ala Mona Park, makahiki pa'ani ho'oikaika (annual sports tournaments) are emphasized. This mural depicts ali'i with their retainers traveling between villages by wa'a kaulua (double hulled canoe), a carving of Lono and kahili (feather standards) accompany them. Puowaina (Punchbowl) is shown in the background. Also depicted is he'e nalu (surfing) on olo (long surfboard) and 'o'o ihe (sport of spear throwing) whereby a group of men, at a given signal, hurl their spears at one man who would either catch the spears, dodge them, or otherwise fend them off.", "Lester McCoy Pavilion", "http://hiculturearts.pastperfect-online.com/34250images/001/19300102.JPG", "1930.01.02", "Mural", "The Makahiki Festival - The Mauka Mural", "Limited", "21.290959", "-157.851265", [ null, "21.290959", "-157.851265", null, false ], null ]
+, [ 5, "28356B36-436C-4831-98AA-1CB236C85C5D", 5, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles Dickey", null, "1935", "Three sets of double doors and three top panels of an aluminium alloy in the Art Deco style. Located at the Honolulu Fire Department Central Station.", "Honolulu Fire Department Central Station", "http://hiculturearts.pastperfect-online.com/34250images/001/193501.JPG", "1935.01", "Door", "Central Fire Department Doors", "Full", "21.311151", "-157.859057", [ null, "21.311151", "-157.859057", null, false ], null ]
+, [ 6, "8C18816E-0C6F-4116-9B38-7B5B4ADD78DE", 6, 1340413921, "436621", 1340413921, "436621", "{\n}", "Kate Kelly", "Gift of the Amelia Earhart Memorial Committee", "1935", "A cast bronze commemorative plaque set into a monolith. The plaque memorializes Amelia Earhart's first flight to Hawaii in 1935. Located at the Diamond Head Lookout.", "Diamond Head Lookout/Kuilei Beach Cliffs", "http://hiculturearts.pastperfect-online.com/34250images/001/193701.JPG", "1937.01", "Plaque", "Amelia Earhart Memorial Plaque", "Full", "21.256139", "-157.804769", [ null, "21.256139", "-157.804769", null, false ], null ]
+, [ 7, "E755C31C-A4ED-407F-A4CC-FC701DE0F3B9", 7, 1340413921, "436621", 1340413921, "436621", "{\n}", "Marguerite Louis Blasingame", "Funded by the Works Progress Administration", "1939", "The stone bas relief entry way to the 1939 Board of Water Supply building. The bas relief is executed on a series of green steatite stone blocks which depict mythical and human Hawaiian figures, flora, and animals in the upper portions flanking either side of a central doorway as well as stylized letter forming a narrative text beneath the figurative panels. The two panels, one on the Diamond Head side of the entry way and the other on the other side of the entry door both depict stories involving the god Kane and Kaneloa in a mythical story about the discovery and use of water. Located at the Board of Water Supply Engineering Building Entrance.", "Board of Water Supply Engineering Building Entrance", "http://hiculturearts.pastperfect-online.com/34250images/001/193901-5.JPG", "1939.01", "Mural", "Ka Wai Ake Akua", "Full", "21.306108", "-157.852555", [ null, "21.306108", "-157.852555", null, false ], null ]
+, [ 8, "5E1D2074-D2DA-4099-B924-15958CB9F29D", 8, 1340413921, "436621", 1340413921, "436621", "{\n}", "Juliette May Fraser", null, "1958", "A mural depicting various agricultural activities occurring in Hawaii over several time periods, from pre-contact to the 20th century. Located in the Board of Water Supply Building Lobby.", "Board of Water Supply Building Lobby", "http://hiculturearts.pastperfect-online.com/34250images/001/195801.JPG", "1958.01", "Mural", "Pure Water - Man's Greatest Need", "Limited", "21.306008", "-157.853896", [ null, "21.306008", "-157.853896", null, false ], null ]
+, [ 9, "27F748DE-733C-4F40-B55C-DC3517CC9047", 9, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles Watson", null, "1959", "A stylized sculpture of a giraffe with the body made of welded rebar rings. The body is articulated by using weld material to give the spotty look of the animal. The head is approximately 12\" long and it peers down its mouth open, and with long eyelashes. There are ears and horns on its head and there are iron rods of about 4-6\" in length that are used to articulate the hairs on the back of the giraffe's neck. The base on which the giraffe sits is made of concrete with stones set into it. The piece was installed at the Honolulu Zoo in 1992. Located at the Honolulu Zoo Elephant Exhibit.", "Honolulu Zoo Elephant Exhibit", "http://hiculturearts.pastperfect-online.com/34250images/002/198912.JPG", "1989.12", "Sculpture", "Giraffe", "Limited", "21.270449", "-157.819816", [ null, "21.270449", "-157.819816", null, false ], null ]
+, [ 10, "20040B4A-44DB-44C7-AE79-0851768C9750", 10, 1340413921, "436621", 1340413921, "436621", "{\n}", "Yoshinari Kochi", null, "1960", "A roughly carved \"C\" form which represents \"century,\" supported by a pillar with four Chinese characters on the sides which signify that \"blessings from heaven are invoked by peace and harmony.\" The sculpture commemorates the 75th anniversary of the first Japanese immigrants to arrive in Hawaii. Located at Foster Botanical Garden.", "Foster Botanical Garden", "http://hiculturearts.pastperfect-online.com/34250images/001/196001.JPG", "1960.01", "Sculpture", "Hiroshima Monument", "Limited", "21.316633", "-157.858247", [ null, "21.316633", "-157.858247", null, false ], null ]
+, [ 11, "2224A27F-5906-4B38-87B1-0EA0553E2181", 11, 1340413921, "436621", 1340413921, "436621", "{\n}", "Giordano", null, "1967", "A hollow cast bronze bust of Neal Shaw Blaisdell, Mayor, City and County of Honolulu, 1955-1969. The bust depicts Mayor Blaisdell with a wide collared shirt and sits atop a square planter which is part of the bronze casting. The casting then rests on a rectangular exposed aggregate cast concrete pedestal base. The bronze exterior has a dark brown sulphide-type patina which has been evenly applied over the exterior. The surface of the bronze is heavily modulated with surface textures depicting hair, skin and shirt features. Located in the foyer of the Neal Blaisdell Concert Hall.", "Neal Blaisdell Center Concert Hall Foyer", "http://hiculturearts.pastperfect-online.com/34250images/001/196701.JPG", "1967.01", "Bust", "Neal Shaw Blaisdell", "Limited", "21.301282", "-157.84976", [ null, "21.301282", "-157.84976", null, false ], null ]
+, [ 12, "3D92BEE2-72BC-4B4D-AE59-3E133169145F", 12, 1340413921, "436621", 1340413921, "436621", "{\n}", "Michael Weidenbach", "City and County of Honolulu Purchase", "1995", "Stone sculpture of Indiana limestone of a Hawaiian woman carrying a gourd. The orientation of the sculpture has the figure looking towards Tahiti in recognition of early migrations to Hawaii. Located on the grounds of the Mission Memorial Auditorium.", "Mission Memorial Auditorium Grounds", "http://hiculturearts.pastperfect-online.com/34250images/003/199904-7.JPG", "1999.04", "Sculpture", "Nana I Ke Kumu (Look to the Source)", "Full", "21.304938", "-157.856514", [ null, "21.304938", "-157.856514", null, false ], null ]
+, [ 13, "127B3DB0-EA19-4C72-8E81-1C27E53A3E6A", 13, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jodi Endicott", "City and County of Honolulu Purchase", "2000", "A Life-size sculpture of a seated male reading the newspaper with three mice on his shoulder entitled \"What's Next (Hawaii's Journey; Wearing Our Past and Looking to the Future).\" Located at Bishop and King Streets.", "Bishop Street at King Street", "http://hiculturearts.pastperfect-online.com/34250images/003/200002-3.JPG", "2000.02", "Sculpture", "What's Next", "Full", "21.308382", "-157.861889", [ null, "21.308382", "-157.861889", null, false ], null ]
+, [ 14, "900C1FB3-7D06-49A9-A62B-F11410328350", 14, 1340413921, "436621", 1340413921, "436621", "{\n}", "Ernest DeCoito", "City and County of Honolulu Purchase", "1987", "The sculpture represents one of the purposes of the Fire Training Center-to accomplish a given goal through team work and individual sacrifice. The sculpture is an assembled piece consisting of combined individual parts working together to depict a recognizable form. Kulamanu is translated as a place where birds gather, a coming together, or gathering place. The choice of a bird form was a creative decision by the artist. It was not intended to signify a specific bird or make a statement. Located in the Charles Thurston Fire Training Center courtyard.", "Charles Thurston Fire Training Center Courtyard", "http://hiculturearts.pastperfect-online.com/34250images/001/198506.JPG", "1985.06", "Sculpture", "Kulamanu", "Limited", "21.339891", "-157.930945", [ null, "21.339891", "-157.930945", null, false ], null ]
+, [ 15, "BD532B8C-4441-435C-92EC-417ACB799897", 15, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift of Hawaiian Memorial Park", "1981", "Bronze bas-relief plaque of a fireman carying a girl accompanied by a policeman. Located at the Charles Thurston Fire Training Center Courtyard.", "Charles Thurston Fire Training Center Courtyard", "http://hiculturearts.pastperfect-online.com/34250images/001/198101.JPG", "1981.01", "Plaque", "Fire and Police Memorial Plaque", "Limited", "21.339869", "-157.930806", [ null, "21.339869", "-157.930806", null, false ], null ]
+, [ 16, "54C11DC3-6963-4D1F-ADBC-9086240DAB35", 16, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift from the City of Kaoshiung, China", "1989", "A pair of stone Chinese guardian lion figures. Located at Dr. Sun Yat-sen Memorial Park.", "Dr. Sun Yat-sen Memorial Park", "http://hiculturearts.pastperfect-online.com/34250images/002/198911.JPG", "1989.11", "Sculpture", "Lucky Lions", "Full", "21.310656", "-157.861776", [ null, "21.310656", "-157.861776", null, false ], null ]
+, [ 17, "F142B78E-57E7-4E06-9CBD-5DA1EADD0109", 17, 1340413921, "436621", 1340413921, "436621", "{\n}", "Paul Saviskas", "City and County of Honolulu Purchase", null, "Life size stainless steel figure of a sea turtle (honu). Located at Dr. Sun Yat-sen Memorial Park.", "Dr. Sun Yat-sen Memorial Park Pond", "http://hiculturearts.pastperfect-online.com/34250images/003/199902-2.JPG", "1999.02", "Sculpture", "Turning on a Dime aka \"Honu\" (Sea Turtle)", "Full", "21.310708", "-157.861607", [ null, "21.310708", "-157.861607", null, false ], null ]
+, [ 18, "80B073BB-AB45-45D3-9E04-E175C4E85146", 18, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jill Burkee", "City and County of Honolulu Purchase", "1994", "Twelve bronze medallions each representing an animal of Chinese astrology mounted on an exterior parapet wall. The animals are modeled in medium to high relief with a background in the manner of a dish with a radiating textured finish. Located at Chinatown Gateway Plaza.", "Chinatown Gateway Plaza Roof", "http://hiculturearts.pastperfect-online.com/34250images/002/199436.JPG", "1994.36", "Sculpture", "Chinese Zodiac Medallions", "Full", "21.310903", "-157.862061", [ null, "21.310903", "-157.862061", null, false ], null ]
+, [ 19, "8CCD421C-BAA1-4687-8AD7-C305B77CF042", 19, 1340413921, "436621", 1340413921, "436621", "{\n}", "Isamu Noguchi", "City and County of Honolulu Purchase", "1977", "An abstract nonrepresentational steel sculpture composed of three equidistant straight steel pipe legs connected at the top by a horizontal undulating tubular form. The steel of the sculpture is painted black overall. At groundlevel at the center, the space is defined by a stepped two-part circular concrete platform. Located at the Honolulu Civic Center.", "Frank F. Fasi Civic Center Lawn", "http://hiculturearts.pastperfect-online.com/34250images/001/197718-2.JPG", "1977.18", "Sculpture", "Skygate", "Full", "21.304579", "-157.855664", [ null, "21.304579", "-157.855664", null, false ], null ]
+, [ 20, "2A7B3CAA-2EAA-4FB0-9EB5-88E886741B60", 20, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jodi Endicott", "Gift of Jodi Endicott", "1996", "Three concrete figures depicted on inner tubes, two male and one female, installed on a concrete base. Located on the Honolulu Civic Center grounds.", "Frank F. Fasi Civic Center Lawn on Alapai Street", "http://hiculturearts.pastperfect-online.com/34250images/003/199803.JPG", "1998.03", "Sculpture", "Tubers", "Full", "21.304816", "-157.853169", [ null, "21.304816", "-157.853169", null, false ], null ]
+, [ 21, "86535D25-BD5F-479E-9624-E381E6BE05F2", 21, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift from the City of Nagasaki, Japan", "1990", "A bronze bell topped with a crane supported by four steel posts with a stone clad base. The bell is a replica of the bell from the tower of Urakami Cathedral in Nagasaki, Japan. Located on the Grounds of the Honolulu Civic Center near Beretania Street.", "Frank F. Fasi Civic Center Lawn on Beretania Street", "http://hiculturearts.pastperfect-online.com/34250images/002/199027.JPG", "1990.27", "Bell", "The Bell of Nagasaki", "Full", "21.305601", "-157.854923", [ null, "21.305601", "-157.854923", null, false ], null ]
+, [ 22, "69F1D69B-B9BE-47BA-AF20-A163DA37A0BA", 22, 1340413921, "436621", 1340413921, "436621", "{\n}", "George M. Williams", "Gift of Nichiren Shoshu of America", "1985", "Bronze replica of the Liberty Bell. Located in front of the Mission Memorial Building on South King Street.", "Mission Memorial Building Front Lawn", "http://hiculturearts.pastperfect-online.com/34250images/001/198508.JPG", "1985.08", "Bell", "Aloha Liberty Bell Replica", "Full", "21.304434", "-157.856495", [ null, "21.304434", "-157.856495", null, false ], null ]
+, [ 23, "519F3DE0-6121-466F-9E9C-3A0F5DB2736B", 23, 1340413921, "436621", 1340413921, "436621", "{\n}", "Carl Ruiz", "Gift of the Filipina Society of Hawaii with the Oahu Filipino Community Council", "1983", "Life-size standing figure of Dr. Jose Protacio Rizal, national hero of the Philipines against Spanish colonial rule who was executed at age 35 in 1896. The figure sits on a high pedestal in the style of monumental bronzes. There is a plaque in the center of the pedestal at the front, and two other plaques on the sides. Located on College Walk at North Beretania Street.", "College Walk at North Beretania Street", "http://hiculturearts.pastperfect-online.com/34250images/001/198301-4.JPG", "1983.01", "Sculpture", "Jose Rizal", "Full", "21.314604", "-157.862161", [ null, "21.314604", "-157.862161", null, false ], null ]
+, [ 24, "6958C4E5-B7E4-4AF1-8D17-C069D3CCEE2C", 24, 1340413921, "436621", 1340413921, "436621", "{\n}", "Masahiko Katori", "Gift of the City of Hiroshima, Japan", "1984", "Replica of the bell at Hiroshima, Japan's Peace Memorial Park. Located on College Walk near North Kukui Street.", "College Walk at North Kukui Street", "http://hiculturearts.pastperfect-online.com/34250images/001/198507.JPG", "1985.07", "Bell", "Hiroshima Peace Bell", "Full", "21.31545", "-157.86086", [ null, "21.31545", "-157.86086", null, false ], null ]
+, [ 25, "5FD55B24-8EC9-4DC4-9DC2-70B341458791", 25, 1340413921, "436621", 1340413921, "436621", "{\n}", "Edward Stasack", "Gift of the Downtown Improvement Association", "1967", "Five ten foot wide concrete panels depicting Hawaiian petroglyphs. Less than two of the panels are visible, the other panels are hidden behind the Satellite City Hall. Located at the Fort Street Mall Satellite City Hall.", "Fort Street Mall Satellite City Hall", "http://hiculturearts.pastperfect-online.com/34250images/001/002_196901-3.JPG", "1969.01", "Mural", "Petroglyphs", "Limited", "21.309206", "-157.862157", [ null, "21.309206", "-157.862157", null, false ], null ]
+, [ 26, "C2146CE2-5A22-4275-B374-6C8A7BB952BC", 26, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift of the Governor of Fukuoka, Kyushu, Japan", null, "Stone hexagonal lantern in the Japanese Yukimi style. Located at the Foster Botanical Garden Daibutsu Terrace.", "Foster Botanical Garden Daibutsu Terrace", "http://hiculturearts.pastperfect-online.com/34250images/001/197301.JPG", "1973.01", "Lantern", "Fukuoka Yame", "Limited", "21.316233", "-157.857715", [ null, "21.316233", "-157.857715", null, false ], null ]
+, [ 27, "DE397EC3-995F-431B-9CE6-FCA8D5670E7D", 27, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1963", "Cast stone moon lantern. Located at the Foster Botanical Daibutsu Terrace.", "Foster Botanical Garden Daibutsu Terrace", "http://hiculturearts.pastperfect-online.com/34250images/001/196301.JPG", "1963.01", "Lantern", "Matsukichi Kawamura Memorial", "Limited", "21.316408", "-157.857903", [ null, "21.316408", "-157.857903", null, false ], null ]
+, [ 28, "EA0C64A1-FB56-436E-A0E4-19040D04857C", 28, 1340413921, "436621", 1340413921, "436621", "{\n}", "after Goreemon Ono", "Gift of the Governor of Kanagawa Prefecture, Japan", "1968", "Cast bronze figure surmounting a granite pedestal copied from an original dated circa 1252. This treasure from Japan was presented to Honolulu to commemorate the 100th anniversary of the arrival of the first Japanese immigrants to Hawaii. Located at the Foster Botanical Garden Daibutsu Terrace.", "Foster Botanical Garden Daibutsu Terrace", "http://hiculturearts.pastperfect-online.com/34250images/001/196801.JPG", "1968.01", "Sculpture", "The Great Buddha of Kamakura", "Limited", "21.316298", "-157.858064", [ null, "21.316298", "-157.858064", null, false ], null ]
+, [ 29, "046DA266-24BE-4682-A124-62652E231FD7", 29, 1340413921, "436621", 1340413921, "436621", "{\n}", "Bob Flint", null, "1977", "Ceramic sculpture of five curvilinear forms of assembled ceramic pieces, terracotta on concrete bases. Located at the Foster Botanical Garden Economic Garden.", "Foster Botanical Garden Economic Garden", "http://hiculturearts.pastperfect-online.com/34250images/002/199322-3.JPG", "1993.22", "Sculpture", "Sandwich Isle", "Limited", "21.315763", "-157.857437", [ null, "21.315763", "-157.857437", null, false ], null ]
+, [ 30, "10AECC0C-39B5-478A-81B8-89FCCC9F4996", 30, 1340413921, "436621", 1340413921, "436621", "{\n}", "Paul Saviskas", "City and County of Honolulu Purchase", "2001", "Larger than life stainless steel fish. Located at the Hanauma Bay Visitor Center.", "Hanauma Bay Visitor Center", "http://hiculturearts.pastperfect-online.com/34250images/003/200107.JPG", "2001.07", "Sculpture", "Humuhumunukunukuahupua'a", "Limited", "21.273296", "-157.695005", [ null, "21.273296", "-157.695005", null, false ], null ]
+, [ 31, "8DDB3283-2901-4D0C-A298-8E8EE18E46FA", 31, 1340413921, "436621", 1340413921, "436621", "{\n}", "Ernest DeCoito", "Funded by the Comprehensive Employment Training Act", "1978", "Rock garden with sculptural elements. Abstract sculpture consists of two sections. Stone used is Italian white marble and crystalina. One section is mounted to the wall, the other standing on ground. Located at the Hawaii Kai Fire Station.", "Hawaii Kai Fire Station", "http://hiculturearts.pastperfect-online.com/34250images/001/197804-4.JPG", "1978.04", "Sculpture", "Earth, Man, and Heaven", "Full", "21.286515", "-157.69725", [ null, "21.286515", "-157.69725", null, false ], null ]
+, [ 32, "D6AEFB9E-5CB9-494E-88C7-50DB5B94AD13", 32, 1340413921, "436621", 1340413921, "436621", "{\n}", "Edward M. Brownlee", "Gift of Arcadia Retirement Residence", "1967", "Polyester resin over a steel armature stylized sculpture sybolizing the powerful trunks of trees abounding the Makiki District of Honolulu. Commissioned for the opening of the Arcadia Retirement Residence in 1967. Located in the Frank F. Fasi Municipal Building Lobby.", "Frank F. Fasi Municipal Building Lobby", "http://hiculturearts.pastperfect-online.com/34250images/003/199801-5.JPG", "1998.01", "Sculpture", "Makiki Trees", "Limited", "21.304286", "-157.854824", [ null, "21.304286", "-157.854824", null, false ], null ]
+, [ 33, "52DE0B40-F8E5-4329-B728-5DA3437B4DA7", 33, 1340413921, "436621", 1340413921, "436621", "{\n}", "Tom Tischler", "Gift of the Honolulu Zoo Hui and Honolulu Zoo Staff", "1988", "Cast bronze young elephant in a sitting position resting on a cast concrete disk with river rock aggregate. Dedicated to the memory of Empress, the Asian Elephant, c. 1932 - 14 Apr 1986. Located near the Honolulu Zoo Elephant Exhibit.", "Honolulu Zoo Elephant Exhibit", "http://hiculturearts.pastperfect-online.com/34250images/002/198807.JPG", "1988.07", "Sculpture", "Elephant's Child", "Limited", "21.270266", "-157.820229", [ null, "21.270266", "-157.820229", null, false ], null ]
+, [ 34, "59816610-554E-4320-884B-50381A4910EC", 34, 1340413921, "436621", 1340413921, "436621", "{\n}", "Paul Saviskas", "Gift of the Honolulu Zoological Society", "1998", "Stainless steel figure of a standing male whooping crane. Located at the Honolulu Zoo Flamingo Exhibit.", "Honolulu Zoo Flamingo Exhibit", "http://hiculturearts.pastperfect-online.com/34250images/003/199805.", "1998.05.01", "Sculpture", "Whooping Cranes", "Limited", "21.270443", "-157.820913", [ null, "21.270443", "-157.820913", null, false ], null ]
+, [ 35, "55643972-8DF1-4CCE-A6DC-AE8626312D65", 35, 1340413921, "436621", 1340413921, "436621", "{\n}", "John Nippolt", "Funded in part by the Comprehensive Employment Training Act", "1978", "A relief sculpture of geckos in an environment of foliage and flowers. There are horizontal striations in the wood from carving. 4 clusters of leaves/branches are present at intervals. There are two geckos - one on each end of the relief. The left one (facing) extends out onto the side of the building approximately for 2'; the other is mounted totally on the wood. Its tail hangs down. The trunks and leaves are carved out of the same panels as the background. The geckos, which are approximately 3.5 feet long each - are carved from separate pieces of wood, which are attached to the surface of the reliefs. Installed over the entrance to the Paul L. Breese animalani. Located at the Honolulu Zoo Herpatarium entrance.", "Honolulu Zoo Herpatarium Entrance", "http://hiculturearts.pastperfect-online.com/34250images/001/196401.JPG", "1978.19", "Mural", "Gecko's Delight", "Limited", "21.269997", "-157.819109", [ null, "21.269997", "-157.819109", null, false ], null ]
+, [ 36, "C6F054EF-3D8D-45D1-92B7-45F54C705B37", 36, 1340413921, "436621", 1340413921, "436621", "{\n}", "Ken Shutt", "Gift of Viola van Rivenburgh", "1976", "The Bertram Gardenier Rivenburgh Memorial is a figurative sculpture depicting three swimming porpoises with two porpoises swimming in tandem and the third porpoise leaping slightly overhead. Located at the Honolulu Zoo.", "Honolulu Zoo Monsarrat Restroom", "http://hiculturearts.pastperfect-online.com/34250images/001/002_197614.JPG", "1976.14", "Sculpture", "Hawaiian Porpoises", "Limited", "21.269808", "-157.820713", [ null, "21.269808", "-157.820713", null, false ], null ]
+, [ 37, "CCE128C5-E504-4C86-B65E-85854F3B190C", 37, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jack L. Throp", "Gift of Alicia C. Davies on behalf of her father Ralph", "1976", "The piece is a sculpture grouping consisting of two hippopotami that lay parallel and opposite one another with their heads resting on each other's backs. They are massive in composition, the details of their appearance are subtly articulated. They sit in a pool that is dry but has a drain. The artist was the zoo's director. The piece was constructed with the intention of its being a \"play sculpture\" for children. From a 1974 memo: \"...the fountain will have several inches of water in it. The children of Honolulu could have a joyous time playing in the water and climbing on the hippos, whose surfaces would be made smooth, resin-coated Belonza quartz.\" Located at the Honolulu Zoo.", "Honolulu Zoo Monsarrat Restroom", "http://hiculturearts.pastperfect-online.com/34250images/004/197615-5.JPG", "1976.15", "Sculpture", "Hippopotami", "Limited", "21.269945", "-157.820464", [ null, "21.269945", "-157.820464", null, false ], null ]
+, [ 38, "92ECB08A-1A43-430E-9FCB-AA92E10FA7AF", 38, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jim de la Torre", null, "1998", "A three-quarter scale sculpture of a seated giraffe. The giraffe is modeled after Nairobi, a reticulated giraffe born at the Honolulu Zoo in 1997. The sculpture is made of high density foam over wood framing with steel rebar. Located at the Honolulu Zoo.", "Honolulu Zoo Makai Lions View", "http://hiculturearts.pastperfect-online.com/34250images/003/199804.JPG", "1998.04", "Sculpture", "Giraffe", "Limited", "21.270892", "-157.818051", [ null, "21.270892", "-157.818051", null, false ], null ]
+, [ 39, "F316F9A7-3CAF-43D2-A4E7-B834B5271410", 39, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jan Gordon Fisher", "Gift of Outrigger Hotels and Resorts on behalf of the Kelly Family", "1999", "Large than life-size bronze figure of Princess Kaiulani with a peacock at her feet, eating from her hand. Located at Kaiulani Park.", "Kaiulani Park, Kuhio and Kaiulani Avenues", "http://hiculturearts.pastperfect-online.com/34250images/003/199903-5.JPG", "1999.03", "Sculpture", "Princess Kaiulani", "Full", "21.277628", "-157.82451", [ null, "21.277628", "-157.82451", null, false ], null ]
+, [ 40, "7E1BE5DE-650B-4CC2-A5DA-6B84F5AAE93E", 40, 1340413921, "436621", 1340413921, "436621", "{\n}", "Stephen C. Lowe", "Gift of the Gandhi Memorial International Foundation and the Jhamandas Watumull Fund", "1989", "A representational figurative sculpture depicting Gandhi with a walking stick and a cloak. The entire cast bronze rests upon a polished marble tile faced concrete pedestal. Located in Kapiolani Park at Kuhio and Kapahulu Avenues.", "Kapiolani Park at Kuhio and Kapahulu Avenues", "http://hiculturearts.pastperfect-online.com/34250images/002/198910-2.JPG", "1989.10", "Sculpture", "Mohandas K. Gandhi", "Full", "21.271149", "-157.822198", [ null, "21.271149", "-157.822198", null, false ], null ]
+, [ 41, "82F938DA-0726-4543-9BB0-6FA2D887E3F6", 41, 1340413921, "436621", 1340413921, "436621", "{\n}", "Gary Alsum", "City and County of Honolulu Purchase", "2000", "Life-size bronze figure of a girl. Located near the Kapiolani Park Bandstand.", "Kapiolani Park Bandstand", "http://hiculturearts.pastperfect-online.com/34250images/003/200001.JPG", "2000.01", "Sculpture", "Joy", "Full", "21.269003", "-157.820901", [ null, "21.269003", "-157.820901", null, false ], null ]
+, [ 42, "06B823B1-7CF7-4F0D-B3BE-E355F3F475F6", 42, 1340413921, "436621", 1340413921, "436621", "{\n}", "Holly Young", "City and County of Honolulu Purchase", "2001", "Life-size colored bronze figure of Queen Kapiolani. Located near the Kapiolani Park Bandstand.", "Kapiolani Park Bandstand", "http://hiculturearts.pastperfect-online.com/34250images/003/200106.JPG", "2001.06", "Sculpture", "Queen Kapiolani", "Full", "21.268921", "-157.821683", [ null, "21.268921", "-157.821683", null, false ], null ]
+, [ 43, "AAE997F3-45B9-41DF-8F43-D5285E986F48", 43, 1340413921, "436621", 1340413921, "436621", "{\n}", "Paul Saviskas", "City and County of Honolulu Purchase", "2000", "Stainless steel larger than life dragonfly. Located in the Kapiolani Park Bandstand pool.", "Kapiolani Park Bandstand Pool", "http://hiculturearts.pastperfect-online.com/34250images/003/200004.JPG", "2000.04", "Sculpture", "Pinao", "Full", "21.269046", "-157.821342", [ null, "21.269046", "-157.821342", null, false ], null ]
+, [ 44, "FB0EA09B-978A-46C8-B30F-53D54E22F8E8", 44, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jane de Decker", "City and County of Honolulu Purchase", "2000", "Bronze sculpture of a woman with a child at her feet. Located at the Kapolei Police Station.", "Kapolei Police Station", "http://hiculturearts.pastperfect-online.com/34250images/003/200101.JPG", "2001.01", "Sculpture", "Safe Haven", "Full", "21.335592", "-158.080854", [ null, "21.335592", "-158.080854", null, false ], null ]
+, [ 45, "EC6AED19-695C-4451-A3EE-99E0EC2A7F73", 45, 1340413921, "436621", 1340413921, "436621", "{\n}", "Lynn Liverton", "City and County of Honolulu Purchase", "2001", "Bronze figure of Kapo with arms raised and looking up. Kapo, goddess of hula and sorcery is also a sister of the Hawaiian fire goddess Pele. Kapolei, the Lei of Kapo, refers to the wreath of light created by the sunset glow at the Winter Solstice around Pu'u O Kapolei, a volcanic cone located in Kapolei Regional park. Located at the Kapolei Police Station.", "Kapolei Police Station", "http://hiculturearts.pastperfect-online.com/34250images/003/200206-3.JPG", "2002.06", "Sculpture", "Kapo", "Full", "21.336411", "-158.080537", [ null, "21.336411", "-158.080537", null, false ], null ]
+, [ 46, "C66AFD94-1F33-4C88-9A70-7F37FC0C25CB", 46, 1340413921, "436621", 1340413921, "436621", "{\n}", "Holly Young", "City and County of Honolulu Purchase", "2001", "Life-size patinated bronze sculpture of a boy lying on his stomach on a surfboard with a seal swimming beside him. Located at Kuhio Beach at Kapahulu Avenue.", "Kuhio Beach at Kapahulu Avenue", "http://hiculturearts.pastperfect-online.com/34250images/003/200104.JPG", "2001.04", "Sculpture", "Makua and Kila", "Full", "21.271524", "-157.822906", [ null, "21.271524", "-157.822906", null, false ], null ]
+, [ 47, "8B4864D7-7123-4930-A24A-2624D9C5451F", 47, 1340413921, "436621", 1340413921, "436621", "{\n}", "Robert Pashby", "City and County of Honolulu Purchase", "2001", "The piece consists of a life-size young man riding a surfboard on the top of a pedestal representing waves. Located on Kuhio Beach near Monsarrat Avenue.", "Kuhio Beach at Monsarrat Avenue", "http://hiculturearts.pastperfect-online.com/34250images/004/200103-9.JPG", "2001.03", "Sculpture", "Surfer on a Wave", "Full", "21.270492", "-157.822447", [ null, "21.270492", "-157.822447", null, false ], null ]
+, [ 48, "62918D15-F14C-400B-A2BD-2F8BEED24859", 48, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jan Gordon Fisher", "Gift of the Waikiki Improvement Association", "1990", "A larger than life bronze sculpture of Duke Paoa Kahanamoku with his surfboard. Located on Kuhio Beach at Uluniu Street.", "Kuhio Beach at Uluniu Street", "http://hiculturearts.pastperfect-online.com/34250images/003/199522.JPG", "1995.22", "Sculpture", "Duke Paoa Kahanamoku", "Full", "21.275456", "-157.825304", [ null, "21.275456", "-157.825304", null, false ], null ]
+, [ 49, "3A643D3D-F158-49C4-94DE-F94D0FB2C89B", 49, 1340413921, "436621", 1340413921, "436621", "{\n}", "Marguerite Louis Blasingame", "Funded by the Works Progress Administration", "1935", "Floor mosaic of twelve figures engaged in traditional Hawaiian athletic activities, done in polished black basalt set into a flagstone floor. Located at Lester McCoy Pavilion.", "Lester McCoy Pavilion", "http://hiculturearts.pastperfect-online.com/34250images/001/19350201.JPG", "1935.02.01", "Mosaic", "Floor Mosaic", "Limited", "21.291041", "-157.851242", [ null, "21.291041", "-157.851242", null, false ], null ]
+, [ 50, "F35C8B0C-57A4-4451-8CF9-A5EDBDE1D303", 50, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jan Gordon Fisher", "City and County of Honolulu Purchase", "1993", "Larger than life-size bronze figure of Robert Wilcox with plinth surmounting a painted concrete pedestal with four plaques attached. Located at Wilcox Park, Fort Street Mall and King Street.", "Robert W. Wilcox Mini Park", "http://hiculturearts.pastperfect-online.com/34250images/002/199323.JPG", "1993.23", "Sculpture", "Robert Wilcox", "Full", "21.309096", "-157.861827", [ null, "21.309096", "-157.861827", null, false ], null ]
+, [ 51, "A04BCD43-A61B-43EF-A1A7-7158B4FF6A63", 51, 1340413921, "436621", 1340413921, "436621", "{\n}", "Marguerite Louis Blasingame", "Funded by the Works Progress Administration", "1935", "One of a pair of low-relief marble tablets of a Hawaiian couple set into a wall. Located in the Lester McCoy Pavilion Banyan Court garden.", "Lester McCoy Pavilion Banyan Court Garden", "http://hiculturearts.pastperfect-online.com/34250images/001/19350202a.JPG", "1935.02.02a", "Mural", "Bas-Relief Panels", "Limited", "21.291074", "-157.851148", [ null, "21.291074", "-157.851148", null, false ], null ]
+, [ 52, "CBD66DEB-4479-4EA0-A236-3A2FA5A03D7D", 52, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles Watson", "Gift of the Persis Corporation", "1974", "A square plate metal base supports a vertical trunk with rebar branches to which are attached cast forms. The sculpture is widest at the center, tapering at top and bottom. A square concrete pedestal accompanies the sculpture. Located at Foster Botanical Garden.", "Foster Botanical Garden Parking Lot", "http://hiculturearts.pastperfect-online.com/34250images/002/199202-14.JPG", "1992.02", "Sculpture", "Tree", "Limited", "21.31679", "-157.85888", [ null, "21.31679", "-157.85888", null, false ], null ]
+, [ 53, "FF90D4F5-EC83-4DF3-82C7-B0C0A3EED1A7", 53, 1340413921, "436621", 1340413921, "436621", "{\n}", "Bumpei Akaji", "City and County of Honolulu Purcahse", "1998", "Monument and plaques commemorating the 100th Infantry Battalion, 442nd Regimental Combat Team, 1399th Engineer Construction Battalion and 552 Field Artillery at Fort DeRussy. Located at Fort DeRussy at Saratoga Road and KalaKaua Avenue.", "Fort DeRussy at  Saratoga Road and Kalakaua Avenue", "http://hiculturearts.pastperfect-online.com/34250images/003/199806.JPG", "1998.06", "Monument", "Brothers in Valor", "Full", "21.282666", "-157.831661", [ null, "21.282666", "-157.831661", null, false ], null ]
+, [ 54, "4CC9FF31-3A36-4D2A-BF9A-DE4F1D68DF9C", 54, 1340413921, "436621", 1340413921, "436621", "{\n}", "Paul Saviskas", "City and County of Honolulu Purchase", "2003", "A stainless steel sculpture of three kihi kihi (Moorish idol fish) swimming around coral mounted on a concrete base. Located at the Hanauma Bay Visitor Center.", "Hanauma Bay Visitor Center", "http://hiculturearts.pastperfect-online.com/34250images/003/200304.JPG", "2003.04", "Sculpture", "Kihi Kihi", "Limited", "21.273274", "-157.694828", [ null, "21.273274", "-157.694828", null, false ], null ]
+, [ 55, "8492E480-43E9-4683-927F-0E82F3E1A024", 55, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sean Browne", "Gift of the Oahu Kanyaku Imin Centennial Committee", "1989", "Large than life-size bronze figure of King David Kalakaua mounted on a granite pedestal. Located at Waikiki Gateway Park.", "Waikiki Gateway Park", "http://hiculturearts.pastperfect-online.com/34250images/002/199103-3.JPG", "1991.03", "Sculpture", "King David Kalakaua", "Full", "21.283921", "-157.831661", [ null, "21.283921", "-157.831661", null, false ], null ]
+, [ 56, "29989682-33B9-4D5C-96F6-4EDE2F705C29", 56, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jan-Michelle Sawyer", "Gift of Jan-Michelle Sawyer", "1997", "Bronze bust of musician Gabby Pahinui mounted on a concrete pedestal with a bronze plaque. Plaque reads, \"Gabby 'Pops' Pahinui, 1921-1980, A legend in his own time, Gabby, with his mastery of slack-key guitar and falsetto singing style, sparked a musical renaissance throughout Hawaii. His mana continues to inspire those who love Hawaiian music. Sculpture by Jan-Michelle Sawyer.\" Located near the entrance of the Waikiki Shell.", "Waikiki Shell Entrance", "http://hiculturearts.pastperfect-online.com/34250images/003/200102.JPG", "2001.02", "Bust", "Gabby Pahinui", "Limited", "21.268674", "-157.818748", [ null, "21.268674", "-157.818748", null, false ], null ]
+, [ 57, "28309749-604C-4671-9CEA-DCFEF348AF5C", 57, 1340413921, "436621", 1340413921, "436621", "{\n}", "I-Fan Chen", "Gift of Kaoshiung City, Taiwan, Republic of China", "1975", "Standing bronze figure of Dr. Sun Yat Sen installed on a pedestal. Located at Sun Yat-Sen Mall.", "Sun Yat-Sen Mall", "http://hiculturearts.pastperfect-online.com/34250images/001/197613-5.JPG", "1976.13", "Sculpture", "Sun Yat-sen", "Full", "21.314309", "-157.861825", [ null, "21.314309", "-157.861825", null, false ], null ]
+, [ 58, "2098CD12-C4FD-4132-9F2F-7F284E71929D", 58, 1340413921, "436621", 1340413921, "436621", "{\n}", "Edward M. Brownlee", "City and County of Honolulu Purchase", "1971", "Five rectilinear slabs pierced by a massive column resting on a low horizontal base. Chinese calligraphy are inscribed into the surface, they translate as follows: one side \"Forever Spring,\" another side \"The eagle flies and reaches heaven; the fish leap in the deep,\" a third side \"Myriad years if health and happiness,\" the last side \"Within the four seas, all men are brothers.\" Each quote is from a separate historic Chinese poem. The River Street Mall borders both sides of the Nuuanu Stream and encompasses part of Chinatown. The sculpture reflects the history of the site, where immigrants from the Orient first entered Hawaii. Located at Sun Yat-Sen Mall.", "Sun Yat Sen Mall", "http://hiculturearts.pastperfect-online.com/34250images/001/19710101-3.JPG", "1971.01.01", "Sculpture", "T'Sung", "Full", "21.314744", "-157.861224", [ null, "21.314744", "-157.861224", null, false ], null ]
+, [ 59, "6D011428-584E-4A7F-A4DE-F2F29BA2193D", 59, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift of Hiroshima Prefecture, the City of Hiroshima, Japan", "2001", "Half scale replica of the Torii gate of Itsukushima at Miyajima, constructed in Hiroshima. Dedicated on January 22, 2002. Located in the triangle park at King and Beretania Streets.", "Triangle Park at King and Beretania Streets", "http://hiculturearts.pastperfect-online.com/34250images/003/200208.JPG", "2002.08", "Gate", "Torii", "Full", "21.292473", "-157.822938", [ null, "21.292473", "-157.822938", null, false ], null ]
+, [ 60, "DEE5F63F-9AF2-4A3F-A299-502B548FB376", 60, 1340413921, "436621", 1340413921, "436621", "{\n}", "Thomas Deir", "City and County of Honolulu Purchase", "2001", "Ceramic tile mural of Hanauma Bay, \"hana\" meaning bay and \"uma\" meaning hand wrestling in Hawaiian. Hanauma can also mean curved bay. The underwater scene depicts a arch resembling two hands wrestling with fish, turtles, and coral. The inner border of the arch forms the outline of the Island of Oahu. Located at the Hanauma Bay Visitor Center.", "Hanauma Bay Visitor Center", "http://hiculturearts.pastperfect-online.com/34250images/003/200205.JPG", "2002.05", "Mural", "Hanauma \"Hand Wrestling Bay\"", "Limited", "21.273354", "-157.694707", [ null, "21.273354", "-157.694707", null, false ], null ]
+, [ 61, "F0F724E8-2D39-4EAD-ABE2-9730CB13890E", 61, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles Watson", null, "1989", "Seated figure of a male with a net draped across his outstretched legs. His arms extend over the net, as he is in the act of mending it. He holds a tool in his proper right hand. The figure sits on a natural boulder which is placed in a man-made pool. There are waterfalls behind the figure as part of a landscaped fountain. Located at the triangle park at King Street and Kapiolani Boulevard.", "Triangle Park at King Street and Kapiolani Boulevard", "http://hiculturearts.pastperfect-online.com/34250images/002/003_198804.JPG", "1988.04", "Sculpture", "Hawaiian Netmender - Ka Mea Ku`i `Upena (The Person Who Stitches the Net)", "Full", "21.303669", "-157.855511", [ null, "21.303669", "-157.855511", null, false ], null ]
+, [ 62, "B9B5E529-F207-473D-BF8B-4A0276D27348", 62, 1340413921, "436621", 1340413921, "436621", "{\n}", "Tuck Langland", "Mayor's Office of Culture and the Arts Purchase", "2000", "Three-quarter scale bronze figure of a woman resting on a bench. Located on the Neal Blaisdell Center Concert Hall lawn.", "Neal Blaisdell Center Concert Hall Lawn", "http://hiculturearts.pastperfect-online.com/34250images/003/200003.JPG", "2000.03", "Sculpture", "Resting Dancer", "Full", "21.301677", "-157.850254", [ null, "21.301677", "-157.850254", null, false ], null ]
+, [ 63, "3F4BE64C-FBA7-443F-AA57-82108EE890F6", 63, 1340413921, "436621", 1340413921, "436621", "{\n}", "Laura Ruby", "City and County of Honolulu Purchase", "1994", "A site-specific sculpture with architectural elements creating a theatrical space which invites participation by viewers walking though and around, or sitting leisurely. Each of the elements have specific references to the  surrounding neighborhood such as features of Honolulu Chinatown, Aloha Tower, Nuuanu Stream, waterfront buildings, and bridges. Located in the Marin Tower courtyard.", "Marin Tower courtyard", "http://hiculturearts.pastperfect-online.com/34250images/002/199437.JPG", "1994.37", "Sculpture", "Site of Passage--Chinatown", "Full", "21.31127", "-157.864164", [ null, "21.31127", "-157.864164", null, false ], null ]
+, [ 64, "6BD5A3A1-9390-4472-A1C4-2A9A1FDC4F85", 64, 1340413921, "436621", 1340413921, "436621", "{\n}", "Edward M. Brownlee", "City and County of Honolulu Purchase", "1971", "An abstract sculpture on a broad rectangular base with block seating. The River Street Mall borders both sides of the Nuuanu Stream and encompasses part of Chinatown. This sculpture reflects the history of the site, where immigrants from the Orient first entered Hawaii. Located at College Walk near North Kukui Street.", "College Walk at North Kukui Street", "http://hiculturearts.pastperfect-online.com/34250images/001/19710102.JPG", "1971.01.02", "Sculpture", "Gateway", "Full", "21.315331", "-157.861068", [ null, "21.315331", "-157.861068", null, false ], null ]
+, [ 65, "BAF5491F-32A4-4390-9475-3B14D3405D66", 65, 1340413921, "436621", 1340413921, "436621", "{\n}", "Eli Raphael Marozzi", "Gift of the Hawaii State Foundation on Culture and the Arts", "1981", "Seven separate abstract sculptures, which are placed in two groups within the park, one of three and one of four sculptures. The sculptures are low to the ground, consisting of terraced shapes, with the addition of arches on three of the sculptures. Located at Old Stadium Park.", "Old Stadium Park", "http://hiculturearts.pastperfect-online.com/34250images/003/200109.JPG", "2001.09", "Sculpture", "As You Like It", "Full", "21.293308", "-157.826827", [ null, "21.293308", "-157.826827", null, false ], null ]
+, [ 66, "B3BF7B19-0B38-4727-97D9-22DC8A0AD17A", 66, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jay D. Wilson", "City and County of Honolulu Purchase", "1987", "A multi-colored geometric abstract tapestry.", "Kapolei Hale 103", "http://hiculturearts.pastperfect-online.com/34250images/001/198627.JPG", "1986.27", "Tapestry", "A Procession of Banners", "Limited", "21.329838", "-158.081661", [ null, "21.329838", "-158.081661", null, false ], null ]
+, [ 67, "5157B9D5-EA14-4FE7-B88A-8B6BC538D020", 67, 1340413921, "436621", 1340413921, "436621", "{\n}", "Don Dugal", "City and County of Honolulu Purchase", "1987", "A painted wall relief consisting of over 200 small painted panels affixed to a wall depicting a view of the ocean and horizon beyond tree trunks and branches done in subtle gray and blue tones. Located at the Medical Examiner Facility entry.", "Medical Examiner Facility Entry", "http://hiculturearts.pastperfect-online.com/34250images/002/198803.JPG", "1988.03", "Mural", "November Light, Honolulu", "Limited", "21.315893", "-157.867302", [ null, "21.315893", "-157.867302", null, false ], null ]
+, [ 68, "6B802F01-CF0B-4DDD-A4F9-70A5C71A8AE1", 68, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", "1992", "A large ceramic urn from the artist's Ocean Series depicting whales with a sting ray border. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Makai Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920501a.JPG", "1992.05.01a", "Urn, Garden", "Mountain-LAND & SEA \"Whale\"", "Full", "21.303839", "-157.85152", [ null, "21.303839", "-157.85152", null, false ], null ]
+, [ 69, "8F3DD8EA-48DB-4F2C-A930-EC4C7FA97B25", 69, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", "1992", "A larger ceramic urn from the artist's Ocean Series depicting turtles with a naupaka border. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Makai Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920501b.JPG", "1992.05.01b", "Urn, Garden", "Mountain-LAND & SEA \"Turtle\"", "Full", "21.303839", "-157.85152", [ null, "21.303839", "-157.85152", null, false ], null ]
+, [ 70, "AAC73E3D-5CA6-4468-95D5-1AFA4D495D52", 70, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", "1992", "A large ceramic urn from the artist's Ocean Series depicting octopi. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Makai Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920501c.JPG", "1992.05.01c", "Urn, Garden", "Mountain-LAND & SEA \"Octopus\"", "Full", "21.303839", "-157.85152", [ null, "21.303839", "-157.85152", null, false ], null ]
+, [ 71, "9E4266B5-3B2E-43AC-9C27-BB8D115C976C", 71, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", "1992", "A large ceramic urn from the artist's Ocean Series depicting frigate and tropic Birds with a mangrove blossom border. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Makai Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920501d.JPG", "1992.05.01d", "Urn, Garden", "Mountain-LAND & SEA \"Seagull\"", "Full", "21.303839", "-157.85152", [ null, "21.303839", "-157.85152", null, false ], null ]
+, [ 72, "B76134F3-7AD8-4802-B591-A2601AF93E2F", 72, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", "1992", "A large ceramic urn from the artist's Ocean Series depicting black crabs with opihi in the border. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Makai Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920501e.JPG", "1992.05.01e", "Urn, Garden", "Mountain-LAND & SEA \"Crabs\"", "Full", "21.303839", "-157.85152", [ null, "21.303839", "-157.85152", null, false ], null ]
+, [ 73, "91C0E404-478D-4AAF-B744-37E908E419A0", 73, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", "1992", "A large ceramic urn from the artist's Land Series depicting breadfruit with a fish border. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Ewa Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920502a.JPG", "1992.05.02a", "Urn, Garden", "Mountain-LAND & SEA \"Breadfruit\"", "Full", "21.304179", "-157.85167", [ null, "21.304179", "-157.85167", null, false ], null ]
+, [ 74, "D47605C4-7AC3-455A-98F4-7ABEFCCE44E6", 74, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", "1992", "A large ceramic urn from the artist's Land Series depicting ti leaves with shell borders. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Ewa Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920502b.JPG", "1992.05.02b", "Urn, Garden", "Mountain-LAND & SEA \"Ti\"", "Full", "21.304179", "-157.85167", [ null, "21.304179", "-157.85167", null, false ], null ]
+, [ 75, "D3B39A77-7FD2-4476-84E9-02800811F301", 75, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", null, "A large ceramic urn from the artist's Land Series depicting gourds with a shell border. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Ewa Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920502c.JPG", "1992.05.02c", "Urn, Garden", "Mountain-Land & Sea \"Gourd\"", "Full", "21.304179", "-157.85167", [ null, "21.304179", "-157.85167", null, false ], null ]
+, [ 76, "D92A89D8-96D6-4959-914E-BDD35C69CDD2", 76, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", null, "A large ceramic urn from the artist's Land Series depicting plam leaves with a seed border. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Ewa Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920502d.JPG", "1992.05.02d", "Urn, Garden", "Mountain-LAND & SEA\"Palm Leaf\"", "Full", "21.304179", "-157.85167", [ null, "21.304179", "-157.85167", null, false ], null ]
+, [ 77, "3854399F-5CDF-40A9-B429-92FAF509A27B", 77, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", null, "A large ceramic urn from the artist's Land Series depicting taro with a prawn motif border. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Ewa Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920502e.JPG", "1992.05.02e", "Urn, Garden", "Mountain-LAND & SEA \"Taro\"", "Full", "21.304179", "-157.85167", [ null, "21.304179", "-157.85167", null, false ], null ]
+, [ 78, "5C85A951-9274-482D-B42C-5D14D3121352", 78, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", null, "A large ceramic urn from the artist's Mountain Series depicting kukui leaves with a kukui nut border. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Diamond Head Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920503a.JPG", "1992.05.03a", "Urn, Garden", "Mountain-LAND & SEA \"Kukui\"", "Full", "21.304049", "-157.851166", [ null, "21.304049", "-157.851166", null, false ], null ]
+, [ 79, "2C7DA90A-6A65-49D3-B26A-6AB927E006F5", 79, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", null, "A larger ceramic urn from the artist's Mountain Series depicting i'iwi birds with a maohiohi border. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Diamond Head Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920503b.JPG", "1992.05.03b", "Urn, Garden", "Mountain-LAND & SEA \"I'iwi\"", "Full", "21.304049", "-157.851166", [ null, "21.304049", "-157.851166", null, false ], null ]
+, [ 80, "33B9DFB8-A0CC-463E-BD37-93DE93557E11", 80, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", null, "A large ceramic urn from the artist's Mountain Series depicting lawai fern with a fiddlehead motif border. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Diamond Head Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920503c.JPG", "1992.05.03c", "Urn, Garden", "Mountain-LAND & SEA \"Lawai Fern\"", "Full", "21.304049", "-157.851166", [ null, "21.304049", "-157.851166", null, false ], null ]
+, [ 81, "82105858-DD66-4942-815F-0EF876AEB356", 81, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", null, "A large ceramic urn from the artist's Mountain Series depicting nene geese with a lehua border motif. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Diamond Head Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920503d.JPG", "1992.05.03d", "Urn, Garden", "Mountain-LAND & SEA \"Nene\"", "Full", "21.304049", "-157.851166", [ null, "21.304049", "-157.851166", null, false ], null ]
+, [ 82, "B436AE5D-40F1-4B5C-94BA-CF81E26A9A65", 82, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sandy Vitarelli", "City and County of Honolulu Purchase", null, "A large ceramic urn from the artist's Mountain Series depicting lauhala with a seed motif border. Located at the Alapai Police Station.", "Alapai Police Station 2nd Floor Diamond Head Parapet", "http://hiculturearts.pastperfect-online.com/34250images/002/19920503e.JPG", "1992.05.03e", "Urn, Garden", "Mountain-LAND & SEA \"Lauhala\"", "Full", "21.304049", "-157.851166", [ null, "21.304049", "-157.851166", null, false ], null ]
+, [ 83, "1ECA3663-79CD-4996-B355-7B445C79775C", 83, 1340413921, "436621", 1340413921, "436621", "{\n}", "Elizabeth Mapelli", "City and County of Honolulu Purchase", "1992", "A mosaic filling a niche at the front entrance of the Alapai Police Station depicting tropical foliage against a starry sky.", "Alapai Police Station 1st Floor Entrance", "http://hiculturearts.pastperfect-online.com/34250images/002/199303-2.JPG", "1993.03", "Mural", "Aloha Grotto", "Limited", "21.304271", "-157.851326", [ null, "21.304271", "-157.851326", null, false ], null ]
+, [ 84, "8744B1C4-880D-49DB-9DED-DC11DEE7C790", 84, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jay D. Wilson", "City and County of Honolulu Purchase", "1989", "Wool and linen tapestry.", "Ala Wai Golfcourse Diamond Head Ballroom", "http://hiculturearts.pastperfect-online.com/34250images/002/19940801.JPG", "1994.08.01", "Tapestry", "Colorflight", "Limited", "21.277493", "-157.818826", [ null, "21.277493", "-157.818826", null, false ], null ]
+, [ 85, "D5493EA0-82AD-4742-905D-B24562BF31A7", 85, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jay D. Wilson", "City and County of Honolulu Purchase", "1990", "Wool and linen tapestry.", "Ala Wai Golfcourse Diamondhead Ballroom", "http://hiculturearts.pastperfect-online.com/34250images/002/19940802.JPG", "1994.08.02", "Tapestry", "Net of Indra", "Limited", "21.277493", "-157.818826", [ null, "21.277493", "-157.818826", null, false ], null ]
+, [ 86, "83D3582A-D48D-41DD-8803-2BE9D7BE6FA6", 86, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jean Charlot", null, "1956", "Polychrome on cement brick mural made up of 4 inch squares; the stylized two color motif in brown on cream depicts figures separated by vegetation. Located at the Booth Recreation Center.", "Booth Recreation Center", "http://hiculturearts.pastperfect-online.com/34250images/001/195501.JPG", "1955.01", "Mural", "Spear Throwers", "Limited", "21.320496", "-157.843446", [ null, "21.320496", "-157.843446", null, false ], null ]
+, [ 87, "00C5DEB5-9046-46DC-B5F9-4B49B0209317", 87, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles J.W. Chamberlain", "Gift of Hazel McCoy in memory of Charles Lester McCoy", "1975", "Contemporary fountain of concrete, wood and copper, edged with stone; in the shape of an off-centered pyramid, with outside surfaces of terrazzo. It rises out of a shallow pool. At the upper section of the fountain are cut-out sections or windows on four sides, each shaped according to the plane of the pyramid. At the top of the fountain is a large copper pan, a reversed pyramid in design. Water cascades down the sides of the pyramid. This fountain was designed and installed as part of the second phase of building the Lester McCoy Pavilion which was completed in October 1975. Located at Lester McCoy Pavilion.", "Lester McCoy Pavilion", "http://hiculturearts.pastperfect-online.com/34250images/001/197566.JPG", "1975.66", "Fountain, Water", "Chamberlain Fountain", "Limited", "21.290648", "-157.850229", [ null, "21.290648", "-157.850229", null, false ], null ]
+, [ 88, "BDB87093-A59F-46F9-9AEA-1DB89139EDB4", 88, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift of Donald Jones", "2003", "Memorial monument consisting of eight cut stones in three groupings dedicated to Myron \"Pinky\" Thompson. One of the cut stones is engraved with text. Located at the Myron \"Pink\" Thompson Canoe Halau in Hawaii Kai.", "Myron \"Pinky\" Thompson Canoe Halau", "http://hiculturearts.pastperfect-online.com/34250images/003/200306.JPG", "2003.06", "Sculpture", "Myron \"Pinky\" Thompson Memorial", "Full", "21.284488", "-157.718123", [ null, "21.284488", "-157.718123", null, false ], null ]
+, [ 89, "CCF4488A-0774-4D35-9748-87D1D4536BA9", 89, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift of the USS Honolulu, US Navy", "1937", "Ship's bell from the USS Honolulu. Located on the first floor of Honolulu Hale.", "Honolulu Hale 1st Floor Entry", "http://hiculturearts.pastperfect-online.com/34250images/001/194701.JPG", "1947.01", "Bell, Ship's", "USS Honolulu Bell", "Limited", "21.305118", "-157.857201", [ null, "21.305118", "-157.857201", null, false ], null ]
+, [ 90, "1D0A0ED9-5DFD-4CF2-B23B-748A7DC02E74", 90, 1340413921, "436621", 1340413921, "436621", "{\n}", "Toshiko Takaezu", "City and County of Honolulu Purchase", "1992", "Stoneware vase.", "Koolau Driver License Office", "http://hiculturearts.pastperfect-online.com/34250images/002/199417.JPG", "1994.17", "Vase", "Birth", "Limited", "21.436622", "-157.826167", [ null, "21.436622", "-157.826167", null, false ], null ]
+, [ 91, "A72DFD74-A471-4C44-AC06-D18BBF22D1CE", 91, 1340413921, "436621", 1340413921, "436621", "{\n}", "Sean Browne", "City and County of Honolulu Purchase", null, "Carved marble fishook on a granite base.", "Kapolei Hale 3rd Foor Hallway Niche", "http://hiculturearts.pastperfect-online.com/34250images/003/199519.JPG", "1995.19", "Sculpture", "Solar Hook I", "Limited", "21.329913", "-158.082184", [ null, "21.329913", "-158.082184", null, false ], null ]
+, [ 92, "28E51D69-E035-408A-A6CB-C3023E512D5E", 92, 1340413921, "436621", 1340413921, "436621", "{\n}", "Emiko Mizutani", "Gift of Fred N. Sutter & Associates, Inc.", "1979", "Mural of white glazed and semi-glazed ceramic tiles mounted on wood panels. Located at the Pali Golf Course Clubhouse ballroom entry.", "Pali Golf Course Clubhouse Ballroom Entry", "http://hiculturearts.pastperfect-online.com/34250images/003/199802.JPG", "1998.02", "Mural", "Trees", "Limited", "21.37307", "-157.785564", [ null, "21.37307", "-157.785564", null, false ], null ]
+, [ 93, "D7FE4EB6-A2B2-492A-A03E-6C2EA2B8F75A", 93, 1340413921, "436621", 1340413921, "436621", "{\n}", "Ron Smith", "City and County of Honolulu Purchase", "1999", "Bronze bust of Queen Emma. Plaque reads \"Queen Emma 1836-1885.\" Located in Queen Emma Square.", "Queen Emma Square", "http://hiculturearts.pastperfect-online.com/34250images/003/199905.JPG", "1999.05", "Bust", "Queen Emma", "Full", "21.309959", "-157.856645", [ null, "21.309959", "-157.856645", null, false ], null ]
+, [ 94, "F638C491-8775-4B4F-84A3-717BA796822D", 94, 1340413921, "436621", 1340413921, "436621", "{\n}", "Bon Chan Park", "Gift of the 2003 Centennial Committee of Korean Immigration to the United States of America", "2003", "Granite and bronze monument commemorating the 100th anniversary of Korean immigration to Hawaii and the United States of America. Located at Pawaa Neighborhood Park.", "Pawaa Inha Neighborhood Park", "http://hiculturearts.pastperfect-online.com/34250images/003/200301.JPG", "2003.01", "Monument", "Korean Centennial Memorial", "Full", "21.298121", "-157.838468", [ null, "21.298121", "-157.838468", null, false ], null ]
+, [ 95, "9260DDF7-4038-4DC5-8B1C-2F374F7CACA8", 95, 1340413921, "436621", 1340413921, "436621", "{\n}", "Cathy Berenberg", "Gift of Cathy Berenberg", "2002", "Wooden free-standing semi-circular sculpture with plaques carved in relief and laser engraved panels on front portion of sculpture commemorating the events of September 11, 2001. Broken tempered glass is meant to be scattered below the carved figures.", "Kapolei Hale 2nd Floor Women's Restroom", "http://hiculturearts.pastperfect-online.com/34250images/004/200302-3.JPG", "2003.02", "Sculpture", "Shattered Dreams", "Limited", "21.330068", "-158.082023", [ null, "21.330068", "-158.082023", null, false ], null ]
+, [ 96, "9A34C3ED-BCA7-49DE-AAE6-453E4B46494A", 96, 1340413921, "436621", 1340413921, "436621", "{\n}", "Hans Ladislaus", null, "1998", "Ceramic mural made of 50 individual panels. Located at the Neal Blaisdell Center Exhibition Hall Carla Coray Galleria.", "Neal Blaisdell Center Exhibition Hall Carla Coray Galleria", "http://hiculturearts.pastperfect-online.com/34250images/003/199906.JPG", "1999.06", "Mural", "The Gathering", "Limited", "21.30017", "-157.851026", [ null, "21.30017", "-157.851026", null, false ], null ]
+, [ 97, "473F95E0-39A3-43A0-913D-CF37B860A7A6", 97, 1340413921, "436621", 1340413921, "436621", "{\n}", "Linda Oszajca", "City and County of Honolulu Purchase", "1996", "Painted layered wood mural depicting people of Chinatown that are seen from the Chinatown Gateway Building. The work represents the incredible mix of people of all ages, races, and economic groups, that pass by the building daily. Located at the Chinatown Gateway Plaza lobby.", "Chinatown Gateway Plaza Lobby", "http://hiculturearts.pastperfect-online.com/34250images/003/199602.JPG", "1996.02", "Mural", "Faces of Chinatown", "Limited", "21.310586", "-157.862128", [ null, "21.310586", "-157.862128", null, false ], null ]
+, [ 98, "A369ABCC-6925-4C30-8B13-5B08D3C7536F", 98, 1340413921, "436621", 1340413921, "436621", "{\n}", "Stephen Meder", "City and County of Honolulu Purchase", "1994", "Koa display case built to house artifacts excavated from the Marin Tower site during construction and historical photographs. Located in the Marin Tower Lobby.", "Marin Tower Lobby Ewa Side", "http://hiculturearts.pastperfect-online.com/34250images/002/19943101.JPG", "1994.31.01", "Case, Display", null, "Limited", "21.311342", "-157.864082", [ null, "21.311342", "-157.864082", null, false ], null ]
+, [ 99, "896A52F2-A55E-4771-9E9E-FA84BE7CDE47", 99, 1340413921, "436621", 1340413921, "436621", "{\n}", "Stephen Meder", "City and County of Honolulu Purchase", "1994", "Koa display case built to house artifacts excavated from the Marin Tower site during construction and historical photographs. Located in the Marin Tower Lobby.", "Marin Tower Lobby Diamondhead Side", "http://hiculturearts.pastperfect-online.com/34250images/002/19943102.JPG", "1994.31.02", "Case, Display", null, "Limited", "21.311342", "-157.864082", [ null, "21.311342", "-157.864082", null, false ], null ]
+, [ 100, "DCE7ECD8-EF7C-4887-B060-4D94F9755940", 100, 1340413921, "436621", 1340413921, "436621", "{\n}", "Dale Chihuly", "City and County of Honolulu Purchase", "1989", "Glass sculpture consisting of a bowl and several smaller pieces.", "Honolulu Hale 2nd Floor Diamondhead Hallway", "http://hiculturearts.pastperfect-online.com/34250images/002/199212.JPG", "1992.12", "Sculpture", "Golden Yellow Seaforms", "Limited", "21.30511", "-157.85683", [ null, "21.30511", "-157.85683", null, false ], null ]
+, [ 101, "FF3C23AF-1402-4B98-9F2D-329D8A44258F", 101, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1964", "Rectangular plaque of  solid cast bronze with text in the central portion, large medallions are cast in relief on either side of the text. The medallion on the proper left contains a profile portrait of Mayor Blaisdell. The medallion on the proper right contains the seal of the City and County of Honolulu. Located at the Neal Blaisdell Center Concert Hall.", "Neal Blaisdell Center Concert Hall Diamond Head Exterior", "http://hiculturearts.pastperfect-online.com/34250images/001/196402.JPG", "1964.02", "Plaque", "Neal S. Blaisdell Center Plaque", "Full", "21.301195", "-157.849497", [ null, "21.301195", "-157.849497", null, false ], null ]
+, [ 102, "391D4E16-6FE1-4900-BAF7-60E3505FDB3F", 102, 1340413921, "436621", 1340413921, "436621", "{\n}", "Julio Teichberg", "City and County of Honolulu Purcahse", "1994", "Cast glass window for Harbor Village.", "Harbor Village", "http://hiculturearts.pastperfect-online.com/34250images/003/199524.JPG", "1994.38", "Window", "Song of Light", "Full", "21.313247", "-157.864806", [ null, "21.313247", "-157.864806", null, false ], null ]
+, [ 103, "50CCD9C5-2BB1-46E4-AE4C-BDF1E9D6EC79", 103, 1340413921, "436621", 1340413921, "436621", "{\n}", "Joan Andrew", "City and County of Honolulu Purcahse", "2000", "A life-size bronze sculpture of a young girl with long hair in a short dress walking and putting on a backpack that holds a teddy bear. The sculpture is installed on a concrete pedestal. Located along Beretania Street near Alapai Street.", "Frank F. Fasi Civic Center at Beretania and Alapai Streets", "http://hiculturearts.pastperfect-online.com/34250images/003/200008.JPG", "2000.08", "Sculpture", "Jenny", "Full", "21.305003", "-157.853027", [ null, "21.305003", "-157.853027", null, false ], null ]
+, [ 104, "D30DD713-714F-4C21-81AF-DF30D75C7264", 104, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "City and County of Honolulu Purchase", "2000", "Monument of five plastic coated panels mounted in metal frames. Site consists of a circular concrete pathway with a tree in the center with two semicircular stone walls where the plaques are mounted. Located at Han L'Orange Park Baseball Field.", "Hans L'Orange Park Baseball Field", "http://hiculturearts.pastperfect-online.com/34250images/003/200009.JPG", "2000.09", "Monument", "Waipahu's Sports Legends", "Limited", "21.38909", "-158.005358", [ null, "21.38909", "-158.005358", null, false ], null ]
+, [ 105, "DA5FC550-034C-4ACA-B105-5C3685C7951F", 105, 1340413921, "436621", 1340413921, "436621", "{\n}", "Bumpei Akaji", null, "1964", "Nature inspired abstract metal relief sculpture of 26 individual parts. Located in the Neal Blaisdell Center Concert Hall lobby.", "Neal Blaisdell Center Concert Hall Lobby Mauka Wall", "http://hiculturearts.pastperfect-online.com/34250images/001/19600302.JPG", "1960.03", "Mural", "Honolulu Concert Theatre Mural", "Limited", "21.301346", "-157.849717", [ null, "21.301346", "-157.849717", null, false ], null ]
+, [ 106, "09E4D776-CBDA-4073-B2FA-D023199009E9", 106, 1340413921, "436621", 1340413921, "436621", "{\n}", "Bumpei Akaji", null, "1964", "Hawaiian motif decorative panels. Located at the Neal Blaisdell Center Arena.", "Neal Blaisdell Center Arena Exterior Mezzanine Level", "http://hiculturearts.pastperfect-online.com/34250images/004/196401.JPG", "1964.01", "Mural", null, "Limited", "21.299317", "-157.851171", [ null, "21.299317", "-157.851171", null, false ], null ]
+, [ 107, "9F5C48F9-90C7-4DDE-8C1F-454A2E63CA2A", 107, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift of the Republic of Portugal", "1978", "Centennial monument of the Portuguese immigration to Hawaii. A padrao is a cross-shaped monument that Portuguese navigators used to mark newly-explored territory. A replica of a monument in Portugal dedicated to Diogo Cao, an early Portuguese navigator. Located on Fort Street Mall at Beretania Street.", "Fort Street Mall at Beretania Street", "http://hiculturearts.pastperfect-online.com/34250images/001/19780601.JPG", "1978.06.01", "Monument", "Padrao dos Descobrimentos \"Symbol of the Discoveries\"", "Full", "21.311077", "-157.859397", [ null, "21.311077", "-157.859397", null, false ], null ]
+, [ 108, "D168BFBC-08C2-4390-B257-288533A1CA91", 108, 1340413921, "436621", 1340413921, "436621", "{\n}", "Julio Costa", "Gift of the Republic of Portugal", "1978", "Mosaic of stone tesserae in pink, black and beige, accompanying the Padrao in a compass dial motif, with the Fleur-de-lis pointing north and the Cross of the Order of Christ pointing east. Located on Fort Street Mall at Beretania Street.", "Fort Street Mall at Beretania Street", "http://hiculturearts.pastperfect-online.com/34250images/001/002_19780602.JPG", "1978.06.02", "Mosaic", "Padrao Mosaic", "Full", "21.311077", "-157.859397", [ null, "21.311077", "-157.859397", null, false ], null ]
+, [ 109, "A0778B14-4153-47FB-9347-22D05BD508BA", 109, 1340413921, "436621", 1340413921, "436621", "{\n}", "Gregory Clurmam", "Gift of Gregory Clurman", "1976", "A group of three carved basalt stones resembling pigs. Located at the Honolulu Zoo Children's Center.", "Honolulu Zoo Keiki Zoo", "http://hiculturearts.pastperfect-online.com/34250images/001/002_197901.JPG", "1979.01", "Sculpture", "Hawaiian Pigs", "Limited", "21.271532", "-157.818322", [ null, "21.271532", "-157.818322", null, false ], null ]
+, [ 110, "18B9ACC3-CE80-4A21-A189-C705785C6FB8", 110, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "2001", "Burial mound for internment of human remains dicovered in Waikiki due to construction. The title translates to \"The Place of Loving Remembrance.\" Located in Kapiolani Park at Kapahulu and Kalakaua Avenues.", "Kapiolani Park at Kapahulu and Kalakaua Avenues", "http://hiculturearts.pastperfect-online.com/34250images/003/200114.JPG", "2001.14", "Monument", "Kahi Hali'a Aloha", "Limited", "21.271304", "-157.822262", [ null, "21.271304", "-157.822262", null, false ], null ]
+, [ 111, "47F0CCBC-6BF6-4D4B-A4DB-A930242CF73D", 111, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles Palumbo", "City and County of Honolulu Purchase", "1999", "Waikiki Historic Trail marker shaped like a surfboard with a porcelain enamel metal sign attached. Located at Kuhio Beach near Kapahulu Avenue.", "Kuhio Beach at Kapahulu Avenue", "http://hiculturearts.pastperfect-online.com/34250images/003/19990801.JPG", "1999.08.01", "Sign", "Waikiki", "Full", "21.271572", "-157.822882", [ null, "21.271572", "-157.822882", null, false ], null ]
+, [ 112, "D29B28C3-1465-43CB-ABDD-9063D532BE1F", 112, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles Palumbo", "City and County of Honolulu Purchase", "1999", "Waikiki Historic Trail marker shaped like a surfboard with a porcelain enamel metal sign attached. Located at Kaiulani Park.", "Kaiulani Park", "http://hiculturearts.pastperfect-online.com/34250images/003/19990802-5.JPG", "1999.08.02", "Sign", "Princess Kaiulani", "Full", "21.2774", "-157.824703", [ null, "21.2774", "-157.824703", null, false ], null ]
+, [ 113, "D74625B6-D1F3-4877-987F-20C961A731D6", 113, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles Palumbo", "City and County of Honolulu Purchase", "1999", "Waikiki Historic Trail marker shaped like a surfboard with a porcelain enamel metal sign attached. Located at Duke Kahanamoku Park.", "Duke Kahanamoku Park", "http://hiculturearts.pastperfect-online.com/34250images/003/19990803.JPG", "1999.08.03", "Sign", "Duke Kahanamoku", "Full", "21.281349", "-157.837285", [ null, "21.281349", "-157.837285", null, false ], null ]
+, [ 114, "5DC8816B-93F2-4089-84AB-7895BD979A87", 114, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles Palumbo", "City and County of Honolulu Purchase", "1999", "Waikiki Historic Trail marker shaped like a surfboard with a porcelain enamel metal sign attached. Located at Kuhio Beach near Ohua Street.", "Kuhio Beach at Ohua Street", "http://hiculturearts.pastperfect-online.com/34250images/003/19990804.JPG", "1999.08.04", "Sign", "Prince Jonah Kuhio Kalanianaole Piikoi", "Full", "21.273181", "-157.823751", [ null, "21.273181", "-157.823751", null, false ], null ]
+, [ 115, "F42F0475-9D94-4972-91AD-7207B49F3FBF", 115, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Site funded by the Queen Emma Foundation", "1500", "An arragement of four large boulders dating to pre-Western contact enclosed by a fence. Located at Kuhio Beach at Kaiulani Avenue.", "Kuhio Beach at Kaiulani Avenue", "http://hiculturearts.pastperfect-online.com/34250images/003/199704.JPG", "1997.04", "Monument", "The Stone of Life - Na Pohaku Ola Kapaemahu A Kapuni", "Full", "21.275773", "-157.825682", [ null, "21.275773", "-157.825682", null, false ], null ]
+, [ 116, "26E3DE28-68A0-4426-9022-7BDFC405EBDA", 116, 1340413921, "436621", 1340413921, "436621", "{\n}", "Juliette May Fraser", null, "1940", "Oil on canvas painting mounted on panel depicting a map of Oahu with its many water divisions.", "Board of Water Supply Engineering Building Lobby", "http://hiculturearts.pastperfect-online.com/34250images/001/194001.JPG", "1940.01", "Mural", "Oahu", "Limited", "21.306089", "-157.852581", [ null, "21.306089", "-157.852581", null, false ], null ]
+, [ 117, "D0097678-AC44-4E34-BE13-5300F3CA22AD", 117, 1340413921, "436621", 1340413921, "436621", "{\n}", "Mark Kadota", "Funded by the Comprehensive Employment Training Act", "1977", "Ceramic sculpture of a Hawaiian figure wearing a mahiole helmet adorned with kapa, and a kapa malo loincloth, the lower portion of figure is cylindrical. The figure is mounted on a wooden pedestal.", "Waianae Neighborhood Community Center Satellite City Hall", "http://hiculturearts.pastperfect-online.com/34250images/001/19780202-2.JPG", "1978.02.02", "Sculpture", null, "Limited", "21.450155", "-158.190344", [ null, "21.450155", "-158.190344", null, false ], null ]
+, [ 118, "3DEFF918-2CD5-448F-905E-DAF0FF8F5B03", 118, 1340413921, "436621", 1340413921, "436621", "{\n}", "Martin Charlot", "Funded by the Comprehensive Employment Training Act", "1978", "Six panel mural, oil on panel, depicting children playing/flying near a stream in a Hawaiian forest. Located at the Kaneohe District Park Gymnasium.", "Kaneohe District Park Gymnasium", "http://hiculturearts.pastperfect-online.com/34250images/001/197813.JPG", "1978.13", "Mural", "Blessed is the Fruit of Thy Womb", "Limited", "21.408821", "-157.809007", [ null, "21.408821", "-157.809007", null, false ], null ]
+, [ 119, "2C1F4718-92AD-42FA-821A-62356878E8D5", 119, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1927", "A complex comprised of a salt water pool, viewing stands, and lavatories situated on a beachfront parcel at Queen's Beach; built in honor of the veterans of World War I.", "Queen's Beach", "http://hiculturearts.pastperfect-online.com/34250images/001/192701.JPG", "1927.01", "Pool, Swimming", "The War Memorial (Natatorium)", "Full", "21.264543", "-157.82208", [ null, "21.264543", "-157.82208", null, false ], null ]
+, [ 120, "B6457B1F-6754-4286-9809-4B52525F8C2F", 120, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1931", "Bronze \"Roll of Honor\" plaque listing 101 Hawaii citizens killed in World War I. Located at Queen's Beach.", "Queen's Beach", "http://hiculturearts.pastperfect-online.com/34250images/001/193101.JPG", "1931.01", "Plaque", "Roll of Honor", "Full", "21.26466", "-157.821463", [ null, "21.26466", "-157.821463", null, false ], null ]
+, [ 121, "36272EAD-76CB-4311-A1F8-F2843512E76B", 121, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles Watson", "Gift of the Honolulu Construction Industry", "1970", "Sculpture of a stylized flower capped with a chrome sphere. Located at the Neal Blaisdell Center Arena.", "Neal Blaisdell Center Arena Moat", "http://hiculturearts.pastperfect-online.com/34250images/001/197001.JPG", "1970.01", "Sculpture", "Pua Honua \"Earth Flower\"", "Full", "21.299141", "-157.850865", [ null, "21.299141", "-157.850865", null, false ], null ]
+, [ 122, "CB176BFE-6509-47BA-A34D-1E18234C10AF", 122, 1340413921, "436621", 1340413921, "436621", "{\n}", "Russell L. Smith, Jr.", null, "1961", "Tiered circular fountain. Located at Pohakupu Park.", "Pohakupu Park", "http://hiculturearts.pastperfect-online.com/34250images/001/196101.JPG", "1961.01", "Fountain, Water", "Pohakapu Park Fountain", "Full", "21.381025", "-157.755303", [ null, "21.381025", "-157.755303", null, false ], null ]
+, [ 123, "A8733C8E-FBFF-46A1-A8E4-3FF2AFA415D6", 123, 1340413921, "436621", 1340413921, "436621", "{\n}", "Wood, Weed & Associates", null, "1959", "Circular fountain fronting Board of Water Supply main building.", "Board of Water Supply Front Lawn", "http://hiculturearts.pastperfect-online.com/34250images/001/195901.JPG", "1959.01", "Fountain, Water", "Uwe Ka Lani Ola Ka Honua", "Full", "21.305893", "-157.853987", [ null, "21.305893", "-157.853987", null, false ], null ]
+, [ 124, "D715DB56-41E3-43E1-BBAC-7890BC768372", 124, 1340413921, "436621", 1340413921, "436621", "{\n}", "Wood, Weed & Associates", null, "1959", "Two pairs of etched steel panels on steel elevator doors of  scenes relating to water and depicting a figure in traditional Hawaiian dress. Located at the Board of Water Supply main building's first floor elevators.", "Board of Water Supply 1st Floor Elevators", "http://hiculturearts.pastperfect-online.com/34250images/001/195902.JPG", "1959.02", "Door", "Pure Water Man's Greatest Need", "Limited", "21.306052", "-157.853974", [ null, "21.306052", "-157.853974", null, false ], null ]
+, [ 125, "B02943C5-EB3F-46C3-A7C5-97F1BAB48A4F", 125, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift of the City of Yokohama, Japan", "1957", "A Japanese carved and cast stone lantern. Located in the Honolulu Hale Japanese Garden.", "Honolulu Hale Japanese Garden", "http://hiculturearts.pastperfect-online.com/34250images/001/195701.JPG", "1957.01", "Lantern", null, "Full", "21.304902", "-157.857166", [ null, "21.304902", "-157.857166", null, false ], null ]
+, [ 126, "3A269354-52C7-4CE1-9A99-27A92D48F23B", 126, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift of the City of Hiroshima, Japan", "1968", "Stone sculpture of a Japanese pagoda given to commemorate the 100th anniversay of Japanese immigration to Hawaii. Located at the Honolulu Japanese Garden.", "Honolulu Hale Japanese Garden", "http://hiculturearts.pastperfect-online.com/34250images/001/196803.JPG", "1968.03", "Sculpture", "Pagoda", "Full", "21.304958", "-157.857224", [ null, "21.304958", "-157.857224", null, false ], null ]
+, [ 127, "08B5DBFC-BA76-497B-AD02-68D86A54084C", 127, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift of the World Cultural Communication Association", "1996", "Bust depicting the Supreme Master Ching Hai. Hat and robe portions of bust are painted yellow. Located near the Hoomaluhia Botanical Garden Visitor Center.", "Hoomaluhia Botanical Garden Visitor Center", "http://hiculturearts.pastperfect-online.com/34250images/003/199603.JPG", "1996.03", "Bust", "The Supreme Master Ching Hai", "Limited", "21.386827", "-157.808942", [ null, "21.386827", "-157.808942", null, false ], null ]
+, [ 128, "07D027FF-B9DD-47E5-A007-5569C3D18245", 128, 1340413921, "436621", 1340413921, "436621", "{\n}", "Marguerite Louis Blasingame", "Funded by the Works Progress Administration", "1935", "One of a pair of low-relief marble tablets of a Hawaiian couple playing nose flutes set into a wall. Located at the Lester McCoy Pavilion Banyan Court garden.", "Lester McCoy Pavilion Banyan Court Garden", "http://hiculturearts.pastperfect-online.com/34250images/001/19350202b-2.JPG", "1935.02.02b", "Mural", null, "Limited", "21.29066", "-157.851286", [ null, "21.29066", "-157.851286", null, false ], null ]
+, [ 129, "635352FD-706E-4B90-9D72-56E9ECC3389C", 129, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift of Mabel T. Aimoto", "1960", "Japanese stone lantern. Located at the Foster Botanical Garden Daibutsu Terrace.", "Foster Botanical Garden Daibutsu Terrace", "http://hiculturearts.pastperfect-online.com/34250images/003/200010.JPG", "2000.10", "Lantern", null, "Limited", "21.316129", "-157.858338", [ null, "21.316129", "-157.858338", null, false ], null ]
+, [ 130, "2B976CAC-4EBE-4D3C-A21B-F811DE253A76", 130, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jan-Michelle Sawyer", "Gift of Jan-Michelle Sawyer", "2003", "Bronze bust with front torso of Israel \"Bruddah Iz\" Kamakawiwo'ole. Located at the Waianae Neighborhood Community Center. Plaque reads \"Israel Ka'ano'i Kamakawiwo'ole, May 20, 1959 - June 26, 1997, In a gentle voice, he spoke through his music to Hawai'i and worlds beyond of love and respect for the values of his Ni'ihau heritage. Strong in his faith, loving husband and father, he envisioned a Sovereign land of promise for the keiki. Israel's sweet music reflected a deep attachment to the 'aina and to his people, especially of the Wai'anae Coast, his beloved and final home of rainbows. Ua mau mai e ka pono mai ka makua lani mai, Sculpture by Jan-Michelle Sawyer\"", "Waianae Neighborhood Community Center", "http://hiculturearts.pastperfect-online.com/34250images/003/200310.JPG", "2003.10", "Bust", "Israel Ka'ao'i Kamakawiwo'ole", "Full", "21.450038", "-158.190948", [ null, "21.450038", "-158.190948", null, false ], null ]
+, [ 131, "0996C760-B9BE-416E-83A4-B6EAAAA82DE2", 131, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1963", "Bronze plaque commemorating the start of construction on the NBC Theater - Concert Hall. Located at the Neal Blaisdell Center Concert Hall lawn.", "Neal Blaisdell Concert Hall Diamond Head Lawn", "http://hiculturearts.pastperfect-online.com/34250images/001/003_196302.JPG", "1963.02", "Plaque", null, "Full", "21.300565", "-157.849728", [ null, "21.300565", "-157.849728", null, false ], null ]
+, [ 132, "9B23BD3C-CFD3-4E47-BF46-562D9E09E8EC", 132, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1978", "Carved marble tablet mounted on a basalt stone. \"In memory of Samuel \"Sammy\" E. Amato, Mar. 24, 1906-Nov. 28, 1978. A dedicated public servant who devoted countless hours beyond the call of duty to the Neal S. Blasidell center where he served from March 1969 to September 1978. Located at the Neal S. Blaisdell Arena lawn.", "Neal Blaisdell Center Arena Lawn", "http://hiculturearts.pastperfect-online.com/34250images/001/197820.JPG", "1978.20", "Plaque", "Samuel \"Sammy\" E. Amato Memorial Tablet", "Full", "21.298841", "-157.850763", [ null, "21.298841", "-157.850763", null, false ], null ]
+, [ 133, "E138251A-C6C2-4AA2-8BEA-DFEEB466694F", 133, 1340413921, "436621", 1340413921, "436621", "{\n}", "Harry Sims Bent", null, "1937", "Three concrete gateways named after President Franklin Delano Roosevelt who visited Honolulu for the dedication of Ala Moana Park on July 27, 1934. Located in Ala Moana Regional Park at Atkinson Drive.", "Ala Moana Regional Park at Atkinson Drive", "http://hiculturearts.pastperfect-online.com/34250images/001/193702.JPG", "1937.02", "Gate", "Roosevelt Portals", "Full", "21.288485", "-157.841499", [ null, "21.288485", "-157.841499", null, false ], null ]
+, [ 134, "26844BF6-C2CB-47BA-B81F-06A4304724F0", 134, 1340413921, "436621", 1340413921, "436621", "{\n}", "Harry Sims Bent", "Funded by the Works Progress Administration", "1937", "A double arched Art Deco equestrian bridge included in the overall building project of Ala Moana Park, financed by WPA funds. Located in Ala Moana Regional Park.", "Ala Moana Regional Park", "http://hiculturearts.pastperfect-online.com/34250images/001/193703.JPG", "1937.03", "Bridge", "Equestrian Bridge", "Full", "21.289299", "-157.844192", [ null, "21.289299", "-157.844192", null, false ], null ]
+, [ 135, "4A289259-145A-4923-892F-85E58C97C815", 135, 1340413921, "436621", 1340413921, "436621", "{\n}", "Belt, Lemmon & Lo, Architects", null, "1962", "Two relief murals of vibrant colors with circles and a meandering pattern flanking the playground building. Located at Dole Community Park.", "Dole Community Park", "http://hiculturearts.pastperfect-online.com/34250images/001/196201.JPG", "1962.01", "Mural", "Dole Park Mural", "Full", "21.309057", "-157.85112", [ null, "21.309057", "-157.85112", null, false ], null ]
+, [ 136, "34610C95-E998-4B80-9A50-8FF493F023D9", 136, 1340413921, "436621", 1340413921, "436621", "{\n}", "Albert Ely Ives", "Gift of the Walter and Louise Dillingham Foundation", "1967", "Tiered circular water fountain given in memory of Walter A. Dillingham. Located in Kapiolani Park along Kalakaua Avenue.", "Kapiolani Park at Kalakaua Avenue", "http://hiculturearts.pastperfect-online.com/34250images/001/196703.JPG", "1967.03", "Fountain, Water", "Louise Dillingham Memorial Fountain", "Full", "21.261491", "-157.81988", [ null, "21.261491", "-157.81988", null, false ], null ]
+, [ 137, "3B650D2B-B680-48E4-8394-5827070F3E5B", 137, 1340413921, "436621", 1340413921, "436621", "{\n  \"invalidCells\" : {\n    \"3246323\" : \"1928-1929\"\n  }\n}", null, "City and County of Honolulu Purchase", null, "City hall of the City and County of Honolulu, oficially know as Honolulu Hale. Located on South King Street at Punchbowl Street.", "Honolulu Hale", "http://hiculturearts.pastperfect-online.com/34250images/001/19290101.JPG", "1929.01.01", "Hall, Town", "Honolulu Hale", "Limited", "21.305094", "-157.857235", [ null, "21.305094", "-157.857235", null, false ], null ]
+, [ 138, "AB5E4269-FFB5-4BDF-BFEC-5B5A5369F5AA", 138, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "City and County of Honolulu Purchase", null, "Translucent motorized skylight above the courtyard of Honolulu Hale.", "Honolulu Hale Courtyard", "http://hiculturearts.pastperfect-online.com/34250images/001/19290103.JPG", "1929.01.03", "Skylight", null, "Limited", "21.305238", "-157.857038", [ null, "21.305238", "-157.857038", null, false ], null ]
+, [ 139, "B05924E9-4363-4D7A-9D3E-B811C1C25D3B", 139, 1340413921, "436621", 1340413921, "436621", "{\n}", "Einar Peterson", "City and County of Honolulu Purchase", "1929", "Ceiling frescoes of Honolulu Hale. Frescoes in the foyer and courtyard use traditional designs of natives of the American Southwest. The fresco in City Council chambers depict scenes of Hawaiians at work and play.", "Honolulu Hale", "http://hiculturearts.pastperfect-online.com/34250images/001/19290102-2.JPG", "1929.01.02", "Mural", null, "Limited", "21.305175", "-157.857121", [ null, "21.305175", "-157.857121", null, false ], null ]
+, [ 140, "9A1A73EC-C1F9-4EC5-921B-3FCFEBBF0E4C", 140, 1340413921, "436621", 1340413921, "436621", "{\n}", "Kate Kelly", null, "1934", "Lester McCoy Pavilion dedication plaque.", "Lester McCoy Pavillion", "http://hiculturearts.pastperfect-online.com/34250images/001/193401-2.JPG", "1934.01", "Plaque", "Lester McCoy", "Limited", "21.290811", "-157.851261", [ null, "21.290811", "-157.851261", null, false ], null ]
+, [ 141, "D70A5C7E-CECD-4BB4-A1E9-732344D45972", 141, 1340413921, "436621", 1340413921, "436621", "{\n}", "Carl Heinmiller", "Transfer from the State of Hawaii", "1969", "A Chilkat Indian Totem Pole carved by five Chilkat Indians from Southeastern Alaska over three days in Honolulu. Presented to Governor John A. Burns, State of Hawaii by the State of Alaska, Alaskan Business Council and Western Airlines in 1970. The top carving is of a grizzly bear, symbol of strength and protection. It guards the middle figure, which represents the Governor of the State. The bottom image is that of the brown bear holding a money piece or \"tinah.\" The tinah represents the promise of great and mutually profitable trade between the states of Hawaii and Alaska. The totem pole is carved out of red cedar. Located at Foster Botanical Garden.", "Foster Botanical Garden Hybrid Orchids", "http://hiculturearts.pastperfect-online.com/34250images/004/L197001.JPG", "L1970.01", "Pole, Totem", "Chilkat Indian Totem Pole", "Limited", "21.315828", "-157.857835", [ null, "21.315828", "-157.857835", null, false ], null ]
+, [ 142, "260D3C23-406F-4739-9A68-4B33526AD046", 142, 1340413921, "436621", 1340413921, "436621", "{\n}", "Bill Chang", null, "2004", "A large stone set in the gound with a polished face containing a memorial inscription. Inscription reads \"This canoe halau is dedicated to Gardner Kaaihue Brown in May 2004.\" Located at the Keehi Lagoon Beach Park Canoe Halau.", "Keehi Lagoon Beach Park Canoe Halau", "http://hiculturearts.pastperfect-online.com/34250images/003/003_200403.JPG", "2004.03", "Monument", "Gardner Kaaihue Brown Memorial", "Full", "21.330395", "-157.897147", [ null, "21.330395", "-157.897147", null, false ], null ]
+, [ 143, "7759E57E-40B8-4251-8101-3F7CA5BC7F18", 143, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "City and County of Honolulu Purchase", "1999", "Bronze plaque placed placed on a column in the courtyard of Marin Tower honoring Don Francisco de Paula Marin. Located at the Marin Tower courtyard.", "Marin Tower Courtyard", "http://hiculturearts.pastperfect-online.com/34250images/003/199909.JPG", "1999.09", "Plaque", "Site of the Residence of Don Francisco De Paula Marin", "Full", "21.311242", "-157.864106", [ null, "21.311242", "-157.864106", null, false ], null ]
+, [ 144, "B956D26F-B74F-46D6-B34A-AD4E0A4113D2", 144, 1340413921, "436621", 1340413921, "436621", "{\n}", "H.L. Kerr", "City and County of Honolulu Purchase", "1916", "The Mission Memorial Auditorium is one of the three buildings that comprise the Mission Memorial Building Complex. The complex originally served as the headquarters of the Hawaii Evangelical Association, part of the Hawaiian Mission Children's Society. It is a red brick, Georgian plan, Neo-Classical structure.", "Mission Memorial Auditorium", "http://hiculturearts.pastperfect-online.com/34250images/001/19450102.JPG", "1945.01.02", "Meetinghouse", "Mission Memorial Auditorium", "Limited", "21.304852", "-157.856307", [ null, "21.304852", "-157.856307", null, false ], null ]
+, [ 145, "4D2CD0D3-05C8-462B-B0BA-441B59E8E29D", 145, 1340413921, "436621", 1340413921, "436621", "{\n}", "George Newton", "Gift of George N. Newton", "2004", "Aluminum sculpture of two circular forms painted red, consisting of two parts each resting on a base plate.", "Kapolei Hale 2nd Floor Elevator Lobby", "http://hiculturearts.pastperfect-online.com/34250images/003/200405-2.JPG", "2004.05", "Sculpture", "Cycles", "Limited", "21.329918", "-158.082031", [ null, "21.329918", "-158.082031", null, false ], null ]
+, [ 146, "67F7E09D-A725-4AD6-8DAB-4D94B4ECC37F", 146, 1340413921, "436621", 1340413921, "436621", "{\n}", "Mark Brown", "City and County of Honolulu Purchase", "2005", "Oil painting on canvas mounted on plywood panels is a montage of figures in action of various water sports, such as diving, swimming, surfing, canoe paddling and Bogey boarding with the Aquatic Center and Waianae Mountains in the background. Located at the Veteran's Memorial Aquatic Center.", "Veteran's Memorial Aquatic Center", "http://hiculturearts.pastperfect-online.com/34250images/003/200503-2.JPG", "2005.03", "Mural", "Olapa Wai (In the Style of Water)", "Limited", "21.417511", "-158.008735", [ null, "21.417511", "-158.008735", null, false ], null ]
+, [ 147, "C4E3577A-574A-4558-8F1B-C9F875D52D18", 147, 1340413921, "436621", 1340413921, "436621", "{\n}", "Mari Sakamoto", "City and County of Honolulu Purchase", "2005", "Oil on canvas on wood panel mural. \"This painting is depicting many people are having big fun at the big pool.\" - Mari Sakamoto. Located at the Veteran's Memorial Aquatic Center.", "Veteran's Memorial Aquatic Center", "http://hiculturearts.pastperfect-online.com/34250images/003/200506-6.JPG", "2005.06", "Mural", "Big Pool", "Limited", "21.417541", "-158.008901", [ null, "21.417541", "-158.008901", null, false ], null ]
+, [ 148, "4BA2BEF5-CDAC-42D5-921F-B8AC13E28E41", 148, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jodi Endicott", "City and County of Honolulu Purchase", "2005", "A group of three sculptures of larger than life figures depicting people in inner tubes as they drift along in the water. One inner tube is empty, inviting the viewer to partake of the action. Located at the Veteran's Memorial Aquatic Center pool.", "Veteran's Memorial Aquatic Center", "http://hiculturearts.pastperfect-online.com/34250images/003/200504-6.JPG", "2005.04", "Sculpture", "The Spectators", "Limited", "21.418537", "-158.00844", [ null, "21.418537", "-158.00844", null, false ], null ]
+, [ 149, "F753C917-9014-4DF1-8E46-DE723BAC1EFA", 149, 1340413921, "436621", 1340413921, "436621", "{\n}", "John Wisnosky", "City and County of Honolulu Purchase", "2005", "Acrylic painting on plywood depicting of divers, swimmers, surfers, windsurfers and sea life in a romantic light filled setting. Located at the Veteran's Memorial Aquatic Center.", "Veteran's Memorial Aquatic Center", "http://hiculturearts.pastperfect-online.com/34250images/003/200505-3.JPG", "2005.05", "Mural", "Sea Sky Forever", "Limited", "21.417349", "-158.008732", [ null, "21.417349", "-158.008732", null, false ], null ]
+, [ 150, "4F6A6C3A-A3D7-405B-B847-C0B23FCEFE31", 150, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles Palumbo", "City and County of Honolulu Purchase", "1999", "Waikiki Historic Trail marker shaped like a surfboard with a porcelain enamel metal sign attached. Located along Ala Wai Boulevard near Ainakoa Street.", "Ala Wai Boulevard near Ainakea Way", "http://hiculturearts.pastperfect-online.com/34250images/003/19990805.JPG", "1999.08.05", "Sign", "Ala Wai/Liliuokalani Site", "Full", "21.274813", "-157.817724", [ null, "21.274813", "-157.817724", null, false ], null ]
+, [ 151, "9CF475D5-0BE7-4360-B607-14A143BDF5C1", 151, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles Palumbo", "City and County of Honolulu Purchase", "1999", "Waikiki Historic Trail marker shaped like a surfboard with a porcelain enamel metal sign attached. Located at Fort DeRussey at Ala Moana Boulevard and Kalakaua Avenue.", "Fort DeRussey at Ala Moana Boulevard and Kalakaua Avenue", "http://hiculturearts.pastperfect-online.com/34250images/003/19990806.JPG", "1999.08.06", "Sign", "Fort DeRussy", "Full", "21.285477", "-157.833365", [ null, "21.285477", "-157.833365", null, false ], null ]
+, [ 152, "92CE6B78-4628-4188-BEEE-C95D070F5CF6", 152, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles Palumbo", "City and County of Honolulu Purchase", "1999", "Waikiki Historic Trail marker shaped like a surfboard with a porcelain enamel metal sign attached. Located in Don Ho Park at Kalakaua Avenue and Beachwalk.", "Don Ho Park", "http://hiculturearts.pastperfect-online.com/34250images/003/19990807.JPG", "1999.08.07", "Sign", "Helumoa", "Full", "21.280898", "-157.830404", [ null, "21.280898", "-157.830404", null, false ], null ]
+, [ 153, "679D2100-066F-49D9-900A-22D1F488AE92", 153, 1340413921, "436621", 1340413921, "436621", "{\n}", "Joe Pimental", "Gift of the Community", "1994", "Bronze plaque entitled \"Old Stadium Park.\" Enscription reads,\" A lasting memorial to the many great athletes who have played here. This park was the site of the Honolulu Stadium (1926-1976), affectionately known as \"The Termite Palace\" in its later years. The 26,000 seat stadium was often filled to capacity for activites that included: barefoot football, pro and semi-pro baseball, high school athletic events, stock car races, UH football, polo, carnivals, boxing, Boy Scout Makahiki, aquacades, concerts, and track and field meets.\" \"Plaque donated by Hawaii Recreation and Park Association, UH Na Koa Football Club, St. Louis Alumni Association and many other groups and individuals, September 1994.\" Plaque has an image of the stadium signed by Pimental. Located at Old Stadium Park.", "Old Stadium Park", "http://hiculturearts.pastperfect-online.com/34250images/002/199447.JPG", "1994.47", "Plaque", "Old Stadium Park", "Full", "21.293143", "-157.825753", [ null, "21.293143", "-157.825753", null, false ], null ]
+, [ 154, "01B75C36-347D-472D-89D4-2294B1726A09", 154, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1949", "Curved bench monument of red brick with a water fountain on the proper left side; with a plaque containing the following inscription: \"Dedicated to the Memory of Moses Manuwai, 1906-1948, Lifeguard, who devoted his life to the protection of bathers in these waters. Contributed by Friends.\" Located at Queen's Surf Beach near Lifeguard Tower 2F.", "Queen's Surf Beach near Lifeguard Tower 2F", "http://hiculturearts.pastperfect-online.com/34250images/001/194901.JPG", "1949.01", "Monument", "Moses Manuwai", "Full", "21.268313", "-157.822222", [ null, "21.268313", "-157.822222", null, false ], null ]
+, [ 155, "A82A308C-0D57-41F5-9537-384799F29904", 155, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1994", "Bronze memorial plaque with the inscription \"Harry G. Yoshimura, in honor of his Moiliili roots (1905) and his far reaching effects on the community, dedicated on April 1994.\" Located at the triangle park at King and Beretania Streets.", "Triangle Park at King and Beretania Streets", "http://hiculturearts.pastperfect-online.com/34250images/003/199448.JPG", "1994.48", "Plaque", "Harry G. Yoshimura Memorial", "Full", "21.292353", "-157.822654", [ null, "21.292353", "-157.822654", null, false ], null ]
+, [ 156, "B7070AEF-E031-4DD7-8E61-48D18671BA35", 156, 1340413921, "436621", 1340413921, "436621", "{\n}", "Honors for Excellence", "City and County of Honolulu Purchase", "2005", "Two bronze figures of male fire fighters dressed for action in Honolulu Fire Department uniforms at the ready with a fire hose. Located at Hale Kinai Ahi.", "Hale Kinai Ahi", "http://hiculturearts.pastperfect-online.com/34250images/003/200510.JPG", "2005.10", "Sculpture", "Na Kanaka Kinai Ahi", "Full", "21.302342", "-157.8591", [ null, "21.302342", "-157.8591", null, false ], null ]
+, [ 157, "C00F5E3B-3121-42E3-A601-2EBE26412BE8", 157, 1340413921, "436621", 1340413921, "436621", "{\n}", "Eli Baxter", "City and County of Honolulu Purchase", "2005", "A paisley shaped teardrop weaving made of black rubber material (tire inner tubes).", "Kapolei Hale 2nd Floor Makai Hallway", "http://hiculturearts.pastperfect-online.com/34250images/003/200513.JPG", "2005.13", "Tapestry", "Paisley", "Limited", "21.329758", "-158.081712", [ null, "21.329758", "-158.081712", null, false ], null ]
+, [ 158, "6E02DD82-2E0D-4C3E-BD6D-9276D601E1C2", 158, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift of Mrs. Walter F. Dillingham", "1951", "Dedication plaque of Ala Moana Park for Charles Lester McCoy. Located at Lester McCoy Pavilion.", "Lester McCoy Pavillion", "http://hiculturearts.pastperfect-online.com/34250images/001/195101.JPG", "1951.01", "Plaque", "Ala Moana Park", "Limited", "21.290938", "-157.851215", [ null, "21.290938", "-157.851215", null, false ], null ]
+, [ 159, "0B8182EA-63C3-4E6A-9BB7-684FBF2103AB", 159, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1968", "National Park Service Registered Natural Landmark designation plaque for Diamond Head. Located in Kapiolani Park at Kalakaua Avenue.", "Kapiolani Park at Kalakaua Avenue Picnic Area 4", "http://hiculturearts.pastperfect-online.com/34250images/001/196804.JPG", "1968.04", "Plaque", "Diamond Head", "Full", "21.265458", "-157.820516", [ null, "21.265458", "-157.820516", null, false ], null ]
+, [ 160, "F6FD2A5F-BC34-4D77-9FEF-35A7E2C88604", 160, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1977", "\"In commemoration of the 100th anniversary of Kapiolani Park a time capsule was deposited on this day, June 11, 1977, to be opened on June 11, 2077. Frank F. Fasi, Mayor, City & County of Honolulu. Young Suk Ko, Director of Parks and Recreation.\" The time capsule is located in the ruins of an old lily pond. Located in Kapiolani Park near the Kapiolani Park Bandstand.", "Kapiolani Park near Bandstand", "http://hiculturearts.pastperfect-online.com/34250images/001/197721.JPG", "1977.21", "Capsule, Time", "100th Anniversay of Kapiolani Park", "Full", "21.268282", "-157.821092", [ null, "21.268282", "-157.821092", null, false ], null ]
+, [ 161, "FE15044C-4FE5-4E5F-8397-A93EEE6B69EA", 161, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "City and County of Honolulu Purchase", "2000", "Bronze dedication plaque of Kuhio Beach improvements completed in 2000.", "Kuhio Beach", "http://hiculturearts.pastperfect-online.com/34250images/003/200011.JPG", "2000.11", "Plaque", "Kuhio Beach Park", "Full", "21.27512", "-157.824935", [ null, "21.27512", "-157.824935", null, false ], null ]
+, [ 162, "EF528EA4-7BFC-4779-930B-E84CEA4BF7F9", 162, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1974", "Dedication plaque from Arbor Day, November 5, 1971, launching the City and County of Honolulu Department of Traffic's beautification program. Located at Punchbowl and Hotel Streets.", "Punchbowl and Hotel Street", "http://hiculturearts.pastperfect-online.com/34250images/004/197102-3.JPG", "1971.02", "Plaque", "Department of Traffic Beautification Program Plaque", "Full", "21.305873", "-157.856736", [ null, "21.305873", "-157.856736", null, false ], null ]
+, [ 163, "7F9DF2B6-1769-4C08-BD6E-625A07F4EDFF", 163, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1999", "Cast bronze plaque mounted on a rock with the inscription: \"In Memory of Dr. Wilhelm Hillebrand, 1821-1886, German Physician and Botanist, Founder of Foster Garden, Chief Physician of Queen's Hospital. He dedicated his life to Hawaii.\" Located at Foster Botanical Garden Croton Terrace.", "Foster Botanical Garden Croton Terrace", "http://hiculturearts.pastperfect-online.com/34250images/003/199910.JPG", "1999.10", "Plaque", "Dr. Wilhelm Hillebrand Memorial Plaque", "Limited", "21.317031", "-157.857627", [ null, "21.317031", "-157.857627", null, false ], null ]
+, [ 164, "717C08D4-F9CB-4A90-B66A-87F43015BC7F", 164, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "2001", "Monument commemorating the events of September 11, 2001, that include an eternal flame and plaque. Located in front of Honolulu Hale.", "Honolulu Hale Driveway", "http://hiculturearts.pastperfect-online.com/34250images/003/200117.JPG", "2001.17", "Monument", "Eternal Flame", "Full", "21.305026", "-157.85764", [ null, "21.305026", "-157.85764", null, false ], null ]
+, [ 165, "90E81EB5-A4E1-46A3-AF08-0E7A9B6AE578", 165, 1340413921, "436621", 1340413921, "436621", "{\n}", "Nicholas Usheroff", "City and County of Honolulu Purchase", "1929", "Three pairs of bronze doors. Door pulls are stylized lei niho palaoa. Located at the main entrance of the first floor of Honolulu Hale.", "Honolulu Hale First Floor", "http://hiculturearts.pastperfect-online.com/34250images/001/19290104.JPG", "1929.01.04", "Door", null, "Full", "21.305083", "-157.857249", [ null, "21.305083", "-157.857249", null, false ], null ]
+, [ 166, "966880C8-081A-4FA0-B7F4-FCB15867D11F", 166, 1340413921, "436621", 1340413921, "436621", "{\n}", "Paul Saviskas", "Gift of the Honolulu Zoological Society", "1998", "Stainless steel figure of a feeding female whooping crane. Located in the Honolulu Zoo Flamingo Exhibit.", "Honolulu Zoo Flamingo Exhibit", "http://hiculturearts.pastperfect-online.com/34250images/004/19980502.JPG", "1998.05.02", "Sculpture", "Whooping Cranes", "Limited", "21.270481", "-157.821243", [ null, "21.270481", "-157.821243", null, false ], null ]
+, [ 167, "C3FFA644-E3A8-4E3A-B0A0-9390A72EA938", 167, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift of Janice Judd and the family, classmates, colleagues and friends of Frank Case Judd", "1977", "Plaque bearing the following description: \"This park is dedicated in memory of Frank Case Judd, 1915-1976, State Legislator 1959-1972, a man of love, character and integrity whose life enriched Hawaii and the lives of all who knew him. This plaque is given by his wife Janice, his family, classmates, colleagues and friends. October 25, 1977.\" Plaque has a relief portrait and is mounted on a boulder. Located at Frank C. Judd Park.", "Frank C. Judd Park", "http://hiculturearts.pastperfect-online.com/34250images/001/197722.JPG", "1977.22", "Plaque", "Frank Case Judd", "Full", "21.289644", "-157.832116", [ null, "21.289644", "-157.832116", null, false ], null ]
+, [ 168, "0AB495D0-F0E9-463C-8069-EE1EFCA5B7AB", 168, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1990", "Plaque with releif portrait medallion in honor of the dedication of the Mother Waldron Playground in 1937. Located at the Mother Waldron Neighborhood Park stage.", "Mother Waldron Neighborhood Park Stage", "http://hiculturearts.pastperfect-online.com/34250images/002/199028-4.JPG", "1990.28", "Plaque", "Mother Waldron Playground", "Full", "21.299358", "-157.858302", [ null, "21.299358", "-157.858302", null, false ], null ]
+, [ 169, "EC8ED051-0AE6-4626-86CD-37C4BBD86BC0", 169, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1994", "Bronze memorial plaque with the inscription: \"Kihachi and Shika Kashiwabara, the first Japanese immigrants to settle in Moiliili (1893), dedicated on April 1994.\" Located at the triangle park at King and Beretania Streets.", "Triangle Park at King and Beretania Streets", "http://hiculturearts.pastperfect-online.com/34250images/003/199449.JPG", "1994.49", "Plaque", "Kihachi and Shika Kashiwabara", "Full", "21.292588", "-157.823185", [ null, "21.292588", "-157.823185", null, false ], null ]
+, [ 170, "A2DB1595-8B36-41B4-B345-9B7E980F5845", 170, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "2007", "In-filled black granite plaque with a single line border design commemorating the naming of the Waianae District Park Gymnasium after Sinyei Nakamine. Located at the Waianae District Park Gymnasium.", "Waianae District Park Gymnasium", "http://hiculturearts.pastperfect-online.com/34250images/003/200704.JPG", "2007.04", "Plaque", "Shinyei Nakamine Gymnasium Complex", "Limited", "21.449946", "-158.193043", [ null, "21.449946", "-158.193043", null, false ], null ]
+, [ 171, "87949B5D-6ECE-4336-AFBE-FD7EEA48B49D", 171, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "2007", "The time capsule commemorating the City and County of Honolulu Centennial. The time capsule is installed within the Frank F. Fasi Civic Center Directory marker. Installed on April 13, 2007, to be opened in 2056. Located on the grounds of the Honolulu Civic Center.", "Frank F. Fasi Civic Center Grounds", "http://hiculturearts.pastperfect-online.com/34250images/003/200705-4.JPG", "2007.05", "Capsule, Time", "Honolulu 100 Time Capsule", "Full", "21.304519", "-157.854293", [ null, "21.304519", "-157.854293", null, false ], null ]
+, [ 172, "8C72F38F-A387-4E75-9657-7DAA398AD694", 172, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "On loan from TV Land", "2007", "A lifesize bronze statue of Elvis Presley from the 1973 \"Aloha from Hawaii\" concert with guitar and microphone on a stand. The figure stands atop a bronze pedestal. \"Elvis, Aloha from Hawaii, The World's First Satellite TV Concert, January 14, 1973. With supreme talent and sincere humility, Elvis Presley made his gift the world's. 'Thank you. Thank you very much.' From the People of TV Land.\" Located at Neal Blaisdell Center.", "Neal Blaisdell Center", "http://hiculturearts.pastperfect-online.com/34250images/004/L200701-2.JPG", "L2007.01", "Sculpture", "Elvis: Aloha from Hawaii", "Full", "21.299458", "-157.85169", [ null, "21.299458", "-157.85169", null, false ], null ]
+, [ 173, "DE3FD0B3-9EE0-487E-8E2C-D4550386E0F8", 173, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1995", "Plaque for \"Neal S. Blaisdell Center, dedicated 1964, Exhibition Hall expansion, galleria and meeting facilities, dedicated September 1995, Mayor Jeremy Harris, City Council, John DeSoto, Chair, Duke Bainum, John Henry Felix, Mufi Hannemann, Steve Holmes, Donna Mercado Kim, Rene Mansho, Andy Mirikitani, Jon Yoshimura.\" Located on the Neal Blaisdell Center lawn.", "Neal Blaisdell Center Ewa Lawn", "http://hiculturearts.pastperfect-online.com/34250images/003/199529.JPG", "1995.29", "Plaque", "Neal S. Blaisdell Center Exhibit Hall Expansion", "Full", "21.300024", "-157.851439", [ null, "21.300024", "-157.851439", null, false ], null ]
+, [ 174, "D835647A-57E5-4563-AEFA-40A837C2CF9B", 174, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles Palumbo", "City and County of Honolulu Purchase", "1999", "Waikiki Historic Trail marker shaped like a surfboard with a porcelain enamel metal sign attached. Located at Kuhio Beach near Monsarrat Avenue.", "Kuhio Beach at Monsarrat Avenue", "http://hiculturearts.pastperfect-online.com/34250images/003/19990808.JPG", "1999.08.08", "Sign", "The Beaches of Waikiki", "Full", "21.270476", "-157.822525", [ null, "21.270476", "-157.822525", null, false ], null ]
+, [ 175, "6B958186-5970-4346-93A2-BFD708CDE1AD", 175, 1340413921, "436621", 1340413921, "436621", "{\n}", "Charles Wong", "Gift of the Sun Yat-sen Foundation for Peace & Education", "2007", "An outdoor sculpture pedestal and surrounding tile mosaic for the sculpture entitled \"Sun Yat-sen\" by I-Fan Chen. It is a three-tiered octagonal pedestal of polished solid black granite. Located along Sun Yat-Sen Mall.", "Sun Yat-Sen Mall", "http://hiculturearts.pastperfect-online.com/34250images/003/200707-2.JPG", "2007.07", "Pedestal", null, "Full", "21.314293", "-157.861829", [ null, "21.314293", "-157.861829", null, false ], null ]
+, [ 176, "C9E82A28-13D5-4CD8-8C25-3AE5CA3E3A0B", 176, 1340413921, "436621", 1340413921, "436621", "{\n}", "Chu Tat Shing", "Gift of the Dr. Sun Yat-sen Hawaii Foundation", "2007", "Statue of Sun Yat-sen as a boy aged 13 years old dressed in traditional Chinese garments: hat, jacket, tunic, and shoes; carrying two books in his right hand. The accompanying plaque reads, \"'This is my Hawaii... here I was brought up and educated; and it was here that I came to know what modern, civilized governments are like and what they mean.' Dr. Sun Yat-sen. In 1879, at the age of thirteen, Sun Yat-sen came to Hawaii from Zhongshan, China. It was here in Honolulu, that he spent many of his teenage years growing up and being educated. China's first revolutionary society the Xing Zhong Hui (Revive China Society) was organized in Hawaii in 1894. Sun Yat-sen went to overthrow the Qing Dynasty and establish a democratic China in 1911. The dedication of this statue recognizes t he sacrifice and support of the people of Hawaii in nurturing the roots of 'Modern China' and it's Founding Father. The Dr. Sun Yat-sen Hawaii Foundation, November 12, 2007.\" Located in Dr. Sun Yat-sen Memorial Park.", "Dr. Sun Yat-sen Memorial Park", "http://hiculturearts.pastperfect-online.com/34250images/003/200710-5.JPG", "2007.10", "Sculpture", "A School Boy in Hawaii", "Full", "21.311009", "-157.86154", [ null, "21.311009", "-157.86154", null, false ], null ]
+, [ 177, "430FEA7D-FB59-41FA-AB3F-244485DD47F6", 177, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "City and County of Honolulu Purchase", null, "Wall clock set into the stone above the second floor landing of the grand staircase of the Honolulu Hale courtyard.", "Honolulu Hale Courtyard", "http://hiculturearts.pastperfect-online.com/34250images/001/19290105.JPG", "1929.01.05", "Clock", "Honolulu Hale Clock", "Limited", "21.305302", "-157.856944", [ null, "21.305302", "-157.856944", null, false ], null ]
+, [ 178, "D4ED7F50-4061-4148-85AB-278FABCD4B7D", 178, 1340413921, "436621", 1340413921, "436621", "{\n}", "Moon-Young Lee", "Gift of Incheon Metropolitan City, Republic of Korea", "2008", "A sculpture from Incheon Metropolitan City, Republic of Korea gifted to the City and County of Honolulu entitled, \"Become a Star\" by artist Mr. Moon-Young Lee and and manufactured in July 2008 of metal and stone. The shapes of  the sculpture symbolize a ship floating on the sea surrounded by floating seaweed with the embodiment of the moon and signifiers of the stars in the skies of the Republic of Korea and the United States of America, representing the mutual exchanges of the countries' peoples and the nostalgia of immigrants. The sculpture was created to promote active exchanges and cooperation between Incheon Metropolitan City and the City and County of Honolulu.", "Pawaa Inha Neighborhood Park", "http://hiculturearts.pastperfect-online.com/34250images/004/200802.JPG", "2008.02", "Sculpture", "Become a Star", "Full", "21.298081", "-157.83813", [ null, "21.298081", "-157.83813", null, false ], null ]
+, [ 179, "64DC73CC-7A7B-4D7F-924F-1754A548FA74", 179, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1982", "Monument marker for the site of the Japanese Central Institute of Hawaii. Concrete marker with inset stone plaque.", "Foster Botanical Garden", "http://hiculturearts.pastperfect-online.com/34250images/001/198201.JPG", "1982.01", "Monument", "Site of Japanese Central Institute of Hawaii", "Limited", "21.315463", "-157.857681", [ null, "21.315463", "-157.857681", null, false ], null ]
+, [ 180, "A6A339F5-046B-4A90-BD29-23DF18DF269D", 180, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Department of Parks and Recreation Purchase", "1982", "Bronze plaque set into a stone wall that reads, \"Waimanalo Beach Park Pavilion, in memory of, Gabby \"Pop\" Pahinui, April 22, 1921, October 13, 1980.\" Located at the Waimanalo Beach Park Pavilion.", "Waimanalo Beach Park Pavilion", "http://hiculturearts.pastperfect-online.com/34250images/001/198202-4.JPG", "1982.02", "Plaque", "Waimanalo Beach Park Pavilion", "Full", "21.332134", "-157.694224", [ null, "21.332134", "-157.694224", null, false ], null ]
+, [ 181, "75D4CC91-D7DF-460C-A19C-D38035B3DA03", 181, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Dedicated by the Waialua Lions Club", "1947", "Art Deco pillar concrete monument to memorialize soldiers from the Waialua and Kahuku area of Oahu, Hawaii that lost their lives during World War II, and the Korean War. The monument is capped with a glass and metal enclosure. There are large bronze plaques on three sides of the monument's base. The monument is contained within a low circular concrete wall. Leading to the monument is a concrete path flanked with 17 large shell casings mounted upright in concrete blocks with chain strung between them.", "Haleiwa Beach Park", "http://hiculturearts.pastperfect-online.com/34250images/001/194702.JPG", "1947.02", "Monument", "Waialua - Kahuku War Memorial", "Full", "21.598031", "-158.103272", [ null, "21.598031", "-158.103272", null, false ], null ]
+, [ 182, "E073955E-F3C8-427D-BC25-C95031BD3AED", 182, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1991", "Japanese bell within a temple housing erected for the Festival for World Peace in Hawaii, December 10, 1991. Located at Neal S. Blaisdell Park.", "Neal S. Blaisdell Park", "http://hiculturearts.pastperfect-online.com/34250images/002/199104.JPG", "1991.04", "Bell", "Festival for World Peace Bell", "Full", "21.384917", "-157.953626", [ null, "21.384917", "-157.953626", null, false ], null ]
+, [ 183, "42AD8AFF-1D60-4B6F-96C0-90654409D752", 183, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jerry Tsukio Okimoto", "Gift of William Gong", "1990", "A sculpture depicting part of a large upright sharpened wooden pencil made of plywood and laminated white pine.", "Kapolei Hale Entry", "http://hiculturearts.pastperfect-online.com/34250images/004/200901-2.JPG", "2009.01", "Sculpture", "Enpitsu", "Limited", "21.329933", "-158.08172", [ null, "21.329933", "-158.08172", null, false ], null ]
+, [ 184, "29022EE3-0603-49C0-8A07-8E8BB29B03FA", 184, 1340413921, "436621", 1340413921, "436621", "{\n}", "Bronzemen", "Gift of the Butterfly Society of Hawaii", "2009", "A bronze sculpture depicting a seated girl with outstretched arms holding butterflies.", "Foster Botanical Garden Butterfly Garden", "http://hiculturearts.pastperfect-online.com/34250images/004/200902-2.JPG", "2009.02", "Sculpture", "Beautiful Butterflies", "Limited", "21.31637", "-157.858174", [ null, "21.31637", "-157.858174", null, false ], null ]
+, [ 185, "A2DCFA86-E33A-4B8B-B748-0B3F18388193", 185, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1972", "Located on 12th Avenue near Waialae Avenue lies a small boulder with a bronze plaque. The plaque has a textured back-ground; raised text - san serif fonts, all capitals. The text describes the history of Kaikuki and the origins of the name. Plaque has raised frame of approximately 1/2\" around edges. Mounted on volcanic boulder with heavily sanded mortar.", "12th Avenue near Waialae Avenue", "http://hiculturearts.pastperfect-online.com/34250images/001/197201.JPG", "1972.01", "Plaque", "Kaimuki", "Full", "21.28226", "-157.799122", [ null, "21.28226", "-157.799122", null, false ], null ]
+, [ 186, "BCBB1EF1-E2FC-414B-88E3-2F9FE5B3AFA3", 186, 1340413921, "436621", 1340413921, "436621", "{\n}", "Amanda Opsahl", "Funded by the Honolulu Zoo Hui and the Institute for Museum Services", null, "Four panel frieze in high relief depicting the evolution of a volcanic island.", "Honolulu Zoo Entrance", "http://hiculturearts.pastperfect-online.com/34250images/004/200904.JPG", "2009.04", "Mural", "The Evolution of an Island", "Limited", "21.270859", "-157.821424", [ null, "21.270859", "-157.821424", null, false ], null ]
+, [ 187, "B829890A-6922-47FE-9892-4527AFA8A50B", 187, 1340413921, "436621", 1340413921, "436621", "{\n}", "Hasuike Contracting Co.", null, "1932", "A Jizo statue on a cliff near the Halona Blowhole set up as a monument to fishermen who lost their life at sea in the area.", "Bamboo Ridge near Halona Blowhole", "http://hiculturearts.pastperfect-online.com/34250images/001/193201.JPG", "1932.01", "Monument", "Jizo", "Full", "21.281052", "-157.677796", [ null, "21.281052", "-157.677796", null, false ], null ]
+, [ 188, "9AB952EE-1CCF-4D07-A61D-839303E31F66", 188, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1955", "A pair of bronze dedication plaques for the Herbert K. Pililaau Community Park. The plaques read: \"Private First Class Herbert K. Pililaau Field named in honor of the first recipient in Hawaii of the Congressional Medal of Honor of the United States of America, posthumously awarded for conscious gallantry and intrepidity at the risk of his life above and beyond the call of duty in action against the enemy near Pia-Ri Korea 17 September 1951.\" \"Plaque erected by Waianae Civic Association, American Legion Pililaau Post 12, Hawaiian Civic Club, Waianae Businessmen's Association, Boy Scouts of America Troop 18 Cub Pack 18, Waianae Parent Teachers Association, Board of Public Parks and Recreation, City and County of Honolulu, 1955.\"", "Herbert K. Pililaau Community Park Gym", "http://hiculturearts.pastperfect-online.com/34250images/001/195502.JPG", "1955.02", "Plaque", "Private First Class Herbert K. Pililaau Field", "Limited", "21.447314", "-158.186031", [ null, "21.447314", "-158.186031", null, false ], null ]
+, [ 189, "856DC66A-A002-4A1F-B75D-1131F7F1E6B5", 189, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "City and County of Honolulu Purchase", "2005", "Herbert K. Pililaau Community Park dedication plaque; engraved stone; telling the story of Congressional Medal of Honor Herbert K. Pililaau.", "Herbert K. Pililaau Community Park", "http://hiculturearts.pastperfect-online.com/34250images/003/200515.JPG", "2005.15", "Plaque", "Herbert K. Pililaau Community Park Dedication", "Limited", "21.447314", "-158.186031", [ null, "21.447314", "-158.186031", null, false ], null ]
+, [ 190, "48AB45F8-1250-4A57-BA8F-84130D44F00B", 190, 1340413921, "436621", 1340413921, "436621", "{\n}", "Leilehua High School Students", "Gift of Leilehua High School", "2009", "A mural created by Leilehua High School (Wahiawa, Hawaii) students in November 2009. The mural depicts young people exploring a pineapple field in central Oahu.", "Wahiawa Police Station", "http://hiculturearts.pastperfect-online.com/34250images/004/201001.JPG", "2010.01", "Mural", "The Last Harvest", "Limited", "21.502573", "-158.025587", [ null, "21.502573", "-158.025587", null, false ], null ]
+, [ 191, "88BA0954-2A95-4193-BA16-17B0D14D72E5", 191, 1340413921, "436621", 1340413921, "436621", "{\n}", "Carter Black", "City and County of Honolulu Purchase", "2011", "A five-part mural depicting images through time of Kapolei. Located in the foyer of Kapolei Hale.", "Kapolei Hale", "http://hiculturearts.pastperfect-online.com/34250images/004/201002-2.JPG", "2010.02", "Mural", "Na Mo'olelo o Kapolei (Stories of Kapolei)", "Limited", "21.330018", "-158.081959", [ null, "21.330018", "-158.081959", null, false ], null ]
+, [ 192, "7C9CA2AE-6433-4495-9D1C-F19728303415", 192, 1340413921, "436621", 1340413921, "436621", "{\n}", "Jodi Endicott", "City and County of Honolulu Purchase", "2010", "A fused glass mural depicting water. Located at the entryway of Kapolei Hale.", "Kapolei Hale Entryway", "http://hiculturearts.pastperfect-online.com/34250images/004/201004-9.JPG", "2010.04", "Mural", "As the Water Flows", "Full", "21.329988", "-158.081776", [ null, "21.329988", "-158.081776", null, false ], null ]
+, [ 193, "9CEE7D98-3155-4A89-B13E-F1E853C2319B", 193, 1340413921, "436621", 1340413921, "436621", "{\n}", "James Brogan", "Mayor's Office of Culture and the Arts Purchase", "2004", "Satin-finished steel plaque with black-filled, etched text and inset border with the following inscription: \"Waimanalo District Park Multi-Sport Building, In recognition and appreciation of community members whose participation in the Waimanalo vision process resulted in the social, cultural and recreational enrichment of our community, Mayor Jeremy Harris, City and County of Honolulu.\"", "Waimanalo District Park Multi-Sport Building Exterior", "http://hiculturearts.pastperfect-online.com/34250images/003/200406.JPG", "2004.06", "Plaque", "Waimanalo District Park Multi-Sport Building", "Full", "21.341763", "-157.715634", [ null, "21.341763", "-157.715634", null, false ], null ]
+, [ 194, "5218FE40-426F-4A06-9D92-3B8C45E178D0", 194, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1975", "Bronze plaque relating the history of the Lestor McCoy Pavilion.", "Lestor McCoy Pavilion Theater Exterior", "http://hiculturearts.pastperfect-online.com/34250images/001/197567.JPG", "1975.67", "Plaque", "Lestor McCoy Pavilion", "Limited", "21.290677", "-157.850647", [ null, "21.290677", "-157.850647", null, false ], null ]
+, [ 195, "4915D5F1-D170-40DE-8D7A-60C973DDB879", 195, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1982", "Bronze dedication plaque with profile of Indira Gandhi commemorating a gift of a young female elephant, Mari, from the children of India to the children of Hawaii.", "Honolulu Zoo Elephant Enclosure", "http://hiculturearts.pastperfect-online.com/34250images/004/198203.JPG", "1982.03", "Plaque", "Indira Gandhi", "Limited", "21.269995", "-157.820288", [ null, "21.269995", "-157.820288", null, false ], null ]
+, [ 196, "0C55841F-EEFE-4A96-800D-7B500DD16377", 196, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "19919", "A bronze plaque with a profile medallion.", "Honolulu Zoo Elephant Enclosure", "http://hiculturearts.pastperfect-online.com/34250images/004/199105.JPG", "1991.05", "Plaque", "Rajiv Gandhi", "Limited", "21.269995", "-157.820288", [ null, "21.269995", "-157.820288", null, false ], null ]
+, [ 197, "E8F9A3D2-0A86-47D1-BE40-39052CD9759F", 197, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1987", "Commemorative bronze plaque with portrait of David Watumull.", "Honolulu Zoo Elephant Enclosure", "http://hiculturearts.pastperfect-online.com/34250images/004/198716.JPG", "1987.16", "Plaque", "David Watumull", "Limited", "21.269995", "-157.820288", [ null, "21.269995", "-157.820288", null, false ], null ]
+, [ 198, "9E5E1F28-22AF-459A-841E-5E89B022505E", 198, 1340413921, "436621", 1340413921, "436621", "{\n}", null, null, "1933", "Bronze plaque mounted on a stone with an inscription marking the site of an artesian well. Located along Wilder Avenue near Artesian Way.", "1922 Wilder Avenue", "http://hiculturearts.pastperfect-online.com/34250images/004/193301-2.JPG", "1933.01", "Plaque", "Site of Honolulu's Pioneer Artesian Well", "Full", "21.30006", "-157.827969", [ null, "21.30006", "-157.827969", null, false ], null ]
+, [ 199, "1C248F2D-27F5-405A-9BAD-FE2EB636F788", 199, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift of Joyce Fasi on behalf of the Honolulu Marathon", "2010", "An engraved wood plaque dedicating Mayor Frank Fasi into the Honolulu Marathon Hall of Fame as a founder of the Honolulu Marathon.", "Frank F. Fasi Municipal Building 1st Floor", "http://hiculturearts.pastperfect-online.com/34250images/004/201101-3.JPG", "2011.01", "Plaque", "Frank Fasi Honolulu Marathon Hall of Fame Induction Plaque", "Limited", "21.304435", "-157.85471", [ null, "21.304435", "-157.85471", null, false ], null ]
+, [ 200, "C35BA523-01F2-477F-B8F2-BFE1CFF751A6", 200, 1340413921, "436621", 1340413921, "436621", "{\n}", null, "Gift of the Daughters of Hawaii", "1938", "A bronze plaque set in a stone wall in honor of Rear Admiral Richard Darton Thomas of the British Royal Navy who restored the sovereignty of Kamehameha III in 1843. Located in Thomas Square along Beretania Street.", "Thomas Square", "http://hiculturearts.pastperfect-online.com/34250images/004/193801.JPG", "1938.01", "Plaque", "Rear Admiral Richard T. Thomas, R.N.", "Full", "21.30346", "-157.848872", [ null, "21.30346", "-157.848872", null, false ], null ]
+ ]
+}

@@ -12,6 +12,8 @@
 		192D165E1E3E5F0600139D51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 192D165C1E3E5F0600139D51 /* Main.storyboard */; };
 		192D16601E3E5F0600139D51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 192D165F1E3E5F0600139D51 /* Assets.xcassets */; };
 		192D16631E3E5F0600139D51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 192D16611E3E5F0600139D51 /* LaunchScreen.storyboard */; };
+		192D166B1E3E62EB00139D51 /* PublicArt.json in Resources */ = {isa = PBXBuildFile; fileRef = 192D166A1E3E62EB00139D51 /* PublicArt.json */; };
+		192D16711E3E658800139D51 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192D16701E3E658800139D51 /* Artwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		192D165F1E3E5F0600139D51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		192D16621E3E5F0600139D51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		192D16641E3E5F0600139D51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		192D166A1E3E62EB00139D51 /* PublicArt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PublicArt.json; sourceTree = "<group>"; };
+		192D16701E3E658800139D51 /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +59,47 @@
 			isa = PBXGroup;
 			children = (
 				192D16581E3E5F0600139D51 /* AppDelegate.swift */,
-				192D165A1E3E5F0600139D51 /* ViewController.swift */,
-				192D165C1E3E5F0600139D51 /* Main.storyboard */,
+				192D166F1E3E657000139D51 /* Model */,
+				192D166C1E3E631800139D51 /* ViewController */,
+				192D166D1E3E632F00139D51 /* View */,
+				192D166E1E3E633B00139D51 /* Support */,
 				192D165F1E3E5F0600139D51 /* Assets.xcassets */,
-				192D16611E3E5F0600139D51 /* LaunchScreen.storyboard */,
-				192D16641E3E5F0600139D51 /* Info.plist */,
 			);
 			path = HonoluluArt;
+			sourceTree = "<group>";
+		};
+		192D166C1E3E631800139D51 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				192D165A1E3E5F0600139D51 /* ViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		192D166D1E3E632F00139D51 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				192D165C1E3E5F0600139D51 /* Main.storyboard */,
+				192D16611E3E5F0600139D51 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		192D166E1E3E633B00139D51 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				192D16641E3E5F0600139D51 /* Info.plist */,
+				192D166A1E3E62EB00139D51 /* PublicArt.json */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		192D166F1E3E657000139D51 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				192D16701E3E658800139D51 /* Artwork.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +162,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				192D166B1E3E62EB00139D51 /* PublicArt.json in Resources */,
 				192D16631E3E5F0600139D51 /* LaunchScreen.storyboard in Resources */,
 				192D16601E3E5F0600139D51 /* Assets.xcassets in Resources */,
 				192D165E1E3E5F0600139D51 /* Main.storyboard in Resources */,
@@ -138,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				192D165B1E3E5F0600139D51 /* ViewController.swift in Sources */,
+				192D16711E3E658800139D51 /* Artwork.swift in Sources */,
 				192D16591E3E5F0600139D51 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +342,7 @@
 				192D16691E3E5F0600139D51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
