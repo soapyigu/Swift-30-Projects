@@ -14,6 +14,7 @@
 		192D16631E3E5F0600139D51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 192D16611E3E5F0600139D51 /* LaunchScreen.storyboard */; };
 		192D166B1E3E62EB00139D51 /* PublicArt.json in Resources */ = {isa = PBXBuildFile; fileRef = 192D166A1E3E62EB00139D51 /* PublicArt.json */; };
 		192D16711E3E658800139D51 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192D16701E3E658800139D51 /* Artwork.swift */; };
+		192D16751E3EB03200139D51 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192D16741E3EB03200139D51 /* JSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		192D16641E3E5F0600139D51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		192D166A1E3E62EB00139D51 /* PublicArt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PublicArt.json; sourceTree = "<group>"; };
 		192D16701E3E658800139D51 /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
+		192D16741E3EB03200139D51 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		192D166E1E3E633B00139D51 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				192D16741E3EB03200139D51 /* JSON.swift */,
 				192D16641E3E5F0600139D51 /* Info.plist */,
 				192D166A1E3E62EB00139D51 /* PublicArt.json */,
 			);
@@ -179,6 +182,7 @@
 				192D165B1E3E5F0600139D51 /* ViewController.swift in Sources */,
 				192D16711E3E658800139D51 /* Artwork.swift in Sources */,
 				192D16591E3E5F0600139D51 /* AppDelegate.swift in Sources */,
+				192D16751E3EB03200139D51 /* JSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

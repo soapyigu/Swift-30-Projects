@@ -12,30 +12,51 @@ class ViewController: UIViewController {
   
   @IBOutlet weak var mapView: MKMapView!
   
-  /// Location shows on map when app starts up.
-  let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
+  fileprivate let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
+  fileprivate let regionRadius: CLLocationDistance = 1000
   
-  /// Region radius for map.
-  let regionRadius: CLLocationDistance = 1000
-  
-  /// Artwork to show as annotation on map.
-  let artwork = Artwork(title: "King David Kalakaua",
-                        locationName: "Waikiki Gateway Park",
-                        discipline: "Sculpture",
-                        coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
+  fileprivate var artworks = [Artwork]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    /// Set up map.
     mapView.delegate = self
-    
     centerMapOnLocation(location: initialLocation)
-    mapView.addAnnotation(artwork)
+    loadInitialData()
+    
+    mapView.addAnnotations(artworks)
   }
   
   fileprivate func centerMapOnLocation(location: CLLocation) {
     let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
     mapView.setRegion(coordinateRegion, animated: true)
+  }
+  
+  fileprivate func loadInitialData() {
+    let fileName = Bundle.main.path(forResource: "PublicArt", ofType: "json");
+    var data: Data?
+    do {
+      data = try Data(contentsOf: URL(fileURLWithPath: fileName!), options: NSData.ReadingOptions(rawValue: 0))
+    } catch _ {
+      data = nil
+    }
+    
+    if let data = data {
+      do {
+        if let jsonObject = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? [String: AnyObject],
+          let jsonData = JSONValue.fromObject(jsonObject)?["data"]?.array {
+          for artworkJSON in jsonData {
+            if let artworkJSON = artworkJSON.array,
+              let artwork = Artwork.fromJSON(json: artworkJSON) {
+              artworks.append(artwork)
+            }
+          }
+        }
+      } catch let error as NSError {
+        print(error.description)
+      }
+    }
   }
 }
 
@@ -54,6 +75,7 @@ extension ViewController: MKMapViewDelegate {
         view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         view?.canShowCallout = true
         view?.calloutOffset = CGPoint(x: -5, y: 5)
+        view?.pinTintColor = annotation.pinColor()
         view?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
       }
     }
