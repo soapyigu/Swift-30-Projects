@@ -16,6 +16,7 @@ class ViewController: UIViewController {
   fileprivate let regionRadius: CLLocationDistance = 1000
   
   fileprivate var artworks = [Artwork]()
+  fileprivate var locationManager = CLLocationManager()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,6 +27,19 @@ class ViewController: UIViewController {
     loadInitialData()
     
     mapView.addAnnotations(artworks)
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    checkLocationAuthorizationStatus()
+  }
+  
+  fileprivate func checkLocationAuthorizationStatus() {
+    if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+      mapView.showsUserLocation = true
+    } else {
+      locationManager.requestWhenInUseAuthorization()
+    }
   }
   
   fileprivate func centerMapOnLocation(location: CLLocation) {
