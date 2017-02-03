@@ -8,8 +8,9 @@
 import IGListKit
 
 class JournalSectionController: IGListSectionController {
-  var entry: JournalEntry!
-  let solFormatter = SolFormatter()
+  
+  fileprivate let solFormatter = SolFormatter()
+  fileprivate var entry: JournalEntry!
   
   override init() {
     super.init()

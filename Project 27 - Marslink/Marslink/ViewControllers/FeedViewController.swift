@@ -10,15 +10,16 @@ import IGListKit
 
 class FeedViewController: UIViewController {
   
-  let loader = JournalEntryLoader()
+  fileprivate let loader = JournalEntryLoader()
+  fileprivate let pathfinder = Pathfinder()
   
-  let collectionView: IGListCollectionView = {
+  fileprivate let collectionView: IGListCollectionView = {
     let view = IGListCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     view.backgroundColor = UIColor.black
     return view
   }()
   
-  lazy var adapter: IGListAdapter = {
+  fileprivate lazy var adapter: IGListAdapter = {
     return IGListAdapter(updater: IGListAdapterUpdater(), viewController: self, workingRangeSize: 0)
   }()
   
@@ -52,7 +53,9 @@ extension FeedViewController: IGListAdapterDataSource {
   /// - Parameter listAdapter: The adapter for IGList.
   /// - Returns: Data objects to show on collection view.
   func objects(for listAdapter: IGListAdapter) -> [IGListDiffable] {
-    return loader.entries
+    var items: [IGListDiffable] = pathfinder.messages
+    items += loader.entries as [IGListDiffable]
+    return items
   }
   
   /// Asks the section controller for each data object.
@@ -62,7 +65,11 @@ extension FeedViewController: IGListAdapterDataSource {
   ///   - object: The data object.
   /// - Returns: The secion controller for data object.
   func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
-    return JournalSectionController()
+    if object is Message {
+      return MessageSectionController()
+    } else {
+      return JournalSectionController()
+    }
   }
   
   /// Requests a view when list is empty.
