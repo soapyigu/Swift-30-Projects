@@ -12,6 +12,7 @@ class FeedViewController: UIViewController {
   
   fileprivate let loader = JournalEntryLoader()
   fileprivate let pathfinder = Pathfinder()
+  fileprivate let wxScanner = WxScanner()
   
   fileprivate let collectionView: IGListCollectionView = {
     let view = IGListCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -53,9 +54,16 @@ extension FeedViewController: IGListAdapterDataSource {
   /// - Parameter listAdapter: The adapter for IGList.
   /// - Returns: Data objects to show on collection view.
   func objects(for listAdapter: IGListAdapter) -> [IGListDiffable] {
-    var items: [IGListDiffable] = pathfinder.messages
+    var items: [IGListDiffable] = [wxScanner.currentWeather]
     items += loader.entries as [IGListDiffable]
-    return items
+    items += pathfinder.messages as [IGListDiffable]
+    
+    return items.sorted(by: { (left: Any, right: Any) -> Bool in
+      if let left = left as? DateSortable, let right = right as? DateSortable {
+        return left.date > right.date
+      }
+      return false
+    })
   }
   
   /// Asks the section controller for each data object.
@@ -67,9 +75,12 @@ extension FeedViewController: IGListAdapterDataSource {
   func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
     if object is Message {
       return MessageSectionController()
+    } else if object is Weather {
+      return WeatherSectionController()
     } else {
       return JournalSectionController()
     }
+
   }
   
   /// Requests a view when list is empty.

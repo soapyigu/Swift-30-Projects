@@ -10,6 +10,7 @@
 		192D16491E3A824E00139D51 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192D16481E3A824E00139D51 /* FeedViewController.swift */; };
 		192D164B1E3A8C0F00139D51 /* JournalSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192D164A1E3A8C0F00139D51 /* JournalSectionController.swift */; };
 		1950337C1E444C7C009E6F1C /* MessageSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1950337B1E444C7C009E6F1C /* MessageSectionController.swift */; };
+		1950337E1E44508C009E6F1C /* WeatherSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1950337D1E44508C009E6F1C /* WeatherSectionController.swift */; };
 		2997D4951DF5EA51005A5DD2 /* NSObject+IGListDiffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2997D4941DF5EA51005A5DD2 /* NSObject+IGListDiffable.swift */; };
 		29E2CDD81DC7B4CF00A9E0F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2CDB51DC7B4CF00A9E0F4 /* AppDelegate.swift */; };
 		29E2CDDA1DC7B4CF00A9E0F4 /* DateSortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2CDBA1DC7B4CF00A9E0F4 /* DateSortable.swift */; };
@@ -40,6 +41,7 @@
 		192D16481E3A824E00139D51 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		192D164A1E3A8C0F00139D51 /* JournalSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalSectionController.swift; sourceTree = "<group>"; };
 		1950337B1E444C7C009E6F1C /* MessageSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSectionController.swift; sourceTree = "<group>"; };
+		1950337D1E44508C009E6F1C /* WeatherSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherSectionController.swift; sourceTree = "<group>"; };
 		2949EE881D8AB4F4005BC671 /* Marslink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marslink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2997D4941DF5EA51005A5DD2 /* NSObject+IGListDiffable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+IGListDiffable.swift"; sourceTree = "<group>"; };
 		29E2CDB51DC7B4CF00A9E0F4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Marslink/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -147,6 +149,7 @@
 			children = (
 				192D164A1E3A8C0F00139D51 /* JournalSectionController.swift */,
 				1950337B1E444C7C009E6F1C /* MessageSectionController.swift */,
+				1950337D1E44508C009E6F1C /* WeatherSectionController.swift */,
 			);
 			name = SectionControllers;
 			path = Marslink/SectionControllers;
@@ -348,6 +351,7 @@
 				29E2CDED1DC7B4CF00A9E0F4 /* CustomNavigationBar.swift in Sources */,
 				1950337C1E444C7C009E6F1C /* MessageSectionController.swift in Sources */,
 				29E2CDDA1DC7B4CF00A9E0F4 /* DateSortable.swift in Sources */,
+				1950337E1E44508C009E6F1C /* WeatherSectionController.swift in Sources */,
 				29E2CDDF1DC7B4CF00A9E0F4 /* Weather.swift in Sources */,
 				29E2CDE91DC7B4CF00A9E0F4 /* Theme.swift in Sources */,
 				29E2CDEB1DC7B4CF00A9E0F4 /* ClassicFeedViewController.swift in Sources */,
