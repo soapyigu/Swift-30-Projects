@@ -36,6 +36,9 @@ class FeedViewController: UIViewController {
       
       adapter.collectionView = collectionView
       adapter.dataSource = self
+      
+      pathfinder.delegate = self
+      pathfinder.connect()
     }
     
     setupUI()
@@ -89,6 +92,12 @@ extension FeedViewController: IGListAdapterDataSource {
   /// - Returns: The view shown when list is empty.
   func emptyView(for listAdapter: IGListAdapter) -> UIView? {
     return nil
+  }
+}
+
+extension FeedViewController: PathfinderDelegate {
+  func pathfinderDidUpdateMessages(pathfinder: Pathfinder) {
+    adapter.performUpdates(animated: true)
   }
 }
 
