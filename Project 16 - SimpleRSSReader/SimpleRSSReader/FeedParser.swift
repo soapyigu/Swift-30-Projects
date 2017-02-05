@@ -30,18 +30,18 @@ class FeedParser: NSObject, XMLParserDelegate {
     }
   }
   
-  fileprivate var parseCompletionHandler: (([(title: String, description: String, pubDate: String)]) -> Void)?
+  fileprivate var parserCompletionHandler: (([(title: String, description: String, pubDate: String)]) -> Void)?
   
   func parseFeed(feedURL: String, completionHandler: (([(title: String, description: String, pubDate: String)]) -> Void)?) -> Void {
     
-    parseCompletionHandler = completionHandler
+    parserCompletionHandler = completionHandler
     
     guard let feedURL = URL(string:feedURL) else {
       print("feed URL is invalid")
       return
     }
     
-    URLSession.shared.dataTask(with: feedURL, completionHandler: { (data, response, error) in
+    URLSession.shared.dataTask(with: feedURL, completionHandler: { data, response, error in
       if let error = error {
         print(error)
         return
@@ -60,7 +60,7 @@ class FeedParser: NSObject, XMLParserDelegate {
   
   // MARK: - XMLParser Delegate
   func parserDidStartDocument(_ parser: XMLParser) {
-    rssItems = []
+    rssItems.removeAll()
   }
   
   func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
@@ -87,5 +87,18 @@ class FeedParser: NSObject, XMLParserDelegate {
     }
   }
   
+  func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    if elementName == "item" {
+      let rssItem = (title: currentTitle, description: currentDescription, pubDate: currentPubDate)
+      rssItems.append(rssItem)
+    }
+  }
   
+  func parserDidEndDocument(_ parser: XMLParser) {
+    parserCompletionHandler?(rssItems)
+  }
+  
+  func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+    print(parseError.localizedDescription)
+  }
 }
