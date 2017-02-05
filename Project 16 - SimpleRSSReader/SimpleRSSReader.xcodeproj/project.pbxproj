@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		195033821E470739009E6F1C /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195033811E470739009E6F1C /* FeedParser.swift */; };
 		F46F13CF1A8E0A6E00EEB477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46F13CE1A8E0A6E00EEB477 /* AppDelegate.swift */; };
 		F46F13D41A8E0A6E00EEB477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46F13D21A8E0A6E00EEB477 /* Main.storyboard */; };
 		F46F13D61A8E0A6E00EEB477 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46F13D51A8E0A6E00EEB477 /* Images.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		195033811E470739009E6F1C /* FeedParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
 		F46F13C91A8E0A6E00EEB477 /* SimpleRSSReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleRSSReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46F13CD1A8E0A6E00EEB477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F46F13CE1A8E0A6E00EEB477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1950337F1E4706EA009E6F1C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F46F13EE1A8E11A900EEB477 /* NewsTableViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		195033801E4706F4009E6F1C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F46F13F01A8E11BA00EEB477 /* NewsTableViewCell.swift */,
+				F46F13D21A8E0A6E00EEB477 /* Main.storyboard */,
+				F46F13D71A8E0A6E00EEB477 /* LaunchScreen.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		F46F13C01A8E0A6E00EEB477 = {
 			isa = PBXGroup;
 			children = (
@@ -80,12 +100,11 @@
 			isa = PBXGroup;
 			children = (
 				F46F13CE1A8E0A6E00EEB477 /* AppDelegate.swift */,
-				F46F13D21A8E0A6E00EEB477 /* Main.storyboard */,
+				1950337F1E4706EA009E6F1C /* ViewController */,
+				195033801E4706F4009E6F1C /* View */,
 				F46F13D51A8E0A6E00EEB477 /* Images.xcassets */,
-				F46F13D71A8E0A6E00EEB477 /* LaunchScreen.xib */,
 				F46F13CC1A8E0A6E00EEB477 /* Supporting Files */,
-				F46F13EE1A8E11A900EEB477 /* NewsTableViewController.swift */,
-				F46F13F01A8E11BA00EEB477 /* NewsTableViewCell.swift */,
+				195033811E470739009E6F1C /* FeedParser.swift */,
 			);
 			path = SimpleRSSReader;
 			sourceTree = "<group>";
@@ -218,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				195033821E470739009E6F1C /* FeedParser.swift in Sources */,
 				F46F13EF1A8E11A900EEB477 /* NewsTableViewController.swift in Sources */,
 				F46F13CF1A8E0A6E00EEB477 /* AppDelegate.swift in Sources */,
 				F46F13F11A8E11BA00EEB477 /* NewsTableViewCell.swift in Sources */,
