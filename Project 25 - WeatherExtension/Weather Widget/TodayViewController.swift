@@ -32,13 +32,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
     // Invoke weather service to get the weather data
     WeatherService.sharedWeatherService().getCurrentWeather(location, completion: { (data) -> () in
-      OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+      OperationQueue.main.addOperation({ () -> Void in
         guard let weatherData = data else {
           isFetched = false
           return
         }
 
-        self.weatherLabel.text = weatherData.weather.capitalizedString
+        self.weatherLabel.text = weatherData.weather.capitalized
         self.tempLabel.text = String(format: "%d", weatherData.temperature) + "\u{00B0}"
         isFetched = true
       })

@@ -16,6 +16,7 @@
 		19B36D201D7E54A000BE0903 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B36D1F1D7E54A000BE0903 /* TodayViewController.swift */; };
 		19B36D271D7E54A000BE0903 /* Weather Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 19B36D1A1D7E54A000BE0903 /* Weather Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		19B36D2E1D7E551900BE0903 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19B36D2C1D7E551900BE0903 /* MainInterface.storyboard */; };
+		19F0EE381E49295B0045F7A8 /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B36D081D7E540600BE0903 /* WeatherKit.framework */; };
 		F43B2D321A66777F0088B707 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B2D311A66777F0088B707 /* LocationTableViewController.swift */; };
 		F4FCCF751A5F7DFF006183CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FCCF741A5F7DFF006183CC /* AppDelegate.swift */; };
 		F4FCCF771A5F7DFF006183CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FCCF761A5F7DFF006183CC /* ViewController.swift */; };
@@ -110,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19F0EE381E49295B0045F7A8 /* WeatherKit.framework in Frameworks */,
 				19B36D1D1D7E54A000BE0903 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
