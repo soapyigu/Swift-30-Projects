@@ -8,4 +8,4 @@ Also, this app implements search and share function by using Flickr Restful API,
 For all details, please reference [UICollectionView Tutorial: Getting Started](https://www.raywenderlich.com/136159/uicollectionview-tutorial-getting-started) and [UICollectionView Tutorial: Reusable Views, Selection, and Reordering](https://www.raywenderlich.com/136161/uicollectionview-tutorial-reusable-views-selection-reordering).
 
 ## Screenshots
-![FlickrSearch](https://github.com/soapyigu/30SwiftProjects/blob/master/Project%2018%20-%20FlickrSearch/FlickrSearch.gif)
+![FlickrSearch](./FlickrSearch.gif)
