@@ -39,9 +39,9 @@ class TagsColorsViewController: UIViewController {
   }
   
   // MARK: - Navigation
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "DataTable" {
-      guard let controller = segue.destinationViewController as? TagsColorsTableViewController else {
+      guard let controller = segue.destination as? TagsColorsTableViewController else {
         fatalError("Storyboard mis-configuration. Controller is not of expected type TagsColorTableViewController")
       }
 
@@ -50,7 +50,7 @@ class TagsColorsViewController: UIViewController {
   }
 
   // MARK: - IBActions
-  @IBAction func tagsColorsSegmentedControlChanged(sender: UISegmentedControl) {
+  @IBAction func tagsColorsSegmentedControlChanged(_ sender: UISegmentedControl) {
     setupTableData()
   }
 

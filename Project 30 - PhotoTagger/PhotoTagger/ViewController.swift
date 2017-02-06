@@ -34,29 +34,29 @@ class ViewController: UIViewController {
   @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
   
   // MARK: - Properties
-  private var tags: [String]?
-  private var colors: [PhotoColor]?
+  fileprivate var tags: [String]?
+  fileprivate var colors: [PhotoColor]?
 
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    if !UIImagePickerController.isSourceTypeAvailable(.Camera) {
-      takePictureButton.setTitle("Select Photo", forState: .Normal)
+    if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+      takePictureButton.setTitle("Select Photo", for: UIControlState())
     }
   }
 
-  override func viewDidDisappear(animated: Bool) {
+  override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
 
     imageView.image = nil
   }
 
   // MARK: - Navigation
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
     if segue.identifier == "ShowResults" {
-      guard let controller = segue.destinationViewController as? TagsColorsViewController else {
+      guard let controller = segue.destination as? TagsColorsViewController else {
         fatalError("Storyboard mis-configuration. Controller is not of expected type TagsColorsViewController")
       }
 
@@ -66,140 +66,132 @@ class ViewController: UIViewController {
   }
 
   // MARK: - IBActions
-  @IBAction func takePicture(sender: UIButton) {
+  @IBAction func takePicture(_ sender: UIButton) {
     let picker = UIImagePickerController()
     picker.delegate = self
     picker.allowsEditing = false
 
-    if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-      picker.sourceType = UIImagePickerControllerSourceType.Camera
+    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+      picker.sourceType = UIImagePickerControllerSourceType.camera
     } else {
-      picker.sourceType = .PhotoLibrary
-      picker.modalPresentationStyle = .FullScreen
+      picker.sourceType = .photoLibrary
+      picker.modalPresentationStyle = .fullScreen
     }
 
-    presentViewController(picker, animated: true, completion: nil)
+    present(picker, animated: true, completion: nil)
   }
 }
 
 // MARK: - UIImagePickerControllerDelegate
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
-  func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
     guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
       print("Info did not have the required UIImage for the Original Image")
-      dismissViewControllerAnimated(true, completion: nil)
+      dismiss(animated: true)
       return
     }
     
     imageView.image = image
-      
-    dismissViewControllerAnimated(true, completion: nil)
     
-    // hide buttons and update update progress UI
-    takePictureButton.hidden = true
+    takePictureButton.isHidden = true
     progressView.progress = 0.0
-    progressView.hidden = false
+    progressView.isHidden = false
     activityIndicatorView.startAnimating()
     
-    uploadImage(
-      image,
-      progress: { [unowned self] percent in
-        // update progressView
+    upload(
+      image: image,
+      progressCompletion: { [unowned self] percent in
         self.progressView.setProgress(percent, animated: true)
       },
       completion: { [unowned self] tags, colors in
-        // update UI after photo uploaded
-        self.takePictureButton.hidden = false
-        self.progressView.hidden = true
+        self.takePictureButton.isHidden = false
+        self.progressView.isHidden = true
         self.activityIndicatorView.stopAnimating()
         
         self.tags = tags
         self.colors = colors
         
-        // go to next view
-        self.performSegueWithIdentifier("ShowResults", sender: self)
-      })
+        self.performSegue(withIdentifier: "ShowResults", sender: self)
+    })
+    
+    dismiss(animated: true)
   }
 }
 
 extension ViewController {
-  func uploadImage(image: UIImage, progress: (percent: Float) -> Void,
-                   completion: (tags: [String], colors: [PhotoColor]) -> Void) {
+  func upload(image: UIImage,
+              progressCompletion: @escaping (_ percent: Float) -> Void,
+              completion: @escaping (_ tags: [String], _ colors: [PhotoColor]) -> Void) {
     guard let imageData = UIImageJPEGRepresentation(image, 0.5) else {
       print("Could not get JPEG representation of UIImage")
       return
     }
     
     Alamofire.upload(
-      ImaggaRouter.Content,
       multipartFormData: { multipartFormData in
-        multipartFormData.appendBodyPart(data: imageData, name: "imagefile",
-          fileName: "image.jpg", mimeType: "image/jpeg")
-      },
+        multipartFormData.append(imageData,
+                                 withName: "imagefile",
+                                 fileName: "image.jpg",
+                                 mimeType: "image/jpeg")
+    },
+      with: ImaggaRouter.content,
       encodingCompletion: { encodingResult in
         switch encodingResult {
-        case .Success(let upload, _, _):
-          upload.progress { bytesWritten, totalBytesWritten, totalBytesExpectedToWrite in
-            dispatch_async(dispatch_get_main_queue()) {
-              let percent = (Float(totalBytesWritten) / Float(totalBytesExpectedToWrite))
-              progress(percent: percent)
-            }
+        case .success(let upload, _, _):
+          upload.uploadProgress { progress in
+            progressCompletion(Float(progress.fractionCompleted))
           }
           upload.validate()
           upload.responseJSON { response in
-            // response unsuccessfully
             guard response.result.isSuccess else {
               print("Error while uploading file: \(response.result.error)")
-              completion(tags: [String](), colors: [PhotoColor]())
+              completion([String](), [PhotoColor]())
               return
             }
             
-            // receive wrong data
-            guard let responseJSON = response.result.value as? [String: AnyObject],
-              uploadedFiles = responseJSON["uploaded"] as? [AnyObject],
-              firstFile = uploadedFiles.first as? [String: AnyObject],
-              firstFileID = firstFile["id"] as? String else {
+            guard let responseJSON = response.result.value as? [String: Any],
+              let uploadedFiles = responseJSON["uploaded"] as? [Any],
+              let firstFile = uploadedFiles.first as? [String: Any],
+              let firstFileID = firstFile["id"] as? String else {
                 print("Invalid information received from service")
-                completion(tags: [String](), colors: [PhotoColor]())
+                completion([String](), [PhotoColor]())
                 return
             }
             
-            // normal case
             print("Content uploaded with ID: \(firstFileID)")
-            self.downloadTags(firstFileID) { tags in
-              self.downloadColors(firstFileID) { colors in
-                completion(tags: tags, colors: colors)
+            
+            self.downloadTags(contentID: firstFileID) { tags in
+              self.downloadColors(contentID: firstFileID) { colors in
+                completion(tags, colors)
               }
             }
           }
-        case .Failure(let encodingError):
+        case .failure(let encodingError):
           print(encodingError)
         }
-      }
+    }
     )
   }
   
-  func downloadTags(contentID: String, completion: ([String]) -> Void) {
-    Alamofire.request(
-      ImaggaRouter.Tags(contentID)
-      )
+  func downloadTags(contentID: String, completion: @escaping ([String]) -> Void) {
+    Alamofire.request(ImaggaRouter.tags(contentID))
       .responseJSON { response in
+        
         guard response.result.isSuccess else {
           print("Error while fetching tags: \(response.result.error)")
           completion([String]())
           return
         }
         
-        guard let responseJSON = response.result.value as? [String: AnyObject],
-          results = responseJSON["results"] as? [AnyObject],
-          firstResult = results.first,
-          tagsAndConfidences = firstResult["tags"] as? [[String: AnyObject]] else {
+        guard let responseJSON = response.result.value as? [String: Any],
+          let results = responseJSON["results"] as? [[String: Any]],
+          let firstObject = results.first,
+          let tagsAndConfidences = firstObject["tags"] as? [[String: Any]] else {
             print("Invalid tag information received from the service")
             completion([String]())
             return
         }
-        
         
         let tags = tagsAndConfidences.flatMap({ dict in
           return dict["tag"] as? String
@@ -209,22 +201,21 @@ extension ViewController {
     }
   }
   
-  func downloadColors(contentID: String, completion: ([PhotoColor]) -> Void) {
-    Alamofire.request(
-      ImaggaRouter.Colors(contentID)
-      )
+  func downloadColors(contentID: String, completion: @escaping ([PhotoColor]) -> Void) {
+    Alamofire.request(ImaggaRouter.colors(contentID))
       .responseJSON { response in
+        
         guard response.result.isSuccess else {
           print("Error while fetching colors: \(response.result.error)")
           completion([PhotoColor]())
           return
         }
         
-        guard let responseJSON = response.result.value as? [String: AnyObject],
-          results = responseJSON["results"] as? [AnyObject],
-          firstResult = results.first as? [String: AnyObject],
-          info = firstResult["info"] as? [String: AnyObject],
-          imageColors = info["image_colors"] as? [[String: AnyObject]] else {
+        guard let responseJSON = response.result.value as? [String: Any],
+          let results = responseJSON["results"] as? [[String: Any]],
+          let firstResult = results.first,
+          let info = firstResult["info"] as? [String: Any],
+          let imageColors = info["image_colors"] as? [[String: Any]] else {
             print("Invalid color information received from service")
             completion([PhotoColor]())
             return
@@ -232,17 +223,14 @@ extension ViewController {
         
         let photoColors = imageColors.flatMap({ (dict) -> PhotoColor? in
           guard let r = dict["r"] as? String,
-            g = dict["g"] as? String,
-            b = dict["b"] as? String,
-            closestPaletteColor = dict["closest_palette_color"] as? String else {
+            let g = dict["g"] as? String,
+            let b = dict["b"] as? String,
+            let closestPaletteColor = dict["closest_palette_color"] as? String else {
               return nil
           }
-          return PhotoColor(red: Int(r),
-            green: Int(g),
-            blue: Int(b),
-            colorName: closestPaletteColor)
+          
+          return PhotoColor(red: Int(r), green: Int(g), blue: Int(b), colorName: closestPaletteColor)
         })
-        
         
         completion(photoColors)
     }
