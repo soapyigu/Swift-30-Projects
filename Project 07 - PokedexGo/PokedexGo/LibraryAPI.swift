@@ -25,14 +25,14 @@ class LibraryAPI: NSObject {
   func getPokemons() -> [Pokemon] {
     return pokemons
   }
-
+  
   func downloadImg(_ url: String) -> (UIImage) {
     let aUrl = URL(string: url)
     let data = try? Data(contentsOf: aUrl!)
     let image = UIImage(data: data!)
     return image!
   }
-
+  
   func downloadImage(_ notification: Notification) {
     // retrieve info from notification
     let userInfo = (notification as NSNotification).userInfo as! [String: AnyObject]
@@ -43,17 +43,14 @@ class LibraryAPI: NSObject {
       imageViewUnWrapped.image = persistencyManager.getImage(URL(string: pokeImageUrl)!.lastPathComponent)
       if imageViewUnWrapped.image == nil {
         
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
+        DispatchQueue.global().async {
           let downloadedImage = self.downloadImg(pokeImageUrl as String)
-          DispatchQueue.main.sync(execute: { () -> Void in
+          DispatchQueue.main.async {
             imageViewUnWrapped.image = downloadedImage
             self.persistencyManager.saveImage(downloadedImage, filename: URL(string: pokeImageUrl)!.lastPathComponent)
-          })
-        })
+          }
+        }
       }
     }
-
   }
-  
-
 }

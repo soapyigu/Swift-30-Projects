@@ -99,6 +99,6 @@ class DetailViewController: UIViewController {
       todo?.date = todoDatePicker.date
     }
     
-    self.navigationController?.popToRootViewController(animated: true)
+    navigationController?.popToRootViewController(animated: true)
   }
 }

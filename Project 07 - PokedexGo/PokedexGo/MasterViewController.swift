@@ -18,19 +18,22 @@ class MasterViewController: UITableViewController {
   var pokemons = LibraryAPI.sharedInstance.getPokemons()
   var filteredPokemons = [Pokemon]()
   weak var delegate: PokemonSelectionDelegate?
-  private let disposeBag = DisposeBag()
+  
+  fileprivate let tap = UITapGestureRecognizer.init(target: self, action: Selector.dismissKeyboard)
+  fileprivate let disposeBag = DisposeBag()
   
   @IBOutlet weak var searchBar: UISearchBar!
-
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setupUI()
+    
     filteredPokemons = pokemons
   }
   
-  func setupUI() {
+  fileprivate func setupUI() {
     self.title = "精灵列表"
+    view.addGestureRecognizer(tap)
 
     definesPresentationContext = true
     
@@ -38,12 +41,19 @@ class MasterViewController: UITableViewController {
       .rx.text
       .distinctUntilChanged()
       .throttle(0.5, scheduler: MainScheduler.instance)
-      .filter { $0.characters.count > 0 }
       .subscribe(
         onNext: { [unowned self] query in
-          self.filteredPokemons = self.pokemons.filter{ $0.name.hasPrefix(query) }
+          if query.characters.count == 0 {
+            self.filteredPokemons = self.pokemons
+          } else {
+            self.filteredPokemons = self.pokemons.filter{ $0.name.hasPrefix(query) }
+          }
           self.tableView.reloadData()
         }).addDisposableTo(disposeBag)
+  }
+  
+  func dismissKeyboard() {
+    view.endEditing(true)
   }
   
   // MARK: - UITableViewDelegate
@@ -80,4 +90,8 @@ class MasterViewController: UITableViewController {
     
     return cell
   }
+}
+
+private extension Selector {
+  static let dismissKeyboard = #selector(MasterViewController.dismissKeyboard)
 }
