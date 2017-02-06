@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setupNavigationTitle()
-    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let managedContext = appDelegate.managedObjectContext
     self.fetchCoreData(managedContext)
   }
@@ -28,12 +28,12 @@ class ViewController: UIViewController, UITableViewDataSource {
     title = "The List"
   }
   
-  func fetchCoreData(managedContext: NSManagedObjectContext) {
-    let fetchRequest = NSFetchRequest(entityName: "Person")
+  func fetchCoreData(_ managedContext: NSManagedObjectContext) {
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
     
     do {
       let results =
-      try managedContext.executeFetchRequest(fetchRequest)
+      try managedContext.fetch(fetchRequest)
       people = results as! [NSManagedObject]
     } catch let error as NSError {
       print("Could not fetch \(error), \(error.userInfo)")
@@ -42,37 +42,37 @@ class ViewController: UIViewController, UITableViewDataSource {
   }
   
   // MARK - UITableViewDataSource
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return people.count
   }
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let identifier: String = "cell"
-    let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
     
     let person = people[indexPath.row]
-    cell.textLabel!.text = person.valueForKey("name") as? String
+    cell.textLabel!.text = person.value(forKey: "name") as? String
     
     return cell
   }
   
-  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     switch editingStyle {
-    case .Delete:
+    case .delete:
       // remove the deleted item from the model
-      let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+      let appDelegate = UIApplication.shared.delegate as! AppDelegate
       let managedContext = appDelegate.managedObjectContext
-      managedContext.deleteObject(people[indexPath.row] as NSManagedObject)
+      managedContext.delete(people[indexPath.row] as NSManagedObject)
       do {
         try managedContext.save()
-        people.removeAtIndex(indexPath.row)
+        people.remove(at: indexPath.row)
       } catch let error as NSError  {
         print("Could not save \(error), \(error.userInfo)")
       }
       
       //tableView.reloadData()
       // remove the deleted item from the `UITableView`
-      self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+      self.tableView.deleteRows(at: [indexPath], with: .fade)
     default:
       return
       
@@ -80,37 +80,37 @@ class ViewController: UIViewController, UITableViewDataSource {
   }
   
   // MARK - IBActions
-  @IBAction func addName(sender: AnyObject) {
-    let alert = UIAlertController(title: "New Name", message: "Add a new name", preferredStyle: .Alert)
+  @IBAction func addName(_ sender: AnyObject) {
+    let alert = UIAlertController(title: "New Name", message: "Add a new name", preferredStyle: .alert)
     
-    let saveAction = UIAlertAction(title: "Save", style: .Default, handler: {(action: UIAlertAction) -> Void in
+    let saveAction = UIAlertAction(title: "Save", style: .default, handler: {(action: UIAlertAction) -> Void in
       let textField = alert.textFields!.first
       self.saveName(textField!.text!)
       self.tableView.reloadData()
     })
     
-    let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: {(action: UIAlertAction) -> Void in
+    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {(action: UIAlertAction) -> Void in
     })
     
-    alert.addTextFieldWithConfigurationHandler {
+    alert.addTextField {
       (textField: UITextField) -> Void in
     }
     
     alert.addAction(saveAction)
     alert.addAction(cancelAction)
     
-    presentViewController(alert, animated: true, completion: nil)
+    present(alert, animated: true, completion: nil)
   }
   
   // MARK - CoreData func
-  func saveName(name: String) {
-    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+  func saveName(_ name: String) {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let managedContext = appDelegate.managedObjectContext
     
-    let entity =  NSEntityDescription.entityForName("Person",
-      inManagedObjectContext:managedContext)
+    let entity =  NSEntityDescription.entity(forEntityName: "Person",
+      in:managedContext)
     let person = NSManagedObject(entity: entity!,
-      insertIntoManagedObjectContext: managedContext)
+      insertInto: managedContext)
     
     person.setValue(name, forKey: "name")
     

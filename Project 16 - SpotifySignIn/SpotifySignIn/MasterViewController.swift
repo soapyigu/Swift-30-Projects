@@ -17,21 +17,21 @@ class MasterViewController: VideoSplashViewController {
   }
   
   func setupVideoBackground() {
-    let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("moments", ofType: "mp4")!)
+    let url = URL(fileURLWithPath: Bundle.main.path(forResource: "moments", ofType: "mp4")!)
     
     // setup layout
     videoFrame = view.frame
-    fillMode = .ResizeAspectFill
+    fillMode = .resizeAspectFill
     alwaysRepeat = true
     sound = true
     startTime = 2.0
     alpha = 0.8
     
     contentURL = url
-    view.userInteractionEnabled = false
+    view.isUserInteractionEnabled = false
   }
   
-  override func preferredStatusBarStyle() -> UIStatusBarStyle {
-    return .LightContent
+  override var preferredStatusBarStyle : UIStatusBarStyle {
+    return .lightContent
   }
 }
