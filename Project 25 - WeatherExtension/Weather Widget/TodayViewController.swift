@@ -21,7 +21,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view from its nib.
-    self.preferredContentSize = CGSizeMake(UIScreen.mainScreen().applicationFrame.size.width, 37.0);
+    self.preferredContentSize = CGSize(width: UIScreen.main.applicationFrame.size.width, height: 37.0);
     displayCurrentWeather()
   }
   
@@ -32,7 +32,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
     // Invoke weather service to get the weather data
     WeatherService.sharedWeatherService().getCurrentWeather(location, completion: { (data) -> () in
-      NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+      OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
         guard let weatherData = data else {
           isFetched = false
           return
@@ -46,13 +46,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     return isFetched
   }
   
-  func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
+  func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
     if displayCurrentWeather() {
-      completionHandler(NCUpdateResult.NewData)
+      completionHandler(NCUpdateResult.newData)
     } else {
-      completionHandler(NCUpdateResult.NoData)
+      completionHandler(NCUpdateResult.noData)
     }
-    
   }
-  
 }

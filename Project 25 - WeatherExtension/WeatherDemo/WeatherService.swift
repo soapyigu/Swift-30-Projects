@@ -8,26 +8,26 @@
 
 import Foundation
 
-public class WeatherService {
-    public typealias WeatherDataCompletionBlock = (data: WeatherData?) -> ()
+open class WeatherService {
+    public typealias WeatherDataCompletionBlock = (_ data: WeatherData?) -> ()
 
     let openWeatherBaseAPI = "http://api.openweathermap.org/data/2.5/weather?appid=97cce5b42320d87100a885f5dfa0dac9&units=metric&q="
-    let urlSession:NSURLSession = NSURLSession.sharedSession()
+    let urlSession:URLSession = URLSession.shared
 
-    public class func sharedWeatherService() -> WeatherService {
+    open class func sharedWeatherService() -> WeatherService {
         return _sharedWeatherService
     }
     
-    public func getCurrentWeather(location:String, completion: WeatherDataCompletionBlock) {
-        let openWeatherAPI = openWeatherBaseAPI + location.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!
+    open func getCurrentWeather(_ location:String, completion: @escaping WeatherDataCompletionBlock) {
+        let openWeatherAPI = openWeatherBaseAPI + location.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         print(openWeatherAPI)
-        let request = NSURLRequest(URL: NSURL(string: openWeatherAPI)!)
+        let request = URLRequest(url: URL(string: openWeatherAPI)!)
         let weatherData = WeatherData()
         
-        let task = urlSession.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+        let task = urlSession.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
             
             guard let data = data else {
-                if error != nil {
+                if let error = error  {
                     print(error)
                 }
                 
@@ -36,7 +36,7 @@ public class WeatherService {
             
             // Retrieve JSON data
             do {
-                let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary
                 
                 // Parse JSON data
                 let jsonWeather = jsonResult?["weather"] as! [AnyObject]
@@ -48,7 +48,7 @@ public class WeatherService {
                 let jsonMain = jsonResult?["main"] as! Dictionary<String, AnyObject>
                 weatherData.temperature = jsonMain["temp"] as! Int
                 
-                completion(data: weatherData)
+                completion(weatherData)
 
             } catch {
                 print(error)

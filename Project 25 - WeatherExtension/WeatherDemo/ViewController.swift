@@ -40,23 +40,23 @@ class ViewController: UIViewController {
         
         // Invoke weather service to get the weather data
         WeatherService.sharedWeatherService().getCurrentWeather(city + "," + country, completion: { (data) -> () in
-            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+            OperationQueue.main.addOperation({ () -> Void in
                 if let weatherData = data {
-                    self.weatherLabel.text = weatherData.weather.capitalizedString
+                    self.weatherLabel.text = weatherData.weather.capitalized
                     self.temperatureLabel.text = String(format: "%d", weatherData.temperature) + "\u{00B0}"
                 }
             })
         })
     }
     
-    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
+    @IBAction func unwindToHome(_ segue: UIStoryboardSegue) {
     }
     
-    @IBAction func updateWeatherInfo(segue: UIStoryboardSegue) {
-        let sourceViewController = segue.sourceViewController as! LocationTableViewController
+    @IBAction func updateWeatherInfo(_ segue: UIStoryboardSegue) {
+        let sourceViewController = segue.source as! LocationTableViewController
         var selectedLocation = sourceViewController.selectedLocation.characters.split { $0 == "," }.map { String($0) }
         city = selectedLocation[0]
-        country = selectedLocation[1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        country = selectedLocation[1].trimmingCharacters(in: CharacterSet.whitespaces)
         
         displayCurrentWeather()
     }
@@ -64,11 +64,11 @@ class ViewController: UIViewController {
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         if segue.identifier == "showLocations" {
-            let destinationController = segue.destinationViewController as! UINavigationController
+            let destinationController = segue.destination as! UINavigationController
             let locationTableViewController = destinationController.viewControllers[0] as! LocationTableViewController
             locationTableViewController.selectedLocation = "\(city), \(country)"
         }
