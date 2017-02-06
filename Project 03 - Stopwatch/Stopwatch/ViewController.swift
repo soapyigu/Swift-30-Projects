@@ -8,12 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-  var mainStopwatch: Stopwatch = Stopwatch()
-  var lapStopwatch: Stopwatch = Stopwatch()
-  var isPlay: Bool = false
-  var laps: [String] = []
+class ViewController: UIViewController, UITableViewDelegate {
+  fileprivate let mainStopwatch: Stopwatch = Stopwatch()
+  fileprivate let lapStopwatch: Stopwatch = Stopwatch()
+  fileprivate var isPlay: Bool = false
+  fileprivate var laps: [String] = []
   
+  // MARK: disable landscape mode
+  override var shouldAutorotate : Bool {
+    return false
+  }
+  
+  override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+    return UIInterfaceOrientationMask.portrait
+  }
+
   @IBOutlet weak var timerLabel: UILabel!
   @IBOutlet weak var lapTimerLabel: UILabel!
   @IBOutlet weak var playPauseButton: UIButton!
@@ -25,26 +34,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     initCircleButton(playPauseButton)
     initCircleButton(lapRestButton)
   
-    
     lapRestButton.isEnabled = false
     
     lapsTableView.delegate = self;
     lapsTableView.dataSource = self;
   }
   
-  func initCircleButton(_ button: UIButton) {
+  fileprivate func initCircleButton(_ button: UIButton) {
     button.layer.cornerRadius = 0.5 * button.bounds.size.width
     button.backgroundColor = UIColor.white
   }
   
-  // MARK: disable landscape mode
-  override var shouldAutorotate : Bool {
-    return false
-  }
-  
-  override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-    return UIInterfaceOrientationMask.portrait
-  }
   
   // MARK: hide status bar
   override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -56,8 +56,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     lapRestButton.isEnabled = true
     changeButton(lapRestButton, title: "Lap", titleColor: UIColor.black)
     if !isPlay {
-      mainStopwatch.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: Selector("updateMainTimer"), userInfo: nil, repeats: true)
-      lapStopwatch.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: Selector("updateLapTimer"), userInfo: nil, repeats: true)
+      mainStopwatch.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: Selector.updateMainTimer, userInfo: nil, repeats: true)
+      lapStopwatch.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: Selector.updateLapTimer, userInfo: nil, repeats: true)
       isPlay = true
       changeButton(playPauseButton, title: "Stop", titleColor: UIColor.red)
     } else {
@@ -82,27 +82,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
       }
       lapsTableView.reloadData()
       resetLapTimer()
-      lapStopwatch.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: Selector("updateLapTimer"), userInfo: nil, repeats: true)
+      lapStopwatch.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: Selector.updateLapTimer, userInfo: nil, repeats: true)
     }
   }
   
-  func changeButton(_ button: UIButton, title: String, titleColor: UIColor) {
+  fileprivate func changeButton(_ button: UIButton, title: String, titleColor: UIColor) {
     button.setTitle(title, for: UIControlState())
     button.setTitleColor(titleColor, for: UIControlState())
   }
   
   // MARK: reset timer seperately
-  func resetMainTimer() {
+  fileprivate func resetMainTimer() {
     resetTimer(mainStopwatch, label: timerLabel)
     laps.removeAll()
     lapsTableView.reloadData()
   }
   
-  func resetLapTimer() {
+  fileprivate func resetLapTimer() {
     resetTimer(lapStopwatch, label: lapTimerLabel)
   }
   
-  func resetTimer(_ stopwatch: Stopwatch, label: UILabel) {
+  fileprivate func resetTimer(_ stopwatch: Stopwatch, label: UILabel) {
     stopwatch.timer.invalidate()
     stopwatch.counter = 0.0
     label.text = "00:00:00"
@@ -132,9 +132,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     label.text = minutes + ":" + seconds
   }
-  
-  
-  // MARK: tableView dataSource
+}
+
+// MARK: tableView dataSource
+extension ViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return laps.count
   }
@@ -152,6 +153,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     return cell
   }
-  
+}
+
+fileprivate extension Selector {
+  static let updateMainTimer = #selector(ViewController.updateMainTimer)
+  static let updateLapTimer = #selector(ViewController.updateLapTimer)
 }
 
