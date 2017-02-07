@@ -99,6 +99,11 @@ class DetailViewController: UIViewController {
       todo?.date = todoDatePicker.date
     }
     
-    navigationController?.popToRootViewController(animated: true)
+    let _  = navigationController?.popToRootViewController(animated: true)
   }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
 }
