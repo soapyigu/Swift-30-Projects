@@ -1,6 +1,6 @@
 ## Swift 30 Projects
 
-![Cover](./cover.jpg)
+![Cover](./Cover.jpg)
 
 ## Contents
 This repo focus on usage of:
