@@ -1,5 +1,6 @@
 ## Swift 30 Projects
-This repo is made up of 30 Swift Projects, **STAR** if you like these tiny apps.
+
+![Cover](./cover.jpg)
 
 ## Contents
 This repo focus on usage of:
