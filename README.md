@@ -39,5 +39,6 @@ Also, **unit tests** will be added to ensure the quality of the codebase.
 ## Reach me ##
 
 Github: [soapyigu](https://github.com/soapyigu)<br />
+Twitter: [@guyindaozhang](https://twitter.com/guyindaozhang)<br />
 Weibo: [@故胤道长](http://weibo.com/soapyigu)
 
