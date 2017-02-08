@@ -2,7 +2,6 @@
 //  ProductsTableViewController.swift
 //  GoodAsOldPhones
 //
-//  Created by Yi Gu on 2/10/16.
 //  Copyright © 2016 Code School. All rights reserved.
 //
 
@@ -52,6 +51,5 @@ class ProductsTableViewController: UITableViewController {
         }
       }
     }
-
   }
 }

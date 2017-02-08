@@ -2,7 +2,6 @@
 //  ViewController.swift
 //  LoveTweet
 //
-//  Created by Yi Gu on 2/15/16.
 //  Copyright © 2016 YiGu. All rights reserved.
 //
 
@@ -20,7 +19,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var workTextField: UITextField!
   @IBOutlet weak var salaryLabel: UILabel!
   @IBOutlet weak var straightSwitch: UISwitch!
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
   }
@@ -31,13 +30,12 @@ class ViewController: UIViewController {
     salaryLabel.text = "$\(i)k"
   }
   
-
   @IBAction func tweetTapped(_ sender: AnyObject) {
     if (nameTextField.text == "" || workTextField.text == "" || salaryLabel.text == "") {
       showAlert("Info Miss", message: "Please fill out the form", buttonTitle: "Ok")
       return
     }
-  
+    
     let name:String! = nameTextField.text
     
     let work:String! = workTextField.text
@@ -62,7 +60,7 @@ class ViewController: UIViewController {
     tweetSLCVC(tweet)
   }
   
-  func tweetSLCVC(_ tweet: String) {
+  fileprivate func tweetSLCVC(_ tweet: String) {
     if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter){
       let twitterController:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
       twitterController.setInitialText(tweet)
@@ -72,15 +70,17 @@ class ViewController: UIViewController {
     }
   }
   
-  func showAlert(_ title:String, message:String, buttonTitle:String) {
+  fileprivate func showAlert(_ title:String, message:String, buttonTitle:String) {
     let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
     alert.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default, handler: nil))
     self.present(alert, animated: true, completion: nil)
   }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    super.touchesBegan(touches, with: event)
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
-    }
+    // dismiss keyboard
+    view.endEditing(true)
+  }
 }
 

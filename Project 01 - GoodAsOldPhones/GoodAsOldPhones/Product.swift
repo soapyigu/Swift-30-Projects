@@ -2,7 +2,6 @@
 //  Product.swift
 //  GoodAsOldPhones
 //
-//  Created by Yi Gu on 2/11/16.
 //  Copyright © 2016 Code School. All rights reserved.
 //
 

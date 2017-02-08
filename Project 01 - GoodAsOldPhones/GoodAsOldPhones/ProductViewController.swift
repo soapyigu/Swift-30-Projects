@@ -2,7 +2,6 @@
 //  ViewController.swift
 //  GoodAsOldPhones
 //
-//  Created by Yi Gu on 2/6/16.
 //  Copyright © 2016 Code School. All rights reserved.
 //
 
@@ -19,6 +18,7 @@ class ProductViewController: UIViewController {
     super.viewDidLoad()
     
     productNameLabel.text = product?.name
+    
     if let imageName = product?.fullscreenImageName {
       productImageView.image = UIImage(named: imageName)
     }
@@ -27,6 +27,4 @@ class ProductViewController: UIViewController {
   @IBAction func addToCartPressed(_ sender: AnyObject) {
     print("Hello World")
   }
-
 }
-
