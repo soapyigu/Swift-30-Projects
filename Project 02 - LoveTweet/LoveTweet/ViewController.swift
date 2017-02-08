@@ -25,6 +25,10 @@ class ViewController: UIViewController {
     super.viewDidLoad()
   }
   
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
+  }
+  
   @IBAction func salaryHandler(_ sender: AnyObject) {
     let slider = sender as! UISlider
     let i = Int(slider.value)
