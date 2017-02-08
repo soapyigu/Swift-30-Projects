@@ -57,7 +57,7 @@ class ViewController: UIViewController {
       interestedIn = "Women"
     }
     
-    let tweet = "Hi, I am \(name). As a \(age)-year-old \(work) earning \(salary)/year, I am interested in \(interestedIn). Feel free to contact me!"
+    let tweet = "Hi, I am \(name!). As a \(age!)-year-old \(work!) earning \(salary!)/year, I am interested in \(interestedIn!). Feel free to contact me!"
     
     tweetSLCVC(tweet)
   }
@@ -77,5 +77,10 @@ class ViewController: UIViewController {
     alert.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default, handler: nil))
     self.present(alert, animated: true, completion: nil)
   }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
 }
 

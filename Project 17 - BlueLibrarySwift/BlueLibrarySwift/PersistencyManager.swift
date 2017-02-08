@@ -83,8 +83,10 @@ class PersistencyManager: NSObject {
   
   func saveImage(_ image: UIImage, filename: String) {
     let path = NSHomeDirectory() + "/Documents/\(filename)"
-    let data = UIImagePNGRepresentation(image)
-    try? data!.write(to: URL(fileURLWithPath: path), options: [.atomic])
+    guard let data = UIImagePNGRepresentation(image) else {
+        return
+    }
+    try? data.write(to: URL(fileURLWithPath: path), options: [.atomic])
   }
   
   func getImage(_ filename: String) -> UIImage? {
