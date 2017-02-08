@@ -30,6 +30,8 @@ For code style, I strictly follow [raywenderlich.com Swift Style Guide](https://
 
 For developers, I have a README file and screenshots for every single project, you can start coding from there.
 
+[chenluffy](https://github.com/ChengLuffy), thank you for your assistance in optimizing the repo.
+
 ## Whats's next?
 
 I will maintain the project with latest syntax and most advanced code style. More code comments is going to be covered as well.
