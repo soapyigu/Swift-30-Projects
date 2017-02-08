@@ -2,7 +2,6 @@
 //  Stopwatch.swift
 //  Stopwatch
 //
-//  Created by Yi Gu on 2/20/16.
 //  Copyright © 2016 YiGu. All rights reserved.
 //
 
@@ -13,7 +12,7 @@ class Stopwatch: NSObject {
   var timer: Timer
   
   override init() {
-    self.counter = 0.0
-    self.timer = Timer()
+    counter = 0.0
+    timer = Timer()
   }
 }
