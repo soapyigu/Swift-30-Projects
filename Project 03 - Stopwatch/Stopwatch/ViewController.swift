@@ -85,6 +85,7 @@ class ViewController: UIViewController, UITableViewDelegate {
       lapsTableView.reloadData()
       resetLapTimer()
       lapStopwatch.timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: Selector.updateLapTimer, userInfo: nil, repeats: true)
+      RunLoop.current.add(lapStopwatch.timer, forMode: .commonModes)
     }
   }
   
