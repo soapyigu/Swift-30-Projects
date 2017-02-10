@@ -37,7 +37,7 @@ I will maintain the project with latest syntax and most advanced code style. Mor
 Also, **unit tests** will be added to ensure the quality of the codebase.
 
 ## Contributors
-[chenluffy](https://github.com/ChengLuffy), thank you for your assistance in optimizing the repo.
+[chenluffy](https://github.com/ChengLuffy), and [azureland](https://github.com/azureland), thank you for your assistance in optimizing the repo.
 
 ## Reach me ##
 
