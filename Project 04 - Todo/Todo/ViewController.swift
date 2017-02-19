@@ -2,7 +2,6 @@
 //  ViewController.swift
 //  Todo
 //
-//  Created by Yi Gu on 2/29/16.
 //  Copyright © 2016 YiGu. All rights reserved.
 //
 
@@ -10,7 +9,7 @@ import UIKit
 
 var todos: [ToDoItem] = []
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController {
   
   @IBOutlet weak var todoTableView: UITableView!
   
@@ -20,67 +19,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     navigationItem.leftBarButtonItem = editButtonItem
     
     todos = [ToDoItem(id: "1", image: "child-selected", title: "Go to Disney", date: dateFromString("2014-10-20")!),
-      ToDoItem(id: "2", image: "shopping-cart-selected", title: "Cicso Shopping", date: dateFromString("2014-10-28")!),
-      ToDoItem(id: "3", image: "phone-selected", title: "Phone to Jobs", date: dateFromString("2014-10-30")!),
-      ToDoItem(id: "4", image: "travel-selected", title: "Plan to Europe", date: dateFromString("2014-10-31")!)]
+             ToDoItem(id: "2", image: "shopping-cart-selected", title: "Cicso Shopping", date: dateFromString("2014-10-28")!),
+             ToDoItem(id: "3", image: "phone-selected", title: "Phone to Jobs", date: dateFromString("2014-10-30")!),
+             ToDoItem(id: "4", image: "travel-selected", title: "Plan to Europe", date: dateFromString("2014-10-31")!)]
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     todoTableView.reloadData()
-  }
-  
-  // MARK - UITableViewDataSource required
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if (todos.count != 0) {
-      self.todoTableView.backgroundView = UIView()
-      self.todoTableView.separatorStyle = .singleLine
-      return todos.count
-    } else {
-      let messageLabel: UILabel = UILabel()
-      
-      setMessageLabel(messageLabel, frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height), text: "No data is currently available.", textColor: UIColor.black, numberOfLines: 0, textAlignment: NSTextAlignment.center, font: UIFont(name:"Palatino-Italic", size: 20)!)
-      
-      self.todoTableView.backgroundView = messageLabel
-      self.todoTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-      
-      return 0
-    }
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cellIdentifier: String = "todoCell"
-    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-    
-    setCellWithTodoItem(cell, todo: todos[(indexPath as NSIndexPath).row])
-    
-    return cell
-  }
-  
-  // MARK - UITableViewDelegate
-  
-  // Edit mode
-  override func setEditing(_ editing: Bool, animated: Bool) {
-    super.setEditing(editing, animated: animated)
-    todoTableView.setEditing(editing, animated: true)
-  }
-  
-  // Delete the cell
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == UITableViewCellEditingStyle.delete {
-      todos.remove(at: (indexPath as NSIndexPath).row)
-      todoTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-    }
-  }
-  
-  // Move the cell
-  func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-    return self.isEditing
-  }
-  
-  func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-    let todo = todos.remove(at: (sourceIndexPath as NSIndexPath).row)
-    todos.insert(todo, at: (destinationIndexPath as NSIndexPath).row)
   }
   
   // MARK - helper func
@@ -104,7 +50,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     dateLabel.text = stringFromDate(todo.date)
   }
   
-  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "editTodo" {
       let vc = segue.destination as! DetailViewController
@@ -114,7 +59,57 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
       }
     }
   }
-  
-
 }
 
+extension ViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    if todos.count != 0 {
+      return todos.count
+    } else {
+      let messageLabel: UILabel = UILabel()
+      
+      setMessageLabel(messageLabel, frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height), text: "No data is currently available.", textColor: UIColor.black, numberOfLines: 0, textAlignment: NSTextAlignment.center, font: UIFont(name:"Palatino-Italic", size: 20)!)
+      
+      self.todoTableView.backgroundView = messageLabel
+      self.todoTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+      
+      return 0
+    }
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cellIdentifier: String = "todoCell"
+    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+    
+    setCellWithTodoItem(cell, todo: todos[(indexPath as NSIndexPath).row])
+    
+    return cell
+  }
+}
+
+extension ViewController: UITableViewDelegate {
+  // Edit mode
+  override func setEditing(_ editing: Bool, animated: Bool) {
+    super.setEditing(editing, animated: animated)
+    todoTableView.setEditing(editing, animated: true)
+  }
+  
+  // Delete the cell
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == UITableViewCellEditingStyle.delete {
+      todos.remove(at: (indexPath as NSIndexPath).row)
+      todoTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+    }
+  }
+  
+  // Move the cell
+  func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+    return self.isEditing
+  }
+  
+  func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    let todo = todos.remove(at: (sourceIndexPath as NSIndexPath).row)
+    todos.insert(todo, at: (destinationIndexPath as NSIndexPath).row)
+  }
+}

@@ -2,7 +2,6 @@
 //  ToDoItem.swift
 //  Todo
 //
-//  Created by Yi Gu on 2/29/16.
 //  Copyright © 2016 YiGu. All rights reserved.
 //
 

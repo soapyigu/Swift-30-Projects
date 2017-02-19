@@ -2,7 +2,6 @@
 //  Utils.swift
 //  Todo
 //
-//  Created by Yi Gu on 2/29/16.
 //  Copyright © 2016 YiGu. All rights reserved.
 //
 
@@ -19,4 +18,3 @@ func stringFromDate(_ date: Date) -> String {
   dateFormatter.dateFormat = "yyyy-MM-dd"
   return dateFormatter.string(from: date)
 }
-

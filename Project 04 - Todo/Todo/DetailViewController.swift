@@ -2,7 +2,6 @@
 //  DetailViewController.swift
 //  Todo
 //
-//  Created by Yi Gu on 3/1/16.
 //  Copyright © 2016 YiGu. All rights reserved.
 //
 
@@ -22,26 +21,26 @@ class DetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    if todo == nil {
-      self.title = "New Todo"
-      childButton.isSelected = true
-    } else {
+    if let todo = todo {
       self.title = "Edit Todo"
-      if todo?.image == "child-selected"{
+      if todo.image == "child-selected"{
         childButton.isSelected = true
       }
-      else if todo?.image == "phone-selected"{
+      else if todo.image == "phone-selected"{
         phoneButton.isSelected = true
       }
-      else if todo?.image == "shopping-cart-selected"{
+      else if todo.image == "shopping-cart-selected"{
         shoppingCartButton.isSelected = true
       }
-      else if todo?.image == "travel-selected"{
+      else if todo.image == "travel-selected"{
         travelButton.isSelected = true
       }
       
-      todoTitleLabel.text = todo?.title
-      todoDatePicker.setDate((todo?.date)! as Date, animated: false)
+      todoTitleLabel.text = todo.title
+      todoDatePicker.setDate(todo.date, animated: false)
+    } else {
+      title = "New Todo"
+      childButton.isSelected = true
     }
   }
   
@@ -89,21 +88,21 @@ class DetailViewController: UIViewController {
       image = "travel-selected"
     }
     
-    if todo == nil {
+    if let todo = todo {
+      todo.image = image
+      todo.title = todoTitleLabel.text!
+      todo.date = todoDatePicker.date
+    } else {
       let uuid = UUID().uuidString
       todo = ToDoItem(id: uuid, image: image, title: todoTitleLabel.text!, date: todoDatePicker.date)
       todos.append(todo!)
-    } else {
-      todo?.image = image
-      todo?.title = todoTitleLabel.text!
-      todo?.date = todoDatePicker.date
     }
     
-    let _  = navigationController?.popToRootViewController(animated: true)
+    let _ = navigationController?.popToRootViewController(animated: true)
   }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
-    }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    super.touchesBegan(touches, with: event)
+    view.endEditing(true)
+  }
 }
