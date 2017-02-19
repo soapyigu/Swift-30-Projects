@@ -33,6 +33,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   // MARK - UITableViewDataSource required
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if (todos.count != 0) {
+      self.todoTableView.backgroundView = UIView()
+      self.todoTableView.separatorStyle = .singleLine
       return todos.count
     } else {
       let messageLabel: UILabel = UILabel()
