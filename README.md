@@ -30,7 +30,7 @@ For code style, I strictly follow [raywenderlich.com Swift Style Guide](https://
 
 For developers, I have a README file and screenshots for every single project, you can start coding from there.
 
-## Whats's next?
+## What's next?
 
 I will maintain the project with latest syntax and most advanced code style. More code comments are going to be covered as well.
 
