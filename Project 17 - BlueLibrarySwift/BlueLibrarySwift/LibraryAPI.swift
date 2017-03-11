@@ -39,14 +39,14 @@ class LibraryAPI: NSObject {
   func addAlbum(_ album: Album, index: Int) {
     persistencyManager.addAlbum(album, index: index)
     if isOnline {
-      httpClient.postRequest("/api/addAlbum", body: album.description)
+      let _ = httpClient.postRequest("/api/addAlbum", body: album.description)
     }
   }
   
   func deleteAlbum(_ index: Int) {
     persistencyManager.deleteAlbumAtIndex(index)
     if isOnline {
-      httpClient.postRequest("/api/deleteAlbum", body: "\(index)")
+      let _ = httpClient.postRequest("/api/deleteAlbum", body: "\(index)")
     }
   }
   
@@ -61,13 +61,13 @@ class LibraryAPI: NSObject {
       imageViewUnWrapped.image = persistencyManager.getImage(URL(string: coverUrl)!.lastPathComponent)
       if imageViewUnWrapped.image == nil {
         
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
+        DispatchQueue.global().async {
           let downloadedImage = self.httpClient.downloadImage(coverUrl as String)
-          DispatchQueue.main.sync(execute: { () -> Void in
+          DispatchQueue.main.async {
             imageViewUnWrapped.image = downloadedImage
             self.persistencyManager.saveImage(downloadedImage, filename: URL(string: coverUrl)!.lastPathComponent)
-          })
-        })
+          }
+        }
       }
     }
   }
