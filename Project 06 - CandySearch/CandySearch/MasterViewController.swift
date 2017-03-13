@@ -65,12 +65,15 @@ class MasterViewController: UITableViewController {
   }
   
   func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-    filteredCandies = candies.filter { candy in
-      let categoryMatch = (scope == "All") || (candy.category == scope)
-      return  categoryMatch && candy.name.lowercased().contains(searchText.lowercased())
-    }
-    
-    tableView.reloadData()
+        filteredCandies = candies.filter { candy in
+            if !(candy.category == scope) && scope != "All" {
+                return false
+            }
+            
+            return candy.name.lowercased().contains(searchText.lowercased()) || searchText == ""
+        }
+        
+        tableView.reloadData()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +91,7 @@ class MasterViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if searchController.isActive && searchController.searchBar.text != "" {
+    if searchController.isActive {
       return filteredCandies.count
     }
     return candies.count
@@ -98,7 +101,7 @@ class MasterViewController: UITableViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
     
     let candy: Candy
-    if searchController.isActive && searchController.searchBar.text != "" {
+    if searchController.isActive {
       candy = filteredCandies[(indexPath as NSIndexPath).row]
     } else {
       candy = candies[(indexPath as NSIndexPath).row]
@@ -113,7 +116,7 @@ class MasterViewController: UITableViewController {
     if segue.identifier == "showDetail" {
       if let indexPath = tableView.indexPathForSelectedRow {
         let candy: Candy
-        if searchController.isActive && searchController.searchBar.text != "" {
+        if searchController.isActive {
           candy = filteredCandies[(indexPath as NSIndexPath).row]
         } else {
           candy = candies[(indexPath as NSIndexPath).row]
