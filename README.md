@@ -22,7 +22,7 @@ I am an iOS developer and currently learning Swift.
 
 This project is inspired by [Sam Lu](https://twitter.com/samvlu)'s [100 Days of Swift](http://samvlu.com/index.html) and [Allen朝辉](https://twitter.com/creativewang)'s [30DaysSwift](https://github.com/allenwong/30DaysofSwift).
 
-**This repo does not merely follow tutorials, I re-architecture them with better code style and architecture design.**
+**This repo does not merely follow tutorials, I re-build them with better code style and architecture design.**
 
 For code style, I strictly follow [raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide);
 
