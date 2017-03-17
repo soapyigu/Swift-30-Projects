@@ -1,7 +1,7 @@
 GoodAsOldPhones
 ==========
 
-GoodAsOldPhones is a simple iOS app coded by Swift. Also, it is a demo sample app of Swift tutorial in codeschool.com. This app demonstates basic use and implementation of tab bar controller, navigation controller, scoll view, table view and storyboard.
+GoodAsOldPhones is the demo app of [Swift tutorial](https://www.codeschool.com/courses/app-evolution-with-swift) on code school. This app demonstates basic use and implementation of tab bar controller, navigation controller, scoll view, table view and storyboard.
 
 ## Screenshots
 ![GoodAsOldPhones](./GoodAsOldPhones.gif)
