@@ -8,7 +8,8 @@
 import UIKit
 
 class ProductsTableViewController: UITableViewController {
-  var products: [Product]?
+  fileprivate var products: [Product]?
+  fileprivate let identifer = "productCell"
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -18,8 +19,8 @@ class ProductsTableViewController: UITableViewController {
                 Product(name: "1937 Desk Set", cellImageName: "image-cell3", fullscreenImageName: "phone-fullscreen3"),
                 Product(name: "1984 Moto Portable", cellImageName: "image-cell4", fullscreenImageName: "phone-fullscreen4")]
   }
-
-  // MARK: - tableView set
+  
+  // MARK: - UITableViewDataSource
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if let products = products {
       return products.count
@@ -28,7 +29,6 @@ class ProductsTableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let identifer = "productCell"
     
     let cell = tableView.dequeueReusableCell(withIdentifier: identifer, for: indexPath)
     
@@ -41,14 +41,13 @@ class ProductsTableViewController: UITableViewController {
     return cell;
   }
   
+  // MARK: - View Transfer
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showProduct" {
-      let productVC = segue.destination as? ProductViewController
-      
-      if let cell = sender as? UITableViewCell {
-        if let indexPath = tableView.indexPath(for: cell) {
-          productVC?.product = products?[(indexPath as NSIndexPath).row]
-        }
+      if let cell = sender as? UITableViewCell,
+        let indexPath = tableView.indexPath(for: cell),
+        let productVC = segue.destination as? ProductViewController {
+        productVC.product = products?[(indexPath as NSIndexPath).row]
       }
     }
   }
