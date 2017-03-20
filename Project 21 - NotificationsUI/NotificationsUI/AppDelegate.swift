@@ -14,7 +14,7 @@ import UserNotifications
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     /// Request local notification authorizations.
-    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (accepted, error) in
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { accepted, error in
       if !accepted {
         print("Notification access denied.")
       }
