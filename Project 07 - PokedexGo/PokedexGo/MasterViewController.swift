@@ -19,7 +19,6 @@ class MasterViewController: UITableViewController {
   var filteredPokemons = [Pokemon]()
   weak var delegate: PokemonSelectionDelegate?
   
-  fileprivate let tap = UITapGestureRecognizer.init(target: self, action: Selector.dismissKeyboard)
   fileprivate let disposeBag = DisposeBag()
   
   @IBOutlet weak var searchBar: UISearchBar!
@@ -33,23 +32,22 @@ class MasterViewController: UITableViewController {
   
   fileprivate func setupUI() {
     self.title = "精灵列表"
-    view.addGestureRecognizer(tap)
-
+    
     definesPresentationContext = true
     
     searchBar
       .rx.text
-      .distinctUntilChanged()
       .throttle(0.5, scheduler: MainScheduler.instance)
       .subscribe(
         onNext: { [unowned self] query in
-          if query.characters.count == 0 {
+          if query?.characters.count == 0 {
             self.filteredPokemons = self.pokemons
           } else {
-            self.filteredPokemons = self.pokemons.filter{ $0.name.hasPrefix(query) }
+            self.filteredPokemons = self.pokemons.filter{ $0.name.hasPrefix(query!) }
           }
           self.tableView.reloadData()
-        }).addDisposableTo(disposeBag)
+        })
+      .addDisposableTo(disposeBag)
   }
   
   func dismissKeyboard() {
@@ -90,8 +88,4 @@ class MasterViewController: UITableViewController {
     
     return cell
   }
-}
-
-private extension Selector {
-  static let dismissKeyboard = #selector(MasterViewController.dismissKeyboard)
 }
