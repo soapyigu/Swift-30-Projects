@@ -2,7 +2,6 @@
 //  ViewController.swift
 //  Animations
 //
-//  Created by Yi Gu on 4/28/16.
 //  Copyright © 2016 YiGu. All rights reserved.
 //
 
