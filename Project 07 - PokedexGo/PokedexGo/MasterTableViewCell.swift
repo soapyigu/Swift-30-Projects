@@ -30,7 +30,7 @@ class MasterTableViewCell: UITableViewCell {
   }
   
   fileprivate func setupUI(_ id: Int, name: String) {
-    idLabel.text = id < 10 ? "#00\(id)" : id < 100 ? "#0\(id)" : "#\(id)"
+    idLabel.text = NSString(format: "#%03d", id) as String
     nameLabel.text = name
     pokeImageView.image = UIImage(named: "default_img")
     
