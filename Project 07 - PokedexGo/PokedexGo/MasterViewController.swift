@@ -60,7 +60,7 @@ class MasterViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let pokemon = self.pokemons[(indexPath as NSIndexPath).row]
+    let pokemon = self.filteredPokemons[(indexPath as NSIndexPath).row]
 
     delegate?.pokemonSelected(pokemon)
     
