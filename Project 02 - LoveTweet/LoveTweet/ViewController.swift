@@ -31,15 +31,14 @@ class ViewController: UIViewController {
   }
   
   @IBAction func tweetTapped(_ sender: AnyObject) {
-    if (nameTextField.text == "" || workTextField.text == "" || salaryLabel.text == "") {
-      showAlert("Info Miss", message: "Please fill out the form", buttonTitle: "Ok")
-      return
+    guard let name = nameTextField.text,
+          let work = workTextField.text,
+          let salary = salaryLabel.text else {
+            return
     }
-    
-    let name:String! = nameTextField.text
-    
-    let work:String! = workTextField.text
-    let salary:String! = salaryLabel.text
+    if name == "" || work == "" || salary == "" {
+        showAlert("Info Miss", message: "Please fill out the form", buttonTitle: "Ok")
+    }
     
     // get age
     let gregorian = Calendar(identifier: Calendar.Identifier.gregorian)
@@ -55,7 +54,7 @@ class ViewController: UIViewController {
       interestedIn = "Women"
     }
     
-    let tweet = "Hi, I am \(name!). As a \(age!)-year-old \(work!) earning \(salary!)/year, I am interested in \(interestedIn!). Feel free to contact me!"
+    let tweet = "Hi, I am \(name). As a \(age!)-year-old \(work) earning \(salary)/year, I am interested in \(interestedIn). Feel free to contact me!"
     
     tweetSLCVC(tweet)
   }
