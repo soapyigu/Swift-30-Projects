@@ -8,23 +8,26 @@
 import UIKit
 
 class ProductViewController: UIViewController {
-
-  @IBOutlet var productImageView: UIImageView!
-  @IBOutlet var productNameLabel: UILabel!
-  
-  var product: Product?
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
     
-    productNameLabel.text = product?.name
+    @IBOutlet var productImageView: UIImageView!
+    @IBOutlet var productNameLabel: UILabel!
     
-    if let imageName = product?.fullscreenImageName {
-      productImageView.image = UIImage(named: imageName)
+    var product: Product?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        productNameLabel.text = product?.name
+        
+        if let imageName = product?.fullscreenImageName {
+            productImageView.image = UIImage(named: imageName)
+        }
     }
-  }
+}
 
-  @IBAction func addToCartPressed(_ sender: AnyObject) {
-    print("Hello World")
-  }
+// MARK: - Action
+extension ProductViewController {
+    @IBAction func addToCartPressed(_ sender: AnyObject) {
+        print("Hello World")
+    }
 }
