@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
   @IBOutlet weak var todoDatePicker: UIDatePicker!
   
   var todo: ToDoItem?
+  var todoEdited:((ToDoItem?) -> ())!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -88,16 +89,17 @@ class DetailViewController: UIViewController {
       image = "travel-selected"
     }
     
-    if let todo = todo {
-      todo.image = image
-      todo.title = todoTitleLabel.text!
-      todo.date = todoDatePicker.date
+    if (todo != nil) {
+      todo?.image = image
+      todo?.title = todoTitleLabel.text!
+      todo?.date = todoDatePicker.date
     } else {
       let uuid = UUID().uuidString
       todo = ToDoItem(id: uuid, image: image, title: todoTitleLabel.text!, date: todoDatePicker.date)
       todos.append(todo!)
     }
     
+    todoEdited!(todo!)
     let _ = navigationController?.popToRootViewController(animated: true)
   }
   
