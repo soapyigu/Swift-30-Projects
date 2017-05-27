@@ -148,6 +148,7 @@
 				TargetAttributes = {
 					A2D7F3041C8CE3F60097399A = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 76BCYURHQ5;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -313,6 +314,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 76BCYURHQ5;
 				INFOPLIST_FILE = Artistry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RW.Artistry;
@@ -326,6 +328,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 76BCYURHQ5;
 				INFOPLIST_FILE = Artistry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RW.Artistry;
