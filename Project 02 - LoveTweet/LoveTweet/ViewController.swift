@@ -8,7 +8,7 @@
 import UIKit
 import Social
 
-var tweet:String = ""
+var tweet: String?
 
 class ViewController: UIViewController {
   
@@ -22,6 +22,7 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
   }
   
   @IBAction func salaryHandler(_ sender: AnyObject) {
