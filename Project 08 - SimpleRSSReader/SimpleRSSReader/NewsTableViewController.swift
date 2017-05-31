@@ -66,9 +66,8 @@ class NewsTableViewController: UITableViewController {
     
     let cell = tableView.cellForRow(at: indexPath) as! NewsTableViewCell
     
-    tableView.beginUpdates()
     cell.descriptionLabel.numberOfLines = cell.descriptionLabel.numberOfLines == 4 ? 0 : 4
     cellStates?[indexPath.row] = cell.descriptionLabel.numberOfLines == 4 ? .collapsed : .expanded
-    tableView.endUpdates()
+    tableView.reloadRows(at: [indexPath], with: .fade)
   }
 }
