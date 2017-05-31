@@ -44,7 +44,7 @@ class MasterTableViewCell: UITableViewCell {
   }
   
   fileprivate func setupNotification(_ pokeImageUrl: String) {
-    NotificationCenter.default.post(name: Notification.Name(rawValue: downloadImageNotification), object: self, userInfo: ["pokeImageView":pokeImageView, "pokeImageUrl" : pokeImageUrl])
+    NotificationCenter.default.post(name: Notification.Name.download.image, object: self, userInfo: ["pokeImageView":pokeImageView, "pokeImageUrl" : pokeImageUrl])
   }
 
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

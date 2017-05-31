@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A996E0B1EDEAC9300661278 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A996E0A1EDEAC9300661278 /* RxSwift.framework */; };
 		190ADE651D330B26001D5867 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE641D330B26001D5867 /* AppDelegate.swift */; };
 		190ADE6A1D330B26001D5867 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190ADE681D330B26001D5867 /* Main.storyboard */; };
 		190ADE6C1D330B26001D5867 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190ADE6B1D330B26001D5867 /* Assets.xcassets */; };
@@ -14,7 +15,7 @@
 		190ADE771D330C98001D5867 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE761D330C98001D5867 /* MasterViewController.swift */; };
 		190ADE7A1D330D88001D5867 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE791D330D88001D5867 /* Pokemon.swift */; };
 		190ADE7D1D3310AE001D5867 /* MasterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE7C1D3310AE001D5867 /* MasterTableViewCell.swift */; };
-		190ADE801D3314FC001D5867 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE7F1D3314FC001D5867 /* Constants.swift */; };
+		190ADE801D3314FC001D5867 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE7F1D3314FC001D5867 /* Notification.swift */; };
 		190ADE821D331811001D5867 /* PokemonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE811D331811001D5867 /* PokemonConstants.swift */; };
 		190ADE851D336751001D5867 /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE841D336751001D5867 /* LibraryAPI.swift */; };
 		190ADE8E1D3755D2001D5867 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190ADE8D1D3755D2001D5867 /* DetailViewController.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		00F6EED19D6F6944DB5ED6FF /* Pods_PokedexGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokedexGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A996E0A1EDEAC9300661278 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/PokedexGo-azlmrmolblkkekexbbbtjjvsfzuj/Build/Products/Debug-iphoneos/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
 		190ADE611D330B26001D5867 /* PokedexGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokedexGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		190ADE641D330B26001D5867 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		190ADE691D330B26001D5867 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -33,7 +35,7 @@
 		190ADE761D330C98001D5867 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		190ADE791D330D88001D5867 /* Pokemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		190ADE7C1D3310AE001D5867 /* MasterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewCell.swift; sourceTree = "<group>"; };
-		190ADE7F1D3314FC001D5867 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		190ADE7F1D3314FC001D5867 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		190ADE811D331811001D5867 /* PokemonConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonConstants.swift; sourceTree = "<group>"; };
 		190ADE841D336751001D5867 /* LibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
 		190ADE8D1D3755D2001D5867 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A996E0B1EDEAC9300661278 /* RxSwift.framework in Frameworks */,
 				E6B7B20510C3EB129314C709 /* Pods_PokedexGo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				190ADE811D331811001D5867 /* PokemonConstants.swift */,
-				190ADE7F1D3314FC001D5867 /* Constants.swift */,
+				190ADE7F1D3314FC001D5867 /* Notification.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 		8B35E0221F7DA9144C2715C4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A996E0A1EDEAC9300661278 /* RxSwift.framework */,
 				00F6EED19D6F6944DB5ED6FF /* Pods_PokedexGo.framework */,
 			);
 			name = Frameworks;
@@ -184,6 +188,7 @@
 				TargetAttributes = {
 					190ADE601D330B26001D5867 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 76BCYURHQ5;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -272,7 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				190ADE801D3314FC001D5867 /* Constants.swift in Sources */,
+				190ADE801D3314FC001D5867 /* Notification.swift in Sources */,
 				190ADE771D330C98001D5867 /* MasterViewController.swift in Sources */,
 				190ADE651D330B26001D5867 /* AppDelegate.swift in Sources */,
 				190ADE821D331811001D5867 /* PokemonConstants.swift in Sources */,
@@ -402,6 +407,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 76BCYURHQ5;
 				INFOPLIST_FILE = PokedexGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yigu.PokedexGo;
@@ -416,6 +422,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 76BCYURHQ5;
 				INFOPLIST_FILE = PokedexGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yigu.PokedexGo;

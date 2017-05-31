@@ -15,7 +15,7 @@ class LibraryAPI: NSObject {
   fileprivate override init() {
     super.init()
     
-    NotificationCenter.default.addObserver(self, selector:#selector(LibraryAPI.downloadImage(_:)), name: NSNotification.Name(rawValue: downloadImageNotification), object: nil)
+    NotificationCenter.default.addObserver(self, selector:#selector(LibraryAPI.downloadImage(_:)), name: Notification.Name.download.image, object: nil)
   }
   
   deinit {
