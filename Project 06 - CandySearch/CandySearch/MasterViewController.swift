@@ -62,6 +62,7 @@ class MasterViewController: UITableViewController {
     tableView.tableHeaderView = searchController.searchBar
     searchController.searchBar.scopeButtonTitles = ["All", "Chocolate", "Hard", "Other"]
     searchController.searchBar.delegate = self
+//    searchController.hidesNavigationBarDuringPresentation = false
   }
   
   func filterContentForSearchText(_ searchText: String, scope: String = "All") {
