@@ -8,17 +8,17 @@
 import UIKit
 import Social
 
-var tweet:String = ""
 
 class ViewController: UIViewController {
+  var tweet: String?
   
   // MARK: Outlets
-  @IBOutlet weak var nameTextField: UITextField!
-  @IBOutlet weak var genderSeg: UISegmentedControl!
-  @IBOutlet weak var birthdayPicker: UIDatePicker!
-  @IBOutlet weak var workTextField: UITextField!
   @IBOutlet weak var salaryLabel: UILabel!
   @IBOutlet weak var straightSwitch: UISwitch!
+  @IBOutlet weak var nameTextField: UITextField!
+  @IBOutlet weak var workTextField: UITextField!
+  @IBOutlet weak var birthdayPicker: UIDatePicker!
+  @IBOutlet weak var genderSeg: UISegmentedControl!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -32,25 +32,27 @@ class ViewController: UIViewController {
   
   @IBAction func tweetTapped(_ sender: AnyObject) {
     guard let name = nameTextField.text,
-          let work = workTextField.text,
-          let salary = salaryLabel.text else {
-            return
+      let work = workTextField.text,
+      let salary = salaryLabel.text
+      else {
+        return
     }
+    
     if name == "" || work == "" || salary == "" {
-        showAlert("Info Miss", message: "Please fill out the form", buttonTitle: "Ok")
+      showAlert("Info Miss", message: "Please fill out the form", buttonTitle: "Ok")
     }
     
-    // get age
-    let gregorian = Calendar(identifier: Calendar.Identifier.gregorian)
+    // MARK: Get age
     let now = Date()
+    let gregorian = Calendar(identifier: Calendar.Identifier.gregorian)
     let components = (gregorian as NSCalendar?)?.components(NSCalendar.Unit.year, from: birthdayPicker.date, to: now, options: [])
-    let age:Int! = components?.year
+    let age: Int? = components?.year
     
-    var interestedIn:String! = "Women"
+    
+    var interestedIn: String! = "Women"
     if (genderSeg.selectedSegmentIndex == 0 && !straightSwitch.isOn) {
       interestedIn = "Men"
-    }
-    if (genderSeg.selectedSegmentIndex == 1 && straightSwitch.isOn ) {
+    } else if (genderSeg.selectedSegmentIndex == 1 && straightSwitch.isOn ) {
       interestedIn = "Women"
     }
     
@@ -60,8 +62,8 @@ class ViewController: UIViewController {
   }
   
   fileprivate func tweetSLCVC(_ tweet: String) {
-    if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter){
-      let twitterController:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+    if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
+      let twitterController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
       twitterController.setInitialText(tweet)
       self.present(twitterController, animated: true, completion: nil)
     } else {
@@ -69,16 +71,16 @@ class ViewController: UIViewController {
     }
   }
   
-  fileprivate func showAlert(_ title:String, message:String, buttonTitle:String) {
-    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-    alert.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default, handler: nil))
+  fileprivate func showAlert(_ title: String, message: String, buttonTitle: String) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: nil))
     self.present(alert, animated: true, completion: nil)
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     super.touchesBegan(touches, with: event)
     
-    // dismiss keyboard
+    // MARK: Dismiss keyboard
     view.endEditing(true)
   }
 }
