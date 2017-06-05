@@ -26,7 +26,6 @@ class ViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    todoTableView.reloadData()
   }
   
   // MARK - helper func
@@ -56,6 +55,10 @@ class ViewController: UIViewController {
       let indexPath = todoTableView.indexPathForSelectedRow
       if let indexPath = indexPath {
         vc.todo = todos[(indexPath as NSIndexPath).row]
+        vc.todoEdited = {todo in
+            todos[(indexPath as NSIndexPath).row] = todo!
+            self.todoTableView.reloadData()
+        }
       }
     }
   }

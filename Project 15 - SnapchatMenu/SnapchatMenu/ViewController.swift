@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     
     /// Set up contentSize and contentOffset.
     scrollView.contentSize = CGSize(width: view.frame.width * 4, height: view.frame.height)
-    scrollView.contentOffset.x = view.frame.width
+    scrollView.contentOffset.x = view.frame.width * 2
   }
   
   override var prefersStatusBarHidden: Bool {

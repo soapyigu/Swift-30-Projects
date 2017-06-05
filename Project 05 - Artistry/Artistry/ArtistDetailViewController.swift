@@ -39,7 +39,7 @@ class ArtistDetailViewController: UIViewController {
     
     NotificationCenter.default.addObserver(forName: .UIContentSizeCategoryDidChange, object: .none, queue: OperationQueue.main) { [weak self] _ in
       self?.tableView.reloadData()
-    }
+    }//系统字体改变
   }
 }
 
@@ -85,10 +85,11 @@ extension ArtistDetailViewController: UITableViewDelegate {
     cell.moreInfoTextView.text = work.isExpanded ? work.info : moreInfoText
     cell.moreInfoTextView.textAlignment = work.isExpanded ? .left : .center
     
-    tableView.beginUpdates()
-    tableView.endUpdates()
+//    tableView.beginUpdates()
+//    tableView.endUpdates()
+    tableView.reloadData()
     
-    tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+//    tableView.scrollToRow(at: indexPath, at: .top, animated: true)
   }
 }
 

@@ -105,7 +105,7 @@
 				TargetAttributes = {
 					19515F891C8558F800DC2284 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 44JDRP3T56;
+						DevelopmentTeam = 76BCYURHQ5;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -269,6 +269,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 76BCYURHQ5;
 				INFOPLIST_FILE = Todo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yigu.Todo;
@@ -282,6 +283,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 76BCYURHQ5;
 				INFOPLIST_FILE = Todo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yigu.Todo;

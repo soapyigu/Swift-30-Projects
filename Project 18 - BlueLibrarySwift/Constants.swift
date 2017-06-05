@@ -8,4 +8,10 @@
 
 import Foundation
 
-let downloadImageNotification        = "BLDownloadImageNotification"
+extension Notification.Name{
+    
+    public struct Task {
+        public static let downloadImage = Notification.Name(rawValue: "BLDownloadImageNotification")
+    }
+    
+}

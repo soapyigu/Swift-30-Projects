@@ -28,13 +28,6 @@ struct Artist {
   let image: UIImage
   var works: [Work]
   
-  init(name: String, bio: String, image: UIImage, works: [Work]) {
-    self.name = name
-    self.bio = bio
-    self.image = image
-    self.works = works
-  }
-  
   static func artistsFromBundle() -> [Artist] {
     
     var artists = [Artist]()

@@ -138,7 +138,7 @@
 				TargetAttributes = {
 					198BAEA11E18DBE700D3616F = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 44JDRP3T56;
+						DevelopmentTeam = 76BCYURHQ5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -309,7 +309,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 44JDRP3T56;
+				DEVELOPMENT_TEAM = 76BCYURHQ5;
 				INFOPLIST_FILE = SnapchatMenu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -323,7 +323,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 44JDRP3T56;
+				DEVELOPMENT_TEAM = 76BCYURHQ5;
 				INFOPLIST_FILE = SnapchatMenu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

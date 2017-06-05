@@ -129,6 +129,7 @@
 				TargetAttributes = {
 					192BA0F01CD3293100117FF6 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 76BCYURHQ5;
 						LastSwiftMigration = 0820;
 					};
 				};
@@ -291,6 +292,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 76BCYURHQ5;
 				INFOPLIST_FILE = SpotifySignIn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -304,6 +306,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 76BCYURHQ5;
 				INFOPLIST_FILE = SpotifySignIn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
