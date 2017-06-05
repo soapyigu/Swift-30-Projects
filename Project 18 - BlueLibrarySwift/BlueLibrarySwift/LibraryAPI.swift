@@ -24,7 +24,7 @@ class LibraryAPI: NSObject {
     
     super.init()
     
-    NotificationCenter.default.addObserver(self, selector:#selector(LibraryAPI.downloadImage(_:)), name: NSNotification.Name(rawValue: downloadImageNotification), object: nil)
+    NotificationCenter.default.addObserver(self, selector:#selector(LibraryAPI.downloadImage(_:)), name: Notification.Name.Task.downloadImage, object: nil)
   }
   
   deinit {

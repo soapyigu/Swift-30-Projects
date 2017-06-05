@@ -227,6 +227,7 @@
 				TargetAttributes = {
 					101DD6C41A052EDE00161F0D = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 76BCYURHQ5;
 						LastSwiftMigration = 0800;
 					};
 					101DD6D91A052EDE00161F0D = {
@@ -422,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 76BCYURHQ5;
 				INFOPLIST_FILE = BlueLibrarySwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Raywenderlich.$(PRODUCT_NAME:rfc1034identifier)";
@@ -434,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 76BCYURHQ5;
 				INFOPLIST_FILE = BlueLibrarySwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Raywenderlich.$(PRODUCT_NAME:rfc1034identifier)";
