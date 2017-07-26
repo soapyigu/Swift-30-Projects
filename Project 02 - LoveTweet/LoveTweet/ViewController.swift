@@ -9,7 +9,7 @@ import UIKit
 import Social
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
   var tweet: String?
   
   // MARK: Outlets
@@ -22,6 +22,10 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+    self.view.addGestureRecognizer(tap)
+    
   }
   
   @IBAction func salaryHandler(_ sender: AnyObject) {
@@ -53,7 +57,7 @@ class ViewController: UIViewController {
     if (genderSeg.selectedSegmentIndex == 0 && !straightSwitch.isOn) {
       interestedIn = "Men"
     } else if (genderSeg.selectedSegmentIndex == 1 && straightSwitch.isOn ) {
-      interestedIn = "Women"
+      interestedIn = "Men"
     }
     
     let tweet = "Hi, I am \(name). As a \(age!)-year-old \(work) earning \(salary)/year, I am interested in \(interestedIn). Feel free to contact me!"
@@ -83,5 +87,34 @@ class ViewController: UIViewController {
     // MARK: Dismiss keyboard
     view.endEditing(true)
   }
+    
+    func animateTextField(textField: UITextField, up: Bool) {
+        let movementDistance: CGFloat = -130
+        let movementDuration: Double = 0.3
+        
+        var movement: CGFloat = 0
+        if up {
+            movement = movementDistance
+        } else {
+            movement = -movementDistance
+        }
+        
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
+        
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        animateTextField(textField: textField, up: true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.animateTextField(textField: textField, up: false)
+    }
+    
+    
+
 }
 
