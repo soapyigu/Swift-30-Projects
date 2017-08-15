@@ -8,10 +8,7 @@
 import UIKit
 import Social
 
-
 class ViewController: UIViewController {
-  var tweet: String?
-  
   // MARK: Outlets
   @IBOutlet weak var salaryLabel: UILabel!
   @IBOutlet weak var straightSwitch: UISwitch!
@@ -22,50 +19,68 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    birthdayPicker.maximumDate = Date()
+    
+    // dismiss keyboard
+    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+    
+    nameTextField.delegate = self
+    workTextField.delegate = self
   }
   
-  @IBAction func salaryHandler(_ sender: AnyObject) {
-    let slider = sender as! UISlider
-    let i = Int(slider.value)
-    salaryLabel.text = "$\(i)k"
+  @IBAction func salarySliderValueDidChange(_ sender: UISlider) {
+    salaryLabel.text = "$\((Int)(sender.value))k"
   }
   
-  @IBAction func tweetTapped(_ sender: AnyObject) {
-    guard let name = nameTextField.text,
-      let work = workTextField.text,
-      let salary = salaryLabel.text
-      else {
-        return
+  @IBAction func tweetButtonDidTap(_ sender: UIButton) {
+    func getLabelsInfo() -> (String?, String?, String?) {
+      guard let name = nameTextField.text,
+        let work = workTextField.text,
+        let salary = salaryLabel.text
+        else {
+          return (nil, nil, nil)
+      }
+      
+      if name == "" || work == "" || salary == "" {
+        return (nil, nil, nil)
+      }
+      
+      return (name, work, salary)
     }
     
-    if name == "" || work == "" || salary == "" {
-      showAlert("Info Miss", message: "Please fill out the form", buttonTitle: "Ok")
+    func getAge() -> Int? {
+      let ageComponents = Calendar.current.dateComponents([.year], from: birthdayPicker.date)
+      return ageComponents.year
     }
     
-    // MARK: Get age
-    let now = Date()
-    let gregorian = Calendar(identifier: Calendar.Identifier.gregorian)
-    let components = (gregorian as NSCalendar?)?.components(NSCalendar.Unit.year, from: birthdayPicker.date, to: now, options: [])
-    let age: Int? = components?.year
-    
-    
-    var interestedIn: String! = "Women"
-    if (genderSeg.selectedSegmentIndex == 0 && !straightSwitch.isOn) {
-      interestedIn = "Men"
-    } else if (genderSeg.selectedSegmentIndex == 1 && straightSwitch.isOn ) {
-      interestedIn = "Women"
+    func getGenderInterest() -> String {
+      if (genderSeg.selectedSegmentIndex == 0 && straightSwitch.isOn) {
+        return "Women"
+      } else if (genderSeg.selectedSegmentIndex == 1 && !straightSwitch.isOn) {
+        return "Women"
+      }
+      
+      return "Men"
     }
     
-    let tweet = "Hi, I am \(name). As a \(age!)-year-old \(work) earning \(salary)/year, I am interested in \(interestedIn). Feel free to contact me!"
+    let labelsInfo = getLabelsInfo()
     
-    tweetSLCVC(tweet)
+    guard let name = labelsInfo.0, let work = labelsInfo.1, let salary = labelsInfo.2, let age = getAge() else {
+      showAlert("Info miss or invalid", message: "Please fill out correct personal info", buttonTitle: "OK")
+      return
+    }
+    
+    let tweetMessenge = "Hi, I am \(name). As a \(age)-year-old \(work) earning \(salary)/year, I am interested in \(getGenderInterest()). Feel free to contact me!"
+    
+    tweet(messenge: tweetMessenge)
   }
   
-  fileprivate func tweetSLCVC(_ tweet: String) {
+  fileprivate func tweet(messenge m: String) {
     if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
       let twitterController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-      twitterController.setInitialText(tweet)
-      self.present(twitterController, animated: true, completion: nil)
+      twitterController.setInitialText(m)
+      present(twitterController, animated: true, completion: nil)
     } else {
       showAlert("Twitter Unavailable", message: "Please configure your twitter account on device", buttonTitle: "Ok")
     }
@@ -74,14 +89,13 @@ class ViewController: UIViewController {
   fileprivate func showAlert(_ title: String, message: String, buttonTitle: String) {
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: nil))
-    self.present(alert, animated: true, completion: nil)
-  }
-  
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    super.touchesBegan(touches, with: event)
-    
-    // MARK: Dismiss keyboard
-    view.endEditing(true)
+    present(alert, animated: true, completion: nil)
   }
 }
 
+extension ViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
+  }
+}

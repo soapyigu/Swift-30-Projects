@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3Xh-Qq-o96">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3Xh-Qq-o96">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -64,14 +64,17 @@
                                                     </segmentedControl>
                                                 </subviews>
                                             </stackView>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="90z-bX-hRg">
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90z-bX-hRg">
                                                 <rect key="frame" x="62" y="296" width="250" height="130"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="Hvf-HF-aTI"/>
                                                     <constraint firstAttribute="height" constant="130" id="cgV-39-B49"/>
                                                 </constraints>
-                                                <date key="date" timeIntervalSinceReferenceDate="477268610.69773197">
-                                                    <!--2016-02-15 22:36:50 +0000-->
+                                                <date key="date" timeIntervalSinceReferenceDate="-184694399.30226898">
+                                                    <!--1995-02-24 08:00:00 +0000-->
+                                                </date>
+                                                <date key="minimumDate" timeIntervalSinceReferenceDate="-2650809600">
+                                                    <!--1917-01-01 08:00:00 +0000-->
                                                 </date>
                                             </datePicker>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeN-0S-PKE">
@@ -117,7 +120,7 @@
                                                                     <constraint firstAttribute="width" constant="180" id="2NI-R0-JLE"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <action selector="salaryHandler:" destination="3Xh-Qq-o96" eventType="valueChanged" id="hX4-k2-Uos"/>
+                                                                    <action selector="salarySliderValueDidChange:" destination="3Xh-Qq-o96" eventType="valueChanged" id="wCq-jR-lEO"/>
                                                                 </connections>
                                                             </slider>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100k" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaJ-lZ-6sq">
@@ -148,7 +151,7 @@
                                                 <rect key="frame" x="158" y="617" width="59" height="30"/>
                                                 <state key="normal" title="Tweet it!"/>
                                                 <connections>
-                                                    <action selector="tweetTapped:" destination="3Xh-Qq-o96" eventType="touchUpInside" id="3o4-En-pqi"/>
+                                                    <action selector="tweetButtonDidTap:" destination="3Xh-Qq-o96" eventType="touchUpInside" id="1sX-fT-GAX"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LoveTweet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LL-h7-5GV">
