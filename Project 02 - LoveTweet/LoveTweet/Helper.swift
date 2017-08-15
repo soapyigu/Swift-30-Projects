@@ -39,5 +39,4 @@ extension UIViewController {
     alert.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: nil))
     present(alert, animated: true, completion: nil)
   }
-  
 }
