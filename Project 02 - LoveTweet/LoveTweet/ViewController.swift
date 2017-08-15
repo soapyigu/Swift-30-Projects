@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Social
 
 class ViewController: UIViewController {
   // MARK: Outlets
@@ -23,7 +22,7 @@ class ViewController: UIViewController {
     birthdayPicker.maximumDate = Date()
     
     // dismiss keyboard
-    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector.endEditing))
     
     nameTextField.delegate = self
     workTextField.delegate = self
@@ -34,7 +33,7 @@ class ViewController: UIViewController {
   }
   
   @IBAction func tweetButtonDidTap(_ sender: UIButton) {
-    func getLabelsInfo() -> (String?, String?, String?) {
+    func getLabelsInfo() -> (name: String?, work: String?, salary: String?) {
       guard let name = nameTextField.text,
         let work = workTextField.text,
         let salary = salaryLabel.text
@@ -42,7 +41,7 @@ class ViewController: UIViewController {
           return (nil, nil, nil)
       }
       
-      if name == "" || work == "" || salary == "" {
+      if name.isEmpty || work.isEmpty || salary.isEmpty {
         return (nil, nil, nil)
       }
       
@@ -55,41 +54,39 @@ class ViewController: UIViewController {
     }
     
     func getGenderInterest() -> String {
-      if (genderSeg.selectedSegmentIndex == 0 && straightSwitch.isOn) {
-        return "Women"
-      } else if (genderSeg.selectedSegmentIndex == 1 && !straightSwitch.isOn) {
-        return "Women"
+      if straightSwitch.isOn {
+        switch genderSeg.selectedSegmentIndex {
+        case Gender.Female.rawValue:
+          return InterestedGender.MEN.rawValue
+        case Gender.Male.rawValue:
+          return InterestedGender.WOMEN.rawValue
+        default:
+          fatalError()
+        }
+      } else {
+        switch genderSeg.selectedSegmentIndex {
+        case Gender.Female.rawValue:
+          return InterestedGender.WOMEN.rawValue
+        case Gender.Male.rawValue:
+          return InterestedGender.MEN.rawValue
+        default:
+          fatalError()
+        }
       }
-      
-      return "Men"
     }
     
     let labelsInfo = getLabelsInfo()
     
-    guard let name = labelsInfo.0, let work = labelsInfo.1, let salary = labelsInfo.2, let age = getAge() else {
-      showAlert("Info miss or invalid", message: "Please fill out correct personal info", buttonTitle: "OK")
+    guard let name = labelsInfo.name, let work = labelsInfo.work, let salary = labelsInfo.salary, let age = getAge() else {
+      showAlert(title: "Info miss or invalid",
+                       message: "Please fill out correct personal info",
+                       buttonTitle: "OK")
       return
     }
     
     let tweetMessenge = "Hi, I am \(name). As a \(age)-year-old \(work) earning \(salary)/year, I am interested in \(getGenderInterest()). Feel free to contact me!"
     
     tweet(messenge: tweetMessenge)
-  }
-  
-  fileprivate func tweet(messenge m: String) {
-    if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
-      let twitterController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-      twitterController.setInitialText(m)
-      present(twitterController, animated: true, completion: nil)
-    } else {
-      showAlert("Twitter Unavailable", message: "Please configure your twitter account on device", buttonTitle: "Ok")
-    }
-  }
-  
-  fileprivate func showAlert(_ title: String, message: String, buttonTitle: String) {
-    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: nil))
-    present(alert, animated: true, completion: nil)
   }
 }
 
