@@ -8,6 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+  var tweet: Tweet?
+  
   // MARK: Outlets
   @IBOutlet weak var salaryLabel: UILabel!
   @IBOutlet weak var straightSwitch: UISwitch!
@@ -49,44 +51,29 @@ class ViewController: UIViewController {
     }
     
     func getAge() -> Int? {
-      let ageComponents = Calendar.current.dateComponents([.year], from: birthdayPicker.date)
+      let ageComponents = Calendar.current.dateComponents([.year], from: birthdayPicker.date, to: Date())
       return ageComponents.year
     }
     
-    func getGenderInterest() -> String {
-      if straightSwitch.isOn {
-        switch genderSeg.selectedSegmentIndex {
-        case Gender.Female.rawValue:
-          return InterestedGender.MEN.rawValue
-        case Gender.Male.rawValue:
-          return InterestedGender.WOMEN.rawValue
-        default:
-          fatalError()
-        }
-      } else {
-        switch genderSeg.selectedSegmentIndex {
-        case Gender.Female.rawValue:
-          return InterestedGender.WOMEN.rawValue
-        case Gender.Male.rawValue:
-          return InterestedGender.MEN.rawValue
-        default:
-          fatalError()
-        }
-      }
-    }
-    
+    // get tweet info
     let labelsInfo = getLabelsInfo()
     
-    guard let name = labelsInfo.name, let work = labelsInfo.work, let salary = labelsInfo.salary, let age = getAge() else {
-      showAlert(title: "Info miss or invalid",
-                       message: "Please fill out correct personal info",
-                       buttonTitle: "OK")
-      return
+    if let name = labelsInfo.name, let work = labelsInfo.work, let salary = labelsInfo.salary, let age = getAge() {
+      tweet = Tweet(gender: Gender(rawValue: genderSeg.selectedSegmentIndex)!, name: name, age: age, work: work, salary: salary, isStraight: straightSwitch.isOn)
+    } else {
+      tweet = nil
     }
     
-    let tweetMessenge = "Hi, I am \(name). As a \(age)-year-old \(work) earning \(salary)/year, I am interested in \(getGenderInterest()). Feel free to contact me!"
-    
-    tweet(messenge: tweetMessenge)
+    if let tweet = tweet {
+      showAlert(title: "Love Tweet",
+                message: tweet.info,
+                buttonTitle: "OK")
+    } else {
+      showAlert(title: "Info miss or invalid",
+                message: "Please fill out correct personal info",
+                buttonTitle: "OK")
+      
+    }
   }
 }
 
