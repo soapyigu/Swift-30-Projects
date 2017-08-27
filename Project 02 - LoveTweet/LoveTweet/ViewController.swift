@@ -64,15 +64,16 @@ class ViewController: UIViewController {
       tweet = nil
     }
     
-    if let tweet = tweet {
-      showAlert(title: "Love Tweet",
-                message: tweet.info,
-                buttonTitle: "OK")
-    } else {
+    switch tweet {
+    case nil:
       showAlert(title: "Info miss or invalid",
                 message: "Please fill out correct personal info",
                 buttonTitle: "OK")
-      
+    default:
+      showAlert(title: "Love Tweet",
+                message: tweet!.info,
+                buttonTitle: "OK")
+
     }
   }
 }
