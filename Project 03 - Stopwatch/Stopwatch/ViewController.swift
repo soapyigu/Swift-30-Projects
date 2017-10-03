@@ -112,11 +112,11 @@ class ViewController: UIViewController, UITableViewDelegate {
   }
   
   // MARK: update two timer labels seperately
-  func updateMainTimer() {
+  @objc func updateMainTimer() {
     updateTimer(mainStopwatch, label: timerLabel)
   }
   
-  func updateLapTimer() {
+  @objc func updateLapTimer() {
     updateTimer(lapStopwatch, label: lapTimerLabel)
   }
   
