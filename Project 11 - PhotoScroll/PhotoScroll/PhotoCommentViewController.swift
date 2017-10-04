@@ -56,19 +56,19 @@ class PhotoCommentViewController: UIViewController {
     scrollView.scrollIndicatorInsets.bottom += adjustmentHeight
   }
   
-  func dismissKeyboard() {
+  @objc func dismissKeyboard() {
     view.endEditing(true)
   }
   
-  func keyboardWillShow(notification: Notification) {
+  @objc func keyboardWillShow(notification: Notification) {
     adjustInsetForKeyboard(isShow: true, notification: notification)
   }
   
-  func keyboardWillHide(notification: Notification) {
+  @objc func keyboardWillHide(notification: Notification) {
     adjustInsetForKeyboard(isShow: false, notification: notification)
   }
   
-  func openZoomingController(sender: AnyObject) {
+  @objc func openZoomingController(sender: AnyObject) {
     performSegue(withIdentifier: "zooming", sender: nil)
   }
   

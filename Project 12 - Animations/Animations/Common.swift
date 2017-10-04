@@ -21,7 +21,7 @@ func drawRectView(_ color: UIColor, frame: CGRect, center: CGPoint) -> UIView {
 }
 
 func drawCircleView() -> UIView {
-  let circlePath = UIBezierPath(arcCenter: CGPoint(x: 100,y: screenRect.midY - 50), radius: CGFloat(20), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
+  let circlePath = UIBezierPath(arcCenter: CGPoint(x: 100,y: screenRect.midY - 50), radius: CGFloat(20), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
   
   let shapeLayer = CAShapeLayer()
   shapeLayer.path = circlePath.cgPath
