@@ -71,7 +71,7 @@ class HorizontalScroller: UIView {
   }
   
   // MARK: - Public Functions
-  func scrollerTapped(_ gesture: UITapGestureRecognizer) {
+  @objc func scrollerTapped(_ gesture: UITapGestureRecognizer) {
     let location = gesture.location(in: gesture.view)
     
     guard let delegate = delegate else {
