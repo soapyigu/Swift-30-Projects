@@ -50,7 +50,7 @@ class LibraryAPI: NSObject {
     }
   }
   
-  func downloadImage(_ notification: Notification) {
+  @objc func downloadImage(_ notification: Notification) {
     // retrieve info from notification
     let userInfo = (notification as NSNotification).userInfo as! [String: AnyObject]
     let imageView = userInfo["imageView"] as! UIImageView?

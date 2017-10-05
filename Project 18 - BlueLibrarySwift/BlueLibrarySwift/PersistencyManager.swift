@@ -46,7 +46,7 @@ class PersistencyManager: NSObject {
     let album4 = Album(title: "Staring at the Sun",
                        artist: "U2",
                        genre: "Pop",
-                       coverUrl: "http://www.israbox.download/uploads/posts/2011-06/1307606249_u2photo0.jpg",
+                       coverUrl: "http://cdn.u2.com/non_secure/images/20090218/discography/staring_at_the_sun2/600.jpg",
                        year: "2010")
     
     let album5 = Album(title: "Iridescent",
