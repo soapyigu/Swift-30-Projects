@@ -13,25 +13,21 @@ class PhotoStreamViewController: UICollectionViewController {
   
   var photos = Photo.allPhotos()
   
-  override var preferredStatusBarStyle : UIStatusBarStyle {
-    return UIStatusBarStyle.lightContent
-  }
-  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
       layout.delegate = self
     }
+
+    view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Pattern"))
     
-    if let patternImage = UIImage(named: "Pattern") {
-      view.backgroundColor = UIColor(patternImage: patternImage)
+    collectionView!.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    
+    if #available(iOS 11.0, *) {
+      collectionView?.contentInsetAdjustmentBehavior = .always
     }
-    
-    collectionView!.backgroundColor = UIColor.clear
-    collectionView!.contentInset = UIEdgeInsets(top: 23, left: 5, bottom: 10, right: 5)
   }
-  
 }
 
 extension PhotoStreamViewController {
