@@ -8,9 +8,9 @@ This repo focus on usage of:
 * Simple UIKit components
 * UIScrollView, UITableView, UICollectionView
 * CAAnimations and UIView Animations
-* Local Notification in iOS 10
-* MapKit and Contact Frameworks
-* Core Data, Today Extension and 3D touch
+* Local Notification in iOS 11
+* MapKit, Contact Frameworks, and Core ML
+* Core Data, Today Extension, and 3D touch
 * Popular Open Source Frameworks
 * Design Patterns
 
