@@ -35,7 +35,7 @@ class CreateContactViewController: UIViewController {
   
   // MARK: Custom functions
   
-  func createContact() {
+  @objc func createContact() {
     let newContact = CNMutableContact()
     
     newContact.givenName = txtFirstname.text!

@@ -111,7 +111,7 @@ extension AddContactViewController: UITextFieldDelegate {
   
   // MARK: Custom functions
   
-  func performDoneItemTap() {
+  @objc func performDoneItemTap() {
     AppDelegate.appDelegate.requestForAccess { (accessGranted) -> Void in
       if accessGranted {
         var contacts = [CNContact]()

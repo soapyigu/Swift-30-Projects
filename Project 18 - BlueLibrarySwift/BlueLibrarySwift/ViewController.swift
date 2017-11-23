@@ -89,7 +89,7 @@ class ViewController: UIViewController {
   }
   
   // MARK: - Memento Pattern
-  func saveCurrentState() {
+  @objc func saveCurrentState() {
     // When the user leaves the app and then comes back again, he wants it to be in the exact same state
     // he left it. In order to do this we need to save the currently displayed album.
     // Since it's only one piece of information we can use NSUserDefaults.
@@ -120,7 +120,7 @@ class ViewController: UIViewController {
     reloadScroller()
   }
   
-  func deleteAlbum() {
+  @objc func deleteAlbum() {
     // get album
     let deletedAlbum : Album = allAlbums[currentAlbumIndex]
     // add to stack
@@ -140,7 +140,7 @@ class ViewController: UIViewController {
     }
   }
   
-  func undoAction() {
+  @objc func undoAction() {
     let barButtonItems = toolbar.items! as [UIBarButtonItem]
     // pop to undo the last one
     if undoStack.count > 0 {

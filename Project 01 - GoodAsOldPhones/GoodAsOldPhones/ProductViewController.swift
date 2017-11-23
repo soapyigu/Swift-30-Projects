@@ -24,7 +24,7 @@ class ProductViewController: UIViewController {
     }
   }
 
-  @IBAction func addToCartPressed(_ sender: AnyObject) {
-    print("Hello World")
+  @IBAction func addToCartButtonDidTap(_ sender: AnyObject) {
+    print("Add to cart successfully")
   }
 }

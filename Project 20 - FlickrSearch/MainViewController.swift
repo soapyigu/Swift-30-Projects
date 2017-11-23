@@ -81,7 +81,7 @@ class MainViewController: UIViewController {
     collectionView.addGestureRecognizer(longPressGesture)
   }
   
-  func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+  @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
     switch(gesture.state) {
     case UIGestureRecognizerState.began:
       guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {

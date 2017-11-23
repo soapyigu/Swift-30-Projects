@@ -43,13 +43,13 @@ class WeatherSummaryCell: UICollectionViewCell {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.paragraphSpacing = 4
     let subtitleAttributes = [
-      NSFontAttributeName: AppFont(size: 14),
-      NSForegroundColorAttributeName: UIColor(hex6: 0x42c84b),
-      NSParagraphStyleAttributeName: paragraphStyle
+      NSAttributedStringKey.font: AppFont(size: 14),
+      NSAttributedStringKey.foregroundColor: UIColor(hex6: 0x42c84b),
+      NSAttributedStringKey.paragraphStyle: paragraphStyle
     ]
     let titleAttributes = [
-      NSFontAttributeName: AppFont(size: 24),
-      NSForegroundColorAttributeName: UIColor.white
+      NSAttributedStringKey.font: AppFont(size: 24),
+      NSAttributedStringKey.foregroundColor: UIColor.white
     ]
     let attributedText = NSMutableAttributedString(string: "LATEST\n", attributes: subtitleAttributes)
     attributedText.append(NSAttributedString(string: "WEATHER", attributes: titleAttributes))

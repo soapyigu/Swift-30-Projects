@@ -49,7 +49,7 @@ class DetailViewController: UIViewController {
       changeColor(UIColor.green)
       
     case "Simple 2D Rotation":
-      rotateView(M_PI)
+      rotateView(Double.pi)
       
     case "Multicolor":
       multiColor(UIColor.green, UIColor.blue)
