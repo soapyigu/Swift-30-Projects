@@ -3,13 +3,13 @@
 ![Cover](./Cover.jpg)
 
 ## Contents
-This repo focus on usage of:
+This repo is updated with Swift 4.0 and compatible with iPhone X:
 
 * Simple UIKit components
 * UIScrollView, UITableView, UICollectionView
 * CAAnimations and UIView Animations
 * Local Notification in iOS 11
-* MapKit, Contact Frameworks, and Core ML
+* MapKit, Contact, and Core ML frameworks
 * Core Data, Today Extension, and 3D touch
 * Popular Open Source Frameworks
 * Design Patterns
