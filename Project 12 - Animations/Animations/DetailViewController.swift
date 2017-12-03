@@ -102,17 +102,17 @@ class DetailViewController: UIViewController {
     })
   }
   
-  fileprivate func simplePosition(_ pos: CGPoint) {
-    UIView.animate(withDuration: self.duration, animations: {
-      self.animateView.frame.origin = pos
-      }, completion: nil)
-  }
-  
   fileprivate func multiPosition(_ firstPos: CGPoint, _ secondPos: CGPoint) {
+    func simplePosition(_ pos: CGPoint) {
+      UIView.animate(withDuration: self.duration, animations: {
+        self.animateView.frame.origin = pos
+      }, completion: nil)
+    }
+    
     UIView.animate(withDuration: self.duration, animations: {
       self.animateView.frame.origin = firstPos
       }, completion: { finished in
-        self.simplePosition(secondPos)
+        simplePosition(secondPos)
     })
   }
   
