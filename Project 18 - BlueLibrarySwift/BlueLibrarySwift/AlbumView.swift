@@ -57,7 +57,7 @@ class AlbumView: UIView {
   }
   
   fileprivate func setupNotification(_ albumCover: String) {
-    NotificationCenter.default.post(name: Notification.Name(rawValue: downloadImageNotification), object: self, userInfo: ["imageView":coverImage, "coverUrl" : albumCover])
+    NotificationCenter.default.post(name: .BLDownloadImage, object: self, userInfo: ["imageView":coverImage, "coverUrl" : albumCover])
   }
   
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -65,4 +65,8 @@ class AlbumView: UIView {
       indicator.stopAnimating()
     }
   }
+}
+
+extension Notification.Name {
+  static let BLDownloadImage = Notification.Name(downloadImageNotification)
 }
