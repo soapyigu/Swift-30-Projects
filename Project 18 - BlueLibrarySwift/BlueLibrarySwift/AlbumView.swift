@@ -9,8 +9,9 @@
 import UIKit
 
 class AlbumView: UIView {
-  fileprivate var coverImage: UIImageView!
-  fileprivate var indicator: UIActivityIndicatorView!
+  fileprivate var coverImageView: UIImageView!
+  fileprivate var indicatorView: UIActivityIndicatorView!
+  fileprivate var valueObservation: NSKeyValueObservation!
   
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)!
@@ -21,10 +22,6 @@ class AlbumView: UIView {
     super.init(frame: frame)
     commonInit()
     setupNotification(albumCover)
-  }
-  
-  deinit {
-    coverImage.removeObserver(self, forKeyPath: "image")
   }
   
   func commonInit() {
@@ -45,25 +42,24 @@ class AlbumView: UIView {
   }
   
   fileprivate func setupComponents() {
-    coverImage = UIImageView(frame: CGRect(x: 5, y: 5, width: frame.size.width - 10, height: frame.size.height - 10))
-    addSubview(coverImage)
+    coverImageView = UIImageView(frame: CGRect(x: 5, y: 5, width: frame.size.width - 10, height: frame.size.height - 10))
+    valueObservation = coverImageView.observe(\.image, options: [.new]) { [unowned self] observed, change in
+      if change.newValue is UIImage {
+        self.indicatorView.stopAnimating()
+      }
+    }
     
-    indicator = UIActivityIndicatorView()
-    indicator.center = center
-    indicator.activityIndicatorViewStyle = .whiteLarge
-    indicator.startAnimating()
-    addSubview(indicator)
-    coverImage.addObserver(self, forKeyPath: "image", options: [], context: nil)
+    addSubview(coverImageView)
+    
+    indicatorView = UIActivityIndicatorView()
+    indicatorView.center = center
+    indicatorView.activityIndicatorViewStyle = .whiteLarge
+    indicatorView.startAnimating()
+    addSubview(indicatorView)
   }
   
   fileprivate func setupNotification(_ albumCover: String) {
-    NotificationCenter.default.post(name: .BLDownloadImage, object: self, userInfo: ["imageView":coverImage, "coverUrl" : albumCover])
-  }
-  
-  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-    if keyPath == "image" {
-      indicator.stopAnimating()
-    }
+    NotificationCenter.default.post(name: .BLDownloadImage, object: self, userInfo: ["imageView":coverImageView, "coverUrl" : albumCover])
   }
 }
 
