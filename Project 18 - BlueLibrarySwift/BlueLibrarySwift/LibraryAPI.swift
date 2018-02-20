@@ -24,7 +24,7 @@ class LibraryAPI: NSObject {
     
     super.init()
     
-    NotificationCenter.default.addObserver(self, selector:#selector(LibraryAPI.downloadImage(_:)), name: NSNotification.Name(rawValue: downloadImageNotification), object: nil)
+    NotificationCenter.default.addObserver(self, selector: .downloadImage, name: .BLDownloadImage, object: nil)
   }
   
   deinit {
@@ -75,4 +75,8 @@ class LibraryAPI: NSObject {
   func saveAlbums() {
     persistencyManager.saveAlbums()
   }
+}
+
+extension Selector {
+  static let downloadImage = #selector(LibraryAPI.downloadImage(_:))
 }
