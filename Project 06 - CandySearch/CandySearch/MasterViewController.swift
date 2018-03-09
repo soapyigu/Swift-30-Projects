@@ -59,9 +59,15 @@ class MasterViewController: UITableViewController {
     searchController.searchResultsUpdater = self
     searchController.dimsBackgroundDuringPresentation = false
     definesPresentationContext = true
-    tableView.tableHeaderView = searchController.searchBar
     searchController.searchBar.scopeButtonTitles = ["All", "Chocolate", "Hard", "Other"]
     searchController.searchBar.delegate = self
+    if #available(iOS 11, *) {
+        self.navigationItem.searchController = searchController
+        self.navigationItem.searchController?.isActive = true
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+    } else {
+        tableView.tableHeaderView = searchController.searchBar
+    }
   }
   
   func filterContentForSearchText(_ searchText: String, scope: String = "All") {
