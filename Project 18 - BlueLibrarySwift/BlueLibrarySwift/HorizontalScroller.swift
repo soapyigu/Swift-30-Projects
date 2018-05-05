@@ -8,33 +8,43 @@
 
 import UIKit
 
-// Use Delegate and Protocol to implement Adapter Pattern
-@objc protocol HorizontalScrollerDelegate {
-  // num of views to present inside the horizontal scroller
-  func numberOfViewsForHorizontalScroller(_ scroller: HorizontalScroller) -> Int
+// MARK: - DataSource
+protocol HorizontalScrollerDataSource: class {
+  // number of views to present inside the horizontal scroller
+  func numberOfViews(in horizontalScrollerView: HorizontalScrollerView) -> Int
   
-  // return the view that should appear at <index>
-  func horizontalScrollerViewAtIndex(_ scroller: HorizontalScroller, index:Int) -> UIView
-  
-  // inform the delegate what the view at <index> has been clicked
-  func horizontalScrollerClickedViewAtIndex(_ scroller: HorizontalScroller, index:Int)
-  
-  // return the index of the initial view to display. this method is optional
-  // and defaults to 0 if it's not implemented by the delegate
-  @objc optional func initialViewIndex(_ scroller: HorizontalScroller) -> Int
+  // the view that should appear at index
+  func horizontalScrollerView(_ horizontalScrollerView: HorizontalScrollerView, viewAt index: Int) -> UIView
 }
 
-class HorizontalScroller: UIView {
+extension HorizontalScrollerDataSource {
+  func initialViewIndex(_ scroller: HorizontalScrollerView) -> Int {
+    return 0
+  }
+}
+
+// MARK: - Delegate
+protocol HorizontalScrollerDelegate: class {
+  
+  // inform the delegate what the view at <index> has been clicked
+  func horizontalScrollerView(_ horizontalScrollerView: HorizontalScrollerView, didSelectViewAt index: Int)
+}
+
+// MARK: - HorizontalScroller
+class HorizontalScrollerView: UIView {
   weak var delegate: HorizontalScrollerDelegate?
+  weak var dataSource: HorizontalScrollerDataSource?
   
   // MARK: - Variables
-  fileprivate let VIEW_PADDING = 10
-  fileprivate let VIEW_DIMENSIONS = 100
-  fileprivate let VIEWS_OFFSET = 100
+  fileprivate enum ViewConstants {
+    static let Padding: CGFloat = 10
+    static let Dimensions: CGFloat = 100
+    static let Offset: CGFloat = 100
+  }
   
-  fileprivate var scroller : UIScrollView!
+  fileprivate var scroller = UIScrollView()
   
-  var viewArray = [UIView]()
+  fileprivate var contentViews = [UIView]()
   
   // MARK: - Lifecycle
   override init(frame: CGRect) {
@@ -48,20 +58,18 @@ class HorizontalScroller: UIView {
   }
   
   func initializeScrollView() {
-    scroller = UIScrollView()
-    scroller.delegate = self
     addSubview(scroller)
     
     scroller.translatesAutoresizingMaskIntoConstraints = false
     
-    // apply constraints
-    self.addConstraint(NSLayoutConstraint(item: scroller, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0.0))
-    self.addConstraint(NSLayoutConstraint(item: scroller, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0.0))
-    self.addConstraint(NSLayoutConstraint(item: scroller, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
-    self.addConstraint(NSLayoutConstraint(item: scroller, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0))
+    NSLayoutConstraint.activate([
+      scroller.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+      scroller.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+      scroller.topAnchor.constraint(equalTo: self.topAnchor),
+      scroller.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+      ])
     
-    // add tap recognizer
-    let tapRecognizer = UITapGestureRecognizer(target: self, action:#selector(HorizontalScroller.scrollerTapped(_:)))
+    let tapRecognizer = UITapGestureRecognizer(target: self, action: Selector.scrollerDidTap)
     scroller.addGestureRecognizer(tapRecognizer)
   }
   
@@ -70,79 +78,76 @@ class HorizontalScroller: UIView {
     reload()
   }
   
-  // MARK: - Public Functions
-  @objc func scrollerTapped(_ gesture: UITapGestureRecognizer) {
-    let location = gesture.location(in: gesture.view)
-    
-    guard let delegate = delegate else {
+  func scrollToView(at index: Int, animated: Bool = true) {
+    guard index < contentViews.count else {
       return
     }
+    let centralView = contentViews[index]
+    let targetCenter = centralView.center
+    let targetOffsetX = targetCenter.x - (scroller.bounds.width / 2)
+    scroller.setContentOffset(CGPoint(x: targetOffsetX, y: 0), animated: animated)
+  }
+  
+  @objc func scrollerDidTap(_ gesture: UITapGestureRecognizer) {
+    let location = gesture.location(in: gesture.view)
     
-    for index in 0 ..< delegate.numberOfViewsForHorizontalScroller(self) {
-      let view = scroller.subviews[index] 
-      
-      if view.frame.contains(location) {
-        delegate.horizontalScrollerClickedViewAtIndex(self, index: index)
-        
-        // center the tapped view in the scroll view
-        scroller.setContentOffset(CGPoint(x: view.frame.origin.x - self.frame.size.width / 2 + view.frame.size.width / 2, y: 0), animated:true)
-        
-        break
-      }
+    guard let index = contentViews.index(where: { $0.frame.contains(location) })
+      else {
+        return
     }
+    
+    delegate?.horizontalScrollerView(self, didSelectViewAt: index)
+    scrollToView(at: index)
   }
   
   func viewAtIndex(_ index :Int) -> UIView {
-    return viewArray[index]
+    return contentViews[index]
   }
   
   func reload() {
-    // check if there is a delegate, if not there is nothing to load.
-    if let delegate = delegate {
-      // reset viewArray
-      viewArray = []
-      
-      // remove all subviews
-      let views: NSArray = scroller.subviews as NSArray
-      for view in views {
-        (view as AnyObject).removeFromSuperview()
-      }
-      
-      // xValue is the starting point of the views inside the scroller
-      var xValue = VIEWS_OFFSET
-      for index in 0 ..< delegate.numberOfViewsForHorizontalScroller(self) {
-        // add a view at the right position
-        xValue += VIEW_PADDING
-        let view = delegate.horizontalScrollerViewAtIndex(self, index: index)
-        view.frame = CGRect(x: CGFloat(xValue), y: CGFloat(VIEW_PADDING), width: CGFloat(VIEW_DIMENSIONS), height: CGFloat(VIEW_DIMENSIONS))
-        scroller.addSubview(view)
-        xValue += VIEW_DIMENSIONS + VIEW_PADDING
-        
-        // store the view to viewArray
-        viewArray.append(view)
-      }
-      
-      scroller.contentSize = CGSize(width: CGFloat(xValue + VIEWS_OFFSET), height: frame.size.height)
-      
-      // if an initial view is defined, center the scroller on it
-      if let initialView = delegate.initialViewIndex?(self) {
-        scroller.setContentOffset(CGPoint(x: CGFloat(initialView) * CGFloat((VIEW_DIMENSIONS + (2 * VIEW_PADDING))), y: 0), animated: true)
-      }
+    guard let dataSource = dataSource else {
+      return
     }
+    
+    // Remove the old content views
+    contentViews.forEach { $0.removeFromSuperview() }
+    
+    // xValue is the starting point of each view inside the scroller
+    var xValue = ViewConstants.Offset
+    
+    // Fetch and add the new views
+    contentViews = (0..<dataSource.numberOfViews(in: self)).map {
+      index in
+      // 5 - add a view at the right position
+      xValue += ViewConstants.Padding
+      let view = dataSource.horizontalScrollerView(self, viewAt: index)
+      view.frame = CGRect(x: CGFloat(xValue), y: ViewConstants.Padding, width: ViewConstants.Dimensions, height: ViewConstants.Dimensions)
+      scroller.addSubview(view)
+      xValue += ViewConstants.Dimensions + ViewConstants.Padding
+      return view
+    }
+    
+    scroller.contentSize = CGSize(width: CGFloat(xValue + ViewConstants.Offset), height: frame.size.height)
   }
   
   func centerCurrentView() {
-    var xFinal = Int(scroller.contentOffset.x) + (VIEWS_OFFSET / 2) + VIEW_PADDING
-    let viewIndex = xFinal / (VIEW_DIMENSIONS + (2 * VIEW_PADDING))
-    xFinal = viewIndex * (VIEW_DIMENSIONS + (2 * VIEW_PADDING))
-    scroller.setContentOffset(CGPoint(x: xFinal, y: 0), animated: true)
-    if let delegate = delegate {
-      delegate.horizontalScrollerClickedViewAtIndex(self, index: Int(viewIndex))
-    }
+    let centerRect = CGRect(
+      origin: CGPoint(x: scroller.bounds.midX - ViewConstants.Padding, y: 0),
+      size: CGSize(width: ViewConstants.Padding, height: bounds.height)
+    )
+    
+    guard let selectedIndex = contentViews.index(where: { $0.frame.intersects(centerRect) })
+      else { return }
+    let centralView = contentViews[selectedIndex]
+    let targetCenter = centralView.center
+    let targetOffsetX = targetCenter.x - (scroller.bounds.width / 2)
+    
+    scroller.setContentOffset(CGPoint(x: targetOffsetX, y: 0), animated: true)
+    delegate?.horizontalScrollerView(self, didSelectViewAt: selectedIndex)
   }
 }
 
-extension HorizontalScroller: UIScrollViewDelegate {
+extension HorizontalScrollerView: UIScrollViewDelegate {
   func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     if !decelerate {
       centerCurrentView()
@@ -152,4 +157,8 @@ extension HorizontalScroller: UIScrollViewDelegate {
   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
     centerCurrentView()
   }
+}
+
+fileprivate extension Selector {
+  static let scrollerDidTap = #selector(HorizontalScrollerView.scrollerDidTap(_:))
 }

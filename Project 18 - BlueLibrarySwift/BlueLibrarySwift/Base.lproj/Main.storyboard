@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="czm-1W-AnV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="czm-1W-AnV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +14,7 @@
             <objects>
                 <navigationController id="czm-1W-AnV" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OMn-w7-dQo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -34,18 +34,18 @@
                         <viewControllerLayoutGuide type="bottom" id="sKo-9c-XOB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lJK-Fq-lNM">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Neo-nw-t9H">
-                                <rect key="frame" x="0.0" y="492" width="600" height="44"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Neo-nw-t9H">
+                                <rect key="frame" x="0.0" y="559" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.98277209050000003" green="0.98277209050000003" blue="0.98277209050000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="8W8-nb-lnP"/>
                                 </constraints>
                                 <items/>
                             </toolbar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCJ-c6-A01" customClass="HorizontalScroller" customModule="BlueLibrarySwift" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCJ-c6-A01" customClass="HorizontalScrollerView" customModule="BlueLibrarySwift" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                 <color key="backgroundColor" red="0.78837685899999999" green="0.78972791379999996" blue="0.81034482760000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -83,8 +83,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="4JQ-qw-sF2" id="axR-f8-dIu"/>
-                                    <outlet property="delegate" destination="4JQ-qw-sF2" id="jed-qf-15m"/>
+                                    <outlet property="dataSource" destination="4JQ-qw-sF2" id="tDT-rU-nom"/>
+                                    <outlet property="delegate" destination="4JQ-qw-sF2" id="arc-Z7-hUG"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -107,7 +107,7 @@
                     <navigationItem key="navigationItem" title="Pop Music" id="uLL-cE-ggB"/>
                     <connections>
                         <outlet property="dataTable" destination="bug-Yd-y9Q" id="yas-fl-POo"/>
-                        <outlet property="scroller" destination="mCJ-c6-A01" id="guD-OP-yJX"/>
+                        <outlet property="scroller" destination="mCJ-c6-A01" id="cUh-tl-IZz"/>
                         <outlet property="toolbar" destination="Neo-nw-t9H" id="dxl-Oc-qum"/>
                     </connections>
                 </viewController>
