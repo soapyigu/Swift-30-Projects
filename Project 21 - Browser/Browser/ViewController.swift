@@ -21,7 +21,6 @@ class ViewController: UIViewController {
   @IBOutlet weak var reloadButton: UIBarButtonItem!
   
   // MARK: - Parameters
-  // TODO: Design a dynamic mechanism to always display current webpage's url.
   var urlStr: String = "https://www.apple.com"
   
   // MARK: - Lifecycle
@@ -73,6 +72,8 @@ extension ViewController: WKNavigationDelegate {
   }
   
   func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    
+    urlField.text = webView.url?.absoluteString
     
     progressBar.setProgress(0.0, animated: false)
   }
