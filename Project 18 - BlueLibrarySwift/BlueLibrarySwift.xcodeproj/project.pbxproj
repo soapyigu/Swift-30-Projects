@@ -11,7 +11,6 @@
 		0B238FD31CDD1DE900000CB5 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B238FD21CDD1DE900000CB5 /* AlbumView.swift */; };
 		0B238FDD1CDD43CB00000CB5 /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B238FDC1CDD43CB00000CB5 /* LibraryAPI.swift */; };
 		0B238FDF1CDD455A00000CB5 /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B238FDE1CDD455A00000CB5 /* PersistencyManager.swift */; };
-		0B238FE11CDD525E00000CB5 /* AlbumExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B238FE01CDD525E00000CB5 /* AlbumExtensions.swift */; };
 		101DD6CB1A052EDE00161F0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DD6CA1A052EDE00161F0D /* AppDelegate.swift */; };
 		101DD6CD1A052EDE00161F0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DD6CC1A052EDE00161F0D /* ViewController.swift */; };
 		101DD6D01A052EDE00161F0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 101DD6CE1A052EDE00161F0D /* Main.storyboard */; };
@@ -19,6 +18,7 @@
 		101DD6D51A052EDE00161F0D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 101DD6D31A052EDE00161F0D /* LaunchScreen.xib */; };
 		101DD6E11A052EDE00161F0D /* BlueLibrarySwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DD6E01A052EDE00161F0D /* BlueLibrarySwiftTests.swift */; };
 		101DD6EC1A052F0E00161F0D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DD6EB1A052F0E00161F0D /* HTTPClient.swift */; };
+		1936E3ED209E3D9900BDAD0F /* albums.json in Resources */ = {isa = PBXBuildFile; fileRef = 1936E3EC209E3D9900BDAD0F /* albums.json */; };
 		19B5F9151CDFA8BC0067CC4D /* HorizontalScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B5F9141CDFA8BC0067CC4D /* HorizontalScroller.swift */; };
 		19DA519C1CE7929600CE5E80 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DA519B1CE7929600CE5E80 /* Constants.swift */; };
 /* End PBXBuildFile section */
@@ -38,7 +38,6 @@
 		0B238FD21CDD1DE900000CB5 /* AlbumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
 		0B238FDC1CDD43CB00000CB5 /* LibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
 		0B238FDE1CDD455A00000CB5 /* PersistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
-		0B238FE01CDD525E00000CB5 /* AlbumExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumExtensions.swift; sourceTree = "<group>"; };
 		101DD6C51A052EDE00161F0D /* BlueLibrarySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueLibrarySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		101DD6C91A052EDE00161F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		101DD6CA1A052EDE00161F0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +49,7 @@
 		101DD6DF1A052EDE00161F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		101DD6E01A052EDE00161F0D /* BlueLibrarySwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueLibrarySwiftTests.swift; sourceTree = "<group>"; };
 		101DD6EB1A052F0E00161F0D /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		1936E3EC209E3D9900BDAD0F /* albums.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = albums.json; sourceTree = "<group>"; };
 		19B5F9141CDFA8BC0067CC4D /* HorizontalScroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalScroller.swift; sourceTree = "<group>"; };
 		19DA519B1CE7929600CE5E80 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,30 +72,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0B238FD01CDD1AB700000CB5 /* Model */ = {
+		0B238FD01CDD1AB700000CB5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				0B238FCE1CDD1AAB00000CB5 /* Album.swift */,
-				0B238FE01CDD525E00000CB5 /* AlbumExtensions.swift */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
-		0B238FD11CDD1AC000000CB5 /* Controller */ = {
+		0B238FD11CDD1AC000000CB5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				101DD6CC1A052EDE00161F0D /* ViewController.swift */,
 			);
-			name = Controller;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
-		0B238FD41CDD1DF700000CB5 /* View */ = {
+		0B238FD41CDD1DF700000CB5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				101DD6CE1A052EDE00161F0D /* Main.storyboard */,
+				101DD6D31A052EDE00161F0D /* LaunchScreen.xib */,
 				0B238FD21CDD1DE900000CB5 /* AlbumView.swift */,
 				19B5F9141CDFA8BC0067CC4D /* HorizontalScroller.swift */,
 			);
-			name = View;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		101DD6BC1A052EDE00161F0D = {
@@ -121,13 +122,11 @@
 			children = (
 				101DD6CA1A052EDE00161F0D /* AppDelegate.swift */,
 				101DD6EA1A052EE400161F0D /* API */,
-				0B238FD41CDD1DF700000CB5 /* View */,
-				0B238FD11CDD1AC000000CB5 /* Controller */,
-				0B238FD01CDD1AB700000CB5 /* Model */,
+				0B238FD41CDD1DF700000CB5 /* Views */,
+				0B238FD11CDD1AC000000CB5 /* Controllers */,
+				0B238FD01CDD1AB700000CB5 /* Models */,
 				19DA519D1CE792A700CE5E80 /* Helper */,
-				101DD6CE1A052EDE00161F0D /* Main.storyboard */,
 				101DD6D11A052EDE00161F0D /* Images.xcassets */,
-				101DD6D31A052EDE00161F0D /* LaunchScreen.xib */,
 				101DD6C81A052EDE00161F0D /* Supporting Files */,
 			);
 			path = BlueLibrarySwift;
@@ -161,8 +160,8 @@
 		101DD6EA1A052EE400161F0D /* API */ = {
 			isa = PBXGroup;
 			children = (
-				101DD6EB1A052F0E00161F0D /* HTTPClient.swift */,
 				0B238FDC1CDD43CB00000CB5 /* LibraryAPI.swift */,
+				101DD6EB1A052F0E00161F0D /* HTTPClient.swift */,
 				0B238FDE1CDD455A00000CB5 /* PersistencyManager.swift */,
 			);
 			name = API;
@@ -171,6 +170,7 @@
 		19DA519D1CE792A700CE5E80 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				1936E3EC209E3D9900BDAD0F /* albums.json */,
 				19DA519B1CE7929600CE5E80 /* Constants.swift */,
 			);
 			name = Helper;
@@ -222,7 +222,7 @@
 			attributes = {
 				LastSwiftMigration = 0730;
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Raywenderlich;
 				TargetAttributes = {
 					101DD6C41A052EDE00161F0D = {
@@ -263,6 +263,7 @@
 				101DD6D01A052EDE00161F0D /* Main.storyboard in Resources */,
 				101DD6D51A052EDE00161F0D /* LaunchScreen.xib in Resources */,
 				101DD6D21A052EDE00161F0D /* Images.xcassets in Resources */,
+				1936E3ED209E3D9900BDAD0F /* albums.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +282,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				101DD6CD1A052EDE00161F0D /* ViewController.swift in Sources */,
-				0B238FE11CDD525E00000CB5 /* AlbumExtensions.swift in Sources */,
 				101DD6CB1A052EDE00161F0D /* AppDelegate.swift in Sources */,
 				0B238FDD1CDD43CB00000CB5 /* LibraryAPI.swift in Sources */,
 				19B5F9151CDFA8BC0067CC4D /* HorizontalScroller.swift in Sources */,
@@ -343,12 +343,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -375,7 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -396,12 +398,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -421,7 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -438,7 +442,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Raywenderlich.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -451,7 +455,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Raywenderlich.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

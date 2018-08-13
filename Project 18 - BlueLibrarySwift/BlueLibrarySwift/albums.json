@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Opus 12",
+    "artist": "Jay Chou",
+    "genre": "Pop",
+    "coverUrl": "http://a2.att.hudong.com/88/93/19300001321437135520930453813.jpg",
+    "year": "2012"
+  }, 
+  {
+    "artist": "Lady Gaga", 
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/en/3/36/Lady_Gaga_-_Poker_Face.png",
+    "genre": "Pop", 
+    "title": "Poker Face", 
+    "year": "2013"
+  }, 
+  {
+    "artist": "Justin Biber", 
+    "coverUrl": "https://consequenceofsound.files.wordpress.com/2015/08/screen-shot-2015-08-28-at-7-10-21-am.png?w=689", 
+    "genre": "Pop", 
+    "title": "What do you mean", 
+    "year": "2014"
+  }, 
+  {
+    "artist": "U2", 
+    "coverUrl": "https://s3.amazonaws.com/CoverProject/album/album_u2_staring_at_the_sun.png", 
+    "genre": "Pop", 
+    "title": "Staring at the Sun", 
+    "year": "2000"
+  }, 
+  {
+    "artist": "Linkin Park", 
+    "coverUrl": "http://img01.deviantart.net/19e2/i/2011/156/3/1/linkin_park_album_art_2_by_jaylathe1-d3i344s.jpg", 
+    "genre": "Pop", 
+    "title": "Iridescent", 
+    "year": "2000"
+  }
+]

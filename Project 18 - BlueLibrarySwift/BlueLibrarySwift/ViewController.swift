@@ -27,11 +27,11 @@ class ViewController: UIViewController {
   // MARK: - IBOutlet
 	@IBOutlet var dataTable: UITableView!
 	@IBOutlet var toolbar: UIToolbar!
-  @IBOutlet var scroller: HorizontalScroller!
+  @IBOutlet var scroller: HorizontalScrollerView!
   
   // MARK: - Private Variables
   fileprivate var allAlbums = [Album]()
-  fileprivate var currentAlbumData : (titles:[String], values:[String])?
+  fileprivate var currentAlbumData: [AlbumData]?
   fileprivate var currentAlbumIndex = 0
   // use a stack to push and pop operation for the undo option
   fileprivate var undoStack: [(Album, Int)] = []
@@ -40,52 +40,48 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-    setupUI()
-    setupData()
-    setupComponents()
-    showDataForAlbum(currentAlbumIndex)
+    func setUI() {
+      navigationController?.navigationBar.isTranslucent = false
+    }
     
-    NotificationCenter.default.addObserver(self, selector:#selector(ViewController.saveCurrentState), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+    func setData() {
+      currentAlbumIndex = 0
+      allAlbums = LibraryAPI.sharedInstance.getAlbums()
+    }
+    
+    func setComponents() {
+      dataTable.backgroundView = nil
+      loadPreviousState()
+      scroller.delegate = self
+      scroller.dataSource = self
+      reloadScroller()
+      scroller.scrollToView(at: currentAlbumIndex)
+      
+      let undoButton = UIBarButtonItem(barButtonSystemItem: .undo, target: self, action:Selector.undoAction)
+      undoButton.isEnabled = false;
+      let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target:nil, action:nil)
+      let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target:self, action:Selector.deleteAlbum)
+      let toolbarButtonItems = [undoButton, space, trashButton]
+      toolbar.setItems(toolbarButtonItems, animated: true)
+    }
+    
+    setUI()
+    setData()
+    setComponents()
+    showDataForAlbum(at: currentAlbumIndex)
+    
+    NotificationCenter.default.addObserver(self, selector:Selector.saveCurrentState, name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
 	}
   
-  deinit {
-    NotificationCenter.default.removeObserver(self)
-  }
-  
-  func setupUI() {
-    navigationController?.navigationBar.isTranslucent = false
-  }
-  
-  func setupData() {
-    currentAlbumIndex = 0
-    allAlbums = LibraryAPI.sharedInstance.getAlbums()
-  }
-  
-  func setupComponents() {
-    dataTable.backgroundView = nil
-    loadPreviousState()
-    scroller.delegate = self
-    reloadScroller()
-    
-    let undoButton = UIBarButtonItem(barButtonSystemItem: .undo, target: self, action:#selector(ViewController.undoAction))
-    undoButton.isEnabled = false;
-    let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target:nil, action:nil)
-    let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target:self, action:#selector(ViewController.deleteAlbum))
-    let toolbarButtonItems = [undoButton, space, trashButton]
-    toolbar.setItems(toolbarButtonItems, animated: true)
-  }
-  
-  func showDataForAlbum(_ index: Int) {
+  func showDataForAlbum(at index: Int) {
     if index < allAlbums.count && index > -1 {
       let album = allAlbums[index]
-      currentAlbumData = album.ae_tableRepresentation()
+      currentAlbumData = album.tableRepresentation
     } else {
       currentAlbumData = nil
     }
     
-    if let dataTable = dataTable {
-      dataTable.reloadData()
-    }
+    dataTable.reloadData()
   }
   
   // MARK: - Memento Pattern
@@ -93,13 +89,13 @@ class ViewController: UIViewController {
     // When the user leaves the app and then comes back again, he wants it to be in the exact same state
     // he left it. In order to do this we need to save the currently displayed album.
     // Since it's only one piece of information we can use NSUserDefaults.
-    UserDefaults.standard.set(currentAlbumIndex, forKey: "currentAlbumIndex")
+    UserDefaults.standard.set(currentAlbumIndex, forKey: Constants.indexRestorationKey)
     LibraryAPI.sharedInstance.saveAlbums()
   }
   
   func loadPreviousState() {
-    currentAlbumIndex = UserDefaults.standard.integer(forKey: "currentAlbumIndex")
-    showDataForAlbum(currentAlbumIndex)
+    currentAlbumIndex = UserDefaults.standard.integer(forKey: Constants.indexRestorationKey)
+    showDataForAlbum(at: currentAlbumIndex)
   }
   
   // MARK: - Scroller Related
@@ -111,7 +107,7 @@ class ViewController: UIViewController {
       currentAlbumIndex = allAlbums.count - 1
     }
     scroller.reload()
-    showDataForAlbum(currentAlbumIndex)
+    showDataForAlbum(at: currentAlbumIndex)
   }
   
   func addAlbumAtIndex(_ album: Album,index: Int) {
@@ -162,45 +158,48 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if let albumData = currentAlbumData {
-      return albumData.titles.count
+      return albumData.count
     } else {
       return 0
     }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cellIdentifier = "Cell"
-    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+    
+    let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath)
     
     if let albumData = currentAlbumData {
-      cell.textLabel?.text = albumData.titles[(indexPath as NSIndexPath).row]
-      cell.detailTextLabel?.text = albumData.values[(indexPath as NSIndexPath).row]
+      cell.textLabel?.text = albumData[(indexPath as NSIndexPath).row].title
+      cell.detailTextLabel?.text = albumData[(indexPath as NSIndexPath).row].value
     }
     
     return cell
   }
 }
 
-// MARK: - HorizontalScroller
-extension ViewController: HorizontalScrollerDelegate {
-  func numberOfViewsForHorizontalScroller(_ scroller: HorizontalScroller) -> Int {
+// MARK: - HorizontalScrollerDataSource
+extension ViewController: HorizontalScrollerDataSource {
+  func numberOfViews(in horizontalScrollerView: HorizontalScrollerView) -> Int {
     return allAlbums.count
   }
   
-  func horizontalScrollerViewAtIndex(_ scroller: HorizontalScroller, index: Int) -> UIView {
+  func horizontalScrollerView(_ horizontalScrollerView: HorizontalScrollerView, viewAt index: Int) -> UIView {
     let album = allAlbums[index]
-    let albumView = AlbumView(frame: CGRect(x: 0, y: 0, width: 100, height: 100), albumCover: album.coverUrl)
+    
+    let albumView = AlbumView(frame: CGRect(x: 0, y: 0, width: 100, height: 100), coverUrl: album.coverUrl)
     
     if currentAlbumIndex == index {
       albumView.highlightAlbum(true)
     } else {
       albumView.highlightAlbum(false)
     }
-    
     return albumView
   }
-  
-  func horizontalScrollerClickedViewAtIndex(_ scroller: HorizontalScroller, index: Int) {
+}
+
+// MARK: - HorizontalScrollerDelegate
+extension ViewController: HorizontalScrollerDelegate {
+  func horizontalScrollerView(_ horizontalScrollerView: HorizontalScrollerView, didSelectViewAt index: Int) {
     let previousAlbumView = scroller.viewAtIndex(currentAlbumIndex) as! AlbumView
     previousAlbumView.highlightAlbum(false)
     
@@ -209,11 +208,19 @@ extension ViewController: HorizontalScrollerDelegate {
     let albumView = scroller.viewAtIndex(currentAlbumIndex) as! AlbumView
     albumView.highlightAlbum(true)
     
-    showDataForAlbum(currentAlbumIndex)
+    showDataForAlbum(at: currentAlbumIndex)
   }
-  
-  func initialViewIndex(_ scroller: HorizontalScroller) -> Int {
-    return currentAlbumIndex
-  }
+}
+
+// MARK: - Constants
+fileprivate enum Constants {
+  static let cellIdentifier = "Cell"
+  static let indexRestorationKey = "currentAlbumIndex"
+}
+
+fileprivate extension Selector {
+  static let undoAction = #selector(ViewController.undoAction)
+  static let deleteAlbum = #selector(ViewController.deleteAlbum)
+  static let saveCurrentState = #selector(ViewController.saveCurrentState)
 }
 

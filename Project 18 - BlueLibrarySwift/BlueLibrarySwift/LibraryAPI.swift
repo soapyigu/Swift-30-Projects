@@ -24,7 +24,7 @@ class LibraryAPI: NSObject {
     
     super.init()
     
-    NotificationCenter.default.addObserver(self, selector:#selector(LibraryAPI.downloadImage(_:)), name: NSNotification.Name(rawValue: downloadImageNotification), object: nil)
+    NotificationCenter.default.addObserver(self, selector: .downloadImage, name: .BLDownloadImage, object: nil)
   }
   
   deinit {
@@ -52,22 +52,24 @@ class LibraryAPI: NSObject {
   
   @objc func downloadImage(_ notification: Notification) {
     // retrieve info from notification
-    let userInfo = (notification as NSNotification).userInfo as! [String: AnyObject]
-    let imageView = userInfo["imageView"] as! UIImageView?
-    let coverUrl = userInfo["coverUrl"] as! String
+    guard let userInfo = notification.userInfo,
+      let imageView = userInfo["imageView"] as? UIImageView,
+      let coverUrl = userInfo["coverUrl"] as? String,
+      let filename = URL(string: coverUrl)?.lastPathComponent else {
+        return
+    }
     
     // get image
-    if let imageViewUnWrapped = imageView {
-      imageViewUnWrapped.image = persistencyManager.getImage(URL(string: coverUrl)!.lastPathComponent)
-      if imageViewUnWrapped.image == nil {
-        
-        DispatchQueue.global().async {
-          let downloadedImage = self.httpClient.downloadImage(coverUrl as String)
-          DispatchQueue.main.async {
-            imageViewUnWrapped.image = downloadedImage
-            self.persistencyManager.saveImage(downloadedImage, filename: URL(string: coverUrl)!.lastPathComponent)
-          }
-        }
+    if let savedImage = persistencyManager.getImage(with: filename) {
+      imageView.image = savedImage
+      return
+    }
+    
+    DispatchQueue.global().async {
+      let downloadedImage = self.httpClient.downloadImage(coverUrl as String)
+      DispatchQueue.main.async {
+        imageView.image = downloadedImage
+        self.persistencyManager.saveImage(downloadedImage, filename: URL(string: coverUrl)!.lastPathComponent)
       }
     }
   }
@@ -75,4 +77,8 @@ class LibraryAPI: NSObject {
   func saveAlbums() {
     persistencyManager.saveAlbums()
   }
+}
+
+extension Selector {
+  static let downloadImage = #selector(LibraryAPI.downloadImage(_:))
 }

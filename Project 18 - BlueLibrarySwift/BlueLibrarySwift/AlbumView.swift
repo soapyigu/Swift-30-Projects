@@ -9,60 +9,63 @@
 import UIKit
 
 class AlbumView: UIView {
-  fileprivate var coverImage: UIImageView!
-  fileprivate var indicator: UIActivityIndicatorView!
+  private var coverImageView: UIImageView!
+  private var indicatorView: UIActivityIndicatorView!
+  private var valueObservation: NSKeyValueObservation!
   
-  required init(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)!
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
     commonInit()
   }
   
-  init(frame: CGRect, albumCover: String) {
+  init(frame: CGRect, coverUrl: String) {
     super.init(frame: frame)
     commonInit()
-    setupNotification(albumCover)
-  }
-  
-  deinit {
-    coverImage.removeObserver(self, forKeyPath: "image")
-  }
-  
-  func commonInit() {
-    setupUI()
-    setupComponents()
-  }
-  
-  func highlightAlbum(_ didHightlightView: Bool) {
-    if didHightlightView {
-      backgroundColor = UIColor.white
-    } else {
-      backgroundColor = UIColor.black
-    }
-  }
-  
-  fileprivate func setupUI() {
-    backgroundColor = UIColor.blue
-  }
-  
-  fileprivate func setupComponents() {
-    coverImage = UIImageView(frame: CGRect(x: 5, y: 5, width: frame.size.width - 10, height: frame.size.height - 10))
-    addSubview(coverImage)
     
-    indicator = UIActivityIndicatorView()
-    indicator.center = center
-    indicator.activityIndicatorViewStyle = .whiteLarge
-    indicator.startAnimating()
-    addSubview(indicator)
-    coverImage.addObserver(self, forKeyPath: "image", options: [], context: nil)
+    NotificationCenter.default.post(name: .BLDownloadImage, object: self, userInfo: ["imageView": coverImageView, "coverUrl" : coverUrl])
   }
   
-  fileprivate func setupNotification(_ albumCover: String) {
-    NotificationCenter.default.post(name: Notification.Name(rawValue: downloadImageNotification), object: self, userInfo: ["imageView":coverImage, "coverUrl" : albumCover])
-  }
-  
-  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-    if keyPath == "image" {
-      indicator.stopAnimating()
+  private func commonInit() {
+    // Setup the background
+    backgroundColor = .black
+    
+    // Create the cover image view
+    coverImageView = UIImageView()
+    coverImageView.translatesAutoresizingMaskIntoConstraints = false
+    addSubview(coverImageView)
+    
+    // Create the indicator view
+    indicatorView = UIActivityIndicatorView()
+    indicatorView.translatesAutoresizingMaskIntoConstraints = false
+    indicatorView.activityIndicatorViewStyle = .whiteLarge
+    indicatorView.startAnimating()
+    addSubview(indicatorView)
+    
+    NSLayoutConstraint.activate([
+      coverImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+      coverImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
+      coverImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+      coverImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5),
+      indicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+      indicatorView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+      ])
+    
+    valueObservation = coverImageView.observe(\.image, options: [.new]) { [unowned self] observed, change in
+      if change.newValue is UIImage {
+        self.indicatorView.stopAnimating()
+      }
     }
   }
+  
+  func highlightAlbum(_ didHighlightView: Bool) {
+    if didHighlightView == true {
+      backgroundColor = .white
+    } else {
+      backgroundColor = .black
+    }
+  }
+}
+
+extension Notification.Name {
+  static let BLDownloadImage = Notification.Name(downloadImageNotification)
 }

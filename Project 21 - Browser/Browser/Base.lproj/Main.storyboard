@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Browser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzL-9a-KAa" userLabel="Bar View">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="https://" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0jj-Y5-VWA">
+                                        <rect key="frame" x="50" y="5" width="275" height="24"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL" textContentType="url"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="0jj-Y5-VWA" firstAttribute="centerY" secondItem="bzL-9a-KAa" secondAttribute="centerY" constant="-5" id="0kD-Nf-8Oo"/>
+                                    <constraint firstItem="0jj-Y5-VWA" firstAttribute="leading" secondItem="bzL-9a-KAa" secondAttribute="leading" constant="50" id="LLT-s0-de4"/>
+                                    <constraint firstItem="0jj-Y5-VWA" firstAttribute="top" secondItem="bzL-9a-KAa" secondAttribute="top" constant="5" id="M2a-P6-er8"/>
+                                    <constraint firstItem="0jj-Y5-VWA" firstAttribute="centerX" secondItem="bzL-9a-KAa" secondAttribute="centerX" id="n1N-Ab-ZeO"/>
+                                    <constraint firstAttribute="height" constant="44" id="tlI-e6-0sc"/>
+                                </constraints>
+                            </view>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="boD-RT-ApN">
+                                <rect key="frame" x="0.0" y="64" width="375" height="5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="HAJ-hA-RYB"/>
+                                </constraints>
+                            </progressView>
+                            <wkWebView contentMode="scaleToFill" allowsBackForwardNavigationGestures="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ehB-nb-ZCi">
+                                <rect key="frame" x="0.0" y="69" width="375" height="549"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0Z-Oe-86w">
+                                <rect key="frame" x="0.0" y="618" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="zKi-sX-zOB"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Back" id="uXT-a0-plf">
+                                        <connections>
+                                            <action selector="back:" destination="BYZ-38-t0r" id="JSD-6U-bXb"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="j5o-g9-bQd"/>
+                                    <barButtonItem title="Forward" id="gSM-5S-FZg">
+                                        <connections>
+                                            <action selector="forward:" destination="BYZ-38-t0r" id="Yte-5O-Igl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Ut6-Tu-YhV"/>
+                                    <barButtonItem title="Reload" id="0ED-Ud-4LY">
+                                        <connections>
+                                            <action selector="reload:" destination="BYZ-38-t0r" id="fSy-4i-Ecm"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ehB-nb-ZCi" firstAttribute="top" secondItem="boD-RT-ApN" secondAttribute="bottom" id="5LQ-Ay-aMX"/>
+                            <constraint firstItem="boD-RT-ApN" firstAttribute="top" secondItem="bzL-9a-KAa" secondAttribute="bottom" id="8NL-gM-q6y"/>
+                            <constraint firstItem="bzL-9a-KAa" firstAttribute="width" secondItem="fTg-GK-tLY" secondAttribute="width" id="CY5-yD-9Nq"/>
+                            <constraint firstItem="B0Z-Oe-86w" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="OzV-aJ-GNF"/>
+                            <constraint firstItem="ehB-nb-ZCi" firstAttribute="width" secondItem="fTg-GK-tLY" secondAttribute="width" id="SU2-wq-Zz1"/>
+                            <constraint firstItem="ehB-nb-ZCi" firstAttribute="centerX" secondItem="fTg-GK-tLY" secondAttribute="centerX" id="UVg-BW-wvl"/>
+                            <constraint firstItem="bzL-9a-KAa" firstAttribute="centerX" secondItem="fTg-GK-tLY" secondAttribute="centerX" id="Ysi-oZ-rPw"/>
+                            <constraint firstItem="ehB-nb-ZCi" firstAttribute="centerY" secondItem="fTg-GK-tLY" secondAttribute="centerY" id="bbw-gX-AHc"/>
+                            <constraint firstItem="boD-RT-ApN" firstAttribute="centerX" secondItem="fTg-GK-tLY" secondAttribute="centerX" id="eGC-gS-nMK"/>
+                            <constraint firstItem="boD-RT-ApN" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="f1P-sQ-7VQ"/>
+                            <constraint firstItem="B0Z-Oe-86w" firstAttribute="top" secondItem="ehB-nb-ZCi" secondAttribute="bottom" id="mbB-kN-aGE"/>
+                            <constraint firstItem="B0Z-Oe-86w" firstAttribute="centerX" secondItem="fTg-GK-tLY" secondAttribute="centerX" id="rgc-Zu-hfe"/>
+                            <constraint firstItem="bzL-9a-KAa" firstAttribute="top" secondItem="fTg-GK-tLY" secondAttribute="top" id="ulR-ah-I06"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fTg-GK-tLY"/>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="uXT-a0-plf" id="BRT-wG-MGe"/>
+                        <outlet property="barView" destination="bzL-9a-KAa" id="ESC-Wm-o60"/>
+                        <outlet property="forwardButton" destination="gSM-5S-FZg" id="yXr-pB-QtJ"/>
+                        <outlet property="progressBar" destination="boD-RT-ApN" id="Y9l-BY-Scy"/>
+                        <outlet property="reloadButton" destination="0ED-Ud-4LY" id="Hjo-s7-VaI"/>
+                        <outlet property="urlField" destination="0jj-Y5-VWA" id="Bml-B7-gEB"/>
+                        <outlet property="webView" destination="ehB-nb-ZCi" id="KVw-hL-XKe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
