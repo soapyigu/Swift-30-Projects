@@ -46,7 +46,7 @@ class ProductsTableViewController: UITableViewController {
       if let cell = sender as? UITableViewCell,
         let indexPath = tableView.indexPath(for: cell),
         let productVC = segue.destination as? ProductViewController {
-        productVC.product = products?[(indexPath as NSIndexPath).row]
+        productVC.product = products?[indexPath.row]
       }
     }
   }
