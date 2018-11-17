@@ -72,7 +72,7 @@ extension ViewController: UITableViewDataSource {
       setMessageLabel(messageLabel, frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height), text: "No data is currently available.", textColor: UIColor.black, numberOfLines: 0, textAlignment: NSTextAlignment.center, font: UIFont(name:"Palatino-Italic", size: 20)!)
       
       self.todoTableView.backgroundView = messageLabel
-      self.todoTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+      self.todoTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
       
       return 0
     }
@@ -96,10 +96,10 @@ extension ViewController: UITableViewDelegate {
   }
   
   // Delete the cell
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == UITableViewCellEditingStyle.delete {
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == UITableViewCell.EditingStyle.delete {
       todos.remove(at: (indexPath as NSIndexPath).row)
-      todoTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+      todoTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
     }
   }
   
