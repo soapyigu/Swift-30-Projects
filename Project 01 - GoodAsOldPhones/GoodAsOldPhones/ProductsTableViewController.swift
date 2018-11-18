@@ -8,8 +8,8 @@
 import UIKit
 
 class ProductsTableViewController: UITableViewController {
-  fileprivate var products: [Product]?
-  fileprivate let identifer = "productCell"
+  private var products: [Product]?
+  private let identifer = "productCell"
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -50,9 +50,9 @@ extension ProductsTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifer, for: indexPath)
         guard let products = products else { return cell }
 
-        cell.textLabel?.text = products[(indexPath as NSIndexPath).row].name
+        cell.textLabel?.text = products[indexPath.row].name
 
-        if let imageName = products[(indexPath as NSIndexPath).row].cellImageName {
+        if let imageName = products[indexPath.row].cellImageName {
             cell.imageView?.image = UIImage(named: imageName)
         }
 
