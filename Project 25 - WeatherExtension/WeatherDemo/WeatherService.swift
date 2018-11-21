@@ -46,7 +46,7 @@ open class WeatherService {
         }
         
         let jsonMain = jsonResult?["main"] as! Dictionary<String, AnyObject>
-        weatherData.temperature = jsonMain["temp"] as! Int
+        weatherData.temperature = Int(truncating: jsonMain["temp"] as! NSNumber)
         
         completion(weatherData)
         

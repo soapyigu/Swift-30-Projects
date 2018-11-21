@@ -54,7 +54,7 @@ class ViewController: UIViewController {
     
     @IBAction func updateWeatherInfo(_ segue: UIStoryboardSegue) {
         let sourceViewController = segue.source as! LocationTableViewController
-        var selectedLocation = sourceViewController.selectedLocation.characters.split { $0 == "," }.map { String($0) }
+        var selectedLocation = sourceViewController.selectedLocation.split { $0 == "," }.map { String($0) }
         city = selectedLocation[0]
         country = selectedLocation[1].trimmingCharacters(in: CharacterSet.whitespaces)
         
