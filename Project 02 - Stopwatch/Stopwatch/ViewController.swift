@@ -64,8 +64,8 @@ class ViewController: UIViewController, UITableViewDelegate {
       mainStopwatch.timer = Timer.scheduledTimer(timeInterval: 0.035, target: weakSelf, selector: Selector.updateMainTimer, userInfo: nil, repeats: true)
       lapStopwatch.timer = Timer.scheduledTimer(timeInterval: 0.035, target: weakSelf, selector: Selector.updateLapTimer, userInfo: nil, repeats: true)
       
-      RunLoop.current.add(mainStopwatch.timer, forMode: .commonModes)
-      RunLoop.current.add(lapStopwatch.timer, forMode: .commonModes)
+      RunLoop.current.add(mainStopwatch.timer, forMode: RunLoop.Mode.common)
+      RunLoop.current.add(lapStopwatch.timer, forMode: RunLoop.Mode.common)
       
       isPlay = true
       changeButton(playPauseButton, title: "Stop", titleColor: UIColor.red)
@@ -93,14 +93,14 @@ class ViewController: UIViewController, UITableViewDelegate {
       resetLapTimer()
       unowned let weakSelf = self
       lapStopwatch.timer = Timer.scheduledTimer(timeInterval: 0.035, target: weakSelf, selector: Selector.updateLapTimer, userInfo: nil, repeats: true)
-      RunLoop.current.add(lapStopwatch.timer, forMode: .commonModes)
+      RunLoop.current.add(lapStopwatch.timer, forMode: RunLoop.Mode.common)
     }
   }
   
   // MARK: - Private Helpers
   fileprivate func changeButton(_ button: UIButton, title: String, titleColor: UIColor) {
-    button.setTitle(title, for: UIControlState())
-    button.setTitleColor(titleColor, for: UIControlState())
+    button.setTitle(title, for: UIControl.State())
+    button.setTitleColor(titleColor, for: UIControl.State())
   }
   
   fileprivate func resetMainTimer() {
