@@ -10,7 +10,7 @@ import UIKit
 class FBMeBaseCell: UITableViewCell {
   static let identifier = "FBMeBaseCell"
   
-  override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: .default, reuseIdentifier: reuseIdentifier)
     
     backgroundColor = Specs.color.white
