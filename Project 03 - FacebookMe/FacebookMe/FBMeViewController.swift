@@ -11,13 +11,13 @@ class FBMeViewController: FBMeBaseViewController {
   
   typealias RowModel = [String: String]
   
-  fileprivate var user: FBMeUser {
+  private var user: FBMeUser {
     get {
       return FBMeUser(name: "BayMax", education: "CMU")
     }
   }
   
-  fileprivate var tableViewDataSource: [[String: Any]] {
+  private var tableViewDataSource: [[String: Any]] {
     get {
      return TableKeys.populate(withUser: user)
     }
@@ -45,15 +45,15 @@ class FBMeViewController: FBMeBaseViewController {
     view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[tableView]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["tableView": tableView]))
   }
   
-  fileprivate func rows(at section: Int) -> [Any] {
+  private func rows(at section: Int) -> [Any] {
     return tableViewDataSource[section][TableKeys.Rows] as! [Any]
   }
   
-  fileprivate func title(at section: Int) -> String? {
+  private func title(at section: Int) -> String? {
     return tableViewDataSource[section][TableKeys.Section] as? String
   }
   
-  fileprivate func rowModel(at indexPath: IndexPath) -> RowModel {
+  private func rowModel(at indexPath: IndexPath) -> RowModel {
     return rows(at: indexPath.section)[indexPath.row] as! RowModel
   }
 }
@@ -63,15 +63,21 @@ extension FBMeViewController: UITableViewDataSource {
     return tableViewDataSource.count
   }
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int
+  {
     return rows(at: section).count
   }
   
-  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  func tableView(_ tableView: UITableView,
+                 titleForHeaderInSection section: Int) -> String?
+  {
     return title(at: section)
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView,
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell
+  {
     let modelForRow = rowModel(at: indexPath)
     var cell = UITableViewCell()
     
@@ -102,7 +108,9 @@ extension FBMeViewController: UITableViewDataSource {
 }
 
 extension FBMeViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  func tableView(_ tableView: UITableView,
+                 heightForRowAt indexPath: IndexPath) -> CGFloat
+  {
     let modelForRow = rowModel(at: indexPath)
     
     guard let title = modelForRow[TableKeys.Title] else {
@@ -116,7 +124,10 @@ extension FBMeViewController: UITableViewDelegate {
     }
   }
   
-  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView,
+                 willDisplay cell: UITableViewCell,
+                 forRowAt indexPath: IndexPath)
+  {
     let modelForRow = rowModel(at: indexPath)
     
     guard let title = modelForRow[TableKeys.Title] else {
