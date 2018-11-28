@@ -12,7 +12,7 @@ class LibraryAPI: NSObject {
   static let sharedInstance = LibraryAPI()
   let persistencyManager = PersistencyManager()
   
-  fileprivate override init() {
+  private override init() {
     super.init()
     
     NotificationCenter.default.addObserver(self, selector:#selector(LibraryAPI.downloadImage(_:)), name: NSNotification.Name(rawValue: downloadImageNotification), object: nil)
@@ -33,9 +33,9 @@ class LibraryAPI: NSObject {
     return image!
   }
   
-  func downloadImage(_ notification: Notification) {
+  @objc func downloadImage(_ notification: Notification) {
     // retrieve info from notification
-    let userInfo = (notification as NSNotification).userInfo as! [String: AnyObject]
+    let userInfo = notification.userInfo as! [String: AnyObject]
     let pokeImageView = userInfo["pokeImageView"] as! UIImageView?
     let pokeImageUrl = userInfo["pokeImageUrl"] as! String
     

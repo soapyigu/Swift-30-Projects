@@ -11,7 +11,7 @@ import UIKit
 class PersistencyManager: NSObject {
   func saveImage(_ image: UIImage, filename: String) {
     let path = NSHomeDirectory() + "/Documents/\(filename)"
-    let data = UIImagePNGRepresentation(image)
+    let data = image.pngData()
     try? data!.write(to: URL(fileURLWithPath: path), options: [.atomic])
   }
   

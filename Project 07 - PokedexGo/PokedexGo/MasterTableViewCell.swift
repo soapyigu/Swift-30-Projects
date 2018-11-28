@@ -29,21 +29,21 @@ class MasterTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
   }
   
-  fileprivate func setupUI(_ id: Int, name: String) {
+  private func setupUI(_ id: Int, name: String) {
     idLabel.text = NSString(format: "#%03d", id) as String
     nameLabel.text = name
     pokeImageView.image = UIImage(named: "default_img")
     
     indicator = UIActivityIndicatorView()
     indicator.center = CGPoint(x: pokeImageView.bounds.midX, y: pokeImageView.bounds.midY)
-    indicator.activityIndicatorViewStyle = .whiteLarge
+    indicator.style = .whiteLarge
     indicator.startAnimating()
     pokeImageView.addSubview(indicator)
     
     pokeImageView.addObserver(self, forKeyPath: "image", options: [], context: nil)
   }
   
-  fileprivate func setupNotification(_ pokeImageUrl: String) {
+  private func setupNotification(_ pokeImageUrl: String) {
     NotificationCenter.default.post(name: Notification.Name(rawValue: downloadImageNotification), object: self, userInfo: ["pokeImageView":pokeImageView, "pokeImageUrl" : pokeImageUrl])
   }
 
