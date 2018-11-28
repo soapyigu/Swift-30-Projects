@@ -3,11 +3,7 @@
 
 [![Travis CI](https://travis-ci.org/ReactiveX/RxSwift.svg?branch=master)](https://travis-ci.org/ReactiveX/RxSwift) ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS%20%7C%20Linux-333333.svg) ![pod](https://img.shields.io/cocoapods/v/RxSwift.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 
-## About Rx
-
-**:warning: This readme describes RxSwift 3.0 version that requires Swift 3.0.**
-
-**:warning: If you are looking for Swift 2.3 compatible version, please take a look at RxSwift ~> 2.0 versions and [swift-2.3](https://github.com/ReactiveX/RxSwift/tree/rxswift-2.0) branch.**
+* RxSwift 3.x / Swift 3.x can be found in [**rxswift-3.0** branch](https://github.com/ReactiveX/RxSwift/tree/rxswift-3.0).
 
 Rx is a [generic abstraction of computation](https://youtu.be/looJcaeboBY) expressed through `Observable<Element>` interface.
 
@@ -27,7 +23,7 @@ KVO observing, async operations and streams are all unified under [abstraction o
 
 * [why use rx?](Documentation/Why.md)
 * [the basics, getting started with RxSwift](Documentation/GettingStarted.md)
-* [units](Documentation/Units.md) - what is `Driver`, `ControlProperty`, and `Variable` ... and why do they exist?
+* [traits](Documentation/Traits.md) - what are `Single`, `Completable`, `Maybe`, `Driver`, `ControlProperty`, and `Variable` ... and why do they exist?
 * [testing](Documentation/UnitTests.md)
 * [tips and common errors](Documentation/Tips.md)
 * [debugging](Documentation/GettingStarted.md#debugging)
@@ -45,10 +41,10 @@ KVO observing, async operations and streams are all unified under [abstraction o
 
 ###### ... interact
 
-* All of this is great, but it would be nice to talk with other people using RxSwift and exchange experiences. <br />[![Slack channel](http://rxswift-slack.herokuapp.com/badge.svg)](http://slack.rxswift.org) [Join Slack Channel](http://rxswift-slack.herokuapp.com)
+* All of this is great, but it would be nice to talk with other people using RxSwift and exchange experiences. <br />[![Slack channel](http://rxswift-slack.herokuapp.com/badge.svg)](http://slack.rxswift.org) [Join Slack Channel](http://slack.rxswift.org)
 * Report a problem using the library. [Open an Issue With Bug Template](.github/ISSUE_TEMPLATE.md)
 * Request a new feature. [Open an Issue With Feature Request Template](Documentation/NewFeatureRequestTemplate.md)
-
+* Help out [Check out contribution guide](CONTRIBUTING.md)
 
 ###### ... compare
 
@@ -78,14 +74,13 @@ KVO observing, async operations and streams are all unified under [abstraction o
   </tr>
   <tr>
     <td><div class="highlight highlight-source-swift"><pre>
-let searchResults = searchBar.rx.text
+let searchResults = searchBar.rx.text.orEmpty
     .throttle(0.3, scheduler: MainScheduler.instance)
     .distinctUntilChanged()
-    .flatMapLatest { query -> Observable<[Repository]> in
+    .flatMapLatest { query -> Observable&lt;[Repository]&gt; in
         if query.isEmpty {
             return .just([])
         }
-
         return searchGitHub(query)
             .catchErrorJustReturn([])
     }
@@ -97,20 +92,22 @@ let searchResults = searchBar.rx.text
   <tr>
     <td width="30%"><div class="highlight highlight-source-swift"><pre>
 searchResults
-    .bindTo(tableView.rx.items(cellIdentifier: "Cell")) {
+    .bind(to: tableView.rx.items(cellIdentifier: "Cell")) {
         (index, repository: Repository, cell) in
         cell.textLabel?.text = repository.name
         cell.detailTextLabel?.text = repository.url
     }
-    .addDisposableTo(disposeBag)</pre></div></td>
+    .disposed(by: disposeBag)</pre></div></td>
   </tr>
 </table>
 
 
 ## Requirements
 
-* Xcode 8.0
-* Swift 3.0
+* Xcode 9.0
+* Swift 4.0
+* Swift 3.x ([use `rxswift-3.0` branch](https://github.com/ReactiveX/RxSwift/tree/rxswift-3.0) instead)
+* Swift 2.3 ([use `rxswift-2.0` branch](https://github.com/ReactiveX/RxSwift/tree/rxswift-2.0) instead)
 
 ## Installation
 
@@ -124,71 +121,81 @@ Open Rx.xcworkspace, choose `RxExample` and hit run. This method will build ever
 
 ### [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html)
 
-**Tested with `pod --version`: `1.1.1`**
+**Tested with `pod --version`: `1.3.1`**
 
-```
+```ruby
 # Podfile
 use_frameworks!
 
 target 'YOUR_TARGET_NAME' do
-    pod 'RxSwift',    '~> 3.0'
-    pod 'RxCocoa',    '~> 3.0'
+    pod 'RxSwift',    '~> 4.0'
+    pod 'RxCocoa',    '~> 4.0'
 end
 
-# RxTests and RxBlocking make the most sense in the context of unit/integration tests
+# RxTest and RxBlocking make the most sense in the context of unit/integration tests
 target 'YOUR_TESTING_TARGET' do
-    pod 'RxBlocking', '~> 3.0'
-    pod 'RxTest',     '~> 3.0'
+    pod 'RxBlocking', '~> 4.0'
+    pod 'RxTest',     '~> 4.0'
 end
 ```
 
 Replace `YOUR_TARGET_NAME` and then, in the `Podfile` directory, type:
 
-```
+```bash
 $ pod install
 ```
 
 ### [Carthage](https://github.com/Carthage/Carthage)
 
-**Tested with `carthage version`: `0.18.1`**
+**Tested with `carthage version`: `0.26.2`**
 
 Add this to `Cartfile`
 
 ```
-github "ReactiveX/RxSwift" ~> 3.0
+github "ReactiveX/RxSwift" ~> 4.0
 ```
 
-```
+```bash
 $ carthage update
 ```
 
 ### [Swift Package Manager](https://github.com/apple/swift-package-manager)
 
-**Tested with `swift build --version`: `3.0.0 (swiftpm-19)`**
+**Tested with `swift build --version`: `Swift 4.0.0-dev (swiftpm-13126)`**
 
 Create a `Package.swift` file.
 
-```
+```swift
+// swift-tools-version:4.0
+
 import PackageDescription
 
 let package = Package(
-    name: "RxTestProject",
-    targets: [],
-    dependencies: [
-        .Package(url: "https://github.com/ReactiveX/RxSwift.git", majorVersion: 3)
-    ]
+  name: "RxTestProject",
+  dependencies: [
+    .package(url: "https://github.com/ReactiveX/RxSwift.git", "4.0.0" ..< "5.0.0")
+  ],
+  targets: [
+    .target(name: "RxTestProject", dependencies: ["RxSwift", "RxCocoa"])
+  ]
 )
 ```
 
-```
+```bash
 $ swift build
+```
+
+To build or test a module with RxTest dependency, set `TEST=1`. ([RxSwift >= 3.4.2](https://github.com/ReactiveX/RxSwift/releases/tag/3.4.2))
+
+```bash
+$ TEST=1 swift test
 ```
 
 ### Manually using git submodules
 
 * Add RxSwift as a submodule
 
-```
+```bash
 $ git submodule add git@github.com:ReactiveX/RxSwift.git
 ```
 
@@ -200,6 +207,8 @@ $ git submodule add git@github.com:ReactiveX/RxSwift.git
 
 * [http://reactivex.io/](http://reactivex.io/)
 * [Reactive Extensions GitHub (GitHub)](https://github.com/Reactive-Extensions)
+* [RxSwift RayWenderlich.com Book](https://store.raywenderlich.com/products/rxswift-reactive-programming-with-swift)
+* [Boxue.io RxSwift Online Course](https://boxueio.com/series/rxswift-101) (Chinese 🇨🇳)
 * [Erik Meijer (Wikipedia)](http://en.wikipedia.org/wiki/Erik_Meijer_%28computer_scientist%29)
 * [Expert to Expert: Brian Beckman and Erik Meijer - Inside the .NET Reactive Framework (Rx) (video)](https://youtu.be/looJcaeboBY)
 * [Reactive Programming Overview (Jafar Husain from Netflix)](https://www.youtube.com/watch?v=dwP1TNXE6fc)

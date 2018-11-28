@@ -6,11 +6,8 @@
 //  Copyright © 2016 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-#if !RX_NO_MODULE
-    #if SWIFT_PACKAGE && !DISABLE_SWIZZLING && !os(Linux)
-        import RxCocoaRuntime
-    #endif
+#if SWIFT_PACKAGE && !DISABLE_SWIZZLING && !os(Linux)
+    import RxCocoaRuntime
 #endif
 
 #if !DISABLE_SWIZZLING && !os(Linux)

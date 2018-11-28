@@ -47,7 +47,7 @@ class MasterViewController: UITableViewController {
           }
           self.tableView.reloadData()
         })
-      .addDisposableTo(disposeBag)
+        .disposed(by: disposeBag)
   }
   
   func dismissKeyboard() {

@@ -7,31 +7,31 @@
 //
 
 #if os(iOS) || os(tvOS)
-    
-    import Foundation
-#if !RX_NO_MODULE
+
     import RxSwift
-#endif
     import UIKit
-    
-public class RxTextStorageDelegateProxy
-    : DelegateProxy
-    , DelegateProxyType
-    , NSTextStorageDelegate {
-    
-    
-    /// For more information take a look at `DelegateProxyType`.
-    public class func setCurrentDelegate(_ delegate: AnyObject?, toObject object: AnyObject) {
-        let textStorage: NSTextStorage = castOrFatalError(object)
-        textStorage.delegate = castOptionalOrFatalError(delegate)
-    }
-    
-    /// For more information take a look at `DelegateProxyType`.
-    public class func currentDelegateFor(_ object: AnyObject) -> AnyObject? {
-        let textStorage: NSTextStorage = castOrFatalError(object)
-        return textStorage.delegate
+
+    extension NSTextStorage: HasDelegate {
+        public typealias Delegate = NSTextStorageDelegate
     }
 
+    open class RxTextStorageDelegateProxy
+        : DelegateProxy<NSTextStorage, NSTextStorageDelegate>
+        , DelegateProxyType 
+        , NSTextStorageDelegate {
 
-}
+        /// Typed parent object.
+        public weak private(set) var textStorage: NSTextStorage?
+
+        /// - parameter textStorage: Parent object for delegate proxy.
+        public init(textStorage: NSTextStorage) {
+            self.textStorage = textStorage
+            super.init(parentObject: textStorage, delegateProxy: RxTextStorageDelegateProxy.self)
+        }
+
+        // Register known implementations
+        public static func registerKnownImplementations() {
+            self.register { RxTextStorageDelegateProxy(textStorage: $0) }
+        }
+    }
 #endif

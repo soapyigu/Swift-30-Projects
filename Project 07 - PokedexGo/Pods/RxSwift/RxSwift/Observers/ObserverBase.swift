@@ -6,34 +6,29 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-
 class ObserverBase<ElementType> : Disposable, ObserverType {
     typealias E = ElementType
 
-    private var _isStopped: AtomicInt = 0
+    private var _isStopped = AtomicInt(0)
 
     func on(_ event: Event<E>) {
         switch event {
         case .next:
-            if _isStopped == 0 {
+            if _isStopped.load() == 0 {
                 onCore(event)
             }
         case .error, .completed:
-
-            if !AtomicCompareAndSwap(0, 1, &_isStopped) {
-                return
+            if _isStopped.fetchOr(1) == 0 {
+                onCore(event)
             }
-
-            onCore(event)
         }
     }
 
     func onCore(_ event: Event<E>) {
-        abstractMethod()
+        rxAbstractMethod()
     }
 
     func dispose() {
-        _ = AtomicCompareAndSwap(0, 1, &_isStopped)
+        _isStopped.fetchOr(1)
     }
 }
