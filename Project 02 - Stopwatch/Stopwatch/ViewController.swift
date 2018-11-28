@@ -9,10 +9,10 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate {
   // MARK: - Variables
-  fileprivate let mainStopwatch: Stopwatch = Stopwatch()
-  fileprivate let lapStopwatch: Stopwatch = Stopwatch()
-  fileprivate var isPlay: Bool = false
-  fileprivate var laps: [String] = []
+  private let mainStopwatch: Stopwatch = Stopwatch()
+  private let lapStopwatch: Stopwatch = Stopwatch()
+  private var isPlay: Bool = false
+  private var laps: [String] = []
 
   // MARK: - UI components
   @IBOutlet weak var timerLabel: UILabel!
@@ -98,22 +98,22 @@ class ViewController: UIViewController, UITableViewDelegate {
   }
   
   // MARK: - Private Helpers
-  fileprivate func changeButton(_ button: UIButton, title: String, titleColor: UIColor) {
+  private func changeButton(_ button: UIButton, title: String, titleColor: UIColor) {
     button.setTitle(title, for: UIControl.State())
     button.setTitleColor(titleColor, for: UIControl.State())
   }
   
-  fileprivate func resetMainTimer() {
+  private func resetMainTimer() {
     resetTimer(mainStopwatch, label: timerLabel)
     laps.removeAll()
     lapsTableView.reloadData()
   }
   
-  fileprivate func resetLapTimer() {
+  private func resetLapTimer() {
     resetTimer(lapStopwatch, label: lapTimerLabel)
   }
   
-  fileprivate func resetTimer(_ stopwatch: Stopwatch, label: UILabel) {
+  private func resetTimer(_ stopwatch: Stopwatch, label: UILabel) {
     stopwatch.timer.invalidate()
     stopwatch.counter = 0.0
     label.text = "00:00:00"
@@ -127,7 +127,7 @@ class ViewController: UIViewController, UITableViewDelegate {
     updateTimer(lapStopwatch, label: lapTimerLabel)
   }
   
-  func updateTimer(_ stopwatch: Stopwatch, label: UILabel) {
+  private func updateTimer(_ stopwatch: Stopwatch, label: UILabel) {
     stopwatch.counter = stopwatch.counter + 0.035
     
     var minutes: String = "\((Int)(stopwatch.counter / 60))"
@@ -146,19 +146,23 @@ class ViewController: UIViewController, UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int
+  {
     return laps.count
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView,
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell
+  {
     let identifier: String = "lapCell"
     let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
 
     if let labelNum = cell.viewWithTag(11) as? UILabel {
-      labelNum.text = "Lap \(laps.count - (indexPath as NSIndexPath).row)"
+      labelNum.text = "Lap \(laps.count - indexPath.row)"
     }
     if let labelTimer = cell.viewWithTag(12) as? UILabel {
-      labelTimer.text = laps[laps.count - (indexPath as NSIndexPath).row - 1]
+      labelTimer.text = laps[laps.count - indexPath.row - 1]
     }
     
     return cell
