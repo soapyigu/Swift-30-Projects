@@ -55,7 +55,7 @@ class MasterViewController: UITableViewController {
   }
   
   // MARK: - Search Controller Setup
-  func setupSearchController () {
+  private func setupSearchController () {
     searchController.searchResultsUpdater = self
     searchController.dimsBackgroundDuringPresentation = false
     definesPresentationContext = true
@@ -70,7 +70,7 @@ class MasterViewController: UITableViewController {
     }
   }
   
-  func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+  private func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredCandies = candies.filter { candy in
             if !(candy.category == scope) && scope != "All" {
                 return false
@@ -90,33 +90,7 @@ class MasterViewController: UITableViewController {
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
-  
-  // MARK: - Table View
-  override func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
-  }
-  
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if searchController.isActive {
-      return filteredCandies.count
-    }
-    return candies.count
-  }
-  
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-    
-    let candy: Candy
-    if searchController.isActive {
-      candy = filteredCandies[(indexPath as NSIndexPath).row]
-    } else {
-      candy = candies[(indexPath as NSIndexPath).row]
-    }
-    cell.textLabel!.text = candy.name
-    cell.detailTextLabel!.text = candy.category
-    return cell
-  }
-  
+
   // MARK: - Segues
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showDetail" {
@@ -135,6 +109,38 @@ class MasterViewController: UITableViewController {
     }
   }
   
+}
+
+// MARK: - Table View
+extension MasterViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView,
+                            numberOfRowsInSection section: Int) -> Int
+    {
+        if searchController.isActive {
+            return filteredCandies.count
+        }
+        return candies.count
+    }
+
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+
+        let candy: Candy
+        if searchController.isActive {
+            candy = filteredCandies[(indexPath as NSIndexPath).row]
+        } else {
+            candy = candies[(indexPath as NSIndexPath).row]
+        }
+        cell.textLabel!.text = candy.name
+        cell.detailTextLabel!.text = candy.category
+        return cell
+    }
 }
 
 extension MasterViewController: UISearchResultsUpdating {

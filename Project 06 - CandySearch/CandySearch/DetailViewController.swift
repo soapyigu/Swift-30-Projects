@@ -33,7 +33,7 @@ class DetailViewController: UIViewController {
     }
   }
   
-  func configureView() {
+  private func configureView() {
     if let detailCandy = detailCandy {
       if let detailDescriptionLabel = detailDescriptionLabel, let candyImageView = candyImageView {
         detailDescriptionLabel.text = detailCandy.name
