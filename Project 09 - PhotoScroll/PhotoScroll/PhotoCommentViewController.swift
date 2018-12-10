@@ -31,13 +31,13 @@ class PhotoCommentViewController: UIViewController {
     NotificationCenter.default.addObserver(
       self,
       selector: Selector.keyboardWillShowHandler,
-      name: NSNotification.Name.UIKeyboardWillShow,
+      name: UIResponder.keyboardWillShowNotification,
       object: nil
     )
     NotificationCenter.default.addObserver(
       self,
       selector: Selector.keyboardWillHideHandler,
-      name: NSNotification.Name.UIKeyboardWillHide,
+      name: UIResponder.keyboardWillHideNotification,
       object: nil
     )
   }
@@ -47,7 +47,7 @@ class PhotoCommentViewController: UIViewController {
   }
   
   fileprivate func adjustInsetForKeyboard(isShow: Bool, notification: Notification) {
-    guard let value = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue else {
+    guard let value = notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else {
       return
     }
     let keyboardFrame = value.cgRectValue
