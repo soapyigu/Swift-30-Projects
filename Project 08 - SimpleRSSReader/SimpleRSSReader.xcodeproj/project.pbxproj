@@ -102,9 +102,9 @@
 				F46F13CE1A8E0A6E00EEB477 /* AppDelegate.swift */,
 				1950337F1E4706EA009E6F1C /* ViewController */,
 				195033801E4706F4009E6F1C /* View */,
+				195033811E470739009E6F1C /* FeedParser.swift */,
 				F46F13D51A8E0A6E00EEB477 /* Images.xcassets */,
 				F46F13CC1A8E0A6E00EEB477 /* Supporting Files */,
-				195033811E470739009E6F1C /* FeedParser.swift */,
 			);
 			path = SimpleRSSReader;
 			sourceTree = "<group>";
