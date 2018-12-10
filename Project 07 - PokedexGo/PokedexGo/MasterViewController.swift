@@ -25,8 +25,8 @@ class MasterViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupUI()
     
+    setupUI()
     filteredPokemons = pokemons
   }
   
