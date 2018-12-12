@@ -43,7 +43,7 @@ class ZoomedPhotoViewController: UIViewController {
     updateMinZoomScale(forSize: view.bounds.size)
   }
   
-  fileprivate func updateConstraints(forSize size: CGSize) {
+  private func updateConstraints(forSize size: CGSize) {
     let yOffset = max(0, (size.height - imageView.frame.height) / 2)
     imageViewTopConstraint.constant = yOffset
     imageViewBottomConstraint.constant = yOffset
@@ -55,7 +55,7 @@ class ZoomedPhotoViewController: UIViewController {
     view.layoutIfNeeded()
   }
 
-  fileprivate func updateMinZoomScale(forSize size: CGSize) {
+  private func updateMinZoomScale(forSize size: CGSize) {
     let widthScale = size.width / imageView.bounds.width
     let heightScale = size.height / imageView.bounds.height
     let minScale = min(widthScale, heightScale)

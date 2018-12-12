@@ -23,10 +23,10 @@
 import UIKit
 
 class CollectionViewController: UICollectionViewController {
-  fileprivate let reuseIdentifier = "PhotoCell"
-  fileprivate let thumbnailSize:CGFloat = 70.0
-  fileprivate let sectionInsets = UIEdgeInsets(top: 10, left: 5.0, bottom: 10.0, right: 5.0)
-  fileprivate let photos = ["photo1", "photo2", "photo3", "photo4", "photo5"]
+  private let reuseIdentifier = "PhotoCell"
+  private let thumbnailSize: CGFloat = 70.0
+  private let sectionInsets = UIEdgeInsets(top: 10, left: 5.0, bottom: 10.0, right: 5.0)
+  private let photos = ["photo1", "photo2", "photo3", "photo4", "photo5"]
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let cell = sender as? UICollectionViewCell,
@@ -56,11 +56,15 @@ extension CollectionViewController {
     return 1
   }
   
-  override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  override func collectionView(_ collectionView: UICollectionView,
+                               numberOfItemsInSection section: Int) -> Int
+  {
     return photos.count
   }
   
-  override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  override func collectionView(_ collectionView: UICollectionView,
+                               cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+  {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
     let fullSizedImage = UIImage(named:photos[indexPath.row])
     cell.imageView.image = fullSizedImage?.thumbnailOfSize(thumbnailSize)
@@ -70,12 +74,18 @@ extension CollectionViewController {
 
 // MARK:UICollectionViewDelegateFlowLayout
 extension CollectionViewController : UICollectionViewDelegateFlowLayout {
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+  func collectionView(_ collectionView: UICollectionView,
+                      layout collectionViewLayout: UICollectionViewLayout,
+                      sizeForItemAt indexPath: IndexPath) -> CGSize
+  {
     return CGSize(width: thumbnailSize, height: thumbnailSize)
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+  func collectionView(_ collectionView: UICollectionView,
+                      layout collectionViewLayout: UICollectionViewLayout,
+                      insetForSectionAt section: Int) -> UIEdgeInsets
+  {
     return sectionInsets
   }
 }

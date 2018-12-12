@@ -28,7 +28,7 @@ class ManagePageViewController: UIPageViewController {
     }
   }
 
-  fileprivate func viewPhotoCommentController(index: Int) -> PhotoCommentViewController? {
+  private func viewPhotoCommentController(index: Int) -> PhotoCommentViewController? {
     if let storyboard = storyboard,
       let page = storyboard.instantiateViewController(withIdentifier: "PhotoCommentViewController")
         as? PhotoCommentViewController {
@@ -42,8 +42,9 @@ class ManagePageViewController: UIPageViewController {
 }
 
 extension ManagePageViewController: UIPageViewControllerDataSource {
-  func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-    
+  func pageViewController(_ pageViewController: UIPageViewController,
+                          viewControllerBefore viewController: UIViewController) -> UIViewController?
+  {
     if let viewController = viewController as? PhotoCommentViewController {
       guard let index = viewController.photoIndex, index != 0 else {
         return nil
@@ -53,8 +54,9 @@ extension ManagePageViewController: UIPageViewControllerDataSource {
     return nil
   }
   
-  func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-    
+  func pageViewController(_ pageViewController: UIPageViewController,
+                          viewControllerAfter viewController: UIViewController) -> UIViewController?
+  {
     if let viewController = viewController as? PhotoCommentViewController {
       guard let index = viewController.photoIndex, index != photos.count - 1 else {
         return nil
