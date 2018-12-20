@@ -18,7 +18,10 @@ class Interest
   var numberOfPosts = 0
   var featuredImage: UIImage!
   
-  init(id: String, title: String, description: String, featuredImage: UIImage!)
+  init(id: String,
+       title: String,
+       description: String,
+       featuredImage: UIImage!)
   {
     self.id = id
     self.title = title
@@ -30,8 +33,7 @@ class Interest
   
   // MARK: - Private
   
-  static func createInterests() -> [Interest]
-  {
+  static func createInterests() -> [Interest] {
     return [
       Interest(id: "r1", title: "We Love Traveling Around the World", description: "We love backpack and adventures! We walked to Antartica yesterday, and camped with some cute pinguines, and talked about this wonderful app idea. 🐧⛺️✨", featuredImage: UIImage(named: "r1")!),
       Interest(id: "r2", title: "Romance Stories", description: "We love romantic stories. We walked to Antartica yesterday, and camped with some cute pinguines, and talked about this wonderful app idea. 🐧⛺️✨", featuredImage: UIImage(named: "r2")!),
