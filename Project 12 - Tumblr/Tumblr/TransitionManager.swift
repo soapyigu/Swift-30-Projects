@@ -9,7 +9,7 @@
 import UIKit
 
 class TransitionManager: NSObject {
-  fileprivate var presenting = false
+  private var presenting = false
 }
 
 extension TransitionManager: UIViewControllerAnimatedTransitioning {
@@ -59,11 +59,11 @@ extension TransitionManager: UIViewControllerAnimatedTransitioning {
     return 0.5
   }
   
-  func offStage(_ amount: CGFloat) -> CGAffineTransform {
+  private func offStage(_ amount: CGFloat) -> CGAffineTransform {
     return CGAffineTransform(translationX: amount, y: 0)
   }
   
-  func offStageMenuController(_ menuViewController: MenuViewController){
+  private func offStageMenuController(_ menuViewController: MenuViewController) {
     
     menuViewController.view.alpha = 0
     
@@ -94,7 +94,7 @@ extension TransitionManager: UIViewControllerAnimatedTransitioning {
     
   }
   
-  func onStageMenuController(_ menuViewController: MenuViewController){
+  private func onStageMenuController(_ menuViewController: MenuViewController) {
     
     // prepare menu to fade in
     menuViewController.view.alpha = 1
@@ -122,12 +122,17 @@ extension TransitionManager: UIViewControllerAnimatedTransitioning {
 }
 
 extension TransitionManager: UIViewControllerTransitioningDelegate {
-  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+  private func animationController(forPresented presented: UIViewController,
+                           presenting: UIViewController,
+                           source: UIViewController) -> UIViewControllerAnimatedTransitioning?
+  {
     self.presenting = true
     return self
   }
   
-  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+  private func animationController(forDismissed
+    dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning?
+  {
     self.presenting = false
     return self
   }
