@@ -24,11 +24,11 @@ class DetailViewController: UIViewController {
     setupNavigationBar()
   }
   
-  fileprivate func setupNavigationBar() {
+  private func setupNavigationBar() {
     navigationController?.navigationBar.topItem?.title = barTitle
   }
   
-  fileprivate func setupRect() {
+  private func setupRect() {
     if barTitle == "BezierCurve Position" {
       animateView = drawCircleView()
       
@@ -88,13 +88,13 @@ class DetailViewController: UIViewController {
   }
   
   // MARK: - Private Methods for Animations
-  fileprivate func changeColor(_ color: UIColor) {
+  private func changeColor(_ color: UIColor) {
     UIView.animate(withDuration: self.duration, animations: {
       self.animateView.backgroundColor = color
       }, completion: nil)
   }
   
-  fileprivate func multiColor(_ firstColor: UIColor, _ secondColor: UIColor) {
+  private func multiColor(_ firstColor: UIColor, _ secondColor: UIColor) {
     UIView.animate(withDuration: duration, animations: {
       self.animateView.backgroundColor = firstColor
       }, completion: { finished in
@@ -102,7 +102,7 @@ class DetailViewController: UIViewController {
     })
   }
   
-  fileprivate func multiPosition(_ firstPos: CGPoint, _ secondPos: CGPoint) {
+  private func multiPosition(_ firstPos: CGPoint, _ secondPos: CGPoint) {
     func simplePosition(_ pos: CGPoint) {
       UIView.animate(withDuration: self.duration, animations: {
         self.animateView.frame.origin = pos
@@ -116,13 +116,13 @@ class DetailViewController: UIViewController {
     })
   }
   
-  fileprivate func rotateView(_ angel: Double) {
+  private func rotateView(_ angel: Double) {
     UIView.animate(withDuration: duration, delay: delay, options: [.repeat], animations: {
       self.animateView.transform = CGAffineTransform(rotationAngle: CGFloat(angel))
       }, completion: nil)
   }
   
-  fileprivate func colorFrameChange(_ firstFrame: CGRect, _ secondFrame: CGRect, _ thirdFrame: CGRect,
+  private func colorFrameChange(_ firstFrame: CGRect, _ secondFrame: CGRect, _ thirdFrame: CGRect,
                                 _ firstColor: UIColor, _ secondColor: UIColor, _ thirdColor: UIColor) {
     UIView.animate(withDuration: self.duration, animations: {
       self.animateView.backgroundColor = firstColor
@@ -140,7 +140,7 @@ class DetailViewController: UIViewController {
     })
   }
   
-  fileprivate func curvePath(_ endPoint: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint) {
+  private func curvePath(_ endPoint: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint) {
     let path = UIBezierPath()
     path.move(to: self.animateView.center)
     
@@ -160,7 +160,7 @@ class DetailViewController: UIViewController {
     self.animateView.center = endPoint
   }
   
-  fileprivate func viewFadeIn() {
+  private func viewFadeIn() {
     let secondView = UIImageView(image: UIImage(named: "facebook"))
     secondView.frame = self.animateView.frame
     secondView.alpha = 0.0
@@ -173,7 +173,7 @@ class DetailViewController: UIViewController {
       }, completion: nil)
   }
   
-  fileprivate func Pop() {
+  private func Pop() {
     UIView.animate(withDuration: duration / 4,
       animations: {
       self.animateView.transform = CGAffineTransform(scaleX: CGFloat(self.scale), y: CGFloat(self.scale))

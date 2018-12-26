@@ -16,7 +16,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var masterTableView: UITableView!
   
   // MARK: - Variables
-  fileprivate let items = ["2-Color", "Simple 2D Rotation", "Multicolor", "Multi Point Position", "BezierCurve Position",
+  private let items = ["2-Color", "Simple 2D Rotation", "Multicolor", "Multi Point Position", "BezierCurve Position",
                        "Color and Frame Change", "View Fade In", "Pop"]
   
   
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
       let indexPath = masterTableView.indexPathForSelectedRow
       
       if let indexPath = indexPath {
-        detailView.barTitle = self.items[(indexPath as NSIndexPath).row]
+        detailView.barTitle = self.items[indexPath.row]
       }
     }
   }
@@ -65,11 +65,15 @@ class ViewController: UIViewController {
 
 // MARK: - UITableViewDelegate
 extension ViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+  func tableView(_ tableView: UITableView,
+                 heightForHeaderInSection section: Int) -> CGFloat
+  {
     return CGFloat(headerHeight)
   }
   
-  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  func tableView(_ tableView: UITableView,
+                 titleForHeaderInSection section: Int) -> String?
+  {
     return "Basic Animations"
   }
 }
@@ -80,15 +84,19 @@ extension ViewController: UITableViewDataSource {
     return 1
   }
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int
+  {
     return items.count
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView,
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell
+  {
     let cellIdentifier = "cell"
     let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
     
-    cell.textLabel?.text = self.items[(indexPath as NSIndexPath).row]
+    cell.textLabel?.text = self.items[indexPath.row]
     
     return cell
   }
