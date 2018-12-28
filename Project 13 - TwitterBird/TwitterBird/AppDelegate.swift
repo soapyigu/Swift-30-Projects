@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CAAnimationDelegate {
   var mask: CALayer?
   var imageView: UIImageView?
   
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     window = UIWindow(frame: UIScreen.main.bounds)
     
     if let window = window {
@@ -60,10 +60,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CAAnimationDelegate {
     keyFrameAnimation.keyTimes = [0, 0.3, 1]
     
     // add animation to current view
-    keyFrameAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)]
+    keyFrameAnimation.timingFunctions = [
+        CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut),
+        CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+    ]
     mask!.add(keyFrameAnimation, forKey: "bounds")
   }
-  
+
+  // MARK: - CAAnimationDelegate
   func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
     imageView?.layer.mask = nil
   }
