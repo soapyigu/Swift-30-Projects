@@ -43,17 +43,17 @@ open class VideoCutter: NSObject {
         exportSession.outputURL = URL(fileURLWithPath: outputURL)
         exportSession.shouldOptimizeForNetworkUse = true
         exportSession.outputFileType = AVFileType.mp4
-        let start = CMTimeMakeWithSeconds(Float64(startTime), 600)
-        let duration = CMTimeMakeWithSeconds(Float64(duration), 600)
-        let range = CMTimeRangeMake(start, duration)
+        let start = CMTimeMakeWithSeconds(Float64(startTime), preferredTimescale: 600)
+        let duration = CMTimeMakeWithSeconds(Float64(duration), preferredTimescale: 600)
+        let range = CMTimeRangeMake(start: start, duration: duration)
         exportSession.timeRange = range
         exportSession.exportAsynchronously { () -> Void in
           switch exportSession.status {
-          case AVAssetExportSessionStatus.completed:
+          case AVAssetExportSession.Status.completed:
             completion?(exportSession.outputURL, nil)
-          case AVAssetExportSessionStatus.failed:
+          case AVAssetExportSession.Status.failed:
             print("Failed: \(String(describing: exportSession.error))")
-          case AVAssetExportSessionStatus.cancelled:
+          case AVAssetExportSession.Status.cancelled:
             print("Failed: \(String(describing: exportSession.error))")
           default:
             print("default case")
