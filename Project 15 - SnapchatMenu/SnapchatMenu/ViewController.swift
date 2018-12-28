@@ -46,15 +46,15 @@ class ViewController: UIViewController {
     return true
   }
   
-  fileprivate func changeX(ofView view: UIView, xPosition: CGFloat) {
+  private func changeX(ofView view: UIView, xPosition: CGFloat) {
     var frame = view.frame
     frame.origin.x = xPosition
     view.frame = frame
   }
   
-  fileprivate func add(childViewController: UIViewController, toParentViewController parentViewController: UIViewController) {
-    addChildViewController(childViewController)
+  private func add(childViewController: UIViewController, toParentViewController parentViewController: UIViewController) {
+    addChild(childViewController)
     scrollView.addSubview(childViewController.view)
-    childViewController.didMove(toParentViewController: parentViewController)
+    childViewController.didMove(toParent: parentViewController)
   }
 }
