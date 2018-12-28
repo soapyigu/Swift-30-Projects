@@ -22,7 +22,7 @@ class ListViewController: UITableViewController {
     fetchPhotoDetails()
   }
   
-  fileprivate func fetchPhotoDetails() {
+  private func fetchPhotoDetails() {
     let request = URLRequest(url: dataSourceURL!)
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
     
@@ -54,7 +54,7 @@ class ListViewController: UITableViewController {
     }
   }
   
-  fileprivate func startOperationsForPhotoRecord(photoDetails: PhotoRecord, indexPath: IndexPath){
+  private func startOperationsForPhotoRecord(photoDetails: PhotoRecord, indexPath: IndexPath){
     switch (photoDetails.state) {
     case .New:
       startDownloadForRecord(photoDetails: photoDetails, indexPath: indexPath)
@@ -65,7 +65,7 @@ class ListViewController: UITableViewController {
     }
   }
   
-  fileprivate func startDownloadForRecord(photoDetails: PhotoRecord, indexPath: IndexPath){
+  private func startDownloadForRecord(photoDetails: PhotoRecord, indexPath: IndexPath){
     if let _ = pendingOperations.downloadsInProgress[indexPath] {
       return
     }
@@ -86,7 +86,7 @@ class ListViewController: UITableViewController {
     pendingOperations.downloadQueue.addOperation(downloader)
   }
   
-  fileprivate func startFiltrationForRecord(photoDetails: PhotoRecord, indexPath: IndexPath){
+  private func startFiltrationForRecord(photoDetails: PhotoRecord, indexPath: IndexPath){
     if let _ = pendingOperations.filtrationsInProgress[indexPath]{
       return
     }
@@ -114,7 +114,7 @@ class ListViewController: UITableViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath)
     
     if cell.accessoryView == nil {
-      let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+      let indicator = UIActivityIndicatorView(style: .gray)
       cell.accessoryView = indicator
     }
     let indicator = cell.accessoryView as! UIActivityIndicatorView
@@ -155,17 +155,17 @@ class ListViewController: UITableViewController {
     resumeAllOperations()
   }
   
-  fileprivate func suspendAllOperations () {
+  private func suspendAllOperations () {
     pendingOperations.downloadQueue.isSuspended = true
     pendingOperations.filtrationQueue.isSuspended = true
   }
   
-  fileprivate func resumeAllOperations () {
+  private func resumeAllOperations () {
     pendingOperations.downloadQueue.isSuspended = false
     pendingOperations.filtrationQueue.isSuspended = false
   }
   
-  fileprivate func loadImagesForOnscreenCells () {
+  private func loadImagesForOnscreenCells () {
     if let pathsArray = tableView.indexPathsForVisibleRows {
       
       var allPendingOperations = Set(pendingOperations.downloadsInProgress.keys)
