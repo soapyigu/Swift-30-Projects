@@ -22,7 +22,7 @@ class AlbumView: UIView {
     super.init(frame: frame)
     commonInit()
     
-    NotificationCenter.default.post(name: .BLDownloadImage, object: self, userInfo: ["imageView": coverImageView, "coverUrl" : coverUrl])
+    NotificationCenter.default.post(name: .BLDownloadImage, object: self, userInfo: ["imageView": coverImageView ?? UIImageView(), "coverUrl" : coverUrl])
   }
   
   private func commonInit() {
@@ -37,7 +37,7 @@ class AlbumView: UIView {
     // Create the indicator view
     indicatorView = UIActivityIndicatorView()
     indicatorView.translatesAutoresizingMaskIntoConstraints = false
-    indicatorView.activityIndicatorViewStyle = .whiteLarge
+    indicatorView.style = .whiteLarge
     indicatorView.startAnimating()
     addSubview(indicatorView)
     

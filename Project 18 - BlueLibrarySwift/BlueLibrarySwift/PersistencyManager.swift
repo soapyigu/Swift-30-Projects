@@ -63,7 +63,7 @@ final class PersistencyManager: NSObject {
   
   func saveImage(_ image: UIImage, filename: String) {
     let url = cache.appendingPathComponent(filename)
-    guard let data = UIImagePNGRepresentation(image) else {
+    guard let data = image.pngData() else {
       return
     }
     try? data.write(to: url)

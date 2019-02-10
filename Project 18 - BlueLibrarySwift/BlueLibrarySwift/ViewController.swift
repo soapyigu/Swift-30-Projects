@@ -70,7 +70,7 @@ class ViewController: UIViewController {
     setComponents()
     showDataForAlbum(at: currentAlbumIndex)
     
-    NotificationCenter.default.addObserver(self, selector:Selector.saveCurrentState, name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+    NotificationCenter.default.addObserver(self, selector:Selector.saveCurrentState, name: UIApplication.didEnterBackgroundNotification, object: nil)
 	}
   
   func showDataForAlbum(at index: Int) {
