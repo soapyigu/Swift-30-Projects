@@ -48,7 +48,7 @@ public struct TextSize {
     }
     
     let constrainedSize = CGSize(width: width - insets.left - insets.right, height: CGFloat.greatestFiniteMagnitude)
-    let attributes = [ NSAttributedStringKey.font: font ]
+    let attributes = [ NSAttributedString.Key.font: font ]
     let options: NSStringDrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin]
     var bounds = (text as NSString).boundingRect(with: constrainedSize, options: options, attributes: attributes, context: nil)
     bounds.size.width = width

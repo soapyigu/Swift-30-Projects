@@ -9,18 +9,11 @@
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
     import Darwin
-    import Foundation
-
-    typealias AtomicInt = Int32
-
-    let AtomicCompareAndSwap = OSAtomicCompareAndSwap32Barrier
-    let AtomicIncrement = OSAtomicIncrement32Barrier
-    let AtomicDecrement = OSAtomicDecrement32Barrier
+    import class Foundation.Thread
+    import protocol Foundation.NSCopying
 
     extension Thread {
-
-        static func setThreadLocalStorageValue<T: AnyObject>(_ value: T?, forKey key: String
-            ) {
+        static func setThreadLocalStorageValue<T: AnyObject>(_ value: T?, forKey key: NSCopying) {
             let currentThread = Thread.current
             let threadDictionary = currentThread.threadDictionary
 
@@ -30,9 +23,9 @@
             else {
                 threadDictionary[key] = nil
             }
-
         }
-        static func getThreadLocalStorageValueForKey<T>(_ key: String) -> T? {
+
+        static func getThreadLocalStorageValueForKey<T>(_ key: NSCopying) -> T? {
             let currentThread = Thread.current
             let threadDictionary = currentThread.threadDictionary
             
@@ -40,10 +33,4 @@
         }
     }
 
-    extension AtomicInt {
-        func valueSnapshot() -> Int32 {
-            return self
-        }
-    }
-    
 #endif

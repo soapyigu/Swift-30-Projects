@@ -6,51 +6,43 @@
 //  Copyright © 2016 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-
 
 // MARK: forEach
 
-extension Bag where T: ObserverType {
-    /// Dispatches `event` to app observers contained inside bag.
-    ///
-    /// - parameter action: Enumeration closure.
-    func on(_ event: Event<T.E>) {
-        if _onlyFastPath {
-            _value0?.on(event)
-            return
-        }
+@inline(__always)
+func dispatch<E>(_ bag: Bag<(Event<E>) -> ()>, _ event: Event<E>) {
+    bag._value0?(event)
 
-        let value0 = _value0
-        let dictionary = _dictionary
+    if bag._onlyFastPath {
+        return
+    }
 
-        if let value0 = value0 {
-            value0.on(event)
-        }
+    let pairs = bag._pairs
+    for i in 0 ..< pairs.count {
+        pairs[i].value(event)
+    }
 
-        if let dictionary = dictionary {
-            for element in dictionary.values {
-                element.on(event)
-            }
+    if let dictionary = bag._dictionary {
+        for element in dictionary.values {
+            element(event)
         }
     }
 }
 
 /// Dispatches `dispose` to all disposables contained inside bag.
 func disposeAll(in bag: Bag<Disposable>) {
+    bag._value0?.dispose()
+
     if bag._onlyFastPath {
-        bag._value0?.dispose()
         return
     }
 
-    let value0 = bag._value0
-    let dictionary = bag._dictionary
-
-    if let value0 = value0 {
-        value0.dispose()
+    let pairs = bag._pairs
+    for i in 0 ..< pairs.count {
+        pairs[i].value.dispose()
     }
 
-    if let dictionary = dictionary {
+    if let dictionary = bag._dictionary {
         for element in dictionary.values {
             element.dispose()
         }

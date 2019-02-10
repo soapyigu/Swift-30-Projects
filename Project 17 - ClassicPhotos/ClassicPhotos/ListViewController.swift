@@ -114,7 +114,7 @@ class ListViewController: UITableViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath)
     
     if cell.accessoryView == nil {
-      let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+      let indicator = UIActivityIndicatorView(style: .gray)
       cell.accessoryView = indicator
     }
     let indicator = cell.accessoryView as! UIActivityIndicatorView

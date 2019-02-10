@@ -14,12 +14,13 @@
 @class IGListAdapter;
 @class IGListSectionController;
 
+@protocol IGListSectionType;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  Implement this protocol to provide data to an `IGListAdapter`.
  */
-NS_SWIFT_NAME(ListAdapterDataSource)
 @protocol IGListAdapterDataSource <NSObject>
 
 /**
@@ -35,7 +36,7 @@ NS_SWIFT_NAME(ListAdapterDataSource)
  Asks the data source for a section controller for the specified object in the list.
 
  @param listAdapter The list adapter requesting this information.
- @param object An object in the list.
+ @param object      An object in the list.
 
  @return A new section controller instance that can be displayed in the list.
 
@@ -44,9 +45,9 @@ NS_SWIFT_NAME(ListAdapterDataSource)
 
  Section controllers are initialized for all objects whenever the `IGListAdapter` is created, updated, or reloaded.
  Section controllers are reused when objects are moved or updated. Maintaining the `-[IGListDiffable diffIdentifier]`
- guarantees this.
+ guarentees this.
  */
-- (IGListSectionController *)listAdapter:(IGListAdapter *)listAdapter sectionControllerForObject:(id)object;
+- (IGListSectionController <IGListSectionType> *)listAdapter:(IGListAdapter *)listAdapter sectionControllerForObject:(id)object;
 
 /**
  Asks the data source for a view to use as the collection view background when the list is empty.

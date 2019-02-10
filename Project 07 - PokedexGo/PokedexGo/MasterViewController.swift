@@ -40,14 +40,14 @@ class MasterViewController: UITableViewController {
       .throttle(0.5, scheduler: MainScheduler.instance)
       .subscribe(
         onNext: { [unowned self] query in
-          if query?.characters.count == 0 {
+          if query?.count == 0 {
             self.filteredPokemons = self.pokemons
           } else {
             self.filteredPokemons = self.pokemons.filter{ $0.name.hasPrefix(query!) }
           }
           self.tableView.reloadData()
         })
-      .addDisposableTo(disposeBag)
+        .disposed(by: disposeBag)
   }
   
   func dismissKeyboard() {

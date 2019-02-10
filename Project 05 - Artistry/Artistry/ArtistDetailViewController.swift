@@ -34,10 +34,10 @@ class ArtistDetailViewController: UIViewController {
     super.viewDidLoad()
     title = selectedArtist.name
     
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 300
     
-    NotificationCenter.default.addObserver(forName: .UIContentSizeCategoryDidChange, object: .none, queue: OperationQueue.main) { [weak self] _ in
+    NotificationCenter.default.addObserver(forName: UIContentSizeCategory.didChangeNotification, object: .none, queue: OperationQueue.main) { [weak self] _ in
       self?.tableView.reloadData()
     }
   }
@@ -64,8 +64,8 @@ extension ArtistDetailViewController: UITableViewDataSource {
     cell.moreInfoTextView.text = work.isExpanded ? work.info : moreInfoText
     cell.moreInfoTextView.textAlignment = work.isExpanded ? .left : .center
     
-    cell.workTitleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
-    cell.moreInfoTextView.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
+    cell.workTitleLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
+    cell.moreInfoTextView.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote)
     
     return cell
   }

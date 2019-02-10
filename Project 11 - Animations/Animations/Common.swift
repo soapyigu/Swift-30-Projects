@@ -37,8 +37,8 @@ func drawCircleView() -> UIView {
 }
 
 func makeAlert(_ title: String, message: String, actionTitle: String) -> UIAlertController {
-  let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-  alert.addAction(UIAlertAction(title: actionTitle, style: UIAlertActionStyle.default, handler: nil))
+  let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+  alert.addAction(UIAlertAction(title: actionTitle, style: UIAlertAction.Style.default, handler: nil))
   
   return alert
 }

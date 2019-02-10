@@ -8,24 +8,21 @@
  */
 
 #import <IGListKit/IGListSectionController.h>
-
+#import <IGListKit/IGListSectionType.h>
 #import <IGListKit/IGListMacros.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 /**
- An instance of `IGListStackedSectionController` is a clustered section controller, composed of many child section
- controllers. It constructs and routes item-level indexes to the appropriate child section controller with a local
- index. This lets you build section controllers made up of individual units that can be shared and reused with other
- section controllers.
+ An instace of `IGListStackedSectionController` is a clustered section controller, 
+ composed of many child section controllers. It constructs and routes item-level
+ indexes to the appropriate child section controller with a local index. This lets you build section controllers made up
+ of individual units that can be shared and reused with other section controllers.
 
  For example, you can create a "Comments" section controller that displays lists of text that is used alongside photo,
  video, or slideshow section controllers. You then have four small and manageable section controllers instead of one
  huge class.
  */
 IGLK_SUBCLASSING_RESTRICTED
-NS_SWIFT_NAME(ListStackedSectionController)
-@interface IGListStackedSectionController : IGListSectionController
+@interface IGListStackedSectionController : IGListSectionController <IGListSectionType>
 
 /**
  Creates a new stacked section controller.
@@ -36,7 +33,7 @@ NS_SWIFT_NAME(ListStackedSectionController)
  
  @warning The first section controller that is the supplementary source decides which supplementary views get displayed.
  */
-- (instancetype)initWithSectionControllers:(NSArray <IGListSectionController *> *)sectionControllers NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithSectionControllers:(NSArray <IGListSectionController<IGListSectionType> *> *)sectionControllers NS_DESIGNATED_INITIALIZER;
 
 /**
  :nodoc:
@@ -49,5 +46,3 @@ NS_SWIFT_NAME(ListStackedSectionController)
 + (instancetype)new NS_UNAVAILABLE;
 
 @end
-
-NS_ASSUME_NONNULL_END

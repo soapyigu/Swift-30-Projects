@@ -54,7 +54,7 @@ class WeatherDetailCell: UICollectionViewCell {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    let insetBounds = UIEdgeInsetsInsetRect(bounds, CommonInsets)
+    let insetBounds = bounds.inset(by: CommonInsets)
     titleLabel.frame = insetBounds
     detailLabel.frame = insetBounds
   }

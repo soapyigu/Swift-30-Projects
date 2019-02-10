@@ -78,6 +78,6 @@ class MessageCell: UICollectionViewCell {
     titleLabel.frame = CGRect(x: CommonInsets.left, y: 0, width: bounds.width - CommonInsets.left - CommonInsets.right, height: MessageCell.titleHeight)
     statusLabel.frame = CGRect(x: bounds.width - 80, y: 4, width: 70, height: 18)
     let messageFrame = CGRect(x: 0, y: titleLabel.frame.maxY, width: bounds.width, height: bounds.height - MessageCell.titleHeight)
-    messageLabel.frame = UIEdgeInsetsInsetRect(messageFrame, CommonInsets)
+    messageLabel.frame = messageFrame.inset(by: CommonInsets)
   }
 }

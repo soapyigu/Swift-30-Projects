@@ -8,16 +8,18 @@
 
 #if os(iOS) || os(tvOS) || os(macOS)
 
-import Foundation
-#if !RX_NO_MODULE
 import RxSwift
-#endif
 
 #if os(iOS) || os(tvOS)
     import UIKit
 
     typealias Control = UIKit.UIControl
-    typealias ControlEvents = UIKit.UIControlEvents
+
+    #if swift(>=4.2)
+        public typealias ControlEvents = UIKit.UIControl.Event
+    #else
+        public typealias ControlEvents = UIKit.UIControlEvents
+    #endif
 #elseif os(macOS)
     import Cocoa
 
@@ -25,7 +27,7 @@ import RxSwift
 #endif
 
 // This should be only used from `MainScheduler`
-class ControlTarget: RxTarget {
+final class ControlTarget: RxTarget {
     typealias Callback = (Control) -> Void
 
     let selector: Selector = #selector(ControlTarget.eventHandler(_:))
@@ -71,7 +73,7 @@ class ControlTarget: RxTarget {
     }
 #endif
 
-    func eventHandler(_ sender: Control!) {
+    @objc func eventHandler(_ sender: Control!) {
         if let callback = self.callback, let control = self.control {
             callback(control)
         }

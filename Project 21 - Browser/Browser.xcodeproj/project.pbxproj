@@ -12,6 +12,7 @@
 		1986E0EE211972BD00001758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1986E0EC211972BD00001758 /* Main.storyboard */; };
 		1986E0F0211972BE00001758 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1986E0EF211972BE00001758 /* Assets.xcassets */; };
 		1986E0F3211972BE00001758 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1986E0F1211972BE00001758 /* LaunchScreen.storyboard */; };
+		ED0EFCCC2210017A00A51DEC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0EFCCB2210017A00A51DEC /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		1986E0EF211972BE00001758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1986E0F2211972BE00001758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1986E0F4211972BE00001758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED0EFCCB2210017A00A51DEC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED0EFCCC2210017A00A51DEC /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 			children = (
 				1986E0E7211972BD00001758 /* Browser */,
 				1986E0E6211972BD00001758 /* Products */,
+				ED0EFCCA2210017A00A51DEC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +66,14 @@
 				1986E0F4211972BE00001758 /* Info.plist */,
 			);
 			path = Browser;
+			sourceTree = "<group>";
+		};
+		ED0EFCCA2210017A00A51DEC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED0EFCCB2210017A00A51DEC /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +108,7 @@
 				TargetAttributes = {
 					1986E0E4211972BD00001758 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -289,7 +302,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yigu.Browser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -307,7 +320,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yigu.Browser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

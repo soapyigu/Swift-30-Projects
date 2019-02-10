@@ -6,8 +6,6 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-
 /// Represents a disposable resource that only disposes its underlying disposable resource when all dependent disposable objects have been disposed.
 public final class RefCountDisposable : DisposeBase, Cancelable {
     private var _lock = SpinLock()
@@ -102,7 +100,7 @@ public final class RefCountDisposable : DisposeBase, Cancelable {
 internal final class RefCountInnerDisposable: DisposeBase, Disposable
 {
     private let _parent: RefCountDisposable
-    private var _isDisposed: AtomicInt = 0
+    private var _isDisposed = AtomicInt(0)
 
     init(_ parent: RefCountDisposable)
     {
@@ -112,7 +110,7 @@ internal final class RefCountInnerDisposable: DisposeBase, Disposable
 
     internal func dispose()
     {
-        if AtomicCompareAndSwap(0, 1, &_isDisposed) {
+        if _isDisposed.fetchOr(1) == 0 {
             _parent.release()
         }
     }

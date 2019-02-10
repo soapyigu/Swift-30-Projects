@@ -6,22 +6,16 @@
 //  Copyright © 2016 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-
 #if os(iOS) || os(tvOS)
 
-import Foundation
 import UIKit
-    
-#if !RX_NO_MODULE
 import RxSwift
-#endif
 
 extension Reactive where Base: UIAlertAction {
 
     /// Bindable sink for `enabled` property.
-    public var isEnabled: UIBindingObserver<Base, Bool> {
-        return UIBindingObserver(UIElement: self.base) { alertAction, value in
+    public var isEnabled: Binder<Bool> {
+        return Binder(self.base) { alertAction, value in
             alertAction.isEnabled = value
         }
     }

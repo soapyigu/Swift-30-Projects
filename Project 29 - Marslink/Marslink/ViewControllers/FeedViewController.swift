@@ -52,6 +52,22 @@ class FeedViewController: UIViewController {
 }
 
 extension FeedViewController: IGListAdapterDataSource {
+    /// Asks the section controller for each data object.
+    ///
+    /// - Parameters:
+    ///   - listAdapter: The adapter for IGList.
+    ///   - object: The data object.
+    /// - Returns: The secion controller for data object.
+    func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController & IGListSectionType {
+        if object is Message {
+            return MessageSectionController()
+        } else if object is Weather {
+            return WeatherSectionController()
+        } else {
+            return JournalSectionController()
+        }
+    }
+    
   /// Populate data to collection view.
   ///
   /// - Parameter listAdapter: The adapter for IGList.
@@ -67,23 +83,6 @@ extension FeedViewController: IGListAdapterDataSource {
       }
       return false
     })
-  }
-  
-  /// Asks the section controller for each data object.
-  ///
-  /// - Parameters:
-  ///   - listAdapter: The adapter for IGList.
-  ///   - object: The data object.
-  /// - Returns: The secion controller for data object.
-  func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
-    if object is Message {
-      return MessageSectionController()
-    } else if object is Weather {
-      return WeatherSectionController()
-    } else {
-      return JournalSectionController()
-    }
-
   }
   
   /// Requests a view when list is empty.

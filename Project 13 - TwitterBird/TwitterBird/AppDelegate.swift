@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CAAnimationDelegate {
   var mask: CALayer?
   var imageView: UIImageView?
   
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     window = UIWindow(frame: UIScreen.main.bounds)
     
     if let window = window {
@@ -37,9 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CAAnimationDelegate {
       window.backgroundColor = UIColor(red: 70/255, green: 154/255, blue: 233/255, alpha: 1)
       window.makeKeyAndVisible()
     }
-    
-    // hide the status bar
-    UIApplication.shared.isStatusBarHidden = true
+        
     return true
   }
   
@@ -60,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CAAnimationDelegate {
     keyFrameAnimation.keyTimes = [0, 0.3, 1]
     
     // add animation to current view
-    keyFrameAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)]
+    keyFrameAnimation.timingFunctions = [CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut), CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)]
     mask!.add(keyFrameAnimation, forKey: "bounds")
   }
   

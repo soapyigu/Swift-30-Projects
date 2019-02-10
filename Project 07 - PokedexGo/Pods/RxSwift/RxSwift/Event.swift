@@ -6,8 +6,6 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-
 /// Represents a sequence event.
 ///
 /// Sequence grammar: 
@@ -24,7 +22,7 @@ public enum Event<Element> {
 }
 
 extension Event : CustomDebugStringConvertible {
-    /// - returns: Description of event.
+    /// Description of event.
     public var debugDescription: String {
         switch self {
         case .next(let value):
@@ -38,7 +36,7 @@ extension Event : CustomDebugStringConvertible {
 }
 
 extension Event {
-    /// Is `Completed` or `Error` event.
+    /// Is `completed` or `error` event.
     public var isStopEvent: Bool {
         switch self {
         case .next: return false
@@ -46,7 +44,7 @@ extension Event {
         }
     }
 
-    /// If `Next` event, returns element value.
+    /// If `next` event, returns element value.
     public var element: Element? {
         if case .next(let value) = self {
             return value
@@ -54,18 +52,26 @@ extension Event {
         return nil
     }
 
-    /// If `Error` event, returns error.
+    /// If `error` event, returns error.
     public var error: Swift.Error? {
         if case .error(let error) = self {
             return error
         }
         return nil
     }
+
+    /// If `completed` event, returns `true`.
+    public var isCompleted: Bool {
+        if case .completed = self {
+            return true
+        }
+        return false
+    }
 }
 
 extension Event {
-    /// Maps sequence elements using transform. If error happens during the transform .error
-    /// will be returned as value
+    /// Maps sequence elements using transform. If error happens during the transform, `.error`
+    /// will be returned as value.
     public func map<Result>(_ transform: (Element) throws -> Result) -> Event<Result> {
         do {
             switch self {
@@ -80,5 +86,21 @@ extension Event {
         catch let e {
             return .error(e)
         }
+    }
+}
+
+/// A type that can be converted to `Event<Element>`.
+public protocol EventConvertible {
+    /// Type of element in event
+    associatedtype ElementType
+
+    /// Event representation of this instance
+    var event: Event<ElementType> { get }
+}
+
+extension Event : EventConvertible {
+    /// Event representation of this instance
+    public var event: Event<Element> {
+        return self
     }
 }

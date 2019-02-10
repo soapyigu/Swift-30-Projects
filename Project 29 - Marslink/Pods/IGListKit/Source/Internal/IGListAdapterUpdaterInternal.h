@@ -10,11 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 
-#import <IGListKit/IGListMoveIndexPath.h>
-
 #import "IGListAdapterUpdater.h"
-#import "IGListBatchUpdateState.h"
-#import "IGListBatchUpdates.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,26 +22,30 @@ FOUNDATION_EXTERN void convertReloadToDeleteInsert(NSMutableIndexSet *reloads,
 
 @interface IGListAdapterUpdater ()
 
+@property (nonatomic, strong, readonly) NSMutableArray<IGListUpdatingCompletion> *completionBlocks;
+
 @property (nonatomic, copy, nullable) NSArray *fromObjects;
 @property (nonatomic, copy, nullable) NSArray *toObjects;
 @property (nonatomic, copy, nullable) NSArray *pendingTransitionToObjects;
-@property (nonatomic, strong) NSMutableArray<IGListUpdatingCompletion> *completionBlocks;
 
 @property (nonatomic, assign) BOOL queuedUpdateIsAnimated;
 
-@property (nonatomic, strong) IGListBatchUpdates *batchUpdates;
+@property (nonatomic, strong, readonly) NSMutableSet<NSIndexPath *> *deleteIndexPaths;
+@property (nonatomic, strong, readonly) NSMutableSet<NSIndexPath *> *insertIndexPaths;
+@property (nonatomic, strong, readonly) NSMutableSet<NSIndexPath *> *reloadIndexPaths;
+@property (nonatomic, strong, readonly) NSMutableIndexSet *reloadSections;
 
 @property (nonatomic, copy, nullable) IGListObjectTransitionBlock objectTransitionBlock;
+@property (nonatomic, copy, nullable) NSMutableArray<IGListItemUpdateBlock> *itemUpdateBlocks;
 
 @property (nonatomic, copy, nullable) IGListReloadUpdateBlock reloadUpdates;
 @property (nonatomic, assign, getter=hasQueuedReloadData) BOOL queuedReloadData;
 
-@property (nonatomic, assign) IGListBatchUpdateState state;
-@property (nonatomic, strong, nullable) IGListBatchUpdateData *applyingUpdateData;
+@property (nonatomic, assign) BOOL batchUpdateOrReloadInProgress;
 
 - (void)performReloadDataWithCollectionView:(UICollectionView *)collectionView;
 - (void)performBatchUpdatesWithCollectionView:(UICollectionView *)collectionView;
-- (void)cleanStateBeforeUpdates;
+- (void)cleanupState;
 - (BOOL)hasChanges;
 
 @end

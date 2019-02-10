@@ -49,7 +49,7 @@ class MainViewController: UIViewController {
     didSet {
       // reset collectionView and selectedPhotos
       collectionView?.allowsMultipleSelection = sharing
-      collectionView?.selectItem(at: nil, animated: true, scrollPosition: UICollectionViewScrollPosition())
+      collectionView?.selectItem(at: nil, animated: true, scrollPosition: UICollectionView.ScrollPosition())
       selectedPhotos.removeAll(keepingCapacity: false)
       
       guard let shareButton = self.navigationItem.rightBarButtonItems?.first else {
@@ -122,9 +122,9 @@ class MainViewController: UIViewController {
     // present activityViewController when imageArray has some selected
     if !imageArray.isEmpty {
       let shareScreen = UIActivityViewController(activityItems: imageArray, applicationActivities: nil)
-      shareScreen.completionWithItemsHandler = { _ in
-        self.sharing = false
-      }
+        shareScreen.completionWithItemsHandler = { (_, _, _, _) in 
+            self.sharing = false
+        }
       let popoverPresentationController = shareScreen.popoverPresentationController
       popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
       popoverPresentationController?.permittedArrowDirections = .any
@@ -184,7 +184,7 @@ extension MainViewController: UICollectionViewDataSource {
                                viewForSupplementaryElementOfKind kind: String,
                                at indexPath: IndexPath) -> UICollectionReusableView {
     switch kind {
-    case UICollectionElementKindSectionHeader:
+    case UICollectionView.elementKindSectionHeader:
       let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                        withReuseIdentifier: "FlickrPhotoHeaderView",
                                                                        for: indexPath) as! FlickrPhotoHeaderView
@@ -262,7 +262,7 @@ extension MainViewController: UICollectionViewDelegate {
     
     let photo = photoForIndexPath(indexPath: indexPath)
     
-    if let index = selectedPhotos.index(of: photo) {
+    if let index = selectedPhotos.firstIndex(of: photo) {
       selectedPhotos.remove(at: index)
       updateSharedPhotoCount()
     }
@@ -271,7 +271,7 @@ extension MainViewController: UICollectionViewDelegate {
 
 extension MainViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    let activityIndicator = UIActivityIndicatorView(style: .gray)
     textField.addSubview(activityIndicator)
     activityIndicator.frame = textField.bounds
     activityIndicator.startAnimating()

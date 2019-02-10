@@ -19,9 +19,9 @@ class NewsTableViewController: UITableViewController {
     super.viewDidLoad()
     
     tableView.estimatedRowHeight = 140
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.rowHeight = UITableView.automaticDimension
     
-    tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+    tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
     
     feedParser.parseFeed(feedURL: feedURL) { [weak self] rssItems in
       self?.rssItems = rssItems

@@ -11,15 +11,15 @@
 
 #import <IGListKit/IGListAssert.h>
 #import <IGListKit/IGListAdapterUpdater.h>
+#import <IGListKit/IGListDisplayDelegate.h>
 #import <IGListKit/IGListSupplementaryViewSource.h>
 
 #import "IGListSectionControllerInternal.h"
-#import "IGListDebugger.h"
 
 @implementation IGListAdapter {
-    NSMapTable<UICollectionReusableView *, IGListSectionController *> *_viewSectionControllerMap;
-    // An array of blocks to execute once batch updates are finished
-    NSMutableArray<void (^)()> *_queuedCompletionBlocks;
+    NSMapTable<UICollectionViewCell *, IGListSectionController<IGListSectionType> *> *_cellSectionControllerMap;
+    BOOL _isDequeuingCell;
+    BOOL _isSendingWorkingRangeDisplayUpdates;
 }
 
 - (void)dealloc {
@@ -29,66 +29,46 @@
         _collectionView.dataSource = nil;
         _collectionView.delegate = nil;
     }
-
-    [self.sectionMap reset];
 }
 
 
 #pragma mark - Init
 
-- (instancetype)initWithUpdater:(id <IGListUpdatingDelegate>)updater
+- (instancetype)initWithUpdater:(id <IGListUpdatingDelegate>)updatingDelegate
                  viewController:(UIViewController *)viewController
                workingRangeSize:(NSInteger)workingRangeSize {
     IGAssertMainThread();
-    IGParameterAssert(updater);
+    IGParameterAssert(updatingDelegate);
 
     if (self = [super init]) {
-        NSPointerFunctions *keyFunctions = [updater objectLookupPointerFunctions];
+        NSPointerFunctions *keyFunctions = [updatingDelegate objectLookupPointerFunctions];
         NSPointerFunctions *valueFunctions = [NSPointerFunctions pointerFunctionsWithOptions:NSPointerFunctionsStrongMemory];
         NSMapTable *table = [[NSMapTable alloc] initWithKeyPointerFunctions:keyFunctions valuePointerFunctions:valueFunctions capacity:0];
         _sectionMap = [[IGListSectionMap alloc] initWithMapTable:table];
 
-        _displayHandler = [IGListDisplayHandler new];
+        _displayHandler = [[IGListDisplayHandler alloc] init];
         _workingRangeHandler = [[IGListWorkingRangeHandler alloc] initWithWorkingRangeSize:workingRangeSize];
 
-        _viewSectionControllerMap = [NSMapTable mapTableWithKeyOptions:NSMapTableObjectPointerPersonality | NSMapTableStrongMemory
+        _cellSectionControllerMap = [NSMapTable mapTableWithKeyOptions:NSMapTableObjectPointerPersonality | NSMapTableStrongMemory
                                                           valueOptions:NSMapTableStrongMemory];
 
-        _updater = updater;
+        _updatingDelegate = updatingDelegate;
         _viewController = viewController;
-
-        [IGListDebugger trackAdapter:self];
     }
     return self;
 }
 
-- (instancetype)initWithUpdater:(id<IGListUpdatingDelegate>)updater
-                 viewController:(UIViewController *)viewController {
-    return [self initWithUpdater:updater
-                  viewController:viewController
-                workingRangeSize:0];
+- (IGListCollectionView *)collectionView {
+    return (IGListCollectionView *)_collectionView;
 }
 
-- (UICollectionView *)collectionView {
-    return _collectionView;
-}
-
-- (void)setCollectionView:(UICollectionView *)collectionView {
+- (void)setCollectionView:(IGListCollectionView *)collectionView {
     IGAssertMainThread();
+    IGParameterAssert([collectionView isKindOfClass:[IGListCollectionView class]]);
 
     // if collection view has been used by a different list adapter, treat it as if we were using a new collection view
-    // this happens when embedding a UICollectionView inside a UICollectionViewCell that is reused
+    // this happens when embedding a IGListCollectionView inside a UICollectionViewCell that is reused
     if (_collectionView != collectionView || _collectionView.dataSource != self) {
-        // if the collection view was being used with another IGListAdapter (e.g. cell reuse)
-        // destroy the previous association so the old adapter doesn't update the wrong collection view
-        static NSMapTable<UICollectionView *, IGListAdapter *> *globalCollectionViewAdapterMap = nil;
-        if (globalCollectionViewAdapterMap == nil) {
-            globalCollectionViewAdapterMap = [NSMapTable weakToWeakObjectsMapTable];
-        }
-        [globalCollectionViewAdapterMap removeObjectForKey:_collectionView];
-        [[globalCollectionViewAdapterMap objectForKey:collectionView] setCollectionView:nil];
-        [globalCollectionViewAdapterMap setObject:self forKey:collectionView];
-
         // dump old registered section controllers in the case that we are changing collection views or setting for
         // the first time
         _registeredCellClasses = [NSMutableSet new];
@@ -98,12 +78,6 @@
 
         _collectionView = collectionView;
         _collectionView.dataSource = self;
-
-        if ([_collectionView respondsToSelector:@selector(setPrefetchingEnabled:)]) {
-            _collectionView.prefetchingEnabled = NO;
-        }
-
-        [_collectionView.collectionViewLayout invalidateLayout];
 
         [self updateCollectionViewDelegate];
         [self updateAfterPublicSettingsChange];
@@ -139,9 +113,8 @@
 }
 
 - (void)updateAfterPublicSettingsChange {
-    id<IGListAdapterDataSource> dataSource = _dataSource;
-    if (_collectionView != nil && dataSource != nil) {
-        [self updateObjects:[[dataSource objectsForListAdapter:self] copy] dataSource:dataSource];
+    if (_collectionView != nil && _dataSource != nil) {
+        [self updateObjects:[[_dataSource objectsForListAdapter:self] copy]];
     }
 }
 
@@ -173,47 +146,26 @@
     IGAssertMainThread();
     IGParameterAssert(object != nil);
 
-    const NSInteger section = [self sectionForObject:object];
+    const NSUInteger section = [self sectionForObject:object];
     if (section == NSNotFound) {
         return;
     }
 
     UICollectionView *collectionView = self.collectionView;
-    UICollectionViewLayout *layout = self.collectionView.collectionViewLayout;
+    const NSUInteger numberOfItems = [collectionView numberOfItemsInSection:section];
+    if (numberOfItems == 0) {
+        return;
+    }
 
     // force layout before continuing
     // this method is typcially called before pushing a view controller
     // thus, before the layout process has actually happened
-    [collectionView setNeedsLayout];
     [collectionView layoutIfNeeded];
 
-    NSIndexPath *indexPathFirstElement = [NSIndexPath indexPathForItem:0 inSection:section];
-    
     // collect the layout attributes for the cell and supplementary views for the first index
     // this will break if there are supplementary views beyond item 0
-    NSMutableArray<UICollectionViewLayoutAttributes *> *attributes = nil;
-    
-    const NSInteger numberOfItems = [collectionView numberOfItemsInSection:section];
-    if (numberOfItems > 0) {
-        attributes = [self layoutAttributesForIndexPath:indexPathFirstElement supplementaryKinds:supplementaryKinds].mutableCopy;
-
-        if (numberOfItems > 1) {
-            NSIndexPath *indexPathLastElement = [NSIndexPath indexPathForItem:(numberOfItems - 1) inSection:section];
-            UICollectionViewLayoutAttributes *lastElementattributes = [self layoutAttributesForIndexPath:indexPathLastElement supplementaryKinds:supplementaryKinds].firstObject;
-            if (lastElementattributes != nil) {
-                [attributes addObject:lastElementattributes];
-            }
-        }
-    } else {
-        NSMutableArray *supplementaryAttributes = [NSMutableArray new];
-        for (NSString* supplementaryKind in supplementaryKinds) {
-            UICollectionViewLayoutAttributes *supplementaryAttribute = [layout layoutAttributesForSupplementaryViewOfKind:supplementaryKind atIndexPath:indexPathFirstElement];
-            if (supplementaryAttribute != nil) {
-                [supplementaryAttributes addObject: supplementaryAttribute];
-            }
-        }
-        attributes = supplementaryAttributes;
-    }
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:section];
+    NSArray *attributes = [self layoutAttributesForIndexPath:indexPath supplementaryKinds:supplementaryKinds];
 
     CGFloat offsetMin = 0.0;
     CGFloat offsetMax = 0.0;
@@ -241,23 +193,21 @@
             offsetMax = endMax;
         }
     }
-
+    
     const CGFloat offsetMid = (offsetMin + offsetMax) / 2.0;
     const CGFloat collectionViewWidth = collectionView.bounds.size.width;
     const CGFloat collectionViewHeight = collectionView.bounds.size.height;
     const UIEdgeInsets contentInset = collectionView.contentInset;
     CGPoint contentOffset = collectionView.contentOffset;
     switch (scrollDirection) {
-        case UICollectionViewScrollDirectionHorizontal: {
+        case UICollectionViewScrollDirectionHorizontal:
             switch (scrollPosition) {
                 case UICollectionViewScrollPositionRight:
                     contentOffset.x = offsetMax - collectionViewWidth - contentInset.left;
                     break;
-                case UICollectionViewScrollPositionCenteredHorizontally: {
-                    const CGFloat insets = (contentInset.left - contentInset.right) / 2.0;
-                    contentOffset.x = offsetMid - collectionViewWidth / 2.0 - insets;
+                case UICollectionViewScrollPositionCenteredHorizontally:
+                    contentOffset.x = offsetMid - collectionViewWidth / 2.0 - contentInset.left;
                     break;
-                }
                 case UICollectionViewScrollPositionLeft:
                 case UICollectionViewScrollPositionNone:
                 case UICollectionViewScrollPositionTop:
@@ -266,22 +216,15 @@
                     contentOffset.x = offsetMin - contentInset.left;
                     break;
             }
-            const CGFloat maxOffsetX = collectionView.contentSize.width - collectionView.frame.size.width + collectionView.contentInset.right;
-            const CGFloat minOffsetX = -collectionView.contentInset.left;
-            contentOffset.x = MIN(contentOffset.x, maxOffsetX);
-            contentOffset.x = MAX(contentOffset.x, minOffsetX);
             break;
-        }
-        case UICollectionViewScrollDirectionVertical: {
+        case UICollectionViewScrollDirectionVertical:
             switch (scrollPosition) {
                 case UICollectionViewScrollPositionBottom:
-                    contentOffset.y = offsetMax - collectionViewHeight;
+                    contentOffset.y = offsetMax - collectionViewHeight - contentInset.top;
                     break;
-                case UICollectionViewScrollPositionCenteredVertically: {
-                    const CGFloat insets = (contentInset.top - contentInset.bottom) / 2.0;
-                    contentOffset.y = offsetMid - collectionViewHeight / 2.0 - insets;
+                case UICollectionViewScrollPositionCenteredVertically:
+                    contentOffset.y = offsetMid - collectionViewHeight / 2.0 - contentInset.top;
                     break;
-                }
                 case UICollectionViewScrollPositionTop:
                 case UICollectionViewScrollPositionNone:
                 case UICollectionViewScrollPositionLeft:
@@ -290,16 +233,12 @@
                     contentOffset.y = offsetMin - contentInset.top;
                     break;
             }
-            const CGFloat maxOffsetY = collectionView.contentSize.height - collectionView.frame.size.height + collectionView.contentInset.bottom;
-            const CGFloat minOffsetY = -collectionView.contentInset.top;
-            contentOffset.y = MIN(contentOffset.y, maxOffsetY);
-            contentOffset.y = MAX(contentOffset.y, minOffsetY);
             break;
-        }
     }
 
     [collectionView setContentOffset:contentOffset animated:animated];
 }
+
 
 #pragma mark - Editing
 
@@ -309,39 +248,34 @@
     id<IGListAdapterDataSource> dataSource = self.dataSource;
     UICollectionView *collectionView = self.collectionView;
     if (dataSource == nil || collectionView == nil) {
-        IGLKLog(@"Warning: Your call to %s is ignored as dataSource or collectionView haven't been set.", __PRETTY_FUNCTION__);        
         if (completion) {
             completion(NO);
         }
         return;
     }
 
-    NSArray *fromObjects = self.sectionMap.objects;
-    NSArray *newObjects = [dataSource objectsForListAdapter:self];
-
-    [self enterBatchUpdates];
+    NSArray *fromObjects = [self.sectionMap.objects copy];
+    NSArray *newItems = [[dataSource objectsForListAdapter:self] copy];
 
     __weak __typeof__(self) weakSelf = self;
-    [self.updater performUpdateWithCollectionView:collectionView
-                                      fromObjects:fromObjects
-                                        toObjects:newObjects
-                                         animated:animated
-                            objectTransitionBlock:^(NSArray *toObjects) {
-                                // temporarily capture the item map that we are transitioning from in case
-                                // there are any item deletes at the same
-                                weakSelf.previousSectionMap = [weakSelf.sectionMap copy];
+    [self.updatingDelegate performUpdateWithCollectionView:collectionView
+                                               fromObjects:fromObjects
+                                                 toObjects:newItems
+                                                  animated:animated
+                                     objectTransitionBlock:^(NSArray *toObjects) {
+                                         // temporarily capture the item map that we are transitioning from in case
+                                         // there are any item deletes at the same
+                                         weakSelf.previoussectionMap = [weakSelf.sectionMap copy];
 
-                                [weakSelf updateObjects:toObjects dataSource:dataSource];
-                            } completion:^(BOOL finished) {
-                                // release the previous items
-                                weakSelf.previousSectionMap = nil;
+                                         [weakSelf updateObjects:toObjects];
+                                     } completion:^(BOOL finished) {
+                                         // release the previous items
+                                         weakSelf.previoussectionMap = nil;
 
-                                if (completion) {
-                                    completion(finished);
-                                }
-
-                                [weakSelf exitBatchUpdates];
-                            }];
+                                         if (completion) {
+                                             completion(finished);
+                                         }
+                                     }];
 }
 
 - (void)reloadDataWithCompletion:(nullable IGListUpdaterCompletion)completion {
@@ -350,7 +284,6 @@
     id<IGListAdapterDataSource> dataSource = self.dataSource;
     UICollectionView *collectionView = self.collectionView;
     if (dataSource == nil || collectionView == nil) {
-        IGLKLog(@"Warning: Your call to %s is ignored as dataSource or collectionView haven't been set.", __PRETTY_FUNCTION__);
         if (completion) {
             completion(NO);
         }
@@ -360,10 +293,10 @@
     NSArray *newItems = [[dataSource objectsForListAdapter:self] copy];
 
     __weak __typeof__(self) weakSelf = self;
-    [self.updater reloadDataWithCollectionView:collectionView reloadUpdateBlock:^{
+    [self.updatingDelegate reloadDataWithCollectionView:collectionView reloadUpdateBlock:^{
         // purge all section controllers from the item map so that they are regenerated
         [weakSelf.sectionMap reset];
-        [weakSelf updateObjects:newItems dataSource:dataSource];
+        [weakSelf updateObjects:newItems];
     } completion:completion];
 }
 
@@ -371,10 +304,10 @@
     IGAssertMainThread();
     IGParameterAssert(objects);
 
-    NSMutableIndexSet *sections = [NSMutableIndexSet new];
+    NSMutableIndexSet *sections = [[NSMutableIndexSet alloc] init];
 
     // use the item map based on whether or not we're in an update block
-    IGListSectionMap *map = [self sectionMapUsingPreviousIfInUpdateBlock:YES];
+    IGListSectionMap *map = [self sectionMapAdjustForUpdateBlock:YES];
 
     for (id object in objects) {
         // look up the item using the map's lookup function. might not be the same item
@@ -395,37 +328,31 @@
     UICollectionView *collectionView = self.collectionView;
     IGAssert(collectionView != nil, @"Tried to reload the adapter without a collection view");
 
-    [self.updater reloadCollectionView:collectionView sections:sections];
+    [self.updatingDelegate reloadCollectionView:collectionView sections:sections];
 }
 
 
 #pragma mark - List Items & Sections
 
-- (nullable IGListSectionController *)sectionControllerForSection:(NSInteger)section {
-    IGAssertMainThread();
-    
-    return [self.sectionMap sectionControllerForSection:section];
-}
-
-- (NSInteger)sectionForSectionController:(IGListSectionController *)sectionController {
+- (NSInteger)sectionForSectionController:(IGListSectionController <IGListSectionType> *)sectionController {
     IGAssertMainThread();
     IGParameterAssert(sectionController != nil);
 
     return [self.sectionMap sectionForSectionController:sectionController];
 }
 
-- (IGListSectionController *)sectionControllerForObject:(id)object {
+- (id <IGListSectionType>)sectionControllerForObject:(id)object {
     IGAssertMainThread();
     IGParameterAssert(object != nil);
 
     return [self.sectionMap sectionControllerForObject:object];
 }
 
-- (id)objectForSectionController:(IGListSectionController *)sectionController {
+- (id)objectForSectionController:(IGListSectionController <IGListSectionType> *)sectionController {
     IGAssertMainThread();
     IGParameterAssert(sectionController != nil);
-
-    const NSInteger section = [self.sectionMap sectionForSectionController:sectionController];
+    
+    const NSUInteger section = [self.sectionMap sectionForSectionController:sectionController];
     return [self.sectionMap objectForSection:section];
 }
 
@@ -445,22 +372,21 @@
 - (NSArray *)objects {
     IGAssertMainThread();
 
-    return self.sectionMap.objects;
+    return [self.sectionMap.objects copy];
 }
 
 - (id<IGListSupplementaryViewSource>)supplementaryViewSourceAtIndexPath:(NSIndexPath *)indexPath {
-    IGListSectionController *sectionController = [self sectionControllerForSection:indexPath.section];
+    IGListSectionController<IGListSectionType> *sectionController = [self.sectionMap sectionControllerForSection:indexPath.section];
     return [sectionController supplementaryViewSource];
 }
 
-- (NSArray<IGListSectionController *> *)visibleSectionControllers {
+- (NSArray<IGListSectionController<IGListSectionType> *> *)visibleSectionControllers {
     IGAssertMainThread();
+    NSArray<UICollectionViewCell *> *visibleCells = [self.collectionView visibleCells];
     NSMutableSet *visibleSectionControllers = [NSMutableSet new];
-    NSArray<UICollectionViewLayoutAttributes *> *attributes =
-    [self.collectionView.collectionViewLayout layoutAttributesForElementsInRect:self.collectionView.bounds];
-    for (UICollectionViewLayoutAttributes* attribute in attributes) {
-        IGListSectionController *sectionController = [self sectionControllerForSection:attribute.indexPath.section];
-        IGAssert(sectionController != nil, @"Section controller nil for cell in section %zd", attribute.indexPath.section);
+    for (UICollectionViewCell *cell in visibleCells) {
+        IGListSectionController *sectionController = [self sectionControllerForCell:cell];
+        IGAssert(sectionController != nil, @"Section controller nil for cell %@", cell);
         if (sectionController) {
             [visibleSectionControllers addObject:sectionController];
         }
@@ -473,10 +399,10 @@
     NSArray<UICollectionViewCell *> *visibleCells = [self.collectionView visibleCells];
     NSMutableSet *visibleObjects = [NSMutableSet new];
     for (UICollectionViewCell *cell in visibleCells) {
-        IGListSectionController *sectionController = [self sectionControllerForView:cell];
+        IGListSectionController<IGListSectionType> *sectionController = [self sectionControllerForCell:cell];
         IGAssert(sectionController != nil, @"Section controller nil for cell %@", cell);
         if (sectionController != nil) {
-            const NSInteger section = [self sectionForSectionController:sectionController];
+            const NSUInteger section = [self sectionForSectionController:sectionController];
             id object = [self objectAtSection:section];
             IGAssert(object != nil, @"Object not found for section controller %@ at section %zi", sectionController, section);
             if (object != nil) {
@@ -487,42 +413,21 @@
     return [visibleObjects allObjects];
 }
 
-- (NSArray<UICollectionViewCell *> *)visibleCellsForObject:(id)object {
-    IGAssertMainThread();
-    IGParameterAssert(object != nil);
-
-    const NSInteger section = [self.sectionMap sectionForObject:object];
-    if (section == NSNotFound) {
-        return [NSArray new];
-    }
-
-    NSArray<UICollectionViewCell *> *visibleCells = [self.collectionView visibleCells];
-    UICollectionView *collectionView = self.collectionView;
-    NSPredicate *controllerPredicate = [NSPredicate predicateWithBlock:^BOOL(UICollectionViewCell* cell, NSDictionary* bindings) {
-        NSIndexPath *indexPath = [collectionView indexPathForCell:cell];
-        return indexPath.section == section;
-    }];
-
-    return [visibleCells filteredArrayUsingPredicate:controllerPredicate];
-}
-
 
 #pragma mark - Layout
 
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     IGAssertMainThread();
 
-    IGListSectionController *sectionController = [self sectionControllerForSection:indexPath.section];
-    const CGSize size = [sectionController sizeForItemAtIndex:indexPath.item];
-    return CGSizeMake(MAX(size.width, 0.0), MAX(size.height, 0.0));
+    IGListSectionController <IGListSectionType> *sectionController = [self.sectionMap sectionControllerForSection:indexPath.section];
+    return [sectionController sizeForItemAtIndex:indexPath.item];
 }
 
 - (CGSize)sizeForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
     IGAssertMainThread();
     id <IGListSupplementaryViewSource> supplementaryViewSource = [self supplementaryViewSourceAtIndexPath:indexPath];
     if ([[supplementaryViewSource supportedElementKinds] containsObject:elementKind]) {
-        const CGSize size = [supplementaryViewSource sizeForSupplementaryViewOfKind:elementKind atIndex:indexPath.item];
-        return CGSizeMake(MAX(size.width, 0.0), MAX(size.height, 0.0));
+        return [supplementaryViewSource sizeForSupplementaryViewOfKind:elementKind atIndex:indexPath.item];
     }
     return CGSizeZero;
 }
@@ -532,21 +437,14 @@
 
 // this method is what updates the "source of truth"
 // this should only be called just before the collection view is updated
-- (void)updateObjects:(NSArray *)objects dataSource:(id<IGListAdapterDataSource>)dataSource {
-    IGParameterAssert(dataSource != nil);
-
+- (void)updateObjects:(NSArray *)objects {
 #if DEBUG
-    NSCountedSet *identifiersSet = [NSCountedSet new];
     for (id object in objects) {
-        [identifiersSet addObject:[object diffIdentifier]];
-        IGAssert([object isEqualToDiffableObject:object], @"Object instance %@ not equal to itself. This will break infra map tables.", object);
-        IGAssert([identifiersSet countForObject:[object diffIdentifier]] <= 1, @"Diff identifier %@ for object %@ occurs more than once. Identifiers must be unique!", [object diffIdentifier], object);
+        IGAssert([object isEqual:object], @"Object instance %@ not equal to itself. This will break infra map tables.", object);
     }
 #endif
 
-    NSMutableArray<IGListSectionController *> *sectionControllers = [NSMutableArray new];
-    NSMutableArray *validObjects = [NSMutableArray new];
-
+    NSMutableArray<IGListSectionController <IGListSectionType> *> *sectionControllers = [[NSMutableArray alloc] init];
     IGListSectionMap *map = self.sectionMap;
 
     // collect items that have changed since the last update
@@ -556,62 +454,57 @@
     // for IGListSectionController subclasses after calling [super init]
     IGListSectionControllerPushThread(self.viewController, self);
 
+    id firstObject = objects.firstObject;
+    id lastObject = objects.lastObject;
+
     for (id object in objects) {
         // infra checks to see if a controller exists
-        IGListSectionController *sectionController = [map sectionControllerForObject:object];
+        IGListSectionController <IGListSectionType> *sectionController = [map sectionControllerForObject:object];
 
         // if not, query the data source for a new one
         if (sectionController == nil) {
-            sectionController = [dataSource listAdapter:self sectionControllerForObject:object];
+            sectionController = [self.dataSource listAdapter:self sectionControllerForObject:object];
         }
 
+        IGAssert(sectionController != nil, @"Data source <%@> cannot return a nil section controller.", self.dataSource);
         if (sectionController == nil) {
-            IGLKLog(@"WARNING: Ignoring nil section controller returned by data source %@ for object %@.",
-                    dataSource, object);
             continue;
         }
 
         // in case the section controller was created outside of -listAdapter:sectionControllerForObject:
         sectionController.collectionContext = self;
         sectionController.viewController = self.viewController;
+        sectionController.isFirstSection = (object == firstObject);
+        sectionController.isLastSection = (object == lastObject);
 
         // check if the item has changed instances or is new
-        const NSInteger oldSection = [map sectionForObject:object];
+        const NSUInteger oldSection = [map sectionForObject:object];
         if (oldSection == NSNotFound || [map objectForSection:oldSection] != object) {
             [updatedObjects addObject:object];
         }
 
         [sectionControllers addObject:sectionController];
-
-#if DEBUG
-        IGAssert([NSSet setWithArray:sectionControllers].count == sectionControllers.count,
-                 @"Section controllers array is not filled with unique objects; section controllers are being reused");
-#endif
-        [validObjects addObject:object];
     }
 
     // clear the view controller and collection context
     IGListSectionControllerPopThread();
 
-    [map updateWithObjects:validObjects sectionControllers:sectionControllers];
+    [map updateWithObjects:objects sectionControllers:[sectionControllers copy]];
 
     // now that the maps have been created and contexts are assigned, we consider the section controller "fully loaded"
     for (id object in updatedObjects) {
         [[map sectionControllerForObject:object] didUpdateToObject:object];
     }
 
-    NSInteger itemCount = 0;
-    for (IGListSectionController *sectionController in sectionControllers) {
+    NSUInteger itemCount = 0;
+    for (IGListSectionController<IGListSectionType> *sectionController in sectionControllers) {
         itemCount += [sectionController numberOfItems];
     }
 
-    [self updateBackgroundViewShouldHide:itemCount > 0];
+    [self updateBackgroundViewWithItemCount:itemCount];
 }
 
-- (void)updateBackgroundViewShouldHide:(BOOL)shouldHide {
-    if (self.isInUpdateBlock) {
-        return; // will be called again when update block completes
-    }
+- (void)updateBackgroundViewWithItemCount:(NSUInteger)itemCount {
     UIView *backgroundView = [self.dataSource emptyViewForListAdapter:self];
     // don't do anything if the client is using the same view
     if (backgroundView != _collectionView.backgroundView) {
@@ -620,50 +513,36 @@
         [_collectionView.backgroundView removeFromSuperview];
         _collectionView.backgroundView = backgroundView;
     }
-    _collectionView.backgroundView.hidden = shouldHide;
+    _collectionView.backgroundView.hidden = itemCount > 0;
 }
 
-- (BOOL)itemCountIsZero {
-    __block BOOL isZero = YES;
-    [self.sectionMap enumerateUsingBlock:^(id  _Nonnull object, IGListSectionController * _Nonnull sectionController, NSInteger section, BOOL * _Nonnull stop) {
-        if (sectionController.numberOfItems > 0) {
-            isZero = NO;
-            *stop = YES;
-        }
-    }];
-    return isZero;
-}
-
-- (IGListSectionMap *)sectionMapUsingPreviousIfInUpdateBlock:(BOOL)usePreviousMapIfInUpdateBlock {
+- (IGListSectionMap *)sectionMapAdjustForUpdateBlock:(BOOL)adjustForUpdateBlock {
     // if we are inside an update block, we may have to use the /previous/ item map for some operations
-    IGListSectionMap *previousSectionMap = self.previousSectionMap;
-    if (usePreviousMapIfInUpdateBlock && self.isInUpdateBlock && previousSectionMap != nil) {
-        return previousSectionMap;
+    if (adjustForUpdateBlock && self.isInUpdateBlock && self.previoussectionMap != nil) {
+        return self.previoussectionMap;
     } else {
         return self.sectionMap;
     }
 }
 
-- (NSArray<NSIndexPath *> *)indexPathsFromSectionController:(IGListSectionController *)sectionController
+- (NSArray<NSIndexPath *> *)indexPathsFromSectionController:(IGListSectionController <IGListSectionType> *)sectionController
                                                     indexes:(NSIndexSet *)indexes
-                                 usePreviousIfInUpdateBlock:(BOOL)usePreviousIfInUpdateBlock {
-    NSMutableArray<NSIndexPath *> *indexPaths = [NSMutableArray new];
+                                       adjustForUpdateBlock:(BOOL)adjustForUpdateBlock {
+    NSMutableArray<NSIndexPath *> *indexPaths = [[NSMutableArray alloc] init];
 
-    IGListSectionMap *map = [self sectionMapUsingPreviousIfInUpdateBlock:usePreviousIfInUpdateBlock];
-    const NSInteger section = [map sectionForSectionController:sectionController];
+    IGListSectionMap *map = [self sectionMapAdjustForUpdateBlock:adjustForUpdateBlock];
+
+    const NSUInteger section = [map sectionForSectionController:sectionController];
     if (section != NSNotFound) {
         [indexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
             [indexPaths addObject:[NSIndexPath indexPathForItem:idx inSection:section]];
         }];
     }
-    return indexPaths;
+    return [indexPaths copy];
 }
 
-- (NSIndexPath *)indexPathForSectionController:(IGListSectionController *)controller
-                                         index:(NSInteger)index
-                    usePreviousIfInUpdateBlock:(BOOL)usePreviousIfInUpdateBlock {
-    IGListSectionMap *map = [self sectionMapUsingPreviousIfInUpdateBlock:usePreviousIfInUpdateBlock];
-    const NSInteger section = [map sectionForSectionController:controller];
+- (NSIndexPath *)indexPathForSectionController:(IGListSectionController *)controller index:(NSInteger)index {
+    const NSUInteger section = [self.sectionMap sectionForSectionController:controller];
     if (section == NSNotFound) {
         return nil;
     } else {
@@ -674,7 +553,7 @@
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForIndexPath:(NSIndexPath *)indexPath
                                                            supplementaryKinds:(NSArray<NSString *> *)supplementaryKinds {
     UICollectionViewLayout *layout = self.collectionView.collectionViewLayout;
-    NSMutableArray<UICollectionViewLayoutAttributes *> *attributes = [NSMutableArray new];
+    NSMutableArray<UICollectionViewLayoutAttributes *> *attributes = [[NSMutableArray alloc] init];
 
     UICollectionViewLayoutAttributes *cellAttributes = [layout layoutAttributesForItemAtIndexPath:indexPath];
     if (cellAttributes) {
@@ -688,44 +567,115 @@
         }
     }
 
-    return attributes;
+    return [attributes copy];
 }
 
-- (void)mapView:(UICollectionReusableView *)view toSectionController:(IGListSectionController *)sectionController {
+- (void)mapCell:(UICollectionViewCell *)cell toSectionController:(IGListSectionController<IGListSectionType> *)sectionController {
     IGAssertMainThread();
-    IGParameterAssert(view != nil);
+    IGParameterAssert(cell != nil);
     IGParameterAssert(sectionController != nil);
-    [_viewSectionControllerMap setObject:sectionController forKey:view];
+    [_cellSectionControllerMap setObject:sectionController forKey:cell];
 }
 
-- (nullable IGListSectionController *)sectionControllerForView:(UICollectionReusableView *)view {
+- (nullable IGListSectionController<IGListSectionType> *)sectionControllerForCell:(UICollectionViewCell *)cell {
     IGAssertMainThread();
-    return [_viewSectionControllerMap objectForKey:view];
+    return [_cellSectionControllerMap objectForKey:cell];
 }
 
-- (void)removeMapForView:(UICollectionReusableView *)view {
+- (void)removeMapForCell:(UICollectionViewCell *)cell {
     IGAssertMainThread();
-    [_viewSectionControllerMap removeObjectForKey:view];
+    [_cellSectionControllerMap removeObjectForKey:cell];
 }
 
-- (void)deferBlockBetweenBatchUpdates:(void (^)())block {
-    IGAssertMainThread();
-    if (_queuedCompletionBlocks == nil) {
-        block();
-    } else {
-        [_queuedCompletionBlocks addObject:block];
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return self.sectionMap.objects.count;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    IGListSectionController <IGListSectionType> * sectionController = [self.sectionMap sectionControllerForSection:section];
+    IGAssert(sectionController != nil, @"Nil section controller for section %zi for item %@. Check your -diffIdentifier and -isEqual: implementations.",
+             section, [self.sectionMap objectForSection:section]);
+    const NSInteger numberOfItems = [sectionController numberOfItems];
+    IGAssert(numberOfItems >= 0, @"Cannot return negative number of items %zi for section controller %@.", numberOfItems, sectionController);
+    return numberOfItems;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    IGListSectionController<IGListSectionType> *sectionController = [self.sectionMap sectionControllerForSection:indexPath.section];
+
+    // flag that a cell is being dequeued in case it tries to access a cell in the process
+    _isDequeuingCell = YES;
+    UICollectionViewCell *cell = [sectionController cellForItemAtIndex:indexPath.item];
+    _isDequeuingCell = NO;
+
+    IGAssert(cell != nil, @"Returned a nil cell at indexPath <%@> from section controller: <%@>", indexPath, sectionController);
+
+    // associate the section controller with the cell so that we know which section controller is using it
+    [self mapCell:cell toSectionController:sectionController];
+
+    return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    IGListSectionController<IGListSectionType> *sectionController = [self.sectionMap sectionControllerForSection:indexPath.section];
+    id <IGListSupplementaryViewSource> supplementarySource = [sectionController supplementaryViewSource];
+    UICollectionReusableView *view = [supplementarySource viewForSupplementaryElementOfKind:kind atIndex:indexPath.item];
+    IGAssert(view != nil, @"Returned a nil supplementary view at indexPath <%@> from section controller: <%@>, supplementary source: <%@>", indexPath, sectionController, supplementarySource);
+    return view;
+}
+
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // forward this method to the delegate b/c this implementation will steal the message from the proxy
+    id<UICollectionViewDelegate> collectionViewDelegate = self.collectionViewDelegate;
+    if ([collectionViewDelegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
+        [collectionViewDelegate collectionView:collectionView didSelectItemAtIndexPath:indexPath];
     }
+
+    IGListSectionController <IGListSectionType> * sectionController = [self.sectionMap sectionControllerForSection:indexPath.section];
+    [sectionController didSelectItemAtIndex:indexPath.item];
 }
 
-- (void)enterBatchUpdates {
-    _queuedCompletionBlocks = [NSMutableArray new];
-}
-
-- (void)exitBatchUpdates {
-    for (void (^block)() in _queuedCompletionBlocks) {
-        block();
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    // forward this method to the delegate b/c this implementation will steal the message from the proxy
+    id<UICollectionViewDelegate> collectionViewDelegate = self.collectionViewDelegate;
+    if ([collectionViewDelegate respondsToSelector:@selector(collectionView:willDisplayCell:forItemAtIndexPath:)]) {
+        [collectionViewDelegate collectionView:collectionView willDisplayCell:cell forItemAtIndexPath:indexPath];
     }
-    _queuedCompletionBlocks = nil;
+
+    IGListSectionController <IGListSectionType> *sectionController = [self sectionControllerForCell:cell];
+    // if the section controller relationship was destroyed, reconnect it
+    // this happens with iOS 10 UICollectionView display range changes
+    if (sectionController == nil) {
+        sectionController = [self.sectionMap sectionControllerForSection:indexPath.section];
+        [self mapCell:cell toSectionController:sectionController];
+    }
+
+    id object = [self.sectionMap objectForSection:indexPath.section];
+    [self.displayHandler willDisplayCell:cell forListAdapter:self sectionController:sectionController object:object indexPath:indexPath];
+
+    _isSendingWorkingRangeDisplayUpdates = YES;
+    [self.workingRangeHandler willDisplayItemAtIndexPath:indexPath forListAdapter:self];
+    _isSendingWorkingRangeDisplayUpdates = NO;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    // forward this method to the delegate b/c this implementation will steal the message from the proxy
+    id<UICollectionViewDelegate> collectionViewDelegate = self.collectionViewDelegate;
+    if ([collectionViewDelegate respondsToSelector:@selector(collectionView:didEndDisplayingCell:forItemAtIndexPath:)]) {
+        [collectionViewDelegate collectionView:collectionView didEndDisplayingCell:cell forItemAtIndexPath:indexPath];
+    }
+
+    IGListSectionController <IGListSectionType> *sectionController = [self sectionControllerForCell:cell];
+    [self.displayHandler didEndDisplayingCell:cell forListAdapter:self sectionController:sectionController indexPath:indexPath];
+    [self.workingRangeHandler didEndDisplayingItemAtIndexPath:indexPath forListAdapter:self];
+
+    // break the association between the cell and the section controller
+    [self removeMapForCell:cell];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -736,8 +686,8 @@
     if ([scrollViewDelegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
         [scrollViewDelegate scrollViewDidScroll:scrollView];
     }
-    NSArray<IGListSectionController *> *visibleSectionControllers = [self visibleSectionControllers];
-    for (IGListSectionController *sectionController in visibleSectionControllers) {
+    NSArray<IGListSectionController<IGListSectionType> *> *visibleSectionControllers = [self visibleSectionControllers];
+    for (IGListSectionController<IGListSectionType> *sectionController in visibleSectionControllers) {
         [[sectionController scrollDelegate] listAdapter:self didScrollSectionController:sectionController];
     }
 }
@@ -748,8 +698,8 @@
     if ([scrollViewDelegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]) {
         [scrollViewDelegate scrollViewWillBeginDragging:scrollView];
     }
-    NSArray<IGListSectionController *> *visibleSectionControllers = [self visibleSectionControllers];
-    for (IGListSectionController *sectionController in visibleSectionControllers) {
+    NSArray<IGListSectionController<IGListSectionType> *> *visibleSectionControllers = [self visibleSectionControllers];
+    for (IGListSectionController<IGListSectionType> *sectionController in visibleSectionControllers) {
         [[sectionController scrollDelegate] listAdapter:self willBeginDraggingSectionController:sectionController];
     }
 }
@@ -760,61 +710,31 @@
     if ([scrollViewDelegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) {
         [scrollViewDelegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
     }
-    NSArray<IGListSectionController *> *visibleSectionControllers = [self visibleSectionControllers];
-    for (IGListSectionController *sectionController in visibleSectionControllers) {
+    NSArray<IGListSectionController<IGListSectionType> *> *visibleSectionControllers = [self visibleSectionControllers];
+    for (IGListSectionController<IGListSectionType> *sectionController in visibleSectionControllers) {
         [[sectionController scrollDelegate] listAdapter:self didEndDraggingSectionController:sectionController willDecelerate:decelerate];
     }
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    // forward this method to the delegate b/c this implementation will steal the message from the proxy
-    id<UIScrollViewDelegate> scrollViewDelegate = self.scrollViewDelegate;
-    if ([scrollViewDelegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
-        [scrollViewDelegate scrollViewDidEndDecelerating:scrollView];
-    }
-    NSArray<IGListSectionController *> *visibleSectionControllers = [self visibleSectionControllers];
-    for (IGListSectionController *sectionController in visibleSectionControllers) {
-        id<IGListScrollDelegate> scrollDelegate = [sectionController scrollDelegate];
-        if ([scrollDelegate respondsToSelector:@selector(listAdapter:didEndDeceleratingSectionController:)]) {
-            [scrollDelegate listAdapter:self didEndDeceleratingSectionController:sectionController];
-        }
-    }
-}
 
 #pragma mark - IGListCollectionContext
 
 - (CGSize)containerSize {
-    return self.collectionView.bounds.size;
+    return UIEdgeInsetsInsetRect(self.collectionView.bounds, self.collectionView.contentInset).size;
 }
 
-- (UIEdgeInsets)containerInset {
-    return self.collectionView.contentInset;
-}
-
-- (CGSize)insetContainerSize {
-    UICollectionView *collectionView = self.collectionView;
-    return UIEdgeInsetsInsetRect(collectionView.bounds, collectionView.contentInset).size;
-}
-
-- (CGSize)containerSizeForSectionController:(IGListSectionController *)sectionController {
-    const UIEdgeInsets inset = sectionController.inset;
-    return CGSizeMake(self.containerSize.width - inset.left - inset.right,
-                      self.containerSize.height - inset.top - inset.bottom);
-}
-
-- (NSInteger)indexForCell:(UICollectionViewCell *)cell sectionController:(nonnull IGListSectionController *)sectionController {
+- (NSInteger)indexForCell:(UICollectionViewCell *)cell sectionController:(nonnull IGListSectionController<IGListSectionType> *)sectionController {
     IGAssertMainThread();
     IGParameterAssert(cell != nil);
     IGParameterAssert(sectionController != nil);
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
-    IGAssert(indexPath == nil
-             || indexPath.section == [self sectionForSectionController:sectionController],
+    IGAssert(indexPath.section == [self sectionForSectionController:sectionController],
              @"Requesting a cell from another section controller is not allowed.");
     return indexPath != nil ? indexPath.item : NSNotFound;
 }
 
 - (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index
-                                    sectionController:(IGListSectionController *)sectionController {
+                                    sectionController:(IGListSectionController <IGListSectionType> *)sectionController {
     IGAssertMainThread();
     IGParameterAssert(sectionController != nil);
 
@@ -823,67 +743,44 @@
         return nil;
     }
 
-    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index usePreviousIfInUpdateBlock:NO];
+    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index];
     // prevent querying the collection view if it isn't fully reloaded yet for the current data set
     if (indexPath != nil
         && indexPath.section < [self.collectionView numberOfSections]) {
         // only return a cell if it belongs to the section controller
         // this association is created in -collectionView:cellForItemAtIndexPath:
         UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
-        if ([self sectionControllerForView:cell] == sectionController) {
+        if ([self sectionControllerForCell:cell] == sectionController) {
             return cell;
         }
     }
     return nil;
 }
 
-- (NSArray<UICollectionViewCell *> *)visibleCellsForSectionController:(IGListSectionController *)sectionController {
+- (NSArray<UICollectionViewCell *> *)visibleCellsForSectionController:(IGListSectionController<IGListSectionType> *)sectionController {
     NSMutableArray *cells = [NSMutableArray new];
     UICollectionView *collectionView = self.collectionView;
     NSArray *visibleCells = [collectionView visibleCells];
-    const NSInteger section = [self sectionForSectionController:sectionController];
+    const NSUInteger section = [self sectionForSectionController:sectionController];
     for (UICollectionViewCell *cell in visibleCells) {
         if ([collectionView indexPathForCell:cell].section == section) {
             [cells addObject:cell];
         }
     }
-    return cells;
-}
-
-- (NSArray<NSIndexPath *> *)visibleIndexPathsForSectionController:(IGListSectionController *) sectionController {
-    NSMutableArray *paths = [NSMutableArray new];
-    UICollectionView *collectionView = self.collectionView;
-    NSArray *visiblePaths = [collectionView indexPathsForVisibleItems];
-    const NSInteger section = [self sectionForSectionController:sectionController];
-    for (NSIndexPath *path in visiblePaths) {
-        if (path.section == section) {
-            [paths addObject:path];
-        }
-    }
-    return paths;
+    return [cells copy];
 }
 
 - (void)deselectItemAtIndex:(NSInteger)index
-          sectionController:(IGListSectionController *)sectionController
+          sectionController:(IGListSectionController<IGListSectionType> *)sectionController
                    animated:(BOOL)animated {
     IGAssertMainThread();
     IGParameterAssert(sectionController != nil);
-    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index usePreviousIfInUpdateBlock:NO];
+    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index];
     [self.collectionView deselectItemAtIndexPath:indexPath animated:animated];
 }
 
-- (void)selectItemAtIndex:(NSInteger)index
-        sectionController:(IGListSectionController *)sectionController
-                 animated:(BOOL)animated
-            scrollPosition:(UICollectionViewScrollPosition)scrollPosition {
-    IGAssertMainThread();
-    IGParameterAssert(sectionController != nil);
-    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index usePreviousIfInUpdateBlock:NO];
-    [self.collectionView selectItemAtIndexPath:indexPath animated:animated scrollPosition:scrollPosition];
-}
-
 - (__kindof UICollectionViewCell *)dequeueReusableCellOfClass:(Class)cellClass
-                                         forSectionController:(IGListSectionController *)sectionController
+                                         forSectionController:(IGListSectionController<IGListSectionType> *)sectionController
                                                       atIndex:(NSInteger)index {
     IGAssertMainThread();
     IGParameterAssert(sectionController != nil);
@@ -892,7 +789,7 @@
     UICollectionView *collectionView = self.collectionView;
     IGAssert(collectionView != nil, @"Dequeueing cell of class %@ from section controller %@ without a collection view at index %zi", NSStringFromClass(cellClass), sectionController, index);
     NSString *identifier = IGListReusableViewIdentifier(cellClass, nil, nil);
-    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index usePreviousIfInUpdateBlock:NO];
+    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index];
     if (![self.registeredCellClasses containsObject:cellClass]) {
         [self.registeredCellClasses addObject:cellClass];
         [collectionView registerClass:cellClass forCellWithReuseIdentifier:identifier];
@@ -901,20 +798,20 @@
 }
 
 - (__kindof UICollectionViewCell *)dequeueReusableCellFromStoryboardWithIdentifier:(NSString *)identifier
-                                                              forSectionController:(IGListSectionController *)sectionController
+                                                              forSectionController:(IGListSectionController <IGListSectionType> *)sectionController
                                                                            atIndex:(NSInteger)index {
     IGAssertMainThread();
     IGParameterAssert(sectionController != nil);
     IGParameterAssert(identifier.length > 0);
     UICollectionView *collectionView = self.collectionView;
     IGAssert(collectionView != nil, @"Reloading adapter without a collection view.");
-    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index usePreviousIfInUpdateBlock:NO];
+    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index];
     return [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
 }
 
 - (UICollectionViewCell *)dequeueReusableCellWithNibName:(NSString *)nibName
                                                   bundle:(NSBundle *)bundle
-                                    forSectionController:(IGListSectionController *)sectionController
+                                    forSectionController:(IGListSectionController<IGListSectionType> *)sectionController
                                                  atIndex:(NSInteger)index {
     IGAssertMainThread();
     IGParameterAssert([nibName length] > 0);
@@ -922,7 +819,7 @@
     IGParameterAssert(index >= 0);
     UICollectionView *collectionView = self.collectionView;
     IGAssert(collectionView != nil, @"Dequeueing cell with nib name %@ and bundle %@ from section controller %@ without a collection view at index %zi.", nibName, bundle, sectionController, index);
-    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index usePreviousIfInUpdateBlock:NO];
+    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index];
     if (![self.registeredNibNames containsObject:nibName]) {
         [self.registeredNibNames addObject:nibName];
         UINib *nib = [UINib nibWithNibName:nibName bundle:bundle];
@@ -932,7 +829,7 @@
 }
 
 - (__kindof UICollectionReusableView *)dequeueReusableSupplementaryViewOfKind:(NSString *)elementKind
-                                                         forSectionController:(IGListSectionController *)sectionController
+                                                         forSectionController:(IGListSectionController<IGListSectionType> *)sectionController
                                                                         class:(Class)viewClass
                                                                       atIndex:(NSInteger)index {
     IGAssertMainThread();
@@ -943,7 +840,7 @@
     UICollectionView *collectionView = self.collectionView;
     IGAssert(collectionView != nil, @"Dequeueing cell of class %@ from section controller %@ without a collection view at index %zi with supplementary view %@", NSStringFromClass(viewClass), sectionController, index, elementKind);
     NSString *identifier = IGListReusableViewIdentifier(viewClass, nil, elementKind);
-    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index usePreviousIfInUpdateBlock:NO];
+    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index];
     if (![self.registeredSupplementaryViewIdentifiers containsObject:identifier]) {
         [self.registeredSupplementaryViewIdentifiers addObject:identifier];
         [collectionView registerClass:viewClass forSupplementaryViewOfKind:elementKind withReuseIdentifier:identifier];
@@ -953,7 +850,7 @@
 
 - (__kindof UICollectionReusableView *)dequeueReusableSupplementaryViewFromStoryboardOfKind:(NSString *)elementKind
                                                                              withIdentifier:(NSString *)identifier
-                                                                       forSectionController:(IGListSectionController *)sectionController
+                                                                       forSectionController:(IGListSectionController <IGListSectionType> *)sectionController
                                                                                     atIndex:(NSInteger)index {
     IGAssertMainThread();
     IGParameterAssert(elementKind.length > 0);
@@ -962,12 +859,12 @@
     IGParameterAssert(index >= 0);
     UICollectionView *collectionView = self.collectionView;
     IGAssert(collectionView != nil, @"Dequeueing Supplementary View from storyboard of kind %@ with identifier %@ for section controller %@ without a collection view at index %zi", elementKind, identifier, sectionController, index);
-    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index usePreviousIfInUpdateBlock:NO];
+    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index];
     return [collectionView dequeueReusableSupplementaryViewOfKind:elementKind withReuseIdentifier:identifier forIndexPath:indexPath];
 }
 
 - (__kindof UICollectionReusableView *)dequeueReusableSupplementaryViewOfKind:(NSString *)elementKind
-                                                         forSectionController:(IGListSectionController *)sectionController
+                                                         forSectionController:(IGListSectionController<IGListSectionType> *)sectionController
                                                                       nibName:(NSString *)nibName
                                                                        bundle:(NSBundle *)bundle
                                                                       atIndex:(NSInteger)index {
@@ -976,7 +873,7 @@
     IGParameterAssert([elementKind length] > 0);
     UICollectionView *collectionView = self.collectionView;
     IGAssert(collectionView != nil, @"Reloading adapter without a collection view.");
-    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index usePreviousIfInUpdateBlock:NO];
+    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index];
     if (![self.registeredSupplementaryViewNibNames containsObject:nibName]) {
         [self.registeredSupplementaryViewNibNames addObject:nibName];
         UINib *nib = [UINib nibWithNibName:nibName bundle:bundle];
@@ -985,68 +882,7 @@
     return [collectionView dequeueReusableSupplementaryViewOfKind:elementKind withReuseIdentifier:nibName forIndexPath:indexPath];
 }
 
-- (void)performBatchAnimated:(BOOL)animated updates:(void (^)(id<IGListBatchContext>))updates completion:(void (^)(BOOL))completion {
-    IGAssertMainThread();
-    IGParameterAssert(updates != nil);
-    UICollectionView *collectionView = self.collectionView;
-    IGAssert(collectionView != nil, @"Performing batch updates without a collection view.");
-
-    [self enterBatchUpdates];
-    
-    __weak __typeof__(self) weakSelf = self;
-    [self.updater performUpdateWithCollectionView:collectionView animated:animated itemUpdates:^{
-        weakSelf.isInUpdateBlock = YES;
-        // the adapter acts as the batch context with its API stripped to just the IGListBatchContext protocol
-        updates(weakSelf);
-        weakSelf.isInUpdateBlock = NO;
-    } completion: ^(BOOL finished) {
-        [weakSelf updateBackgroundViewShouldHide:![weakSelf itemCountIsZero]];
-        if (completion) {
-            completion(finished);
-        }
-
-        [weakSelf exitBatchUpdates];
-    }];
-}
-
-- (void)scrollToSectionController:(IGListSectionController *)sectionController
-                          atIndex:(NSInteger)index
-                   scrollPosition:(UICollectionViewScrollPosition)scrollPosition
-                         animated:(BOOL)animated {
-    IGAssertMainThread();
-    IGParameterAssert(sectionController != nil);
-    
-    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index usePreviousIfInUpdateBlock:NO];
-    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
-}
-
-- (void)invalidateLayoutForSectionController:(IGListSectionController *)sectionController
-                                  completion:(void (^)(BOOL finished))completion{
-    const NSInteger section = [self sectionForSectionController:sectionController];
-    const NSInteger items = [_collectionView numberOfItemsInSection:section];
-    
-    NSMutableArray<NSIndexPath *> *indexPaths = [NSMutableArray new];
-    for (NSInteger item = 0; item < items; item++) {
-        [indexPaths addObject:[NSIndexPath indexPathForItem:item inSection:section]];
-    }
-    
-    UICollectionViewLayout *layout = _collectionView.collectionViewLayout;
-    UICollectionViewLayoutInvalidationContext *context = [[[layout.class invalidationContextClass] alloc] init];
-    [context invalidateItemsAtIndexPaths:indexPaths];
-    
-    __weak __typeof__(_collectionView) weakCollectionView = _collectionView;
-
-    // do not call -[UICollectionView performBatchUpdates:completion:] while already updating. defer it until completed.
-    [self deferBlockBetweenBatchUpdates:^{
-        [weakCollectionView performBatchUpdates:^{
-            [layout invalidateLayoutWithContext:context];
-        } completion:completion];
-    }];
-}
-
-#pragma mark - IGListBatchContext
-
-- (void)reloadInSectionController:(IGListSectionController *)sectionController atIndexes:(NSIndexSet *)indexes {
+- (void)reloadInSectionController:(IGListSectionController<IGListSectionType> *)sectionController atIndexes:(NSIndexSet *)indexes {
     IGAssertMainThread();
     IGParameterAssert(indexes != nil);
     IGParameterAssert(sectionController != nil);
@@ -1057,34 +893,11 @@
         return;
     }
 
-    /**
-     UICollectionView is not designed to support -reloadSections: or -reloadItemsAtIndexPaths: during batch updates.
-     Internally it appears to convert these operations to a delete+insert. However the transformation is too simple
-     in that it doesn't account for the item's section being moved (naturally or explicitly) and can queue animation
-     collisions.
-
-     If you have an object at section 2 with 4 items and attempt to reload item at index 1, you would create an
-     NSIndexPath at section: 2, item: 1. Within -performBatchUpdates:, UICollectionView converts this to a delete
-     and insert at the same NSIndexPath.
-
-     If a section were inserted at position 2, the original section 2 has naturally shifted to section 3. However,
-     the insert NSIndexPath is section: 2, item: 1. Now the UICollectionView has a section animation at section 2,
-     as well as an item insert animation at section: 2, item: 1, and it will throw an exception.
-
-     IGListAdapter tracks the before/after mapping of section controllers to make precise NSIndexPath conversions.
-     */
-    [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
-        NSIndexPath *fromIndexPath = [self indexPathForSectionController:sectionController index:index usePreviousIfInUpdateBlock:YES];
-        NSIndexPath *toIndexPath = [self indexPathForSectionController:sectionController index:index usePreviousIfInUpdateBlock:NO];
-        // index paths could be nil if a section controller is prematurely reloading or a reload was batched with
-        // the section controller being deleted
-        if (fromIndexPath != nil && toIndexPath != nil) {
-            [self.updater reloadItemInCollectionView:collectionView fromIndexPath:fromIndexPath toIndexPath:toIndexPath];
-        }
-    }];
+    NSArray *indexPaths = [self indexPathsFromSectionController:sectionController indexes:indexes adjustForUpdateBlock:YES];
+    [self.updatingDelegate reloadItemsInCollectionView:collectionView indexPaths:indexPaths];
 }
 
-- (void)insertInSectionController:(IGListSectionController *)sectionController atIndexes:(NSIndexSet *)indexes {
+- (void)insertInSectionController:(IGListSectionController<IGListSectionType> *)sectionController atIndexes:(NSIndexSet *)indexes {
     IGAssertMainThread();
     IGParameterAssert(indexes != nil);
     IGParameterAssert(sectionController != nil);
@@ -1095,12 +908,11 @@
         return;
     }
 
-    NSArray *indexPaths = [self indexPathsFromSectionController:sectionController indexes:indexes usePreviousIfInUpdateBlock:NO];
-    [self.updater insertItemsIntoCollectionView:collectionView indexPaths:indexPaths];
-    [self updateBackgroundViewShouldHide:![self itemCountIsZero]];
+    NSArray *indexPaths = [self indexPathsFromSectionController:sectionController indexes:indexes adjustForUpdateBlock:NO];
+    [self.updatingDelegate insertItemsIntoCollectionView:collectionView indexPaths:indexPaths];
 }
 
-- (void)deleteInSectionController:(IGListSectionController *)sectionController atIndexes:(NSIndexSet *)indexes {
+- (void)deleteInSectionController:(IGListSectionController<IGListSectionType> *)sectionController atIndexes:(NSIndexSet *)indexes {
     IGAssertMainThread();
     IGParameterAssert(indexes != nil);
     IGParameterAssert(sectionController != nil);
@@ -1111,45 +923,83 @@
         return;
     }
 
-    NSArray *indexPaths = [self indexPathsFromSectionController:sectionController indexes:indexes usePreviousIfInUpdateBlock:YES];
-    [self.updater deleteItemsFromCollectionView:collectionView indexPaths:indexPaths];
-    [self updateBackgroundViewShouldHide:![self itemCountIsZero]];
+    NSArray *indexPaths = [self indexPathsFromSectionController:sectionController indexes:indexes adjustForUpdateBlock:YES];
+    [self.updatingDelegate deleteItemsFromCollectionView:collectionView indexPaths:indexPaths];
 }
 
-- (void)moveInSectionController:(IGListSectionController *)sectionController fromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex {
-    IGAssertMainThread();
-    IGParameterAssert(sectionController != nil);
-    IGParameterAssert(fromIndex >= 0);
-    IGParameterAssert(toIndex >= 0);
-    UICollectionView *collectionView = self.collectionView;
-    IGAssert(collectionView != nil, @"Moving items from %@ without a collection view from index %zi to index %zi.",
-             sectionController, fromIndex, toIndex);
-
-    NSIndexPath *fromIndexPath = [self indexPathForSectionController:sectionController index:fromIndex usePreviousIfInUpdateBlock:YES];
-    NSIndexPath *toIndexPath = [self indexPathForSectionController:sectionController index:toIndex usePreviousIfInUpdateBlock:NO];
-
-    if (fromIndexPath == nil || toIndexPath == nil) {
-        return;
-    }
-
-    [self.updater moveItemInCollectionView:collectionView fromIndexPath:fromIndexPath toIndexPath:toIndexPath];
-}
-
-- (void)reloadSectionController:(IGListSectionController *)sectionController {
+- (void)reloadSectionController:(IGListSectionController <IGListSectionType> *)sectionController {
     IGAssertMainThread();
     IGParameterAssert(sectionController != nil);
     UICollectionView *collectionView = self.collectionView;
     IGAssert(collectionView != nil, @"Reloading items from %@ without a collection view.", sectionController);
 
-    IGListSectionMap *map = [self sectionMapUsingPreviousIfInUpdateBlock:YES];
+    IGListSectionMap *map = [self sectionMapAdjustForUpdateBlock:YES];
     const NSInteger section = [map sectionForSectionController:sectionController];
     if (section == NSNotFound) {
         return;
     }
 
     NSIndexSet *sections = [NSIndexSet indexSetWithIndex:section];
-    [self.updater reloadCollectionView:collectionView sections:sections];
-    [self updateBackgroundViewShouldHide:![self itemCountIsZero]];
+    [self.updatingDelegate reloadCollectionView:collectionView sections:sections];
+}
+
+- (void)performBatchAnimated:(BOOL)animated updates:(void (^)())updates completion:(void (^)(BOOL))completion {
+    IGAssertMainThread();
+    IGParameterAssert(updates != nil);
+    UICollectionView *collectionView = self.collectionView;
+    IGAssert(collectionView != nil, @"Performing batch updates without a collection view.");
+
+    __weak __typeof__(self) weakSelf = self;
+    [self.updatingDelegate performUpdateWithCollectionView:collectionView animated:animated itemUpdates:^{
+        weakSelf.isInUpdateBlock = YES;
+        updates();
+        weakSelf.isInUpdateBlock = NO;
+    } completion:completion];
+}
+
+- (void)scrollToSectionController:(IGListSectionController<IGListSectionType> *)sectionController
+                          atIndex:(NSInteger)index
+                   scrollPosition:(UICollectionViewScrollPosition)scrollPosition
+                         animated:(BOOL)animated {
+    IGAssertMainThread();
+    IGParameterAssert(sectionController != nil);
+
+    NSIndexPath *indexPath = [self indexPathForSectionController:sectionController index:index];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    IGAssert(![self.collectionViewDelegate respondsToSelector:_cmd], @"IGListAdapter is consuming method also implemented by the collectionViewDelegate: %@", NSStringFromSelector(_cmd));
+    return [self sizeForItemAtIndexPath:indexPath];
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    IGAssert(![self.collectionViewDelegate respondsToSelector:_cmd], @"IGListAdapter is consuming method also implemented by the collectionViewDelegate: %@", NSStringFromSelector(_cmd));
+    return [[self.sectionMap sectionControllerForSection:section] inset];
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    IGAssert(![self.collectionViewDelegate respondsToSelector:_cmd], @"IGListAdapter is consuming method also implemented by the collectionViewDelegate: %@", NSStringFromSelector(_cmd));
+    return [[self.sectionMap sectionControllerForSection:section] minimumLineSpacing];
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    IGAssert(![self.collectionViewDelegate respondsToSelector:_cmd], @"IGListAdapter is consuming method also implemented by the collectionViewDelegate: %@", NSStringFromSelector(_cmd));
+    return [[self.sectionMap sectionControllerForSection:section] minimumInteritemSpacing];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    IGAssert(![self.collectionViewDelegate respondsToSelector:_cmd], @"IGListAdapter is consuming method also implemented by the collectionViewDelegate: %@", NSStringFromSelector(_cmd));
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:section];
+    return [self sizeForSupplementaryViewOfKind:UICollectionElementKindSectionHeader atIndexPath:indexPath];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    IGAssert(![self.collectionViewDelegate respondsToSelector:_cmd], @"IGListAdapter is consuming method also implemented by the collectionViewDelegate: %@", NSStringFromSelector(_cmd));
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:section];
+    return [self sizeForSupplementaryViewOfKind:UICollectionElementKindSectionFooter atIndexPath:indexPath];
 }
 
 @end

@@ -45,7 +45,7 @@ class JournalEntryDateCell: UICollectionViewCell {
   override func layoutSubviews() {
     super.layoutSubviews()
     let padding = CommonInsets
-    label.frame = UIEdgeInsetsInsetRect(bounds, UIEdgeInsetsMake(0, padding.left, 0, padding.right))
+    label.frame = bounds.inset(by: UIEdgeInsets.init(top: 0, left: padding.left, bottom: 0, right: padding.right))
   }
   
 }

@@ -12,8 +12,9 @@
 #import <IGListKit/IGListAdapterDataSource.h>
 #import <IGListKit/IGListAdapterDelegate.h>
 #import <IGListKit/IGListCollectionContext.h>
-
+#import <IGListKit/IGListCollectionView.h>
 #import <IGListKit/IGListExperiments.h>
+#import <IGListKit/IGListSectionType.h>
 #import <IGListKit/IGListMacros.h>
 
 @protocol IGListUpdatingDelegate;
@@ -23,23 +24,21 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- A block to execute when the list updates are completed.
+ A block to execute when list updates completes.
 
- @param finished Specifies whether or not the update animations completed successfully.
+ @param finished Specifies whether or not the updates finished.
  */
-NS_SWIFT_NAME(ListUpdaterCompletion)
 typedef void (^IGListUpdaterCompletion)(BOOL finished);
 
 /**
- `IGListAdapter` objects provide an abstraction for feeds of objects in a `UICollectionView` by breaking each object 
- into individual sections, called "section controllers". These controllers (objects subclassing to 
- `IGListSectionController`) act as a data source and delegate for each section.
+ `IGListAdapter` objects provide an abstraction for feeds of objects in a `UICollectionView` by breaking each object into
+ individual sections, called "section controllers". These controllers (objects conforming to `IGListSectionType`) act as a
+ data source and delegate for each section.
 
  Feed implementations must act as the data source for an `IGListAdapter` in order to drive the objects and section
  controllers in a collection view.
  */
 IGLK_SUBCLASSING_RESTRICTED
-NS_SWIFT_NAME(ListAdapter)
 @interface IGListAdapter : NSObject
 
 /**
@@ -49,13 +48,11 @@ NS_SWIFT_NAME(ListAdapter)
 
 /**
  The collection view used with the adapter.
-
- @note Setting this property will automatically set isPrefetchingEnabled to `NO` for performance reasons.
  */
-@property (nonatomic, nullable, weak) UICollectionView *collectionView;
+@property (nonatomic, nullable, weak) IGListCollectionView *collectionView;
 
 /**
- The object that acts as the data source for the adapter.
+ The object that acts as the data source for the list adapter.
  */
 @property (nonatomic, nullable, weak) id <IGListAdapterDataSource> dataSource;
 
@@ -77,11 +74,6 @@ NS_SWIFT_NAME(ListAdapter)
 @property (nonatomic, nullable, weak) id <UIScrollViewDelegate> scrollViewDelegate;
 
 /**
- The updater for the adapter.
- */
-@property (nonatomic, strong, readonly) id <IGListUpdatingDelegate> updater;
-
-/**
  A bitmask of experiments to conduct on the adapter.
  */
 @property (nonatomic, assign) IGListExperiment experiments;
@@ -89,8 +81,8 @@ NS_SWIFT_NAME(ListAdapter)
 /**
  Initializes a new `IGListAdapter` object.
 
- @param updater An object that manages updates to the collection view.
- @param viewController The view controller that will house the adapter.
+ @param updatingDelegate An object that manages updates to the collection view.
+ @param viewController   The view controller that will house the adapter.
  @param workingRangeSize The number of objects before and after the viewport to consider within the working range.
 
  @return A new list adapter object.
@@ -100,29 +92,18 @@ NS_SWIFT_NAME(ListAdapter)
  the previous and succeeding 2 objects will be notified that they are within the working range. As you scroll the list
  the range is updated as objects enter and exit the working range.
 
- To opt out of using the working range, use `initWithUpdater:viewController:` or provide a working range of `0`.
+ To opt out of using the working range, you can provide a value of `0`.
  */
-- (instancetype)initWithUpdater:(id <IGListUpdatingDelegate>)updater
+- (instancetype)initWithUpdater:(id <IGListUpdatingDelegate>)updatingDelegate
                  viewController:(nullable UIViewController *)viewController
                workingRangeSize:(NSInteger)workingRangeSize NS_DESIGNATED_INITIALIZER;
 
 /**
- Initializes a new `IGListAdapter` object with a working range of `0`.
- 
- @param updater An object that manages updates to the collection view.
- @param viewController The view controller that will house the adapter.
- 
- @return A new list adapter object.
- */
-- (instancetype)initWithUpdater:(id <IGListUpdatingDelegate>)updater
-                 viewController:(nullable UIViewController *)viewController;
-
-/**
- Perform an update from the previous state of the data source. This is analogous to calling
+ Perform an update from the previous state of the data source. This is analagous to calling
  `-[UICollectionView performBatchUpdates:completion:]`.
 
- @param animated A flag indicating if the transition should be animated.
- @param completion The block to execute when the updates complete.
+ @param animated   A flag indicating if the transition should be animated.
+ @param completion The block to execute when the update completes.
  */
 - (void)performUpdatesAnimated:(BOOL)animated completion:(nullable IGListUpdaterCompletion)completion;
 
@@ -141,42 +122,33 @@ NS_SWIFT_NAME(ListAdapter)
 - (void)reloadObjects:(NSArray *)objects;
 
 /**
- Query the section controller at a given section index. Constant time lookup.
- 
- @param section A section in the list.
-
- @return A section controller or `nil` if the section does not exist.
- */
-- (nullable IGListSectionController *)sectionControllerForSection:(NSInteger)section;
-
-/**
  Query the section index of a list. Constant time lookup.
 
  @param sectionController A list object.
 
  @return The section index of the list if it exists, otherwise `NSNotFound`.
  */
-- (NSInteger)sectionForSectionController:(IGListSectionController *)sectionController;
+- (NSInteger)sectionForSectionController:(IGListSectionController <IGListSectionType> *)sectionController;
 
 /**
  Returns the section controller for the specified object. Constant time lookup.
 
  @param object An object from the data source.
 
- @return A section controller or `nil` if `object` is not in the list.
+ @return An section controller or `nil` if `object` is not in the list.
 
  @see `-[IGListAdapterDataSource listAdapter:sectionControllerForObject:]`
  */
-- (__kindof IGListSectionController * _Nullable)sectionControllerForObject:(id)object;
+- (__kindof IGListSectionController <IGListSectionType> * _Nullable)sectionControllerForObject:(id)object;
 
 /**
  Returns the object corresponding to the specified section controller in the list. Constant time lookup.
  
  @param sectionController A section controller in the list.
  
- @return The object for the specified section controller, or `nil` if not found.
+ @return The object for the specified section controller, or nil if not found.
  */
-- (nullable id)objectForSectionController:(IGListSectionController *)sectionController;
+- (nullable id)objectForSectionController:(IGListSectionController <IGListSectionType> *)sectionController;
 
 /**
  Returns the object corresponding to a section in the list. Constant time lookup.
@@ -197,7 +169,7 @@ NS_SWIFT_NAME(ListAdapter)
 - (NSInteger)sectionForObject:(id)object;
 
 /**
- Returns a copy of all the objects currently driving the adapter.
+ Returns a copy of all the objects currently powering the adapter.
 
  @return An array of objects.
  */
@@ -208,7 +180,7 @@ NS_SWIFT_NAME(ListAdapter)
 
  @return An array of section controllers.
  */
-- (NSArray<IGListSectionController *> *)visibleSectionControllers;
+- (NSArray<IGListSectionController<IGListSectionType> *> *)visibleSectionControllers;
 
 /**
  An unordered array of the currently visible objects.
@@ -218,22 +190,13 @@ NS_SWIFT_NAME(ListAdapter)
 - (NSArray *)visibleObjects;
 
 /**
- An unordered array of the currently visible cells for a given object.
- 
- @param object An object in the list
- 
- @return An array of collection view cells.
- */
-- (NSArray<UICollectionViewCell *> *)visibleCellsForObject:(id)object;
+ Scrolls to the sepcified object in the list adapter.
 
-/**
- Scrolls to the specified object in the list adapter.
-
- @param object The object to which to scroll.
+ @param object             The object to which to scroll.
  @param supplementaryKinds The types of supplementary views in the section.
- @param scrollDirection An option indicating the direction to scroll.
- @param scrollPosition An option that specifies where the item should be positioned when scrolling finishes.
- @param animated A flag indicating if the scrolling should be animated.
+ @param scrollDirection    An option indicating the direction to scroll.
+ @param scrollPosition     An option that specifies where the item should be positioned when scrolling finishes. 
+ @param animated           A flag indicating if the scrolling should be animated.
  */
 - (void)scrollToObject:(id)object
     supplementaryKinds:(nullable NSArray<NSString *> *)supplementaryKinds
@@ -254,7 +217,7 @@ NS_SWIFT_NAME(ListAdapter)
  Returns the size of a supplementary view in the list at the specified index path.
 
  @param elementKind The kind of supplementary view.
- @param indexPath The index path of the supplementary view.
+ @param indexPath   The index path of the supplementary view.
 
  @return The size of the supplementary view.
  */

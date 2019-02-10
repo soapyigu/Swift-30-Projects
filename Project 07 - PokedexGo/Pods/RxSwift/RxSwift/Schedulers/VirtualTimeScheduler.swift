@@ -6,8 +6,6 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-
 /// Base class for virtual time schedulers using a priority queue for scheduled items.
 open class VirtualTimeScheduler<Converter: VirtualTimeConverterType>
     : SchedulerType {
@@ -57,7 +55,7 @@ open class VirtualTimeScheduler<Converter: VirtualTimeConverterType>
     }
 
     /**
-    Schedules an action to be executed immediatelly.
+    Schedules an action to be executed immediately.
 
     - parameter state: State passed to the action to be executed.
     - parameter action: Action to be executed.
@@ -234,7 +232,7 @@ extension VirtualTimeScheduler: CustomDebugStringConvertible {
     }
 }
 
-class VirtualSchedulerItem<Time>
+final class VirtualSchedulerItem<Time>
     : Disposable {
     typealias Action = () -> Disposable
     

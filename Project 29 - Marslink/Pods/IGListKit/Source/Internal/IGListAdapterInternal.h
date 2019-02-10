@@ -9,13 +9,11 @@
 
 #import <IGListKit/IGListAdapter.h>
 #import <IGListKit/IGListCollectionContext.h>
-#import <IGListKit/IGListBatchContext.h>
 
 #import "IGListAdapterProxy.h"
 #import "IGListDisplayHandler.h"
 #import "IGListSectionMap.h"
 #import "IGListWorkingRangeHandler.h"
-#import "IGListAdapter+UICollectionView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,16 +24,15 @@ NS_INLINE NSString *IGListReusableViewIdentifier(Class viewClass, NSString * _Nu
 
 @interface IGListAdapter ()
 <
-IGListCollectionContext,
-IGListBatchContext
+UICollectionViewDataSource,
+UICollectionViewDelegateFlowLayout,
+IGListCollectionContext
 >
 {
     __weak UICollectionView *_collectionView;
-    BOOL _isDequeuingCell;
-    BOOL _isSendingWorkingRangeDisplayUpdates;
 }
 
-@property (nonatomic, strong) id <IGListUpdatingDelegate> updater;
+@property (nonatomic, strong) id <IGListUpdatingDelegate> updatingDelegate;
 
 @property (nonatomic, strong, readonly) IGListSectionMap *sectionMap;
 @property (nonatomic, strong, readonly) IGListDisplayHandler *displayHandler;
@@ -55,25 +52,17 @@ IGListBatchContext
  objects or section controllers.
  */
 @property (nonatomic, assign) BOOL isInUpdateBlock;
-@property (nonatomic, strong, nullable) IGListSectionMap *previousSectionMap;
+@property (nonatomic, strong, nullable) IGListSectionMap *previoussectionMap;
 
 @property (nonatomic, strong) NSMutableSet<Class> *registeredCellClasses;
 @property (nonatomic, strong) NSMutableSet<NSString *> *registeredNibNames;
 @property (nonatomic, strong) NSMutableSet<NSString *> *registeredSupplementaryViewIdentifiers;
 @property (nonatomic, strong) NSMutableSet<NSString *> *registeredSupplementaryViewNibNames;
 
-
-- (void)mapView:(__kindof UIView *)view toSectionController:(IGListSectionController *)sectionController;
-- (nullable IGListSectionController *)sectionControllerForView:(__kindof UIView *)view;
-- (void)removeMapForView:(__kindof UIView *)view;
-
-- (NSArray *)indexPathsFromSectionController:(IGListSectionController *)sectionController
+- (NSArray *)indexPathsFromSectionController:(IGListSectionController <IGListSectionType> *)sectionController
                                      indexes:(NSIndexSet *)indexes
-                  usePreviousIfInUpdateBlock:(BOOL)usePreviousIfInUpdateBlock;
-
-- (nullable NSIndexPath *)indexPathForSectionController:(IGListSectionController *)controller
-                                                  index:(NSInteger)index
-                             usePreviousIfInUpdateBlock:(BOOL)usePreviousIfInUpdateBlock;
+                        adjustForUpdateBlock:(BOOL)adjustForUpdateBlock;
+- (nullable NSIndexPath *)indexPathForSectionController:(IGListSectionController *)controller index:(NSInteger)index;
 
 @end
 

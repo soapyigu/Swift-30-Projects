@@ -6,9 +6,7 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-
-/// Respresents a disposable resource.
+/// Represents a disposable resource.
 public protocol Disposable {
     /// Dispose resource.
     func dispose()

@@ -71,7 +71,7 @@
 
 }
 
-#pragma mark - IGListSectionController Overrides
+#pragma mark - IGListSectionType
 
 - (NSInteger)numberOfItems {
     return 1;
@@ -106,7 +106,7 @@
 }
 
 - (void)didSelectItemAtIndex:(NSInteger)index {
-    [self.selectionDelegate didSelectSectionController:self withObject:self.item];
+    [self.selectionDelegate didSelectSingleSectionController:self];
 }
 
 @end

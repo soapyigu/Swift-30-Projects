@@ -6,9 +6,9 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
+import struct Foundation.Date
 
-/// Converts historial virtual time into real time.
+/// Converts historical virtual time into real time.
 ///
 /// Since historical virtual time is also measured in `Date`, this converter is identity function.
 public struct HistoricalSchedulerTimeConverter : VirtualTimeConverterType {

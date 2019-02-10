@@ -53,8 +53,8 @@ class ViewController: UIViewController {
   }
   
   fileprivate func add(childViewController: UIViewController, toParentViewController parentViewController: UIViewController) {
-    addChildViewController(childViewController)
+    addChild(childViewController)
     scrollView.addSubview(childViewController.view)
-    childViewController.didMove(toParentViewController: parentViewController)
+    childViewController.didMove(toParent: parentViewController)
   }
 }

@@ -52,7 +52,7 @@ class JournalEntryCell: UICollectionViewCell {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    label.frame = UIEdgeInsetsInsetRect(bounds, JournalEntryCell.inset)
+    label.frame = bounds.inset(by: JournalEntryCell.inset)
   }
   
 }
