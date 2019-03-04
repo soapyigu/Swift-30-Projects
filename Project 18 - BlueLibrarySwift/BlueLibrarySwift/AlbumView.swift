@@ -37,7 +37,7 @@ class AlbumView: UIView {
     // Create the indicator view
     indicatorView = UIActivityIndicatorView()
     indicatorView.translatesAutoresizingMaskIntoConstraints = false
-    indicatorView.activityIndicatorViewStyle = .whiteLarge
+    indicatorView.style = .whiteLarge
     indicatorView.startAnimating()
     addSubview(indicatorView)
     

@@ -13,11 +13,11 @@ class LibraryAPI: NSObject {
   static let sharedInstance = LibraryAPI()
   
   // MARK: - Variables
-  fileprivate let persistencyManager: PersistencyManager
-  fileprivate let httpClient: HTTPClient
-  fileprivate let isOnline: Bool
+  private let persistencyManager: PersistencyManager
+  private let httpClient: HTTPClient
+  private let isOnline: Bool
   
-  fileprivate override init() {
+  private override init() {
     persistencyManager = PersistencyManager()
     httpClient = HTTPClient()
     isOnline = false

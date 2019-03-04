@@ -25,16 +25,16 @@ import UIKit
 class ViewController: UIViewController {
 
   // MARK: - IBOutlet
-	@IBOutlet var dataTable: UITableView!
-	@IBOutlet var toolbar: UIToolbar!
+  @IBOutlet var dataTable: UITableView!
+  @IBOutlet var toolbar: UIToolbar!
   @IBOutlet var scroller: HorizontalScrollerView!
   
   // MARK: - Private Variables
-  fileprivate var allAlbums = [Album]()
-  fileprivate var currentAlbumData: [AlbumData]?
-  fileprivate var currentAlbumIndex = 0
+  private var allAlbums = [Album]()
+  private var currentAlbumData: [AlbumData]?
+  private var currentAlbumIndex = 0
   // use a stack to push and pop operation for the undo option
-  fileprivate var undoStack: [(Album, Int)] = []
+  private var undoStack: [(Album, Int)] = []
 	
   // MARK: - Lifecycle
 	override func viewDidLoad() {
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
     setComponents()
     showDataForAlbum(at: currentAlbumIndex)
     
-    NotificationCenter.default.addObserver(self, selector:Selector.saveCurrentState, name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+    NotificationCenter.default.addObserver(self, selector:Selector.saveCurrentState, name: UIApplication.didEnterBackgroundNotification, object: nil)
 	}
   
   func showDataForAlbum(at index: Int) {
@@ -169,8 +169,8 @@ extension ViewController: UITableViewDataSource {
     let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath)
     
     if let albumData = currentAlbumData {
-      cell.textLabel?.text = albumData[(indexPath as NSIndexPath).row].title
-      cell.detailTextLabel?.text = albumData[(indexPath as NSIndexPath).row].value
+      cell.textLabel?.text = albumData[indexPath.row].title
+      cell.detailTextLabel?.text = albumData[indexPath.row].value
     }
     
     return cell
