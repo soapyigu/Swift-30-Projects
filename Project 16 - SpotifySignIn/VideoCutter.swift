@@ -43,9 +43,9 @@ open class VideoCutter: NSObject {
         exportSession.outputURL = URL(fileURLWithPath: outputURL)
         exportSession.shouldOptimizeForNetworkUse = true
         exportSession.outputFileType = AVFileType.mp4
-        let start = CMTimeMakeWithSeconds(Float64(startTime), 600)
-        let duration = CMTimeMakeWithSeconds(Float64(duration), 600)
-        let range = CMTimeRangeMake(start, duration)
+        let start = CMTimeMakeWithSeconds(Float64(startTime), preferredTimescale: 600)
+        let duration = CMTimeMakeWithSeconds(Float64(duration), preferredTimescale: 600)
+        let range = CMTimeRangeMake(start: start, duration: duration)
         exportSession.timeRange = range
         exportSession.exportAsynchronously { () -> Void in
           switch exportSession.status {
