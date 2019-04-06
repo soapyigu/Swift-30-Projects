@@ -42,7 +42,7 @@ class Photo {
   }
   
   func heightForComment(_ font: UIFont, width: CGFloat) -> CGFloat {
-    let rect = NSString(string: comment).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+    let rect = NSString(string: comment).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
     return ceil(rect.height)
   }
   

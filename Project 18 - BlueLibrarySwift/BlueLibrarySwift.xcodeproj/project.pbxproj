@@ -16,22 +16,11 @@
 		101DD6D01A052EDE00161F0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 101DD6CE1A052EDE00161F0D /* Main.storyboard */; };
 		101DD6D21A052EDE00161F0D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 101DD6D11A052EDE00161F0D /* Images.xcassets */; };
 		101DD6D51A052EDE00161F0D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 101DD6D31A052EDE00161F0D /* LaunchScreen.xib */; };
-		101DD6E11A052EDE00161F0D /* BlueLibrarySwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DD6E01A052EDE00161F0D /* BlueLibrarySwiftTests.swift */; };
 		101DD6EC1A052F0E00161F0D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DD6EB1A052F0E00161F0D /* HTTPClient.swift */; };
 		1936E3ED209E3D9900BDAD0F /* albums.json in Resources */ = {isa = PBXBuildFile; fileRef = 1936E3EC209E3D9900BDAD0F /* albums.json */; };
 		19B5F9151CDFA8BC0067CC4D /* HorizontalScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B5F9141CDFA8BC0067CC4D /* HorizontalScroller.swift */; };
 		19DA519C1CE7929600CE5E80 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DA519B1CE7929600CE5E80 /* Constants.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		101DD6DB1A052EDE00161F0D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 101DD6BD1A052EDE00161F0D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 101DD6C41A052EDE00161F0D;
-			remoteInfo = BlueLibrarySwift;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0B238FCE1CDD1AAB00000CB5 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
@@ -45,9 +34,6 @@
 		101DD6CF1A052EDE00161F0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		101DD6D11A052EDE00161F0D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		101DD6D41A052EDE00161F0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		101DD6DA1A052EDE00161F0D /* BlueLibrarySwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlueLibrarySwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		101DD6DF1A052EDE00161F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		101DD6E01A052EDE00161F0D /* BlueLibrarySwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueLibrarySwiftTests.swift; sourceTree = "<group>"; };
 		101DD6EB1A052F0E00161F0D /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		1936E3EC209E3D9900BDAD0F /* albums.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = albums.json; sourceTree = "<group>"; };
 		19B5F9141CDFA8BC0067CC4D /* HorizontalScroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalScroller.swift; sourceTree = "<group>"; };
@@ -56,13 +42,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		101DD6C21A052EDE00161F0D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		101DD6D71A052EDE00161F0D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -103,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				101DD6C71A052EDE00161F0D /* BlueLibrarySwift */,
-				101DD6DD1A052EDE00161F0D /* BlueLibrarySwiftTests */,
 				101DD6C61A052EDE00161F0D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				101DD6C51A052EDE00161F0D /* BlueLibrarySwift.app */,
-				101DD6DA1A052EDE00161F0D /* BlueLibrarySwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,23 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				101DD6C91A052EDE00161F0D /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		101DD6DD1A052EDE00161F0D /* BlueLibrarySwiftTests */ = {
-			isa = PBXGroup;
-			children = (
-				101DD6E01A052EDE00161F0D /* BlueLibrarySwiftTests.swift */,
-				101DD6DE1A052EDE00161F0D /* Supporting Files */,
-			);
-			path = BlueLibrarySwiftTests;
-			sourceTree = "<group>";
-		};
-		101DD6DE1A052EDE00161F0D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				101DD6DF1A052EDE00161F0D /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -196,24 +156,6 @@
 			productReference = 101DD6C51A052EDE00161F0D /* BlueLibrarySwift.app */;
 			productType = "com.apple.product-type.application";
 		};
-		101DD6D91A052EDE00161F0D /* BlueLibrarySwiftTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 101DD6E71A052EDE00161F0D /* Build configuration list for PBXNativeTarget "BlueLibrarySwiftTests" */;
-			buildPhases = (
-				101DD6D61A052EDE00161F0D /* Sources */,
-				101DD6D71A052EDE00161F0D /* Frameworks */,
-				101DD6D81A052EDE00161F0D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				101DD6DC1A052EDE00161F0D /* PBXTargetDependency */,
-			);
-			name = BlueLibrarySwiftTests;
-			productName = BlueLibrarySwiftTests;
-			productReference = 101DD6DA1A052EDE00161F0D /* BlueLibrarySwiftTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -222,23 +164,18 @@
 			attributes = {
 				LastSwiftMigration = 0730;
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Raywenderlich;
 				TargetAttributes = {
 					101DD6C41A052EDE00161F0D = {
 						CreatedOnToolsVersion = 6.1;
-						LastSwiftMigration = 0900;
-					};
-					101DD6D91A052EDE00161F0D = {
-						CreatedOnToolsVersion = 6.1;
-						LastSwiftMigration = 0900;
-						TestTargetID = 101DD6C41A052EDE00161F0D;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
 			buildConfigurationList = 101DD6C01A052EDE00161F0D /* Build configuration list for PBXProject "BlueLibrarySwift" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -250,7 +187,6 @@
 			projectRoot = "";
 			targets = (
 				101DD6C41A052EDE00161F0D /* BlueLibrarySwift */,
-				101DD6D91A052EDE00161F0D /* BlueLibrarySwiftTests */,
 			);
 		};
 /* End PBXProject section */
@@ -264,13 +200,6 @@
 				101DD6D51A052EDE00161F0D /* LaunchScreen.xib in Resources */,
 				101DD6D21A052EDE00161F0D /* Images.xcassets in Resources */,
 				1936E3ED209E3D9900BDAD0F /* albums.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		101DD6D81A052EDE00161F0D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,23 +222,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		101DD6D61A052EDE00161F0D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				101DD6E11A052EDE00161F0D /* BlueLibrarySwiftTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		101DD6DC1A052EDE00161F0D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 101DD6C41A052EDE00161F0D /* BlueLibrarySwift */;
-			targetProxy = 101DD6DB1A052EDE00161F0D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		101DD6CE1A052EDE00161F0D /* Main.storyboard */ = {
@@ -335,6 +248,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -377,7 +291,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -390,6 +304,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -425,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -442,8 +357,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Raywenderlich.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -455,48 +369,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Raywenderlich.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		101DD6E81A052EDE00161F0D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = BlueLibrarySwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Raywenderlich.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlueLibrarySwift.app/BlueLibrarySwift";
-			};
-			name = Debug;
-		};
-		101DD6E91A052EDE00161F0D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = BlueLibrarySwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Raywenderlich.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlueLibrarySwift.app/BlueLibrarySwift";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -517,15 +390,6 @@
 			buildConfigurations = (
 				101DD6E51A052EDE00161F0D /* Debug */,
 				101DD6E61A052EDE00161F0D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		101DD6E71A052EDE00161F0D /* Build configuration list for PBXNativeTarget "BlueLibrarySwiftTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				101DD6E81A052EDE00161F0D /* Debug */,
-				101DD6E91A052EDE00161F0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

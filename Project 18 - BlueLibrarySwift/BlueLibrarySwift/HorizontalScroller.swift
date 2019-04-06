@@ -91,7 +91,7 @@ class HorizontalScrollerView: UIView {
   @objc func scrollerDidTap(_ gesture: UITapGestureRecognizer) {
     let location = gesture.location(in: gesture.view)
     
-    guard let index = contentViews.index(where: { $0.frame.contains(location) })
+    guard let index = contentViews.firstIndex(where: { $0.frame.contains(location) })
       else {
         return
     }
@@ -136,7 +136,7 @@ class HorizontalScrollerView: UIView {
       size: CGSize(width: ViewConstants.Padding, height: bounds.height)
     )
     
-    guard let selectedIndex = contentViews.index(where: { $0.frame.intersects(centerRect) })
+    guard let selectedIndex = contentViews.firstIndex(where: { $0.frame.intersects(centerRect) })
       else { return }
     let centralView = contentViews[selectedIndex]
     let targetCenter = centralView.center
