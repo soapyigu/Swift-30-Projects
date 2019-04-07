@@ -23,7 +23,7 @@ class CreateContactViewController: UIViewController {
     txtLastname.delegate = self
     txtHomeEmail.delegate = self
     
-    let saveBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(CreateContactViewController.createContact))
+    let saveBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(CreateContactViewController.createContact))
     navigationItem.rightBarButtonItem = saveBarButtonItem
   }
   
