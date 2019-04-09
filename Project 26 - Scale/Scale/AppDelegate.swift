@@ -18,12 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
-    [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
     print("didFinishLaunchingWithOptions called")
     var isLaunchedFromQuickAction = false
     
-    if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+    if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
       isLaunchedFromQuickAction = true
       let _ = handleQuickAction(shortcutItem)
     } else {
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return !isLaunchedFromQuickAction
   }
   
-  func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
     return true
   }
