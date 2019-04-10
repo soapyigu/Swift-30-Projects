@@ -11,7 +11,7 @@ import UserNotifications
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
     /// Request local notification authorizations.
     UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { accepted, error in
@@ -44,7 +44,7 @@ import UserNotifications
     let content = UNMutableNotificationContent()
     content.title = "Coding Reminder"
     content.body = "Ready to code? Let us do some Swift!"
-    content.sound = UNNotificationSound.default()
+    content.sound = UNNotificationSound.default
     content.categoryIdentifier = "normal"
     
     /// Add a image as attachment.
