@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
 
     if !UIImagePickerController.isSourceTypeAvailable(.camera) {
-      takePictureButton.setTitle("Select Photo", for: UIControlState())
+      takePictureButton.setTitle("Select Photo", for: UIControl.State())
     }
   }
 
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
     picker.allowsEditing = false
 
     if UIImagePickerController.isSourceTypeAvailable(.camera) {
-      picker.sourceType = UIImagePickerControllerSourceType.camera
+      picker.sourceType = UIImagePickerController.SourceType.camera
     } else {
       picker.sourceType = .photoLibrary
       picker.modalPresentationStyle = .fullScreen
@@ -85,9 +85,11 @@ class ViewController: UIViewController {
 // MARK: - UIImagePickerControllerDelegate
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
-    guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
-      print("Info did not have the required UIImage for the Original Image")
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+    guard let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage else {
       dismiss(animated: true)
       return
     }
@@ -123,7 +125,7 @@ extension ViewController {
   func upload(image: UIImage,
               progressCompletion: @escaping (_ percent: Float) -> Void,
               completion: @escaping (_ tags: [String], _ colors: [PhotoColor]) -> Void) {
-    guard let imageData = UIImageJPEGRepresentation(image, 0.5) else {
+    guard let imageData = image.jpegData(compressionQuality: 0.5) else {
       print("Could not get JPEG representation of UIImage")
       return
     }
@@ -145,7 +147,6 @@ extension ViewController {
           upload.validate()
           upload.responseJSON { response in
             guard response.result.isSuccess else {
-              print("Error while uploading file: \(response.result.error)")
               completion([String](), [PhotoColor]())
               return
             }
@@ -154,12 +155,9 @@ extension ViewController {
               let uploadedFiles = responseJSON["uploaded"] as? [Any],
               let firstFile = uploadedFiles.first as? [String: Any],
               let firstFileID = firstFile["id"] as? String else {
-                print("Invalid information received from service")
                 completion([String](), [PhotoColor]())
                 return
             }
-            
-            print("Content uploaded with ID: \(firstFileID)")
             
             self.downloadTags(contentID: firstFileID) { tags in
               self.downloadColors(contentID: firstFileID) { colors in
@@ -179,7 +177,6 @@ extension ViewController {
       .responseJSON { response in
         
         guard response.result.isSuccess else {
-          print("Error while fetching tags: \(response.result.error)")
           completion([String]())
           return
         }
@@ -193,7 +190,7 @@ extension ViewController {
             return
         }
         
-        let tags = tagsAndConfidences.flatMap({ dict in
+        let tags = tagsAndConfidences.compactMap({ dict in
           return dict["tag"] as? String
         })
         
@@ -206,7 +203,6 @@ extension ViewController {
       .responseJSON { response in
         
         guard response.result.isSuccess else {
-          print("Error while fetching colors: \(response.result.error)")
           completion([PhotoColor]())
           return
         }
@@ -221,7 +217,7 @@ extension ViewController {
             return
         }
         
-        let photoColors = imageColors.flatMap({ (dict) -> PhotoColor? in
+        let photoColors = imageColors.compactMap({ (dict) -> PhotoColor? in
           guard let r = dict["r"] as? String,
             let g = dict["g"] as? String,
             let b = dict["b"] as? String,
@@ -235,4 +231,14 @@ extension ViewController {
         completion(photoColors)
     }
   }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }
