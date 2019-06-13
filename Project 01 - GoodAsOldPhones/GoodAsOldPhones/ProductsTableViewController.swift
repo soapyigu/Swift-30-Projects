@@ -8,31 +8,31 @@
 import UIKit
 
 class ProductsTableViewController: UITableViewController {
-  private var products: [Product]?
-  private let identifer = "productCell"
+    private var products: [Product]?
+    private let identifer = "productCell"
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
     
-    products = [
-      Product(name: "1907 Wall Set", cellImageName: "image-cell1", fullscreenImageName: "phone-fullscreen1"),
-      Product(name: "1921 Dial Phone", cellImageName: "image-cell2", fullscreenImageName: "phone-fullscreen2"),
-      Product(name: "1937 Desk Set", cellImageName: "image-cell3", fullscreenImageName: "phone-fullscreen3"),
-      Product(name: "1984 Moto Portable", cellImageName: "image-cell4", fullscreenImageName: "phone-fullscreen4")
-    ]
-  }
-
-
-  // MARK: - View Transfer
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "showProduct" {
-      if let cell = sender as? UITableViewCell,
-        let indexPath = tableView.indexPath(for: cell),
-        let productVC = segue.destination as? ProductViewController {
-        productVC.product = products?[indexPath.row]
-      }
+        products = [
+            Product(name: "1907 Wall Set", cellImageName: "image-cell1", fullScreenImageName: "phone-fullscreen1"),
+            Product(name: "1921 Dial Phone", cellImageName: "image-cell2", fullScreenImageName: "phone-fullscreen2"),
+            Product(name: "1937 Desk Set", cellImageName: "image-cell3", fullScreenImageName: "phone-fullscreen3"),
+            Product(name: "1984 Moto Portable", cellImageName: "image-cell4", fullScreenImageName: "phone-fullscreen4")
+        ]
     }
-  }
+
+
+    // MARK: - View Transfer
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showProduct" {
+            if let cell = sender as? UITableViewCell,
+                let indexPath = tableView.indexPath(for: cell),
+                let productVC = segue.destination as? ProductViewController {
+                productVC.product = products?[indexPath.row]
+            }
+        }
+    }
 }
 
 
