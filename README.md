@@ -3,7 +3,7 @@
 ![Cover](./Cover.jpg)
 
 ## Contents
-This repo is updated with Swift 4.0 and compatible with iPhone X:
+This repo is updated with Swift 5 and compatible with iPhone X:
 
 * Simple UIKit components
 * UIScrollView, UITableView, UICollectionView
@@ -13,20 +13,19 @@ This repo is updated with Swift 4.0 and compatible with iPhone X:
 * Core Data, Today Extension, and 3D touch
 * Popular Open Source Frameworks
 * Design Patterns
+* Test Driven Development, XCTest
 
 ![Swift30Projects](./Swift30Projects.png)
 
 ## By developers and for developers
 
-I am an iOS developer and currently learning Swift.
-
-This project is inspired by [Sam Lu](https://twitter.com/samvlu)'s [100 Days of Swift](http://samvlu.com/index.html) and [Allen朝辉](https://twitter.com/creativewang)'s [30DaysSwift](https://github.com/allenwong/30DaysofSwift).
+I am an iOS developer and currently using Swift.
 
 **This repo does not merely follow tutorials, I re-build them with better code style and architecture design.**
 
 For code style, I strictly follow [raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide);
 
-For developers, I have a README file and screenshots for every single project, you can start coding from there.
+For developers, I have a README file and screenshots for every single app in this repo, all details could be found there.
 
 ## What's next?
 
