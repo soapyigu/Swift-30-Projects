@@ -4,4 +4,4 @@ TodoTDD is a simple to do list iOS App. It is inspired by Dr. Dominik Hauser's b
 
 ## Screenshots
 
-![ToDOTDD](./toDoTDD.gif)
+![ToDOTDD](./ToDoTDD.gif)
