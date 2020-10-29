@@ -135,10 +135,7 @@ class ViewController: UIViewController, UITableViewDelegate {
       minutes = "0\((Int)(stopwatch.counter / 60))"
     }
     
-    var seconds: String = String(format: "%.2f", (stopwatch.counter.truncatingRemainder(dividingBy: 60)))
-    if stopwatch.counter.truncatingRemainder(dividingBy: 60) < 10 {
-      seconds = "0" + seconds
-    }
+    var seconds: String = String(format: "%05.2f", (stopwatch.counter.truncatingRemainder(dividingBy: 60)))
     
     label.text = minutes + ":" + seconds
   }
