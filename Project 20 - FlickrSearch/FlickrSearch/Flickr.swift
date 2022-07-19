@@ -22,8 +22,12 @@
 	
 import UIKit
 
-// go to https://www.flickr.com/services/api/explore/flickr.photos.search to get the latest apikey
-let apiKey = "68235aae25e7a935db219ebce37f5735"
+/* Step for get apikey
+ Step - 1: got to https://www.flickr.com/services/api/explore/flickr.photos.getRecent
+ Step - 2: Then call method without any send argument you will see url below the response
+ Step - 3: Find the query paramter "api_key" and copy its value and paste below in the parameter called 'apiKey'
+ */
+let apiKey = "e8442b52160f9bc4900f4133f80b688a"
 
 class Flickr {
   
