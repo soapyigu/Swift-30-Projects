@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4lj-Yg-idk">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4lj-Yg-idk">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,9 +28,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FeJ-Hs-7jQ">
-                                            <rect key="frame" x="0.0" y="87" width="600" height="452"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FeJ-Hs-7jQ">
+                                            <rect key="frame" x="0.0" y="107.5" width="375" height="452"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="10" id="6vt-MP-2E6">
                                                 <size key="itemSize" width="280" height="380"/>
@@ -99,6 +96,12 @@
                                             </connections>
                                         </collectionView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="FeJ-Hs-7jQ" firstAttribute="leading" secondItem="T6H-cj-xPx" secondAttribute="leading" id="AZg-aF-bOd"/>
+                                        <constraint firstItem="FeJ-Hs-7jQ" firstAttribute="centerY" secondItem="T6H-cj-xPx" secondAttribute="centerY" id="oAX-vs-BxE"/>
+                                        <constraint firstItem="FeJ-Hs-7jQ" firstAttribute="centerX" secondItem="T6H-cj-xPx" secondAttribute="centerX" id="oeW-7t-cxm"/>
+                                        <constraint firstItem="FeJ-Hs-7jQ" firstAttribute="height" secondItem="T6H-cj-xPx" secondAttribute="height" multiplier="0.677661" id="pUT-dy-jKr"/>
+                                    </constraints>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
