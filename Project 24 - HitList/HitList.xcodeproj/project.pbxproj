@@ -196,6 +196,7 @@
 				TargetAttributes = {
 					193BC8681C8F4E66003E6D2D = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 466F2TNFRB;
 						LastSwiftMigration = 1020;
 					};
 					193BC87F1C8F4E66003E6D2D = {
@@ -429,9 +430,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 466F2TNFRB;
 				INFOPLIST_FILE = HitList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yigu.HitList;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yigu.HitList2oi1o2i;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -441,9 +443,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 466F2TNFRB;
 				INFOPLIST_FILE = HitList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yigu.HitList;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yigu.HitList2oi1o2i;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};

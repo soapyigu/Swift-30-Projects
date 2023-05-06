@@ -53,8 +53,19 @@ class ViewController: UIViewController, UITableViewDataSource {
     let person = people[indexPath.row]
     cell.textLabel!.text = person.value(forKey: "name") as? String
     
+    cell.accessoryType = cell.isSelected ? .checkmark : .none
     return cell
   }
+
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let cell = tableView.cellForRow(at: indexPath)
+    if cell?.accessoryType == .checkmark {
+        cell?.accessoryType = .none
+    } else {
+        cell?.accessoryType = .checkmark
+    }
+    tableView.deselectRow(at: indexPath, animated: true)
+}
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     switch editingStyle {
